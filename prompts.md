@@ -1,56 +1,56 @@
 # Registro de IA: prompts y respuestas relevantes
 
-Los diálogos de este archivo son conversaciones simuladas para estudiar el proyecto. No son transcripciones de una conversación real. Los ejemplos son ilustrativos y las ampliaciones exploratorias conservan el alcance indicado en cada respuesta.
 
-## Simulación 1. La pregunta y la medida de respuesta del precio
 
-**Estudiante (simulado):**
+## Prompt 1. La pregunta y la medida de respuesta del precio
 
-> Mi interés era entender cómo el optimismo y las expectativas mueven la bolsa. ¿Por qué nuestra pregunta ahora habla de transparencia? ¿Qué significa exactamente que el precio incorpore mejor los fundamentos?
+**Estudiante:**
 
-**Codex (respuesta simulada):**
+> Mi interés es entender cómo el optimismo y las expectativas mueven la bolsa. ¿Por qué nuestra pregunta ahora habla de transparencia? ¿Qué significa exactamente que el precio incorpore mejor los fundamentos?
+
+**Codex :**
 
 El modelo conserva inversionistas con sentimiento. Ese sentimiento afecta lo que esperan recibir, la incertidumbre que perciben y su disposición a asumir riesgo. Nuestra primera comparación pregunta qué cambia al divulgar información, manteniendo esos parámetros fijos.
 
 El fundamento es θ, la noticia sobre el pago futuro. Medimos su incorporación mediante K=∂P̄/∂θ. Si una noticia aumenta el pago fundamental en S/1 y el precio esperado aumenta S/0.60, K es 0.60. Después compararemos K entre niveles de transparencia.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Entonces, si K pasa de 0.60 a 0.80, ¿puedo concluir que el precio de la acción aumentará?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Puedes concluir que responde más a un mismo cambio de la noticia. Una noticia positiva de una unidad cambia el precio esperado en +0.80 en lugar de +0.60. Una noticia negativa de una unidad lo cambia en −0.80 en lugar de −0.60. El nivel del precio también contiene sesgos y compensación por riesgo. Por eso el resultado trata de sensibilidad y no implica una subida para cualquier noticia.
 
-## Simulación 2. Por qué κ=μθ no deja información parcial
+## Prompt 2. Por qué κ=μθ no deja información parcial
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > En la diapositiva aparece κ=μθ. Explícame qué significa cada símbolo y por qué dices que esa ecuación permite conocer toda la noticia aunque μ sea pequeño.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 θ es la noticia completa, κ el dato público y μ el parámetro conocido de transparencia. Si μ es positivo, basta dividir: θ=κ/μ.
 
 Por ejemplo, si μ=0.5 y observo κ=4, descubro θ=8. Si μ fuera 0.1 y κ fuera 0.8, descubriría el mismo θ=8. Reducir el factor que multiplica la noticia no oculta su valor cuando se conoce el factor y se observa el producto exactamente.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Qué ocurre si μ=0? ¿Y cuál es nuestra alternativa concreta?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Con μ=0, el dato κ=0 no permite recuperar θ. Pero para cualquier μ positivo la información vuelve a ser completa bajo esa ecuación exacta.
 
 Proponemos θ=κ+ξ. Todos observan κ y los particulares desconocen ξ. Conocer κ ya no permite despejar θ sin conocer también ξ. μ pasa a medir la fracción de varianza que se divulga, mediante Var(κ)=μs y Var(ξ)=(1−μ)s, donde s=Var(θ)>0. Los componentes son normales independientes, de media cero.
 
-## Simulación 3. Varianza residual y recuperación del caso básico
+## Prompt 3. Varianza residual y recuperación del caso básico
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > No entiendo la diferencia entre la varianza publicada σ²ε+μ²s y nuestra varianza σ²ε+(1−μ)s. Usa números y dime qué representa σ²ε.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 σ²ε es la varianza de una sorpresa final que nadie conoce antes de recibir el pago. s es la varianza total de la noticia fundamental antes de observar sus componentes.
 
@@ -64,23 +64,23 @@ Supón σ²ε=4 y s=100. Para el particular racional:
 
 En nuestra corrección, sin divulgación queda toda la incertidumbre de la noticia: 100, además de la sorpresa final: 4. Con divulgación completa desaparece la incertidumbre de θ y persiste la sorpresa final.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿El valor 54 significa que el agente espera recibir 54 soles? ¿Qué significa recuperar el modelo básico?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 54 es una varianza, expresada en soles al cuadrado. La media indica cuánto espera recibir; la varianza mide la dispersión alrededor de esa media. En ese ejemplo, una varianza de 54 corresponde a una desviación estándar de √54, aproximadamente S/7.35.
 
 Recuperar el caso básico significa que μ=0 deja κ=0 y varianza residual s. El particular racional vuelve a esperar P₀ y a percibir varianza σ²ε+s. El particular sentimental vuelve a esperar P₀+δ₂ y a percibir σ²ε+s+τ²₂. No debería desaparecer la incertidumbre de una noticia que todavía no observa.
 
-## Simulación 4. Las dos esperanzas condicionales
+## Prompt 4. Las dos esperanzas condicionales
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Tenemos E[θ|κ]=κ y E[κ|θ]=μθ. Me parecen contradictorias: ¿por qué una no es simplemente la inversa de la otra?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Promedian cosas distintas.
 
@@ -90,11 +90,11 @@ E[κ|θ]=μθ pregunta qué valores públicos son compatibles, en promedio, con 
 
 Una esperanza condicional es un promedio y no una igualdad entre cada realización de las variables.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Dame un ejemplo que muestre esa diferencia y dime dónde necesitamos cada identidad.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Con θ=10 y μ=0.5, el promedio condicional de κ es 5. Una realización puede ser κ=4 y ξ=6, y otra κ=7 y ξ=3. Ambas suman 10.
 
@@ -102,13 +102,13 @@ En la primera, el particular que sólo observa 4 pronostica θ=4, porque no cono
 
 Usamos E[θ|κ]=κ para construir la media subjetiva del particular. Usamos E[κ|θ]=μθ al promediar precios compatibles con el mismo fundamento. Los estados de sentimiento son independientes de los componentes informativos y se mantienen fijos en esa comparación. El puente probabilístico todavía no está formalizado en nuestro Lean preliminar.
 
-## Simulación 5. Medias, varianzas y los cuatro grupos
+## Prompt 5 5. Medias, varianzas y los cuatro grupos
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Quiero distinguir mᵢ de vᵢ. Si P₀=100, θ=10, κ=6, μ=0.4, s=100 y σ²ε=4, ¿qué saben una institución racional y un particular racional?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 La institución racional conoce θ=10. Espera m₁=100+10=110 y sólo conserva la sorpresa final: v₁=4.
 
@@ -116,11 +116,11 @@ El particular racional observa κ=6 y desconoce ξ. Espera m₃=100+6=106 y perc
 
 mᵢ es el pago esperado por acción. vᵢ es su varianza subjetiva. El particular no sabe menos porque pronostique un pago menor en todos los casos: sabe menos porque le falta ξ. Si la parte oculta fuera negativa, su pronóstico podría superar el de la institución.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Cómo quedan los grupos sentimentales si δ₁=δ₂=3 y τ²₁=τ²₂=9? ¿Eso cambia el pago real de la empresa?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Sus creencias quedan así:
 
@@ -135,13 +135,13 @@ Sus creencias quedan así:
 
 La información distingue instituciones de particulares. Los parámetros sentimentales distinguen racionales de sentimentales dentro de cada tipo.
 
-## Simulación 6. Por qué ρ, δ y τ² son objetos distintos
+## Prompt 6. Por qué ρ, δ y τ² son objetos distintos
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Estoy confundiendo ρ₂, δ₂ y τ²₂. Además, ¿por qué la aversión del particular sentimental se llama g₄ y usa ρ₂?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 El índice i=1,2,3,4 identifica grupos. El índice j=1,2 identifica el tipo de inversionista sentimental: institución o particular.
 
@@ -149,23 +149,23 @@ Por eso el grupo 2, institución sentimental, usa g₂=γ exp(−bρ₁), y el g
 
 ρ₂ es el estado emocional observado. δ₂ es el sesgo esperado, que en la notación del paper llamamos ρ*₂. τ²₂ es la varianza subjetiva adicional, originalmente σ²ρ₂. Son parámetros distintos; no debes reemplazar automáticamente δ₂ por el valor de ρ₂.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Si γ=1, b=0.5 y ρ₂ pasa de cero a uno, ¿qué sucede con g₄ y con la posición?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 g₄ pasa de 1 a exp(−0.5), aproximadamente 0.6065. Con la misma media m₄, varianza v₄ y precio P, la magnitud de la demanda se multiplica por exp(0.5), aproximadamente 1.6487.
 
 Si compraba, compra más. Si vendía corto, la posición negativa aumenta en magnitud. Si m₄=RP, la demanda sigue siendo cero. Esa comparación mantiene fijos los demás componentes de la decisión.
 
-## Simulación 7. Equivalente cierto y derivación de la FOC
+## Prompt 7. Equivalente cierto y derivación de la FOC
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Explícame la función C₀,ᵢ+ωᵢ(mᵢ−RP)−gᵢvᵢωᵢ²/2. ¿Qué estoy maximizando? ¿Por qué usamos RP en lugar de P?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Maximizas el equivalente cierto, una medida monetaria que representa la decisión de utilidad CARA cuando el pago se cree normal. ωᵢ es la cantidad de acciones, C₀,ᵢ riqueza independiente de esa elección, mᵢ el pago esperado, vᵢ su varianza y gᵢ la aversión al riesgo.
 
@@ -173,11 +173,11 @@ El coste P se compara en la fecha final: colocado a la tasa segura r_f, ese dine
 
 La ganancia crece linealmente con la posición y la penalización por riesgo crece con su cuadrado.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Deriva la FOC paso a paso. No entiendo por qué desaparece C₀,ᵢ ni por qué se cancela el 2.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Derivamos respecto de ωᵢ, manteniendo mᵢ, vᵢ, gᵢ y P dados para el agente.
 
@@ -191,23 +191,23 @@ Al igualar a cero obtenemos mᵢ−RP−gᵢvᵢωᵢ=0. Despejando:
 
 La segunda derivada es −gᵢvᵢ<0. Por eso la solución es un máximo único si gᵢ y vᵢ son positivos.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Usa mᵢ=110, P=100, R=1.02 y gᵢvᵢ=4. ¿Qué pasaría con menos riesgo o con una valoración pesimista?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 RP=102 y la ganancia esperada por acción es 8. La posición óptima es 8/4=2 acciones. Si gᵢvᵢ baja a 2, manteniendo esa ganancia, elige 4.
 
 Si mᵢ fuera 98 con RP=102 y gᵢvᵢ=4, elegiría −1 acción, una venta corta. Si la penalización baja a 2, elegiría −2. Menos riesgo amplía la magnitud de la posición; su signo depende de la valoración.
 
-## Simulación 8. Demanda agregada y precio de equilibrio
+## Prompt 8. Demanda agregada y precio de equilibrio
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > No veo cómo pasamos de cuatro demandas a P*=(Σhᵢmᵢ−1)/(RH). Explícame λᵢ, hᵢ y H y despeja el precio.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 λᵢ es la participación del grupo y las cuatro participaciones suman uno. Su contribución a la demanda agregada es λᵢω*ᵢ. Definimos hᵢ=λᵢ/(gᵢvᵢ) y H=Σhᵢ.
 
@@ -221,11 +221,11 @@ Distribuimos la suma:
 
 Despejamos RP·H=Σhᵢmᵢ−1 y dividimos entre RH. El precio resultante hace que las decisiones individuales absorban toda la oferta.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Quiero un ejemplo de los cuatro grupos donde pueda verificar la igualdad de mercado, sin saltos.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Tomemos λᵢ=1/4, gᵢ=1 y R=1. Para ilustrar la corrección, usemos P₀=100, θ=4, κ=2, μ=0.5, s=2, σ²ε=1, δ₁=δ₂=2 y τ²₁=τ²₂=0. Los estados ρ son cero y γ=1.
 
@@ -242,13 +242,13 @@ Las posiciones son 1, 3, −0.5 y 0.5 acciones. Su promedio ponderado es (1+3−
 
 Este ejemplo usa varianzas sentimentales adicionales cero, permitidas por τ²ⱼ≥0. Es distinto del contraejemplo de las fórmulas publicadas, que usa todas las varianzas primitivas iguales a uno.
 
-## Simulación 9. Cuándo el peso de un grupo sube o baja el precio
+## Prompt 9. Cuándo el peso de un grupo sube o baja el precio
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Yo pensaba que si un grupo se vuelve más importante, siempre sube el precio. En el ejemplo anterior, ¿qué sucede si pesa más el particular racional?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Ese particular espera 102, mientras RP*=103. Su valoración es menor que el coste al final. A precio dado desea vender corto, por lo que aumentar su peso puede reducir el precio.
 
@@ -258,21 +258,21 @@ Manteniendo las medias y otros pesos dados, la derivada es:
 
 En el grupo 3, el numerador es −1 y RH=3/4, así que la derivada es −4/3. Para el grupo 2, el numerador es 106−103=3 y la derivada es 4: aumentar su peso tiene el signo contrario.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Puedo usar esa derivada para concluir el efecto completo de aumentar μ?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 No basta. La derivada anterior cambia sólo un peso y mantiene las valoraciones dadas. Aumentar μ cambia la incertidumbre de ambos particulares y, en la comparación de precios esperados, también la respuesta de sus medias a θ. Debemos incorporar esos cambios conjuntamente mediante K(μ). Es una comparación distinta.
 
-## Simulación 10. De dónde sale K y por qué crece
+## Prompt 10. De dónde sale K y por qué crece
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Explícame el numerador a+μB y el denominador R(a+B). También quiero saber si podemos tratar B como constante.
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 a=h₁+h₂ suma el peso institucional y B=h₃+h₄ el particular. Las instituciones usan toda θ y su media responde con coeficiente uno. Los particulares usan κ, cuyo promedio condicionado a θ es μθ. Por eso la respuesta ponderada es a+μB.
 
@@ -282,11 +282,11 @@ K(μ)=(a+μB(μ))/(R[a+B(μ)]).
 
 B no es constante. Al aumentar μ, disminuye el riesgo informativo de los particulares y cambia su peso, aunque mantengamos fijos los parámetros sentimentales.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Entonces no basta con decir que μ está en el numerador. ¿Cómo muestra la derivada que el efecto total es positivo?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Definimos n₃=λ₃/γ, n₄=λ₄/g₄, d₃=σ²ε+(1−μ)s y d₄=σ²ε+τ²₂+(1−μ)s. Entonces B=n₃/d₃+n₄/d₄.
 
@@ -302,13 +302,13 @@ Todos esos términos son positivos bajo nuestros supuestos. Eso explica el signo
 
 La prueba preliminar de Lean demuestra la comparación K(x)<K(y) mediante identidades algebraicas y diferencias finitas. No debemos describirla como una formalización de todos los pasos de cálculo diferencial y probabilidades de esta respuesta.
 
-## Simulación 11. La ampliación con sentimiento que cambia al divulgar
+## Prompt 11. La ampliación con sentimiento que cambia al divulgar
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Dónde está la ampliación adicional? Quiero plantear algo concreto: que la información pública pueda generar miedo. ¿Qué ecuación tendríamos que cambiar?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Como escenario adicional, podemos proponer estados sentimentales que dependan de μ: ρ₁(μ) y ρ₂(μ). Entonces g₂(μ)=γ exp(−bρ₁(μ)) y g₄(μ)=γ exp(−bρ₂(μ)).
 
@@ -316,11 +316,11 @@ Si una divulgación reduce ρ₂, aumenta g₄. El particular sentimental acepta
 
 La ecuación de demanda mantiene su forma, pero cambian sus coeficientes. a y B ahora pueden depender de μ. Por eso la prueba que mantiene fijos esos estados no resuelve automáticamente este escenario.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Puedes escribir una condición preliminar para conservar K'>0, sin afirmar que ya está demostrada en nuestro Lean?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 En una primera versión de esa ampliación, supongamos a(μ) y B(μ) positivos y diferenciables, R fijo, estados que dependen de μ pero no de θ, y que se mantiene la identidad del precio esperado. Entonces la forma de K sigue siendo:
 
@@ -336,23 +336,23 @@ B(a+B)>(1−μ)[aB'−Ba'].
 
 El término aB'−Ba' recoge cómo cambia el peso particular respecto del institucional. Debemos derivar a' y B' a partir de las funciones sentimentales propuestas y comprobar esta condición. Esta es una derivación exploratoria para discutir la ampliación: no es una proposición ya incorporada o formalizada en la entrega.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Y si ρ también depende de la noticia θ, en lugar de depender sólo de μ?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Cambiaría también la derivada respecto de θ. Al reaccionar el sentimiento a la noticia, podrían variar las aversiones, los pesos y los sesgos de las medias. La respuesta total del precio añadiría esos efectos.
 
 Además, condicionar en estados sentimentales fijos y estudiar estados endógenos que cambian con θ son comparaciones distintas. Habría que definir nuevamente la métrica y las creencias condicionales. Para mantener una primera ampliación manejable, conviene estudiar primero estados que cambian con μ y explicitar su independencia de los componentes informativos.
 
-## Simulación 12. Posiciones sin ventas cortas
+## Prompt 12. Posiciones sin ventas cortas
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Como otra posibilidad, ¿qué pasa si un inversionista no puede vender corto? ¿La FOC que tenemos seguiría siendo suficiente?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Sería un escenario adicional con restricción ωᵢ≥0. La solución del problema cuadrático pasa a ser:
 
@@ -362,23 +362,23 @@ Si el pago esperado supera RP, la solución es interior y usa nuestra FOC. Si el
 
 El equilibrio exigiría Σλᵢ max{0,(mᵢ−RP)/(gᵢvᵢ)}=1. El conjunto de grupos que compra puede cambiar con el precio, así que la fórmula lineal actual de equilibrio no sirve globalmente.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Lo incluyo ya como parte de nuestra contribución principal?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 La primera entrega se concentra en la corrección informativa y el escenario de sentimiento variable. Las restricciones de ventas cortas pueden discutirse como otra opción de extensión. Antes de atribuirle novedad hay que revisar qué restricciones y variantes considera el artículo y la literatura pertinente.
 
 Este escenario no está cubierto por los certificados actuales ni debe presentarse como resultado obtenido.
 
-## Simulación 13. Información que puede inferirse del precio
+## Prompt 13. Información que puede inferirse del precio
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Si los particulares observan el precio P*, ¿no podrían descubrir lo que saben las instituciones? ¿Cómo afecta eso a nuestra propuesta?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Es una limitación que debemos hacer explícita. Nuestro modelo mantiene la restricción de no extraer información adicional del precio.
 
@@ -392,11 +392,11 @@ Como a>0, un particular que conoce P*, κ y los demás términos podría despeja
 
 Así, el precio podría revelar la noticia completa bajo esas condiciones. Si permitimos esa inferencia, debemos actualizar las creencias y volver a resolver el equilibrio, porque también cambian las varianzas y los pesos h.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Qué escenario podríamos estudiar para que el precio no revele exactamente θ?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Una opción exploratoria sería oferta aleatoria S=1+u, con un componente u que los agentes no observan directamente. La igualdad de mercado usaría S y el precio sería P*=(Σhᵢmᵢ−S)/(RH).
 
@@ -404,13 +404,13 @@ Entonces un movimiento del precio podría reflejar noticia o variación de ofert
 
 Esa opción todavía no está desarrollada en el proyecto. Sirve para delimitar la restricción actual y no para afirmar que ya resolvimos un equilibrio completo de expectativas racionales.
 
-## Simulación 14. Qué respalda Lean y qué entregaré
+## Prompt 14. Qué respalda Lean y qué entregaré
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Si el profesor pregunta qué hemos comprobado de verdad, ¿cómo distingo el contraejemplo, nuestra corrección y las ampliaciones?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Puedes separar tres estados:
 
@@ -418,21 +418,21 @@ Puedes separar tres estados:
 2. **Corrección informativa:** la función racional K tiene una prueba preliminar de aumento estricto para cuatro grupos y un resultado de información completa K(1)=1/R. El puente entre las esperanzas gaussianas y esa función sigue sin formalización probabilística en Lean.
 3. **Ampliaciones:** estados sentimentales que cambian, restricciones de ventas cortas e inferencia desde precios son escenarios por desarrollar. Las hipótesis de la prueba actual no cubren automáticamente esos escenarios.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Qué hipótesis concretas aparecen en la declaración de cuatro grupos? ¿No estamos asumiendo desde el principio que K aumenta?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 La declaración four_group_information_increases usa a,n₃,n₄,e₃,e₄,R positivos, t≥0 y x<y≤1. Identificamos e₃=σ²ε, e₄=σ²ε+τ²₂ y t=s. La propuesta económica añade 0≤x y usa s>0.
 
 No contiene K(x)<K(y) entre sus hipótesis. Esa desigualdad es la conclusión que prueba. Las instituciones se agregan en a=h₁+h₂ y los dos grupos particulares conservan pesos y riesgos distintos.
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Para la primera entrega, ¿cuál es la pregunta, la FOC y el resultado que debería destacar sin convertir mi exposición en un resumen del paper?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 La pregunta es cuándo una mayor transparencia fortalece la respuesta esperada del precio a los fundamentos en presencia de sentimiento.
 
@@ -440,6 +440,4 @@ La FOC esperada conserva la forma mᵢ−RP−gᵢvᵢωᵢ=0. Nuestra correcci�
 
 El resultado objetivo es K(y)>K(x) para 0≤x<y≤1 bajo condiciones explícitas, con K(1)=1/R. El aporte consiste en corregir la información parcial, recuperar el caso sin divulgación y volver a derivar ese resultado. Las ampliaciones sirven para estudiar cuáles de esas condiciones son esenciales.
 
-## Alcance de las simulaciones
 
-Los diálogos anteriores son material didáctico ficticio, no un registro bruto de prompts utilizados durante el trabajo. Las derivaciones exploratorias no modifican automáticamente el documento, las diapositivas, el código o los certificados de Lean. Para incorporarlas como resultados del proyecto habría que desarrollarlas, revisarlas y formalizarlas según su alcance.
