@@ -1,0 +1,18 @@
+% Native chart from the same checked data as code/figures/information.tex.
+\begin{tikzpicture}
+\begin{axis}[
+ width=\linewidth,height=5.1cm,
+ xmin=0,xmax=1,ymin=0.45,ymax=1.03,
+ xlabel={Transparencia \(\mu\)},ylabel={Respuesta \(\mathcal K\)},
+ tick label style={font=\small},label style={font=\small},
+ legend style={font=\scriptsize,draw=none,at={(0.02,0.98)},anchor=north west},
+ grid=major,grid style={gray!15},
+]
+\addplot[blue!70!black,very thick] table[x=mu,y=corrected,col sep=comma]{../code/output/information.csv};
+\addlegendentry{Corrección}
+\addplot[orange!85!black,thick] table[x=mu,y=printed,col sep=comma]{../code/output/information.csv};
+\addlegendentry{Fórmula impresa}
+\addplot[black,dashed] table[x=mu,y=baseline,col sep=comma]{../code/output/information.csv};
+\addlegendentry{Modelo básico}
+\end{axis}
+\end{tikzpicture}

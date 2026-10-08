@@ -54,3 +54,15 @@ Revisión crítica realizada por Codex: la primera simplificación con dos bloqu
 - lean/preliminary/: 19 declaraciones y salidas de compilación.
 
 El apéndice manuscrito y el manuscrito final siguen pendientes. Este registro debe ampliarse con los siguientes prompts y respuestas relevantes; no implica autoría manual de los cálculos ni formalización completa del modelo.
+
+## Revisión de claridad de las diapositivas (8/10/2026)
+
+**Usuario:**
+
+> no publiques el enlace en el issue del profesor, necesito que mejores las diapositivas, está muy bien incluir las variables y ecuaciones, pero yo no entiendo lo que dice, entonces el público tampoco, todo lo que está ahí debe de estar acompañado de mejores explicaciones
+
+**Codex, extracto de respuesta:**
+
+> No publicaré el enlace en el issue del profesor. Voy a revisar cada diapositiva para acompañar las variables y ecuaciones con explicaciones claras: qué representan, qué nos dicen y cómo ayudan a responder la pregunta del proyecto.
+
+**Respuesta académica producida:** presentación explicada con 22 diapositivas principales y 4 de anexo. La señal escalada incluye el ejemplo 4/0.5=8; la FOC muestra elecciones de 2 y 4 acciones; el precio de equilibrio tiene una valoración numérica; la sensibilidad y el gráfico explican sus unidades. Las ecuaciones mantienen sus condiciones y la información normal conserva la diferencia entre valores realizados y esperanzas. El guion se reescribió con tiempos que suman veinte minutos, explicaciones por diapositiva y un glosario. Los certificados de Lean conservan su alcance preliminar. No se publica ningún comentario en el issue del profesor.
