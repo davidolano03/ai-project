@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "comparison": "expected coefficient for corrected model",
+  "baseline_exact": "9/14",
+  "printed_mu_01_exact": "66943/121303",
+  "corrected_mu_01_exact": "583/871",
+  "comparative_static_pairs": 5760,
+  "market_cases": 60,
+  "formal_probability_bridge": "not checked by this script or preliminary Lean",
+  "date": "2026-10-08"
+}

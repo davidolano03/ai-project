@@ -1,0 +1,18 @@
+% Generated from checked data. No screenshots of published figures.
+\begin{tikzpicture}
+\begin{axis}[
+ width=10.6cm,height=5.7cm,
+ xmin=0,xmax=1,ymin=0.45,ymax=1.03,
+ xlabel={Transparencia $\mu$},ylabel={Sensibilidad informativa $\mathcal K$},
+ tick label style={font=\small},label style={font=\small},
+ legend style={font=\scriptsize,draw=none,at={(0.02,0.98)},anchor=north west},
+ grid=major,grid style={gray!15},
+]
+\addplot[blue!70!black,very thick] table[x=mu,y=corrected,col sep=comma]{../code/output/information.csv};
+\addlegendentry{Corrección: precio esperado}
+\addplot[orange!85!black,thick] table[x=mu,y=printed,col sep=comma]{../code/output/information.csv};
+\addlegendentry{Fórmula publicada}
+\addplot[black,dashed] table[x=mu,y=baseline,col sep=comma]{../code/output/information.csv};
+\addlegendentry{Modelo básico}
+\end{axis}
+\end{tikzpicture}
