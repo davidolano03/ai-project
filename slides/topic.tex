@@ -1,0 +1,294 @@
+% Topic presentation, 20 minutes. Template Beamer dimensions and theme retained.
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage{pgfplots}
+\usepackage{listings}
+\pgfplotsset{compat=1.18}
+\usetheme{default}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{frametitle}{size=\large}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\lstset{basicstyle=\ttfamily\scriptsize,columns=fullflexible,
+  keepspaces=true,breaklines=false,showstringspaces=false,
+  escapeinside={(*@}{@*)},
+  literate={ℝ}{{\(\mathbb R\)}}1 {≤}{{\(\leq\)}}1}
+\title{¿Cuándo la transparencia mejora la\\incorporación de fundamentos al precio?}
+\subtitle{Presentación del tema, ruta A}
+\author{David Julio Olano Silva Nevado}
+\date{9 de octubre de 2026}
+
+\begin{document}
+\begin{frame}[plain]
+ \titlepage
+ \begin{center}\small
+ \url{https://github.com/davidolano03/ai-project}
+ \end{center}
+\end{frame}
+
+\begin{frame}{1. Pregunta de investigación}
+ \large
+ ¿Bajo qué condiciones una mayor transparencia aumenta la
+ \textbf{sensibilidad esperada del precio a los fundamentos},
+ cuando algunos inversionistas están afectados por sentimiento?
+ \vspace{0.6cm}
+ \normalsize
+ \begin{itemize}
+  \item Mediré cuánto responde el precio a una misma noticia fundamental.
+  \item Una respuesta más informativa puede elevar o reducir el precio.
+  \item Corregiré la información parcial de Zhang y Zhang (2023).
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{2. El supuesto que cambiaré}
+ Zhang y Zhang (2023), sección 6.2, ecuaciones (38)--(41), pp.~15--16:
+ \[
+   \kappa=\mu\theta,\qquad
+   v_3^I=\sigma_\epsilon^2+\mu^2\sigma_\theta^2.
+ \]
+ \begin{itemize}
+  \item $\theta$: noticia fundamental. $\kappa$: información pública.
+        $\mu\in[0,1]$: transparencia.
+  \item Con $\mu>0$ conocido, observar $\kappa$ revela $\theta=\kappa/\mu$.
+  \item En $\mu=0$, la varianza impresa elimina la incertidumbre
+        sobre una noticia que todavía no se observa.
+ \end{itemize}
+ \medskip
+ \textbf{Resultado afectado:} proposición 5(ii), p.~16.
+ Afirma que todo grado de transparencia mejora la sensibilidad informativa.
+\end{frame}
+
+\begin{frame}{Evidencia preliminar del problema}
+ Las fórmulas publicadas (23) y (44) admiten este caso:
+ \begin{center}
+ \begin{tabular}{lc}
+ \toprule
+ Escenario & Sensibilidad informativa\\
+ \midrule
+ Modelo básico & $9/14=0{,}642857$\\
+ Transparencia publicada, $\mu=0{,}1$ & $66943/121303=0{,}551866$\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \[
+  0{,}551866<0{,}642857.
+ \]
+ \small
+ $\lambda_i=1/4$, $R=\gamma=1$, sentimientos y medias cero.
+ Todas las varianzas del modelo básico son uno.
+ \medskip
+ \normalsize
+ Lean verifica el contraejemplo. La afirmación universal falla
+ \textbf{con las fórmulas impresas}; esto no establece un efecto empírico.
+\end{frame}
+
+\begin{frame}{Información pública con incertidumbre residual}
+ Propondré componentes gaussianos independientes, de media cero:
+ \[
+   \theta=\kappa+\xi,\qquad
+   \Var(\kappa)=\mu s,\qquad \Var(\xi)=(1-\mu)s,
+   \quad s=\sigma_\theta^2.
+ \]
+ Al observar $\kappa$, el particular tiene
+ \[
+   \E[\theta\mid\kappa]=\kappa,\qquad
+   \Var(\theta\mid\kappa)=(1-\mu)s.
+ \]
+ \begin{itemize}
+  \item $\mu$ es una fracción de varianza divulgada.
+  \item Más información reduce la incertidumbre restante.
+  \item $\mu=0$ recupera el modelo básico.
+        $\mu=1$ elimina el riesgo informativo, pero no la sorpresa $\epsilon$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Los cuatro grupos del modelo corregido}
+ \small
+ $F=P_0+\theta+\epsilon$, con $P_0$ precio previo;
+ $\epsilon$ independiente, de media cero y varianza $\sigma_\epsilon^2>0$.
+ \begin{center}
+ \begin{tabular}{@{}llll@{}}
+ \toprule
+ Grupo & Media $m_i$ & Varianza $v_i$ & Aversión\\
+ \midrule
+ Institución racional & $P_0+\theta$ & $\sigma_\epsilon^2$ & $\gamma$\\
+ Institución con sentimiento & $P_0+\theta+\delta_1$ & $\sigma_\epsilon^2+\tau_1^2$ & $g_2$\\
+ Particular racional & $P_0+\kappa$ & $\sigma_\epsilon^2+(1-\mu)s$ & $\gamma$\\
+ Particular con sentimiento & $P_0+\kappa+\delta_2$ & $\sigma_\epsilon^2+(1-\mu)s+\tau_2^2$ & $g_4$\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \[
+  g_2=\gamma e^{-b\rho_1},\qquad g_4=\gamma e^{-b\rho_2},
+  \qquad b,\gamma>0.
+ \]
+ \normalsize
+ $\delta_j=\rho_j^*$: sesgo esperado.
+ $\tau_j^2=\sigma_{\rho_j}^2$: incertidumbre subjetiva adicional.
+ $\rho_j$: estado emocional observado.
+ \medskip
+ \par
+ Conservaré los cuatro grupos. Cambiaré las creencias informativas
+ de los particulares.
+\end{frame}
+
+\begin{frame}{3. Decisión y FOC esperada}
+ El agente elige su posición $\omega_i\in\mathbb R$:
+ \[
+  \max_{\omega_i}\;
+  C_{0,i}+\omega_i(m_i-RP)-\frac{g_iv_i}{2}\omega_i^2,
+  \qquad R=1+r_f>0.
+ \]
+ \[
+   m_i-RP-g_iv_i\omega_i=0,\qquad
+   \omega_i^*=\frac{m_i-RP}{g_iv_i}.
+ \]
+ \begin{itemize}
+  \item $C_{0,i}$: riqueza independiente de la decisión.
+  \item Ganancia esperada menos una penalización por riesgo.
+  \item Para el particular racional, $v_3=\sigma_\epsilon^2+(1-\mu)s$.
+ \end{itemize}
+ Con precio y expectativas iguales, menor incertidumbre amplía la posición:
+ más compra si es positiva y más venta corta si es negativa.
+\end{frame}
+
+\begin{frame}{Precio y relevancia de cada grupo}
+ Con participaciones $\lambda_i>0$, $\sum_i\lambda_i=1$ y oferta de una unidad:
+ \[
+  \sum_i\lambda_i\omega_i^*=1,\qquad
+  h_i=\frac{\lambda_i}{g_iv_i},\qquad H=\sum_i h_i,
+ \]
+ \[
+   P^*=\frac{\sum_i h_im_i-1}{RH}.
+ \]
+ \begin{itemize}
+  \item $h_i$ mide el peso efectivo de demanda.
+  \item Más participación, menos aversión o menos riesgo elevan ese peso.
+  \item Si $m_i>RP$, darle más peso al grupo eleva el precio.
+        Si $m_i<RP$, lo reduce.
+ \end{itemize}
+ La relevancia de un grupo tiene un efecto condicionado por su valoración.
+\end{frame}
+
+\begin{frame}{Resultado esperado y condiciones}
+ Mediré la respuesta del \textbf{precio esperado} a un mismo fundamento:
+ \[
+  \bar P(\theta,\mu)=\E[P^*\mid\theta,\rho_1,\rho_2],
+  \qquad \E[\kappa\mid\theta]=\mu\theta.
+ \]
+ \[
+  \mathcal K(\mu)=\frac{\partial\bar P}{\partial\theta}
+    =\frac{a+\mu B(\mu)}{R[a+B(\mu)]},
+  \quad a=h_1+h_2,\quad B=h_3+h_4.
+ \]
+ \[
+  0\leq x<y\leq1
+  \quad\Longrightarrow\quad
+  \mathcal K(y)>\mathcal K(x),
+  \qquad \mathcal K(1)=1/R.
+ \]
+ \small
+ Participaciones positivas, $R>0$, $\sigma_\epsilon^2>0$,
+ $s>0$, $\tau_j^2\geq0$. Sentimiento exógeno e independiente de $\kappa,\xi$.
+ Mantendré fijos sus estados, sesgos, participaciones y varianzas totales.
+ \medskip
+ \normalsize
+ Más transparencia debería fortalecer la respuesta a buenas
+ \textbf{y} malas noticias.
+\end{frame}
+
+\begin{frame}{Comparación reproducible de la sensibilidad}
+ \begin{center}
+ \input{../code/figures/information.tex}
+ \end{center}
+ \vspace{-0.3cm}
+ \scriptsize
+ Parámetros del contraejemplo. La curva corregida mide respuesta esperada.
+ Datos generados por \texttt{code/verify.py}, no evidencia empírica.
+\end{frame}
+
+\begin{frame}{4. Por qué esta corrección requiere trabajo propio}
+ \begin{itemize}
+  \item \textbf{Paper y apéndice:} Zhang ya incorpora aprendizaje y
+        transparencia. La proposición 5 mantiene la parametrización discutida.
+  \item \textbf{Versiones de trabajo:} búsqueda por título y DOI.
+        No identifiqué una versión alternativa accesible ni una corrección.
+  \item \textbf{Artículo citante revisado:} Das y Yaghoubi (2024) estudia
+        miedo y riesgo bursátil empíricamente. Usa Zhang como motivación,
+        sin rederivar su bloque de información pública.
+ \end{itemize}
+ \medskip
+ Mi contribución será la corrección específica, sus condiciones y la
+ comprobación reproducible. La revisión de literatura es delimitada y
+ continuará antes del manuscrito final.
+ \medskip
+ \small
+ Registro y alcance: \texttt{proposal/literature-search.md}.
+\end{frame}
+
+\begin{frame}[fragile]{Lean: el resultado algebraico de cuatro grupos}
+ \small
+ En notación económica: $\mathcal K(x)<\mathcal K(y)$.
+ En Lean, \texttt{informationCoefficient} es exactamente la función
+ racional definida en la propuesta.
+ \begin{lstlisting}
+theorem four_group_information_increases (a n3 n4 e3 e4 t R x y : (*@\(\mathbb R\)@*))
+    (ha : 0 < a) (hn3 : 0 < n3) (hn4 : 0 < n4)
+    (he3 : 0 < e3) (he4 : 0 < e4) (ht : 0 (*@\(\leq\)@*) t) (hR : 0 < R)
+    (hxy : x < y) (hy1 : y (*@\(\leq\)@*) 1) :
+    informationCoefficient a n3 n4 e3 e4 t R x <
+      informationCoefficient a n3 n4 e3 e4 t R y := by
+ \end{lstlisting}
+ \small
+ $n_j=\lambda_j/g_j$, $e_3=\sigma_\epsilon^2$,
+ $e_4=\sigma_\epsilon^2+\tau_2^2$, $t=s$.
+ \medskip
+ \begin{itemize}
+  \item Verifica la desigualdad a partir de hipótesis primitivas positivas.
+  \item El contraejemplo también está probado, sin \texttt{sorry}.
+  \item Falta formalizar la conexión con las esperanzas gaussianas.
+        La prueba algebraica no certifica todo el modelo estocástico.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{5. Plan y riesgos}
+ \begin{enumerate}
+  \item Derivar información condicional, las cuatro FOC y el equilibrio.
+  \item Simular cambios de transparencia, riesgo y relevancia de grupos.
+  \item Formalizar los resultados del manuscrito final y mapear sus hipótesis.
+ \end{enumerate}
+ \medskip
+ \textbf{Riesgo principal:} si divulgar información también cambia el
+ sentimiento, la comparación deja de mantener los pesos emocionales fijos.
+ El signo exige una nueva derivación.
+ \medskip
+ \par
+ Delimitaré la inferencia adicional desde precios y distinguiré
+ sensibilidad, error de valoración y bienestar.
+ \medskip
+ \par
+ La entrega final incluirá el apéndice manuscrito propio y la
+ formalización de AppliedModelingLib del commit fijado del paper.
+\end{frame}
+
+\begin{frame}{La pregunta y la contribución que se evaluará}
+ \large
+ ¿Cuándo la transparencia fortalece la incorporación de
+ fundamentos al precio?
+ \vspace{0.4cm}
+ \normalsize
+ \begin{itemize}
+  \item Corregiré la incertidumbre residual de la información pública.
+  \item Probaré una respuesta esperada creciente con condiciones explícitas.
+  \item Examinaré qué condición falla cuando cambia el sentimiento.
+ \end{itemize}
+ \medskip
+ Incluso con información completa pueden persistir sesgos de expectativas.
+ El resultado propuesto identifica una mejora en la sensibilidad informativa.
+\end{frame}
+\end{document}

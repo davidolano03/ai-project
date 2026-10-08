@@ -1,0 +1,4 @@
+'OlanoTopic.retail_weight_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OlanoTopic.residual_weight_decreases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OlanoTopic.four_group_information_increases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OlanoTopic.full_information_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]

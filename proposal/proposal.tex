@@ -1,0 +1,226 @@
+% Topic presentation. Template format: 11pt, 1-inch margins, single column.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[round]{natbib}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,allcolors=blue!50!black]{hyperref}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\title{\textbf{¿Cuándo la transparencia mejora la incorporación\\
+de fundamentos al precio?}}
+\author{David Julio Olano Silva Nevado\\
+\small Universidad del Pacífico\\
+\small\url{https://github.com/davidolano03/ai-project}}
+\date{Presentación del tema: 9 de octubre de 2026}
+\begin{document}
+\maketitle
+
+\section{La pregunta y la ruta}
+\textbf{¿Bajo qué condiciones una mayor transparencia informativa aumenta la
+sensibilidad esperada del precio a los fundamentos cuando algunos
+inversionistas están afectados por sentimiento?} Seguiré la \textbf{ruta A}:
+corregiré la representación de información pública en \citet{zhang2023},
+conservaré sus cuatro grupos y volveré a derivar el resultado afectado.
+El objetivo es distinguir noticias sobre el pago futuro de expectativas
+sesgadas. Una respuesta más informativa del precio significa que refleja
+mejor tanto las buenas como las malas noticias; no que necesariamente suba.
+
+\section{El punto de partida y el supuesto que cambiaré}
+La referencia exacta es la \textbf{proposición 5(ii), p.~16}, que afirma que
+todo grado de transparencia $0\leq\mu\leq1$ aumenta la sensibilidad del precio
+a la información respecto del modelo básico. Cambiaré las ecuaciones
+(38)--(41), pp.~15--16. Allí los particulares observan
+$\kappa=\mu\theta$, donde $\theta$ es la noticia fundamental y $\kappa$ la
+información pública, y su varianza subjetiva incluye
+\begin{equation}\label{eq:printed}
+  v_3^I=\sigma_\epsilon^2+\mu^2\sigma_\theta^2.
+\end{equation}
+Esta expresión aumenta con la parte divulgada y, en $\mu=0$, elimina la
+incertidumbre sobre una noticia que el particular todavía desconoce.
+Además, observar exactamente $\kappa=\mu\theta$, con $\mu>0$ conocido,
+permite recuperar $\theta=\kappa/\mu$. La información parcial necesita una
+especificación distinta de una señal escalar multiplicada por una constante.
+
+\textbf{Evidencia preliminar.} Con participaciones $\lambda_i=1/4$,
+$R=\gamma=1$, sentimientos y medias cero, y todas las varianzas del modelo
+básico iguales a uno, las fórmulas (23) y (44) publicadas dan
+\[
+ K_0=\frac9{14}\simeq0{,}642857,
+ \qquad K_I(0{,}1)=\frac{66943}{121303}\simeq0{,}551866<K_0.
+\]
+Lean verifica este contraejemplo con transparencia positiva. Refuta la
+afirmación universal \emph{con las fórmulas impresas}; no prueba que la
+transparencia real perjudique los mercados. La corrección propuesta se
+concentra en esta inconsistencia, no en invalidar todo el artículo.
+
+\newpage
+\subsection*{Información parcial coherente y problema del agente}
+Descompondré la noticia en componentes gaussianos independientes, de media
+cero: $\theta=\kappa+\xi$. Todos observan $\kappa$ y las instituciones también
+observan $\xi$. Si $s=\sigma_\theta^2>0$ es la varianza total, impondré
+\begin{equation}\label{eq:information}
+ \Var(\kappa)=\mu s,\qquad \Var(\xi)=(1-\mu)s,\qquad
+ \E[\theta\mid\kappa]=\kappa,\quad
+ \Var(\theta\mid\kappa)=(1-\mu)s.
+\end{equation}
+Aquí $\mu$ mide la fracción de \emph{varianza informativa} que se divulga,
+no una fracción observable del valor realizado de $\theta$. Más transparencia
+reduce la incertidumbre que queda. En $\mu=0$ recupero el modelo básico;
+en $\mu=1$ todos conocen $\theta$, pero persiste la sorpresa $\epsilon$.
+
+El pago final es $F=P_0+\theta+\epsilon$, con $P_0=P_{t-1}$ conocido y
+$\epsilon$ de media cero e independiente de los componentes informativos.
+$P$ es el precio actual y $R=1+r_f>0$ el factor bruto seguro. Mantendré
+los grupos $i=1,2,3,4$ y sus participaciones $\lambda_i>0$,
+$\sum_i\lambda_i=1$. Denoto $m_i$ y $v_i$ como media y varianza subjetivas
+del pago; $\delta_j=\rho_j^*$ como sesgo esperado y
+$\tau_j^2=\sigma_{\rho_j}^2$ como incertidumbre subjetiva adicional.
+Distingo estos parámetros del estado emocional observado $\rho_j$.
+La aversión del grupo $i$ es $g_i$: $g_1=g_3=\gamma$,
+$g_2=\gamma e^{-b\rho_1}$ y $g_4=\gamma e^{-b\rho_2}$, con $b,\gamma>0$.
+
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Grupo & $m_i$ & $v_i$ & Aversión\\
+\midrule
+1. Institución racional & $P_0+\theta$ & $\sigma_\epsilon^2$ & $\gamma$\\
+2. Institución con sentimiento & $P_0+\theta+\delta_1$ & $\sigma_\epsilon^2+\tau_1^2$ & $g_2$\\
+3. Particular racional & $P_0+\kappa$ & $\sigma_\epsilon^2+(1-\mu)s$ & $\gamma$\\
+4. Particular con sentimiento & $P_0+\kappa+\delta_2$ & $\sigma_\epsilon^2+(1-\mu)s+\tau_2^2$ & $g_4$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Las instituciones conocen toda la noticia; los particulares sólo su parte
+pública. Los sesgos y las varianzas adicionales son subjetivos: no añado
+sentimiento al pago objetivo de la empresa.
+
+Con riqueza final $W_i=C_{0,i}+\omega_i(F-RP)$, cada agente elige
+su posición $\omega_i\in\mathbb R$ para maximizar utilidad CARA esperada.
+Bajo sus creencias normales, el problema equivalente y la FOC esperada son
+\begin{equation}\label{eq:foc}
+ \max_{\omega_i\in\mathbb R}
+ \left\{C_{0,i}+\omega_i(m_i-RP)-\frac{g_iv_i}{2}\omega_i^2\right\},
+ \qquad m_i-RP-g_iv_i\omega_i=0.
+\end{equation}
+$C_{0,i}$ es riqueza independiente de la decisión. El término lineal es
+ganancia esperada; el cuadrático penaliza riesgo. Como $-g_iv_i<0$,
+$\omega_i^*=(m_i-RP)/(g_iv_i)$ es el máximo único. Cambiaré las medias y
+varianzas de los particulares, no la forma de la FOC. Para el grupo 3, el
+coeficiente de $\omega_3$ pasa a ser
+$\gamma[\sigma_\epsilon^2+(1-\mu)s]$. Con precio y expectativas iguales,
+menos riesgo amplía la posición: más compra si es positiva y más venta corta
+si es negativa. No impondré restricciones de ventas cortas en esta entrega.
+
+\newpage
+\section{El resultado que espero y su interpretación}
+La oferta del activo es una unidad. Con
+$h_i=\lambda_i/(g_iv_i)$ y $H=\sum_i h_i$, el equilibrio requiere
+\begin{equation}\label{eq:price}
+ \sum_i\lambda_i\omega_i^*=1,
+ \qquad P^*=\frac{\sum_i h_im_i-1}{RH}.
+\end{equation}
+$h_i$ es el peso efectivo de demanda: crece con la participación y disminuye
+con aversión e incertidumbre. Una mayor relevancia de un grupo aumenta el
+precio \emph{si su valoración $m_i$ supera $RP$}; con una valoración menor,
+lo reduce. El término $1/H$ refleja la compensación por absorber la oferta
+riesgosa y no debe confundirse con un sesgo de expectativas.
+
+Mi comparación promediará las señales públicas compatibles con un mismo
+fundamento:
+\[
+ \bar P(\theta,\mu)=\E[P^*\mid\theta,\rho_1,\rho_2].
+\]
+Por normalidad e independencia, $\E[\kappa\mid\theta]=\mu\theta$.
+Los estados sentimentales serán exógenos, independientes de $\kappa,\xi$
+y fijos al comparar $\mu$. Definiendo
+\begin{align*}
+ a&=h_1+h_2>0,\qquad n_3=\lambda_3/\gamma>0,\qquad n_4=\lambda_4/g_4>0,\\
+ d_3(\mu)&=\sigma_\epsilon^2+(1-\mu)s,\qquad
+ d_4(\mu)=\sigma_\epsilon^2+\tau_2^2+(1-\mu)s,\\
+ B(\mu)&=\frac{n_3}{d_3(\mu)}+\frac{n_4}{d_4(\mu)},
+\end{align*}
+obtendré como medida de incorporación de fundamentos
+\begin{equation}\label{eq:K}
+ \mathcal K(\mu)=\frac{\partial\bar P}{\partial\theta}
+       =\frac{a+\mu B(\mu)}{R[a+B(\mu)]}.
+\end{equation}
+El numerador suma la respuesta directa de instituciones y la respuesta
+esperada de particulares. El denominador agrega todos los pesos de demanda
+y descuenta en el tiempo. Es una sensibilidad del \emph{precio esperado};
+no la derivada del precio realizado manteniendo fija la señal $\kappa$.
+
+\textbf{Resultado objetivo.} Para $0\leq x<y\leq1$,
+$\mathcal K(y)>\mathcal K(x)$ y $\mathcal K(1)=1/R$, si las participaciones,
+sesgos, estados de sentimiento, aversiones de referencia y varianzas totales
+permanecen fijos, con $\sigma_\epsilon^2>0$, $s>0$, $\tau_j^2\geq0$ y
+$R>0$. La parte algebraica de este resultado ya cuenta con una prueba
+preliminar en Lean para los cuatro grupos. La derivación esperada es
+\begin{equation}\label{eq:derivative}
+ \mathcal K'(\mu)=
+ \frac{B^2+a\left[\dfrac{n_3\sigma_\epsilon^2}{d_3^2}
+                 +\dfrac{n_4(\sigma_\epsilon^2+\tau_2^2)}{d_4^2}\right]}
+      {R(a+B)^2}>0.
+\end{equation}
+La transparencia permite que los particulares usen la noticia y reduce su
+riesgo residual. Una buena noticia mueve más el precio hacia arriba y una
+mala noticia más hacia abajo. No afirmaré que el precio siempre aumenta,
+que desaparecen los sesgos ni que mejora necesariamente el bienestar.
+La corrección sustituye la comparación incondicional publicada por un
+resultado con medida y condiciones explícitas.
+
+\newpage
+\section{Por qué esta corrección requiere trabajo propio}
+Revisé la sección 6 completa y el apéndice, pp.~17--18, del artículo
+publicado: ya incluyen aprendizaje y transparencia, y la derivación de
+la proposición 5 conserva la parametrización cuestionada. Mi aporte será
+cambiar la estructura informativa, distinguir varianza observada de residual
+y volver a probar el resultado para cuatro grupos.
+
+La búsqueda documentada por título exacto y DOI, incluida la búsqueda de
+versiones de trabajo y correcciones, no identificó una versión alternativa
+accesible de Zhang ni una reparación de esas ecuaciones. Revisé además
+\citet{das2024}, un artículo que cita Zhang y estudia empíricamente miedo,
+información asimétrica y riesgo de caídas bursátiles. Su versión de trabajo
+de Canterbury 1/2024, pp.~23--24 del texto, usa Zhang como motivación de
+sentimiento e información; no ofrece esta rederivación del modelo.
+El registro \texttt{proposal/literature-search.md} distingue texto revisado,
+metadatos y accesos pendientes. Esta revisión delimitada respalda una
+corrección específica, no una afirmación de novedad universal de la idea
+de información pública. Ampliaré la revisión de artículos citantes antes
+del manuscrito final.
+
+\section{Plan, verificación y riesgos}
+\textbf{Prueba.} Derivaré las medias y varianzas condicionales, las cuatro
+FOC, el equilibrio y el efecto de $\mu$, nombrando cada supuesto.
+Separaré el precio realizado de su respuesta esperada. La evidencia
+preliminar incluye el contraejemplo y la desigualdad algebraica de
+$\mathcal K$; el puente probabilístico todavía no está formalizado en Lean.
+
+\textbf{Simulación.} \texttt{python code/verify.py} reproduce las fracciones,
+el gráfico y los extremos, verifica las FOC y el vaciado de mercado, y
+comprueba el signo sobre una malla de parámetros admisibles. Estas
+simulaciones ilustran y detectan errores; no sustituyen una prueba general.
+
+\textbf{Lean.} Mapearé los resultados a declaraciones con hipótesis
+explícitas y sin \texttt{sorry}. La entrega incluye 15 comprobaciones de
+la auditoría inicial y 4 de la corrección con grupos particulares distintos.
+El procedimiento de AppliedModelingLib del curso se realizará sobre el
+commit fijado del manuscrito final. Esta auditoría preliminar tiene un
+alcance distinto de la formalización integral prevista.
+
+\textbf{Riesgo principal.} El resultado puede perderse si la divulgación
+cambia endógenamente el sentimiento, las participaciones o la aversión.
+Mantendré esas variables fijas en el resultado principal y trataré su
+variación como un escenario adicional con condiciones por derivar. También
+delimitaré la falta de inferencia adicional desde precios, manteniendo
+la restricción informativa del punto de partida. Elaboraré personalmente
+el apéndice manuscrito; una guía mecanografiada no lo reemplazará.
+
+\bibliographystyle{plainnat}
+\bibliography{../paper/references}
+\end{document}
