@@ -1,11 +1,10 @@
-% Topic presentation, 20 minutes. Template Beamer dimensions and theme retained.
+% Main talk: 22 frames, 20 minutes. Appendix: 4 optional frames.
 \documentclass[aspectratio=169,11pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage{amsmath,amssymb,booktabs}
-\usepackage{pgfplots}
-\usepackage{listings}
+\usepackage{pgfplots,listings}
 \pgfplotsset{compat=1.18}
 \usetheme{default}
 \usecolortheme{seahorse}
@@ -14,228 +13,531 @@
 \setbeamerfont{frametitle}{size=\large}
 \newcommand{\E}{\mathbb E}
 \newcommand{\Var}{\operatorname{Var}}
+\newcommand{\idea}[1]{\par\medskip\textbf{Idea económica:} #1}
 \lstset{basicstyle=\ttfamily\scriptsize,columns=fullflexible,
-  keepspaces=true,breaklines=false,showstringspaces=false,
-  escapeinside={(*@}{@*)},
-  literate={ℝ}{{\(\mathbb R\)}}1 {≤}{{\(\leq\)}}1}
-\title{¿Cuándo la transparencia mejora la\\incorporación de fundamentos al precio?}
-\subtitle{Presentación del tema, ruta A}
+ keepspaces=true,breaklines=false,showstringspaces=false,
+ escapeinside={(*@}{@*)},
+ literate={ℝ}{{\(\mathbb R\)}}1 {≤}{{\(\leq\)}}1}
+\title{¿Cuándo la información pública ayuda al precio\\
+a reflejar mejor las noticias de una empresa?}
+\subtitle{Transparencia, fundamentos y sentimiento\\Presentación del tema, ruta A}
 \author{David Julio Olano Silva Nevado}
 \date{9 de octubre de 2026}
-
 \begin{document}
+% 1
 \begin{frame}[plain]
  \titlepage
- \begin{center}\small
- \url{https://github.com/davidolano03/ai-project}
- \end{center}
+ \begin{center}\small\url{https://github.com/davidolano03/ai-project}\end{center}
 \end{frame}
-
-\begin{frame}{1. Pregunta de investigación}
+% 2
+\begin{frame}{1. La pregunta que quiero responder}
  \large
- ¿Bajo qué condiciones una mayor transparencia aumenta la
- \textbf{sensibilidad esperada del precio a los fundamentos},
- cuando algunos inversionistas están afectados por sentimiento?
- \vspace{0.6cm}
- \normalsize
+ ¿Bajo qué condiciones divulgar más información hace que el precio
+ responda mejor a las noticias sobre el \textbf{pago futuro de la empresa}?
+ \normalsize\medskip
  \begin{itemize}
-  \item Mediré cuánto responde el precio a una misma noticia fundamental.
-  \item Una respuesta más informativa puede elevar o reducir el precio.
-  \item Corregiré la información parcial de Zhang y Zhang (2023).
- \end{itemize}
-\end{frame}
-
-\begin{frame}{2. El supuesto que cambiaré}
- Zhang y Zhang (2023), sección 6.2, ecuaciones (38)--(41), pp.~15--16:
- \[
-   \kappa=\mu\theta,\qquad
-   v_3^I=\sigma_\epsilon^2+\mu^2\sigma_\theta^2.
- \]
- \begin{itemize}
-  \item $\theta$: noticia fundamental. $\kappa$: información pública.
-        $\mu\in[0,1]$: transparencia.
-  \item Con $\mu>0$ conocido, observar $\kappa$ revela $\theta=\kappa/\mu$.
-  \item En $\mu=0$, la varianza impresa elimina la incertidumbre
-        sobre una noticia que todavía no se observa.
+  \item Algunos inversionistas conocen más información que otros.
+  \item El optimismo o pesimismo también afecta sus decisiones.
  \end{itemize}
  \medskip
- \textbf{Resultado afectado:} proposición 5(ii), p.~16.
- Afirma que todo grado de transparencia mejora la sensibilidad informativa.
+ Llamaré \(\mathcal K\) a cuánto cambia el \textbf{precio esperado}
+ cuando la noticia fundamental aumenta en una unidad.
+ \[
+  \mathcal K=0{,}6
+  \quad\text{significa una respuesta de S/\,0{,}60 por S/\,1 de noticia.}
+ \]
+ \small
+ Ruta A: corregiré la información parcial de Zhang y Zhang (2023).
+ La propuesta mantiene la pregunta sobre sensibilidad esperada del precio.
 \end{frame}
-
-\begin{frame}{Evidencia preliminar del problema}
- Las fórmulas publicadas (23) y (44) admiten este caso:
+% 3
+\begin{frame}{2. La señal del paper revela toda la noticia}
+ El paper representa la información pública mediante
+ \[
+  \underbrace{\kappa}_{\text{dato público}}
+  =\underbrace{\mu}_{\text{grado de transparencia}}
+   \underbrace{\theta}_{\text{noticia fundamental}}.
+ \]
+ \(\mu\) está entre cero y uno y los inversionistas conocen su valor.
+ \medskip
+ \par\textbf{Ejemplo:} si \(\mu=0{,}5\) y el dato público es \(\kappa=4\),
+ entonces
+ \[
+  \theta=\kappa/\mu=4/0{,}5=8.
+ \]
+ El inversionista puede reconstruir exactamente la noticia, aunque
+ el paper llame parcial a esa información.
+ \idea{Una información realmente parcial debe dejar algo por descubrir.}
+ \medskip\par\small
+ Fuente: Zhang y Zhang (2023), sección 6.2, ecuación (39), pp.~15--16.
+\end{frame}
+% 4
+\begin{frame}{La incertidumbre que el modelo debería conservar}
+ La varianza mide cuánto puede apartarse el pago de lo que espera el agente.
+ La fórmula publicada para el particular racional es
+ \[
+  \underbrace{v_3^I}_{\text{riesgo que percibe}}
+    =\underbrace{\sigma_\epsilon^2}_{\text{sorpresa final}}
+      +\underbrace{\mu^2s}_{\text{riesgo informativo impreso}},
+  \qquad s=\sigma_\theta^2.
+ \]
+ \begin{center}
+ \begin{tabular}{lll}
+ \toprule
+ Transparencia & Fórmula publicada & Problema de interpretación\\
+ \midrule
+ \(\mu=0\) & \(v_3^I=\sigma_\epsilon^2\) & Elimina el riesgo de la noticia oculta\\
+ \(\mu=1\) & \(v_3^I=\sigma_\epsilon^2+s\) & Conserva riesgo de una noticia conocida\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \idea{La incertidumbre sobre la noticia debe disminuir cuando se revela.}
+ \medskip\par\small
+ Fuente: ecuaciones (40)--(41), pp.~15--16. El índice 3 identifica
+ al particular racional y el superíndice \(I\) al escenario publicado.
+\end{frame}
+% 5
+\begin{frame}{Un contraejemplo que justifica la corrección}
+ La proposición 5(ii), p.~16, afirma que cualquier grado de transparencia
+ mejora la respuesta del precio frente al modelo básico.
+ \medskip
+ \par Las ecuaciones publicadas (23) y (44) admiten este caso:
  \begin{center}
  \begin{tabular}{lc}
  \toprule
- Escenario & Sensibilidad informativa\\
+ Escenario & Respuesta por S/\,1 de noticia\\
  \midrule
- Modelo básico & $9/14=0{,}642857$\\
- Transparencia publicada, $\mu=0{,}1$ & $66943/121303=0{,}551866$\\
+ Modelo básico, sin información pública & S/\,\(0{,}643\)\\
+ Transparencia publicada con \(\mu=0{,}1\) & S/\,\(0{,}552\)\\
  \bottomrule
  \end{tabular}
  \end{center}
- \[
-  0{,}551866<0{,}642857.
- \]
- \small
- $\lambda_i=1/4$, $R=\gamma=1$, sentimientos y medias cero.
- Todas las varianzas del modelo básico son uno.
- \medskip
- \normalsize
- Lean verifica el contraejemplo. La afirmación universal falla
- \textbf{con las fórmulas impresas}; esto no establece un efecto empírico.
+ La segunda respuesta es menor. Un caso admisible basta para cuestionar
+ una afirmación que pretende cumplirse siempre.
+ \idea{Revisaré esa afirmación y volveré a derivarla con información parcial coherente.}
+ \medskip\par\small
+ Cuatro grupos iguales, sesgos y estados emocionales cero,
+ aversión de referencia uno, tasa segura cero y varianzas primitivas uno.
+ Lean verifica las fracciones exactas.
+ Esto cuestiona las fórmulas impresas y no establece un efecto empírico.
 \end{frame}
-
-\begin{frame}{Información pública con incertidumbre residual}
- Propondré componentes gaussianos independientes, de media cero:
+% 6
+\begin{frame}{Nuestra corrección separa lo público de lo oculto}
  \[
-   \theta=\kappa+\xi,\qquad
-   \Var(\kappa)=\mu s,\qquad \Var(\xi)=(1-\mu)s,
-   \quad s=\sigma_\theta^2.
+  \underbrace{\theta}_{\text{noticia completa}}
+  =\underbrace{\kappa}_{\text{parte pública}}
+   +\underbrace{\xi}_{\text{parte todavía oculta}}.
  \]
- Al observar $\kappa$, el particular tiene
+ Los particulares observan \(\kappa\).
+ Las instituciones también observan \(\xi\), por lo que conocen \(\theta\).
  \[
-   \E[\theta\mid\kappa]=\kappa,\qquad
-   \Var(\theta\mid\kappa)=(1-\mu)s.
+  \Var(\kappa)=\mu s,\qquad \Var(\xi)=(1-\mu)s.
  \]
  \begin{itemize}
-  \item $\mu$ es una fracción de varianza divulgada.
-  \item Más información reduce la incertidumbre restante.
-  \item $\mu=0$ recupera el modelo básico.
-        $\mu=1$ elimina el riesgo informativo, pero no la sorpresa $\epsilon$.
+  \item \(s>0\): varianza total de la noticia, que mantendré constante.
+  \item \(\mu\): fracción de esa varianza que pasa a ser pública.
  \end{itemize}
+ \idea{Aumentar \(\mu\) traslada información de la parte oculta a la pública.}
+ \medskip\par\small
+ Supondré componentes normales independientes, de media cero.
+ Independencia significa que conocer uno no revela el otro.
+ Esta es la estructura nueva que propongo.
 \end{frame}
-
-\begin{frame}{Los cuatro grupos del modelo corregido}
- \small
- $F=P_0+\theta+\epsilon$, con $P_0$ precio previo;
- $\epsilon$ independiente, de media cero y varianza $\sigma_\epsilon^2>0$.
+% 7
+\begin{frame}{Lo que el particular sabe después de observar el dato}
+ \[
+  \underbrace{\E[\theta\mid\kappa]=\kappa}_{\text{su mejor pronóstico}}
+  \qquad
+  \underbrace{\Var(\theta\mid\kappa)=(1-\mu)s}_{\text{incertidumbre que queda}}.
+ \]
+ El símbolo \(\mid\kappa\) significa \emph{después de observar el dato público}.
+ La media de la parte oculta sigue siendo cero.
+ \medskip
+ \par\textbf{Ejemplo:} si observa \(\kappa=4\), pronostica una noticia de 4,
+ pero la noticia realizada también incluirá la parte oculta \(\xi\).
  \begin{center}
- \begin{tabular}{@{}llll@{}}
+ \begin{tabular}{lccc}
  \toprule
- Grupo & Media $m_i$ & Varianza $v_i$ & Aversión\\
+ Fracción de varianza divulgada & \(0\%\) & \(50\%\) & \(100\%\)\\
  \midrule
- Institución racional & $P_0+\theta$ & $\sigma_\epsilon^2$ & $\gamma$\\
- Institución con sentimiento & $P_0+\theta+\delta_1$ & $\sigma_\epsilon^2+\tau_1^2$ & $g_2$\\
- Particular racional & $P_0+\kappa$ & $\sigma_\epsilon^2+(1-\mu)s$ & $\gamma$\\
- Particular con sentimiento & $P_0+\kappa+\delta_2$ & $\sigma_\epsilon^2+(1-\mu)s+\tau_2^2$ & $g_4$\\
+ Varianza oculta, si \(s=100\) & \(100\) & \(50\) & \(0\)\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \idea{Más información hace el pronóstico menos incierto.}
+ \small\par\medskip
+ Las cifras de varianza están en unidades monetarias al cuadrado.
+ El 50\% se refiere a varianza, no a la mitad del valor realizado de la noticia.
+\end{frame}
+% 8
+\begin{frame}{Los cuatro grupos que conservaré}
+ \begin{center}
+ \begin{tabular}{p{4.1cm}p{3.6cm}p{4.4cm}}
+ \toprule
+ Grupo & Información disponible & Cómo toma decisiones\\
+ \midrule
+ 1. Institución racional & Toda la noticia \(\theta\) & Sin sesgo sentimental\\[0.15cm]
+ 2. Institución sentimental & Toda la noticia \(\theta\) & Su emoción modifica expectativas y riesgo\\[0.15cm]
+ 3. Particular racional & Sólo la parte pública \(\kappa\) & Sin sesgo sentimental\\[0.15cm]
+ 4. Particular sentimental & Sólo la parte pública \(\kappa\) & Su emoción modifica expectativas y riesgo\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \idea{Cambiaré la información de los particulares y conservaré las diferencias de sentimiento.}
+ \medskip\par\small
+ En el modelo, racional describe creencias sin los sesgos sentimentales
+ especificados. La tabla matemática completa está en el anexo A1.
+\end{frame}
+% 9
+\begin{frame}{El pago futuro y las creencias sobre ese pago}
+ El modelo resume el pago futuro por acción como
+ \[
+  \underbrace{F}_{\text{pago final}}
+  =\underbrace{P_0}_{\text{precio previo}}
+   +\underbrace{\theta}_{\text{noticia}}
+   +\underbrace{\epsilon}_{\text{sorpresa final}}.
+ \]
+ \textbf{Ejemplo realizado:} \(100+10-2=108\).
+ Incluso conociendo \(\theta=10\), el agente no conoce antes la sorpresa \(-2\).
+ \[
+  m_i=\text{pago que espera el grupo }i,\qquad
+  v_i=\text{varianza del pago que percibe}.
+ \]
+ La institución racional espera \(m_1=P_0+\theta\).
+ El particular racional espera \(m_3=P_0+\kappa\).
+ \idea{Diferentes datos producen distintas expectativas y distinto riesgo percibido.}
+ \medskip\par\small
+ \(\epsilon\) tiene media cero, es independiente de la noticia y mantiene
+ varianza \(\sigma_\epsilon^2>0\). El índice \(i\) identifica uno de los cuatro grupos.
+\end{frame}
+% 10
+\begin{frame}{Cómo entra el sentimiento en la decisión}
+ \begin{center}
+ \begin{tabular}{p{2.7cm}p{3.4cm}p{5.9cm}}
+ \toprule
+ Parámetro & Qué cambia & Lectura económica\\
+ \midrule
+ \(\delta_j\) & Pago esperado & Un sesgo positivo eleva lo que el agente espera recibir\\[0.15cm]
+ \(\tau_j^2\geq0\) & Varianza subjetiva & Añade incertidumbre a la que proviene de la información\\[0.15cm]
+ \(\rho_j\) & Disposición a asumir riesgo & Un estado más optimista reduce la aversión en este modelo\\
  \bottomrule
  \end{tabular}
  \end{center}
  \[
-  g_2=\gamma e^{-b\rho_1},\qquad g_4=\gamma e^{-b\rho_2},
-  \qquad b,\gamma>0.
+  g_2=\gamma e^{-b\rho_1},\qquad g_4=\gamma e^{-b\rho_2}.
  \]
- \normalsize
- $\delta_j=\rho_j^*$: sesgo esperado.
- $\tau_j^2=\sigma_{\rho_j}^2$: incertidumbre subjetiva adicional.
- $\rho_j$: estado emocional observado.
+ \(g_i\) mide aversión al riesgo. \(\gamma>0\) es su nivel de referencia
+ y \(b>0\) mide cuánto reacciona a la emoción.
+ \idea{A igual pago esperado, varianza y precio, mayor \(\rho_j\) reduce \(g_i\) y amplía la posición en magnitud.}
+ \small\par\medskip
+ \(j=1\) identifica instituciones y \(j=2\) particulares.
+\end{frame}
+% 11
+\begin{frame}{3. Cuánto comprar: ganancia esperada y riesgo}
+ Cada agente elige una posición \(\omega_i\) en acciones.
+ Una posición negativa representa una venta corta.
+ \[
+  \max_{\omega_i\in\mathbb R}
+  \left\{C_{0,i}
+  +\underbrace{\omega_i(m_i-RP)}_{\text{ganancia esperada}}
+  -\underbrace{\frac{g_iv_i}{2}\omega_i^2}_{\text{penalización por riesgo}}\right\}.
+ \]
+ \begin{itemize}
+  \item \(P\): precio actual. \(r_f\): tasa segura. \(R=1+r_f\): factor bruto seguro.
+  \item \(RP\): cuánto valdría al final el dinero de una acción colocado a la tasa segura.
+  \item \(C_{0,i}\): riqueza que no depende de cuántas acciones elija.
+ \end{itemize}
+ \idea{Comprar más ofrece una ganancia adicional, pero también aumenta el riesgo asumido.}
+ \small\par\medskip
+ Es el equivalente cierto de utilidad CARA con creencias normales.
+ CARA significa aversión absoluta al riesgo constante respecto de la riqueza.
+\end{frame}
+% 12
+\begin{frame}{La FOC indica cuándo dejar de aumentar la posición}
+ La condición de primer orden, o FOC, iguala los efectos marginales:
+ \[
+  \underbrace{m_i-RP}_{\text{ganancia de una acción adicional}}
+  =\underbrace{g_iv_i\omega_i}_{\text{coste marginal de riesgo}},
+  \qquad
+  \omega_i^*=\frac{m_i-RP}{g_iv_i}.
+ \]
+ \textbf{Ejemplo:} \(m_i=110\), \(P=100\) y \(R=1{,}02\).
+ La ganancia esperada por acción es \(110-102=8\).
+ \begin{center}
+ \begin{tabular}{lc}
+ \toprule
+ Penalización de riesgo por unidad, \(g_iv_i\) & Posición óptima\\
+ \midrule
+ \(4\) & \(8/4=2\) acciones\\
+ \(2\) & \(8/2=4\) acciones\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \idea{Si baja el riesgo y el precio y la valoración se mantienen, el agente amplía su posición.}
+ \small\par\smallskip
+ El asterisco indica el óptimo. La segunda derivada \(-g_iv_i<0\)
+ garantiza un máximo único.
+\end{frame}
+% 13
+\begin{frame}{Qué grupo pesa más al formar el precio}
+ El peso efectivo de demanda del grupo \(i\) es
+ \[
+  h_i=\frac{\underbrace{\lambda_i}_{\text{participación del grupo}}}
+            {\underbrace{g_iv_i}_{\text{aversión y riesgo percibido}}},
+  \qquad H=h_1+h_2+h_3+h_4.
+ \]
+ \(\lambda_i>0\) es la fracción de inversionistas del grupo.
+ Las cuatro participaciones suman uno. \(H\) es el peso total.
+ \begin{itemize}
+  \item Un grupo más numeroso tiene más peso.
+  \item A igual tamaño, un grupo que acepta más riesgo responde con posiciones mayores.
+ \end{itemize}
+ \[
+  \sum_{i=1}^4\lambda_i\omega_i^*=1.
+ \]
+ Esta igualdad exige que la demanda total absorba una unidad de oferta.
+ \idea{El precio debe hacer compatibles las decisiones de los cuatro grupos.}
+\end{frame}
+% 14
+\begin{frame}{Cómo leer el precio de equilibrio}
+ Al sustituir las demandas óptimas, obtengo
+ \[
+  P^*=\frac{\overbrace{\sum_i h_im_i/H}^{\text{valoración media ponderada}}
+                -\underbrace{1/H}_{\text{compensación por absorber riesgo}}}{R}.
+ \]
+ La expresión \(\sum_i\) suma los cuatro grupos.
+ El denominador \(R\) convierte valores futuros en un precio actual.
  \medskip
- \par
- Conservaré los cuatro grupos. Cambiaré las creencias informativas
- de los particulares.
+ \par\textbf{Ejemplo:} valoración ponderada de 110,
+ compensación por riesgo de 2 y \(R=1{,}02\):
+ \[
+  P^*=(110-2)/1{,}02=105{,}88.
+ \]
+ \idea{Darle más peso a un grupo eleva el precio si su valoración supera \(RP^*\). Si queda por debajo, lo reduce.}
+ \small\par\medskip
+ \(P^*\) es el precio que permite absorber toda la oferta.
+ La compensación por riesgo está expresada en las unidades monetarias normalizadas del modelo.
 \end{frame}
-
-\begin{frame}{3. Decisión y FOC esperada}
- El agente elige su posición $\omega_i\in\mathbb R$:
+% 15
+\begin{frame}{El precio esperado permite comparar la misma noticia}
+ Un mismo fundamento \(\theta\) puede corresponder a distintas combinaciones
+ de parte pública \(\kappa\) y parte oculta \(\xi\).
  \[
-  \max_{\omega_i}\;
-  C_{0,i}+\omega_i(m_i-RP)-\frac{g_iv_i}{2}\omega_i^2,
-  \qquad R=1+r_f>0.
+  \bar P(\theta,\mu)=\E[P^*\mid\theta,\rho_1,\rho_2].
  \]
+ \(\bar P\) promedia esos precios posibles, fijando la noticia y
+ los estados sentimentales. \(\E\) significa promedio o esperanza matemática.
  \[
-   m_i-RP-g_iv_i\omega_i=0,\qquad
-   \omega_i^*=\frac{m_i-RP}{g_iv_i}.
+  \E[\kappa\mid\theta]=\mu\theta.
  \]
- \begin{itemize}
-  \item $C_{0,i}$: riqueza independiente de la decisión.
-  \item Ganancia esperada menos una penalización por riesgo.
-  \item Para el particular racional, $v_3=\sigma_\epsilon^2+(1-\mu)s$.
- \end{itemize}
- Con precio y expectativas iguales, menor incertidumbre amplía la posición:
- más compra si es positiva y más venta corta si es negativa.
+ \textbf{Ejemplo:} si \(\theta=10\) y \(\mu=0{,}5\),
+ la parte pública compatible con esa noticia tiene promedio 5.
+ Cada realización puede ser distinta de 5.
+ \idea{Compararé cuánto responde ese precio promedio cuando cambia la noticia.}
+ \small\par\medskip
+ La identidad usa componentes normales independientes y estados sentimentales
+ independientes de esos componentes. Aquí mantengo fijos dichos estados.
 \end{frame}
-
-\begin{frame}{Precio y relevancia de cada grupo}
- Con participaciones $\lambda_i>0$, $\sum_i\lambda_i=1$ y oferta de una unidad:
+% 16
+\begin{frame}{La medida que conecta información y precio}
  \[
-  \sum_i\lambda_i\omega_i^*=1,\qquad
-  h_i=\frac{\lambda_i}{g_iv_i},\qquad H=\sum_i h_i,
+  \mathcal K(\mu)=\underbrace{\frac{\partial\bar P}{\partial\theta}}_
+      {\text{respuesta por una unidad de noticia}}
+  =\frac{a+\mu B(\mu)}{R[a+B(\mu)]}.
  \]
- \[
-   P^*=\frac{\sum_i h_im_i-1}{RH}.
- \]
- \begin{itemize}
-  \item $h_i$ mide el peso efectivo de demanda.
-  \item Más participación, menos aversión o menos riesgo elevan ese peso.
-  \item Si $m_i>RP$, darle más peso al grupo eleva el precio.
-        Si $m_i<RP$, lo reduce.
- \end{itemize}
- La relevancia de un grupo tiene un efecto condicionado por su valoración.
+ \begin{center}
+ \begin{tabular}{lp{9.1cm}}
+ \toprule
+ Símbolo & Qué representa en la ecuación\\
+ \midrule
+ \(a=h_1+h_2\) & Peso institucional. Reacciona a la noticia completa\\[0.1cm]
+ \(B=h_3+h_4\) & Peso particular. Su reacción esperada usa la parte pública \(\mu\theta\)\\[0.1cm]
+ \(a+\mu B\) & Suma de las respuestas de ambos tipos de inversionistas\\[0.1cm]
+ \(R(a+B)\) & Peso total de demanda y descuento del pago futuro\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \idea{La información permite reaccionar a la noticia y, al reducir el riesgo, cambia el peso particular \(B\).}
 \end{frame}
-
-\begin{frame}{Resultado esperado y condiciones}
- Mediré la respuesta del \textbf{precio esperado} a un mismo fundamento:
- \[
-  \bar P(\theta,\mu)=\E[P^*\mid\theta,\rho_1,\rho_2],
-  \qquad \E[\kappa\mid\theta]=\mu\theta.
- \]
- \[
-  \mathcal K(\mu)=\frac{\partial\bar P}{\partial\theta}
-    =\frac{a+\mu B(\mu)}{R[a+B(\mu)]},
-  \quad a=h_1+h_2,\quad B=h_3+h_4.
- \]
+% 17
+\begin{frame}{El resultado esperado y las condiciones que lo sostienen}
  \[
   0\leq x<y\leq1
   \quad\Longrightarrow\quad
-  \mathcal K(y)>\mathcal K(x),
-  \qquad \mathcal K(1)=1/R.
+  \mathcal K(y)>\mathcal K(x),\qquad \mathcal K(1)=1/R.
  \]
- \small
- Participaciones positivas, $R>0$, $\sigma_\epsilon^2>0$,
- $s>0$, $\tau_j^2\geq0$. Sentimiento exógeno e independiente de $\kappa,\xi$.
- Mantendré fijos sus estados, sesgos, participaciones y varianzas totales.
+ \(x\) e \(y\) son dos niveles de transparencia. El segundo revela más.
+ Con información completa, la respuesta alcanza el factor de descuento \(1/R\).
  \medskip
- \normalsize
- Más transparencia debería fortalecer la respuesta a buenas
- \textbf{y} malas noticias.
+ \par\textbf{Qué mantendré fijo:}
+ sentimiento, sesgos, participaciones, aversión de referencia
+ y varianzas totales.
+ \medskip
+ \par\textbf{Qué exigiré:}
+ grupos con participación positiva, \(R>0\), \(s>0\),
+ riesgo final \(\sigma_\epsilon^2>0\) y \(\tau_j^2\geq0\).
+ Los estados sentimentales son independientes de la noticia.
+ \idea{Con esas condiciones, más transparencia amplifica la respuesta a buenas y malas noticias.}
+ \small\par\medskip
+ Esto mide la pendiente del precio esperado. Los sesgos pueden persistir
+ aunque esa pendiente mejore.
 \end{frame}
-
-\begin{frame}{Comparación reproducible de la sensibilidad}
- \begin{center}
- \input{../code/figures/information.tex}
- \end{center}
- \vspace{-0.3cm}
- \scriptsize
- Parámetros del contraejemplo. La curva corregida mide respuesta esperada.
- Datos generados por \texttt{code/verify.py}, no evidencia empírica.
+% 18
+\begin{frame}{El gráfico muestra la diferencia entre las especificaciones}
+ \begin{columns}[T,onlytextwidth]
+  \begin{column}{0.65\textwidth}
+   \input{topic-figure.tex}
+  \end{column}
+  \begin{column}{0.32\textwidth}
+   \small
+   \textbf{Eje horizontal:} cuánto de la varianza informativa se divulga
+   en la corrección.
+   \medskip\par
+   \textbf{Eje vertical:} respuesta del precio esperado por unidad de noticia.
+   \medskip\par
+   \textbf{Azul:} la corrección recupera el caso básico en cero y crece.
+   \medskip\par
+   \textbf{Naranja:} la fórmula impresa puede quedar bajo el caso básico.
+  \end{column}
+ \end{columns}
+ \small\medskip
+ En \(\mu=0{,}1\), la corrección da \(0{,}669\), frente a \(0{,}552\)
+ de la fórmula impresa y \(0{,}643\) del modelo básico.
+ Cálculos del modelo con los parámetros del contraejemplo.
 \end{frame}
-
-\begin{frame}{4. Por qué esta corrección requiere trabajo propio}
+% 19
+\begin{frame}{4. Qué aporte propio haré}
+ Zhang y Zhang ya estudian aprendizaje y transparencia.
+ Mi aporte será \textbf{corregir qué incertidumbre queda después de divulgar información}
+ y volver a probar la afirmación afectada para cuatro grupos.
+ \medskip
  \begin{itemize}
-  \item \textbf{Paper y apéndice:} Zhang ya incorpora aprendizaje y
-        transparencia. La proposición 5 mantiene la parametrización discutida.
-  \item \textbf{Versiones de trabajo:} búsqueda por título y DOI.
-        No identifiqué una versión alternativa accesible ni una corrección.
-  \item \textbf{Artículo citante revisado:} Das y Yaghoubi (2024) estudia
-        miedo y riesgo bursátil empíricamente. Usa Zhang como motivación,
-        sin rederivar su bloque de información pública.
+  \item Revisé la sección 6 y el apéndice del artículo.
+        La derivación conserva el supuesto cuestionado.
+  \item Busqué versiones de trabajo y correcciones por título y DOI.
+        No identifiqué una reparación accesible en esa búsqueda.
+  \item Revisé Das y Yaghoubi (2024), que cita Zhang y estudia miedo
+        y riesgo bursátil con datos. No rederiva este bloque informativo.
  \end{itemize}
- \medskip
- Mi contribución será la corrección específica, sus condiciones y la
- comprobación reproducible. La revisión de literatura es delimitada y
- continuará antes del manuscrito final.
- \medskip
- \small
- Registro y alcance: \texttt{proposal/literature-search.md}.
+ \idea{La contribución se concentra en una inconsistencia identificable y un resultado con condiciones explícitas.}
+ \small\par\medskip
+ La revisión es delimitada y continuará antes del paper final.
+ Fuentes y accesos pendientes: \texttt{proposal/literature-search.md}.
 \end{frame}
-
-\begin{frame}[fragile]{Lean: el resultado algebraico de cuatro grupos}
+% 20
+\begin{frame}{Qué verifica Lean y qué queda por demostrar}
+ Lean es un asistente que comprueba si cada paso de una prueba sigue
+ de las definiciones y los supuestos declarados.
+ \medskip
+ \begin{center}
+ \begin{tabular}{p{3.3cm}p{8.9cm}}
+ \toprule
+ Comprobación & Qué nos permite afirmar\\
+ \midrule
+ Contraejemplo & Las fracciones publicadas admiten una respuesta menor que la básica\\[0.18cm]
+ Desigualdad corregida & La función \(\mathcal K\) crece con transparencia bajo los supuestos positivos y fijos\\[0.18cm]
+ Trabajo pendiente & Formalizar por qué las esperanzas gaussianas llevan a esa función\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \idea{Tenemos un respaldo algebraico preliminar con cuatro grupos y sabemos qué conexión probabilística falta.}
+ \small\par\medskip
+ Las 19 declaraciones compilan sin \texttt{sorry}, que dejaría un paso sin prueba.
+ El anexo A3 muestra la declaración y sus hipótesis.
+\end{frame}
+% 21
+\begin{frame}{5. Plan de trabajo y escenario que ampliaré}
+ \begin{enumerate}
+  \item Derivaré las creencias, las cuatro FOC y el precio.
+        Así comprobaré cómo la nueva información llega a la decisión.
+  \item Simularé transparencia y diferencias de riesgo entre grupos.
+        Compararé los casos sin información y con información completa.
+  \item Formalizaré los resultados del manuscrito propio
+        y desarrollaré personalmente el apéndice manuscrito.
+ \end{enumerate}
+ \medskip
+ \par\textbf{Escenario adicional:} divulgar información puede cambiar
+ el optimismo o generar temor. Eso modifica la aversión y los pesos de demanda.
+ \idea{Estudiaré qué condiciones permiten conservar la mejora cuando el sentimiento también cambia. El signo aún requiere una derivación.}
+ \small\par\medskip
+ Mantendré explícita la restricción original: los particulares no extraen
+ información adicional del precio. Resolver esa inferencia ampliaría el modelo.
+\end{frame}
+% 22
+\begin{frame}{La pregunta y la respuesta que busco sostener}
+ \large
+ ¿Cuándo divulgar más información ayuda al precio a reflejar
+ mejor las noticias de una empresa?
+ \par\normalsize\bigskip
+ \textbf{Respuesta propuesta:} cuando reduce la incertidumbre que queda
+ y mantenemos fijos los parámetros de sentimiento, la respuesta esperada
+ del precio a la noticia aumenta.
+ \medskip
+ \par La corrección especifica qué sabe cada agente.
+ Las FOC muestran cómo ese conocimiento cambia sus decisiones.
+ Lean respalda la comparación algebraica entre niveles de transparencia.
+ \idea{El siguiente paso será investigar qué ocurre cuando divulgar también cambia el sentimiento.}
+ \small\par\medskip
+ El anexo contiene las fórmulas completas y las referencias para preguntas.
+\end{frame}
+\appendix
+% A1
+\begin{frame}{A1. Creencias y riesgo de los cuatro grupos}
  \small
- En notación económica: $\mathcal K(x)<\mathcal K(y)$.
- En Lean, \texttt{informationCoefficient} es exactamente la función
- racional definida en la propuesta.
+ \(m_i\) es pago esperado, \(v_i\) su varianza percibida y \(g_i\) aversión al riesgo.
+ \begin{center}
+ \begin{tabular}{@{}llll@{}}
+ \toprule
+ Grupo & \(m_i\) & \(v_i\) & \(g_i\)\\
+ \midrule
+ 1. Institución racional & \(P_0+\theta\) & \(\sigma_\epsilon^2\) & \(\gamma\)\\
+ 2. Institución sentimental & \(P_0+\theta+\delta_1\) & \(\sigma_\epsilon^2+\tau_1^2\) & \(\gamma e^{-b\rho_1}\)\\
+ 3. Particular racional & \(P_0+\kappa\) & \(\sigma_\epsilon^2+(1-\mu)s\) & \(\gamma\)\\
+ 4. Particular sentimental & \(P_0+\kappa+\delta_2\) & \(\sigma_\epsilon^2+(1-\mu)s+\tau_2^2\) & \(\gamma e^{-b\rho_2}\)\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ \normalsize
+ \begin{itemize}
+  \item La institución racional conoce toda \(\theta\) y sólo conserva el riesgo final.
+  \item El particular añade el riesgo de la parte oculta, \((1-\mu)s\).
+  \item El sentimental añade sesgo \(\delta_j\), incertidumbre \(\tau_j^2\)
+        y aversión emocional.
+ \end{itemize}
+ \small
+ Notación original: \(\delta_j=\rho_j^*\) y \(\tau_j^2=\sigma_{\rho_j}^2\).
+ El asterisco aquí identifica el sesgo esperado del paper.
+ \(\rho_j\) es un estado observado distinto de ese sesgo.
+\end{frame}
+% A2
+\begin{frame}{A2. Por qué la derivada corregida es positiva}
+ \small
+ Para los particulares, separaré riesgo final e incertidumbre oculta:
+ \[
+  n_3=\lambda_3/\gamma,\quad n_4=\lambda_4/g_4,\quad
+  d_3=\sigma_\epsilon^2+(1-\mu)s,\quad
+  d_4=\sigma_\epsilon^2+\tau_2^2+(1-\mu)s.
+ \]
+ \(n_3,n_4\) son participaciones ajustadas por aversión.
+ \(d_3,d_4\) son las varianzas de ambos grupos particulares.
+ \[
+  B=\frac{n_3}{d_3}+\frac{n_4}{d_4},\qquad
+  \mathcal K'(\mu)=
+  \frac{B^2+a\left[\dfrac{n_3\sigma_\epsilon^2}{d_3^2}
+                  +\dfrac{n_4(\sigma_\epsilon^2+\tau_2^2)}{d_4^2}\right]}
+       {R(a+B)^2}>0.
+ \]
+ \normalsize
+ \(\mathcal K'\) indica cómo cambia la respuesta informativa al aumentar
+ transparencia. Todos los términos del numerador son positivos bajo
+ las condiciones de la diapositiva 17 y el denominador es positivo.
+ \idea{La mejora combina el uso de la noticia pública y el cambio de pesos al reducir el riesgo.}
+\end{frame}
+% A3
+\begin{frame}[fragile]{A3. La declaración que comprueba Lean}
+ \small
+ El nombre \texttt{informationCoefficient} representa nuestra \(\mathcal K\).
+ Las líneas \texttt{ha}, \texttt{hn3}, etc. nombran sus supuestos.
  \begin{lstlisting}
 theorem four_group_information_increases (a n3 n4 e3 e4 t R x y : (*@\(\mathbb R\)@*))
     (ha : 0 < a) (hn3 : 0 < n3) (hn4 : 0 < n4)
@@ -244,51 +546,47 @@ theorem four_group_information_increases (a n3 n4 e3 e4 t R x y : (*@\(\mathbb R
     informationCoefficient a n3 n4 e3 e4 t R x <
       informationCoefficient a n3 n4 e3 e4 t R y := by
  \end{lstlisting}
+ \[
+  e_3=\sigma_\epsilon^2,\quad
+  e_4=\sigma_\epsilon^2+\tau_2^2,\quad t=s,\quad a=h_1+h_2.
+ \]
+ \(e_3,e_4\) son riesgos que persisten con información completa.
+ \(t\) es la varianza informativa. \(x,y\) son niveles de transparencia.
+ \medskip
+ \par La declaración parte de pesos y varianzas positivos.
+ Su conclusión es la desigualdad entre coeficientes.
+ Lean incluso admite \(t=0\); la propuesta económica usa \(s>0\).
+ \small\medskip\par
+ Fuente: \texttt{lean/preliminary/Transparency.lean}.
+ La conexión probabilística todavía requiere una formalización propia.
+\end{frame}
+% A4
+\begin{frame}{A4. Fuentes y parámetros del contraejemplo}
  \small
- $n_j=\lambda_j/g_j$, $e_3=\sigma_\epsilon^2$,
- $e_4=\sigma_\epsilon^2+\tau_2^2$, $t=s$.
- \medskip
- \begin{itemize}
-  \item Verifica la desigualdad a partir de hipótesis primitivas positivas.
-  \item El contraejemplo también está probado, sin \texttt{sorry}.
-  \item Falta formalizar la conexión con las esperanzas gaussianas.
-        La prueba algebraica no certifica todo el modelo estocástico.
- \end{itemize}
-\end{frame}
-
-\begin{frame}{5. Plan y riesgos}
- \begin{enumerate}
-  \item Derivar información condicional, las cuatro FOC y el equilibrio.
-  \item Simular cambios de transparencia, riesgo y relevancia de grupos.
-  \item Formalizar los resultados del manuscrito final y mapear sus hipótesis.
- \end{enumerate}
- \medskip
- \textbf{Riesgo principal:} si divulgar información también cambia el
- sentimiento, la comparación deja de mantener los pesos emocionales fijos.
- El signo exige una nueva derivación.
- \medskip
- \par
- Delimitaré la inferencia adicional desde precios y distinguiré
- sensibilidad, error de valoración y bienestar.
- \medskip
- \par
- La entrega final incluirá el apéndice manuscrito propio y la
- formalización de AppliedModelingLib del commit fijado del paper.
-\end{frame}
-
-\begin{frame}{La pregunta y la contribución que se evaluará}
- \large
- ¿Cuándo la transparencia fortalece la incorporación de
- fundamentos al precio?
- \vspace{0.4cm}
- \normalsize
- \begin{itemize}
-  \item Corregiré la incertidumbre residual de la información pública.
-  \item Probaré una respuesta esperada creciente con condiciones explícitas.
-  \item Examinaré qué condición falla cuando cambia el sentimiento.
- \end{itemize}
- \medskip
- Incluso con información completa pueden persistir sesgos de expectativas.
- El resultado propuesto identifica una mejora en la sensibilidad informativa.
+ \textbf{Paper base:} Xuetong Zhang y Weiguo Zhang (2023).
+ \emph{Information asymmetry, sentiment interactions, and asset price}.
+ North American Journal of Economics and Finance 67, 101920.
+ \url{https://doi.org/10.1016/j.najef.2023.101920}
+ \medskip\par
+ Sección 6.2, ecuaciones (38)--(44), pp.~15--16,
+ proposición 5(ii), p.~16, y apéndice pp.~17--18.
+ \medskip\par
+ \textbf{Citante revisado:} Kuntal K. Das y Mona Yaghoubi (2024).
+ \emph{Migration fear and stock price crash risk}.
+ Journal of International Financial Markets, Institutions and Money 91, 101945.
+ \url{https://doi.org/10.1016/j.intfin.2024.101945}
+ \medskip\par
+ \textbf{Contraejemplo:} \(\lambda_i=1/4\), \(\gamma=R=1\),
+ \(\rho_j=\delta_j=0\), y
+ \(\sigma_\epsilon^2=s=\tau_1^2=\tau_2^2=1\).
+ Las cuatro participaciones son iguales y todas las varianzas primitivas
+ son positivas.
+ \[
+  K_0=\frac9{14},\qquad
+  K_I(0{,}1)=\frac{66943}{121303}<K_0,\qquad
+  \mathcal K(0{,}1)=\frac{583}{871}>K_0.
+ \]
+ \(K_0\) identifica el modelo básico, \(K_I\) la fórmula publicada
+ y \(\mathcal K\) nuestra corrección. Código y pruebas en el repositorio.
 \end{frame}
 \end{document}

@@ -12,7 +12,7 @@ Los estados sentimentales son independientes de los componentes informativos; la
 
 | Componente | Estado |
 |---|---|
-| [Propuesta](proposal/proposal.pdf) y [diapositivas](slides/topic.pdf) | Primera entrega; fuentes LaTeX incluidas |
+| [Propuesta](proposal/proposal.pdf) y [diapositivas](slides/topic.pdf) | Primera entrega; 22 diapositivas principales y 4 de anexo, con ejemplos y guion de 20 minutos |
 | [Código](code/verify.py) | PASS: 5,760 comparaciones exactas y 60 casos de mercado |
 | [Lean preliminar](lean/README.md) | 19 declaraciones comprobadas, sin sorry; puente probabilístico pendiente |
 | Paper y diapositivas finales | En preparación; archivos explícitos de estado, no entregas finales |
