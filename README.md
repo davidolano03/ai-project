@@ -25,6 +25,6 @@
 | Formalización integral del curso | **Pendiente**: puente probabilístico, corrida AppliedModelingLib y commit fijado |
 | [Registro IA](prompts.md) | Ejemplos de estudio existentes; el estudiante añadirá sus conversaciones reales en crudo |
 
-**Reproducir.** Python ≥3.10: python code/verify.py, sin bibliotecas externas. Compilar desde paper/ con tectonic paper.tex y desde slides/ con tectonic final.tex. Lean: instrucciones en lean/README.md. Los PDFs se guardan junto a sus fuentes. La carpeta preliminar no se presenta como el resultado del procedimiento integral del curso.
+**Reproducir.** Python ≥3.10: python code/verify.py, sin bibliotecas externas. Desde cada carpeta, latexmk -pdf paper.tex, latexmk -pdf final.tex, latexmk -pdf topic.tex y latexmk -pdf proposal.tex. Los cuatro PDFs guardados proceden de la compilación de GitHub Actions, con el workflow intacto de la plantilla. Tectonic y el editor nativo se usaron además para comprobaciones locales. Lean: instrucciones en lean/README.md; la carpeta preliminar no se presenta como el resultado del procedimiento integral del curso.
 
 **Calendario verificado.** Presentación final: 4 de noviembre, 08:20–09:05 Lima. Preparación orientada a quedar lista esta noche por indicación del estudiante. La [instrucción vigente](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/7) fija el paper final para el **26 de noviembre, 22:00**. La presentación es un avance para crítica. Repositorio: rama → PR → main. No se publica ningún comentario en el issue del profesor.

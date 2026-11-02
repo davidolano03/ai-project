@@ -64,3 +64,13 @@ Zhang y Zhang (2023), NAJEF 67, 101920:
 
 Las páginas y ecuaciones solicitadas coinciden. No fue necesario cambiar esas localizaciones.
 La auditoría de la nueva proposición no añade pruebas a Lean: su formalización sigue pendiente.
+
+## Ejecución y compilación verificadas
+
+- code/verify.py: PASS, incluidas las nuevas identidades exactas y el Monte Carlo del precio esperado.
+- Lean preliminar: compilan los tres archivos existentes, con 26 declaraciones; ninguna afirmación nueva de la proposición 5 se presenta como probada en Lean.
+- Las cuatro fuentes se compilaron con latexmk y pdfLaTeX en la [ejecución de Actions](https://github.com/davidolano03/ai-project/actions/runs/41537656352), a partir del commit de fuentes ec8fb24a08dc2fda8dc202b19baeec6145661ba9.
+- Los cuatro PDFs generados por esa ejecución se copiaron a sus rutas y se revisaron: paper 14 páginas (10 de cuerpo), slides/final 44 (38 principales y 6 anexos), proposal 4 y slides/topic 26. Las referencias se resuelven después de las pasadas de latexmk.
+- Workflow idéntico a la plantilla, SHA-256: 355acd36b49b4e552ab3b6859e99c81f550c2dfb245ad8c99f4fa1a266cbf9aa.
+
+El commit anterior identifica las fuentes compiladas, no un commit formalizado. La corrida integral de Lean solo comenzará después de la revisión y fusión autorizada del PR.
