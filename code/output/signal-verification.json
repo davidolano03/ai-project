@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "exact_posterior_cases": 144,
+  "exact_signal_parameter_cases": 16,
+  "monte_carlo_seed": 20261102,
+  "monte_carlo_draws": 120000,
+  "monte_carlo_parameters": {
+    "s": 100,
+    "t": 100,
+    "mu": 0.5
+  },
+  "moments": {
+    "theta_variance": 100.03607940713061,
+    "public_variance": 49.967899766579905,
+    "hidden_variance": 50.309097069562725,
+    "public_hidden_covariance": -0.12045871450600672,
+    "public_mean": 0.0004157514488115617,
+    "hidden_mean": 0.0076870192249104425,
+    "public_on_theta_slope": 0.49829462877291403
+  },
+  "moment_tolerances": {
+    "relative_variance": 0.02,
+    "absolute_covariance": 1.0,
+    "absolute_mean": 0.1,
+    "absolute_slope": 0.015
+  },
+  "cara_quadrature_cases": 12,
+  "cara_max_relative_error": 2.220446049250313e-16,
+  "cara_tolerance": 1e-10,
+  "limitations": "Finite checks and simulation; no formal probability bridge."
+}
