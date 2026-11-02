@@ -4,9 +4,10 @@
   "baseline_exact": "9/14",
   "printed_mu_01_exact": "66943/121303",
   "corrected_mu_01_exact": "583/871",
+  "printed_increasing_but_below_baseline_up_to": "0.26",
   "comparative_static_pairs": 5760,
   "market_cases": 60,
-  "formal_probability_bridge": "not checked by this script or preliminary Lean",
+  "formal_probability_bridge": "Monte Carlo diagnostics only; not formally proved by preliminary Lean",
   "signal_and_cara": {
     "status": "PASS",
     "exact_posterior_cases": 144,
@@ -38,5 +39,32 @@
     "cara_tolerance": 1e-10,
     "limitations": "Finite checks and simulation; no formal probability bridge."
   },
+  "expected_price_bridge_monte_carlo": [
+    {
+      "mu": 0.25,
+      "draws_per_theta": 100000,
+      "K_formula": 0.55749,
+      "K_monte_carlo": 0.55714
+    },
+    {
+      "mu": 0.6,
+      "draws_per_theta": 100000,
+      "K_formula": 0.71641,
+      "K_monte_carlo": 0.71652
+    }
+  ],
+  "sentiment_extension": {
+    "monotone_paths": 4,
+    "threshold_c_star": "101/36",
+    "threshold_sum": "101/1152",
+    "initial_derivative_with_c_5": "-79/392",
+    "exact_quotient_and_numerator_decomposition": true,
+    "K_at_0_1_with_c_5": "1768/2803",
+    "gap_closed_at_one_half": "23/55"
+  },
+  "printed_baseline_crossing_bracket": [
+    "2649199/10000000",
+    "6623/25000"
+  ],
   "date": "2026-11-02"
 }

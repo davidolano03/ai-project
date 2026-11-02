@@ -122,6 +122,21 @@ Separar el caso interior 0<μ<1 de los extremos.
 
 Escribir explícitamente: sentimiento fijo, oferta fija, posiciones sin restricciones, señal gaussiana y ausencia de inferencia adicional desde precios. Poder despejar θ de la ecuación de precio si todos los demás términos fueran conocidos, y explicar por qué ese aprendizaje cambiaría el problema. Información privada institucional no identifica un emisor estratégico ni garantiza ganancias extraordinarias.
 
+## 13. Extensión con sentimiento que responde a la transparencia
+
+Guía tipografiada para el trabajo personal; no es un manuscrito ni una conversación simulada.
+
+1. Dejar que a y n₄ dependan de μ, conservando los estados independientes de θ.
+2. Aplicar la regla del cociente a K=(a+μB)/[R(a+B)] y obtener el numerador B(a+B)−(1−μ)(aB′−Ba′).
+3. Escribir n₄′=bρ₂′n₄ y a′=bρ₁′h₂.
+4. Sustituir B′=sΣ nⱼ/dⱼ²+n₄′/d₄ y separar los tres bloques del numerador según la proposición 5(ii).
+5. Comprobar positividad si ρ₁′≥0 y ρ₂′≤0.
+6. Con a′=0, obtener la condición necesaria y suficiente de la parte (iii).
+7. En el ejemplo logarítmico, calcular 25/576+3/128+1/48=101/1152 y multiplicar por 32.
+8. Dividir por (a+B)²=49/144: K′(0)=(101−36c)/392.
+9. Verificar el umbral 101/36 y sustituir c=5, μ=1/10 para obtener 1768/2803.
+10. Explicar por qué el umbral pertenece a ese ejemplo y la condición (iii) es la general.
+
 ## Qué fotografiar
 
 Cada bloque con nombre de regla, condiciones de división y explicación breve. Numerar páginas y comprobar que todas se lean. Colocar las fotografías o escaneos propios en esta carpeta. La presentación requiere mostrar una derivación personal revisada, por ejemplo los bloques 4 y 5.
