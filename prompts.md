@@ -1,5 +1,7 @@
 # Registro de IA: prompts y respuestas relevantes
 
+Nota editorial de estado (2 de noviembre de 2026): este archivo conserva los ejemplos de estudio históricos existentes; el estudiante añadirá sus conversaciones reales en crudo. La ampliación explorada en el apartado 11 ya tiene prueba escrita y comprobaciones exactas como proposición 5 del manuscrito actual. Lo pendiente de ese resultado es su formalización en Lean. Esta nota no añade ni simula conversaciones.
+
 
 
 ## Prompt 1. La pregunta y la medida de respuesta del precio

@@ -492,6 +492,23 @@ Para cada grupo particular:
 cuando mantenemos fijo el sentimiento.}
 \end{frame}
 
+\begin{frame}{Dos efectos de signo opuesto}
+Más precisión hace dos cosas a la vez.
+\begin{enumerate}
+\item \textbf{Efecto directo (+).} El pronóstico público sigue más a la
+noticia: \(\E[\kappa\mid\theta]=\mu\theta\).
+\item \textbf{Efecto de peso (\(-\)).} Baja el riesgo de los particulares y
+sube su peso \(B\). Pero ellos responden a \(\mu\theta\), no a \(\theta\):
+\[
+ \frac{\partial\K}{\partial B}=-\frac{a(1-\mu)}{R(a+B)^2}<0
+ \qquad(\mu<1).
+\]
+\end{enumerate}
+\idea{Con sentimiento fijo, el efecto directo domina (\(\K'>0\)).
+Indicador: con los parámetros del contraejemplo, \(\mu=1/2\) cierra
+\(G=23/55\approx0{,}42\) de la brecha hasta información completa.}
+\end{frame}
+
 \begin{frame}{La corrección recupera el básico y aumenta con precisión}
 \begin{center}
 \resizebox{0.83\textwidth}{!}{\input{../code/figures/information.tex}}
@@ -501,6 +518,41 @@ En \(\mu=0{,}1\): publicado \(0{,}551866\), básico \(0{,}642857\),
 corregido \(0{,}669346\). Parámetros del contraejemplo.
 \end{frame}
 
+\begin{frame}{Extensión: el sentimiento responde a la divulgación}
+Relajo un solo supuesto: \(\rho_1(\mu)\), \(\rho_2(\mu)\) diferenciables,
+independientes de \(\theta\). Entonces \(a\) y \(n_4=\lambda_4e^{b\rho_2}/\gamma\)
+cambian con \(\mu\).
+\[
+ \K'(\mu)=\frac{B(a+B)-(1-\mu)(aB'-Ba')}{R(a+B)^2}.
+\]
+\textbf{Proposición 5.}
+\begin{itemize}
+\item Si \(\rho_1'\geq0\) y \(\rho_2'\leq0\) (instituciones más audaces,
+particulares menos optimistas): \(\K\) sigue siendo estrictamente creciente.
+\item Con \(\rho_1\) fijo: \(\K'>0\) si y solo si
+\(B^2+a\big[\tfrac{n_3e_3}{d_3^2}+\tfrac{n_4}{d_4}\big(\tfrac{e_4}{d_4}-(1-\mu)b\rho_2'\big)\big]>0\).
+\item Siempre \(\K(1)=1/R\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cuándo se invierte el resultado}
+\begin{columns}
+\column{.6\textwidth}
+\resizebox{\linewidth}{!}{\input{../code/figures/endogenous.tex}}
+\column{.38\textwidth}
+\small
+Ejemplo: \(\rho_2(\mu)=b^{-1}\ln(1+c\mu)\), parámetros del contraejemplo.
+\medskip
+
+\(\K'(0)<0\) si y solo si \(c>101/36\approx2{,}81\).
+\medskip
+
+Con \(c=5\): \(\K(0{,}1)=1768/2803\approx0{,}631<9/14\).
+\end{columns}
+\idea{Si la divulgación vuelve mucho más optimistas a los particulares, su
+peso crece demasiado rápido y domina el efecto de peso.}
+\end{frame}
+
 \begin{frame}{Qué comprueba el código}
 \begin{itemize}
 \item Fracciones exactas del contraejemplo y de la corrección.
@@ -508,6 +560,8 @@ corregido \(0{,}669346\). Parámetros del contraejemplo.
 \item CPO, máximo y vaciado de mercado en cuatro grupos.
 \item 5\,760 comparaciones exactas de sensibilidad y 60 mercados.
 \item Momentos gaussianos simulados con semilla fija e integral CARA numérica.
+\item Monte Carlo del precio esperado: \(\K\) simulado frente a la fórmula.
+\item Extensión: signo de \(\partial\K/\partial B\), umbral \(101/36\) y reversión exacta.
 \end{itemize}
 \idea{Las simulaciones permiten detectar errores de implementación.
 La demostración general depende de los supuestos escritos.}
@@ -527,6 +581,9 @@ theorem public_variance (s t : (*@ \(\mathbb R\) @*)) (h : s + t (*@ \(\ne\) @*)
 \small
 Además, \texttt{four\_group\_information\_increases} prueba la
 monotonicidad del coeficiente de cuatro grupos.
+\par\smallskip
+\textbf{Proposición 5: abierta en Lean.} Tiene prueba escrita y
+comprobaciones exactas en el código.
 \normalsize
 \idea{Bayes, normalidad conjunta e integral CARA tienen derivación escrita.
 Su formalización probabilística completa permanece abierta.}
@@ -544,7 +601,10 @@ Media-varianza es la utilidad esperada CARA
 & Es un equivalente cierto. La integral y la transformación creciente
 justifican la misma elección.\\[0.15cm]
 Más transparencia siempre mejora el precio
-& El resultado demostrado es sensibilidad esperada bajo condiciones fijas.\\
+& El resultado demostrado es sensibilidad esperada bajo condiciones fijas.\\[0.15cm]
+Claude: más peso particular y mejor información empujan \(\K\) en la misma dirección
+& Incorrecto: \(\partial\K/\partial B<0\). Lo detecté al contrastar con Codex
+y lo comprobé derivando.\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -574,12 +634,14 @@ eso requiere una medida de rendimiento, costos y referencia.
 la ausencia de aprendizaje adicional desde precios?
 \item \textquestiondown{}Conviene extender primero el modelo con oferta
 aleatoria o con información institucional imperfecta?
-\item \textquestiondown{}Qué reacción del sentimiento a la precisión pública
-podría cambiar el resultado?
+\item \textquestiondown{}Qué evidencia permitiría estimar la respuesta del
+sentimiento a la divulgación? En el ejemplo logarítmico,
+\textquestiondown{}sería plausible \(c>101/36\)?
 \end{enumerate}
 \normalsize\medskip
-El paper desarrolla cuatro proposiciones. La prueba Lean actual certifica
-su parte algebraica y declara los pasos probabilísticos pendientes.
+El paper desarrolla cinco proposiciones. Lean comprueba componentes de
+las proposiciones 1--4. La proposición 5 y los pasos probabilísticos
+indicados siguen abiertos en Lean.
 \end{frame}
 
 \appendix

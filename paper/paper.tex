@@ -29,8 +29,11 @@ informativos. Propongo una señal gaussiana con ruido y derivo mediante Bayes
 su componente público y residuo oculto. Desde utilidad CARA obtengo la
 demanda óptima, el precio de equilibrio y una proposición de sensibilidad
 creciente bajo condiciones explícitas. Código y simulaciones reproducen los
-resultados. Lean certifica componentes algebraicos, con un alcance
-probabilístico todavía parcial. La aplicación corresponde a acciones con
+resultados. Si la divulgación también cambia el sentimiento, el resultado
+se mantiene cuando reduce el optimismo de los particulares y puede invertirse cuando los
+vuelve más optimistas con suficiente rapidez; caracterizo la condición exacta.
+Lean certifica componentes algebraicos, con un alcance probabilístico
+todavía parcial. La aplicación corresponde a acciones con
 información desigual entre inversionistas, divulgación exógena y sin
 inferencia adicional desde el precio.
 \end{abstract}
@@ -47,7 +50,10 @@ Conservo los cuatro grupos de Zhang y Zhang \cite{zhang2023} y reespecifico
 su sección 6.2, ecuaciones (38)--(44), pp.~15--16 y proposición 5(ii).
 La primera entrega postulaba las proporciones de varianza. Aquí las derivo
 desde una señal ruidosa y Bayes, y obtengo la condición de primer orden
-(CPO) desde la utilidad esperada CARA.
+(CPO) desde la utilidad esperada CARA. Además, relajo el supuesto de
+sentimiento fijo: la proposición~\ref{prop:endo} muestra cuándo la
+monotonicidad sobrevive a un sentimiento que responde a la divulgación y
+da un ejemplo en que una transparencia baja reduce la sensibilidad.
 
 \section{Punto de partida y literatura}
 El pago monetario futuro de una acción se representa de forma consistente por
@@ -84,6 +90,14 @@ varianzas subjetivas. Entonces
 \end{equation}
 La comparación relevante es $K^I(0{,}1)$ frente al básico $K_0$.
 $K^I(0)$ muestra además que la extensión no recupera su punto de partida.
+El coeficiente impreso sí crece con $\mu$: escribiendo
+$K^I=1-(1-\mu)B^I/(a+B^I)$ con $R=1$, el peso impreso $B^I$ decrece porque
+sus varianzas $1+\mu^2$ y $2+\mu^2$ aumentan, y el producto de dos
+factores no negativos decrecientes también decrece. El problema es su nivel
+inicial: por esa monotonicidad y el cálculo exacto en $\mu=0{,}26$,
+$K^I(\mu)<K_0$ para todo $\mu\in[0;\,0{,}26]$, y el corte ocurre cerca de
+$\mu\simeq0{,}2649$. La comparación de la proposición 5(ii) falla en esa
+región de transparencia baja.
 El hallazgo concierne a las fórmulas e interpretación impresas; no identifica
 si el origen fue editorial ni establece un efecto empírico de transparencia.
 
@@ -313,7 +327,10 @@ maximizar el equivalente cierto
  CE_i=C_{0i}+\omega_i(m_i-RP)-\frac{g_iv_i}{2}\omega_i^2.
 \end{equation}
 El equivalente cierto se mide en dinero y genera la misma elección.
-No es una igualdad numérica con la utilidad esperada.
+No es una igualdad numérica con la utilidad esperada. Zhang y Zhang
+escriben $E[U(W_{i,t})]=E(W_{i,t})-\tfrac12\gamma(\rho)\Var(W_{i,t})$
+(ecuación (7), p.~5); la expresión correcta es la del equivalente cierto,
+aunque la demanda resultante coincide.
 
 \begin{proposition}[Demanda óptima]\label{prop:demand}
 Bajo los supuestos \ref{as:payoff}--\ref{as:price}, cada grupo tiene una
@@ -419,6 +436,105 @@ Con $\mu=0$ se recupera el coeficiente básico, porque los particulares
 conservan toda la incertidumbre $s$. Con $\mu=1$ aún existe riesgo final
 $e>0$. La prima por riesgo y los sesgos siguen afectando el nivel del precio.
 
+\paragraph{Dos efectos de signo opuesto.} Una señal más precisa mejora
+directamente la respuesta del pronóstico público: en promedio, los
+particulares responden con $\mu\theta$. También reduce su riesgo percibido
+y aumenta su peso $B$. Ese segundo efecto va en contra, porque los
+particulares responden a una fracción de la noticia y las instituciones a
+toda ella: con $\mu$ fijo,
+\begin{equation}\label{eq:weight}
+ \frac{\partial\K}{\partial B}=-\frac{a(1-\mu)}{R(a+B)^2}<0
+ \qquad(\mu<1).
+\end{equation}
+La proposición~\ref{prop:main} muestra que, con sentimiento fijo, el
+primer efecto domina. Un indicador cuantitativo es la fracción de la
+brecha de información completa que cierra cada nivel de transparencia,
+$G(\mu)=[\K(\mu)-\K(0)]/[\K(1)-\K(0)]\in[0,1]$. Con los parámetros de
+\eqref{eq:counter}, $G(1/2)=23/55\simeq0{,}42$: la mitad de la precisión
+cierra menos de la mitad de la brecha.
+
+\section{Extensión: sentimiento que responde a la transparencia}
+El supuesto~\ref{as:sent} fija el sentimiento al comparar transparencias.
+Una divulgación más precisa podría reducir el optimismo de los particulares o volverlos
+más optimistas. Relajo solo esa parte.
+
+\begin{assumption}[Sentimiento endógeno a la transparencia]\label{as:endo}
+Los estados son funciones diferenciables $\rho_1(\mu)$ y $\rho_2(\mu)$ en
+$[0,1]$, independientes de noticias, ruido y sorpresa final. Este supuesto
+reemplaza la parte del supuesto~\ref{as:sent} que fija los estados y la
+exclusión correspondiente del supuesto~\ref{as:price}; todo lo demás se
+mantiene.
+\end{assumption}
+La condición $\rho_2'\leq0$ reduce el optimismo y aumenta la aversión de los
+particulares. Se trata de una respuesta especificada a $\mu$, no de una
+función de sentimiento derivada de una decisión óptima. En los extremos,
+las derivadas se interpretan lateralmente.
+
+Entonces $a(\mu)=\lambda_1/(\gamma e)+\lambda_2e^{b\rho_1(\mu)}/[\gamma(e+\tau_1^2)]$
+y $n_4(\mu)=\lambda_4e^{b\rho_2(\mu)}/\gamma$. Como los estados no dependen
+de $\theta$, la fórmula \eqref{eq:K} sigue valiendo para cada $\mu$.
+
+\begin{proposition}[Cuándo sobrevive el resultado]\label{prop:endo}
+Bajo el supuesto~\ref{as:endo} y las restricciones de signo de la
+proposición~\ref{prop:main}:
+\begin{enumerate}
+ \item[(i)] $\displaystyle\K'(\mu)=\frac{B(a+B)-(1-\mu)(aB'-Ba')}{R(a+B)^2}$;
+ \item[(ii)] si $\rho_1'(\mu)\geq0$ y $\rho_2'(\mu)\leq0$ en $[0,1]$, $\K$ es
+ estrictamente creciente;
+ \item[(iii)] si $\rho_1$ es constante, $\K'(\mu)>0$ si y solo si
+ \[
+ B^2+a\left[\frac{n_3e_3}{d_3^2}+\frac{n_4}{d_4}
+ \left(\frac{e_4}{d_4}-(1-\mu)b\rho_2'(\mu)\right)\right]>0,
+ \]
+ y basta $(1-\mu)b\rho_2'(\mu)\leq e_4/d_4(\mu)$;
+ \item[(iv)] con los parámetros de \eqref{eq:counter} y
+ $\rho_2(\mu)=b^{-1}\ln(1+c\mu)$, $c>-1$: $\K'(0)<0$ si y solo si
+ $c>101/36$; con $c=5$, $\K(0{,}1)=1768/2803<9/14=\K(0)$. Siempre
+ $\K(1)=1/R$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) Escribo $\K=R^{-1}[1-(1-\mu)B/(a+B)]$ y uso
+$\frac{d}{d\mu}\frac{B}{a+B}=\frac{aB'-Ba'}{(a+B)^2}$.
+
+(ii) Ahora $B'=s\sum_j n_j/d_j^2+n_4'/d_4$, con $n_4'=b\rho_2'n_4\leq0$,
+y $a'=b\rho_1'\lambda_2e^{b\rho_1}/[\gamma(e+\tau_1^2)]\geq0$. El
+numerador de (i) es
+\[
+ \underbrace{B^2+a\textstyle\sum_j n_je_j/d_j^2}_{>0\ \text{por \eqref{eq:derivative}}}
+ \;-\;(1-\mu)a\,\frac{n_4'}{d_4}\;+\;(1-\mu)B\,a',
+\]
+y los dos últimos términos son no negativos. Luego $\K'>0$.
+
+(iii) Con $a'=0$, el numerador es $B^2+a[B-(1-\mu)B']$, y
+$B-(1-\mu)B'=\sum_j n_je_j/d_j^2-(1-\mu)n_4b\rho_2'/d_4$. Si
+$(1-\mu)b\rho_2'\leq e_4/d_4$, el corchete es positivo.
+
+(iv) Con $n_4(\mu)=\tfrac14(1+c\mu)$, $b\rho_2'(0)=c$. En $\mu=0$:
+$d_3=2$, $d_4=3$, $a=3/8$, $B=1/8+1/12=5/24$. La condición de (iii) es
+$\tfrac{25}{576}+\tfrac38[\tfrac1{16}+\tfrac1{12}(\tfrac23-c)]>0$, es
+decir, $c<32(\tfrac{25}{576}+\tfrac3{128}+\tfrac1{48})=\tfrac{101}{36}$.
+La suma es $101/1152$ y, más explícitamente,
+$\K'(0)=(101-36c)/392$; así la pendiente es cero en el umbral y negativa
+si y solo si $c>101/36$.
+El valor con $c=5$ es un cálculo exacto. Finalmente,
+$\K(1)=(a+B)/[R(a+B)]=1/R$ para cualquier trayectoria.
+\end{proof}
+
+El mecanismo es el de \eqref{eq:weight}. Si la divulgación vuelve mucho
+más optimistas, y por tanto menos aversos, a los particulares, su peso
+crece por dos vías y la respuesta promedio del precio puede caer para
+transparencias bajas. Con divulgación completa se recupera siempre $1/R$.
+
+\begin{figure}[ht]
+\centering
+\input{../code/figures/endogenous.tex}
+\caption{Sensibilidad con $n_4(\mu)=\tfrac14(1+c\mu)$ y los parámetros de
+\eqref{eq:counter}. Con $c\leq0$ el resultado se mantiene; en $c=101/36$
+la pendiente inicial es cero; con $c=5$ la sensibilidad cae al inicio.
+Datos de \texttt{code/verify.py}.}
+\end{figure}
+
 \section{Verificación reproducible}
 El punto de entrada es \texttt{python code/verify.py}, sin dependencias
 externas. Comprueba el contraejemplo, identidades de posterior y momentos,
@@ -426,6 +542,16 @@ CPO, máximo y vaciado de mercado, y genera las cifras y datos de gráficos.
 El barrido racional compara 5\,760 pares de transparencias y 60 mercados.
 Una simulación gaussiana con semilla fija contrasta momentos y covarianzas.
 También contrasta la expresión CARA con integración numérica determinista.
+Para el puente al precio esperado, simula
+$\kappa\mid\theta\sim N(\mu\theta,\mu(1-\mu)s)$ con $100\,000$ extracciones
+por valor de $\theta$, promedia el precio \eqref{eq:price} con estados
+sentimentales no nulos y estima $\K$ por diferencias: en $\mu=0{,}25$ la
+fórmula da $0{,}55749$ y la simulación $0{,}55714$; en $\mu=0{,}6$,
+$0{,}71641$ y $0{,}71652$. En aritmética exacta, el script comprueba además
+el signo de \eqref{eq:weight}, el intervalo $[0;\,0{,}26]$ de la fórmula
+impresa, $G(1/2)=23/55$ y la proposición~\ref{prop:endo}: la derivada de
+(i) frente a cocientes de diferencias, cuatro trayectorias que cumplen (ii),
+el umbral $101/36$ y la reversión con $c=5$.
 Las simulaciones verifican implementación; la prueba general es analítica.
 
 \begin{center}
@@ -483,15 +609,18 @@ racionales con inferencia completa. Una extensión con oferta aleatoria o
 señales institucionales imperfectas exigiría resolver creencias y precio
 conjuntamente.
 
-Si el sentimiento responde a la transparencia, cambian $a$ y $B$ por
-canales adicionales y la prueba actual no aplica directamente. Tampoco se
-prueba bienestar, reducción de volatilidad total ni desaparición de errores
-de valoración.
+Si el sentimiento responde a la transparencia, la
+proposición~\ref{prop:endo} da la condición exacta; queda abierto el caso en
+que el sentimiento responde a la propia noticia $\theta$, que cambiaría la
+definición de $\K$. Tampoco se prueba bienestar, reducción de volatilidad
+total ni desaparición de errores de valoración.
 
 \section{Conclusión}
 La señal ruidosa permite derivar las varianzas mediante Bayes.
 CARA y normalidad entregan demanda y precio. La sensibilidad esperada
 aumenta bajo sentimiento fijo y ausencia de inferencia adicional desde precios.
+Si la divulgación vuelve a los particulares más optimistas con suficiente
+rapidez, el resultado puede invertirse para transparencias bajas.
 \label{endbody}
 \clearpage
 \bibliographystyle{plain}
@@ -530,6 +659,7 @@ $(1-x)n_j/d_j(x)-(1-y)n_j/d_j(y)
 El código verifica la identidad exactamente; Lean prueba la monotonicidad
 del coeficiente por una descomposición equivalente.
 
+\clearpage
 \section{Correspondencia con Lean y alcance}
 La carpeta preliminar conserva las pruebas anteriores y añade
 \texttt{SignalCARA.lean}. Sus informes permiten revisar las compilaciones.
@@ -559,6 +689,10 @@ Prop.~\ref{prop:main}
 \texttt{full\_information\_endpoint} en \texttt{Transparency.lean}
 & Monotonicidad y extremo probados para el coeficiente algebraico
 con parámetros positivos explícitos.\\
+Prop.~\ref{prop:endo}
+& ---
+& Abierto en Lean: pendiente de la corrida de AppliedModelingLib.
+Comprobado en aritmética exacta.\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -568,6 +702,7 @@ sobre un commit fijado. Ese procedimiento y el control
 El paper final del curso debe reportar el commit formalizado y el resultado
 de esa comprobación.
 
+\clearpage
 \section{Auditoría de contribuciones de IA}
 El registro documenta afirmaciones, veredictos y comprobaciones.
 Los diálogos de \texttt{prompts.md} son simulados y están identificados así.
@@ -588,6 +723,19 @@ La transparencia siempre mejora el precio.
 Información institucional implica filtración del emisor.
 & No se desprende del modelo.
 & Lectura de secciones 3 y 6.2 y delimitación propia.\\
+Claude: más peso de los particulares y mejor información empujan $\K$ en
+la misma dirección.
+& Incorrecto: $\partial\K/\partial B<0$ con $\mu$ fijo.
+& Derivada \eqref{eq:weight}; detectado al contrastar con Codex;
+comprobado en \texttt{verify.py}.\\
+Claude: el resultado vale ``solo si'' la divulgación reduce la
+incertidumbre residual.
+& No demostrado: el coeficiente impreso también crece con $\mu$.
+& Monotonicidad de $K^I$; título y conclusiones corregidos.\\
+Claude: condición exacta y contraejemplo con sentimiento endógeno.
+& Correcto en lo verificado.
+& Derivación algebraica independiente y aritmética exacta;
+manuscrito personal pendiente en \texttt{hand/}.\\
 \bottomrule
 \end{tabular}
 \end{center}

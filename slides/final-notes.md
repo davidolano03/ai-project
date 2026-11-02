@@ -1,6 +1,6 @@
 # Guion de la presentación final
 
-Versión del 2 de noviembre de 2026. Presentación programada: 4 de noviembre, 08:20–09:05 Lima. Objetivo: 30 minutos de exposición y 15 de discusión. 35 diapositivas principales y 6 de consulta. Las fórmulas completas están en el manuscrito.
+Versión del 2 de noviembre de 2026, integración de la extensión. Presentación programada: 4 de noviembre, 08:20–09:05 Lima. Objetivo: 30 minutos de exposición y 15 de discusión. 38 diapositivas principales y 6 de consulta. Las fórmulas completas están en el manuscrito.
 
 ## Ruta y tiempos
 
@@ -8,11 +8,12 @@ Versión del 2 de noviembre de 2026. Presentación programada: 4 de noviembre, 0
 |---|---:|---|
 | 1–5 | 3 | Pregunta, aplicación, quién sabe qué y unidades |
 | 6–9 | 3 | Auditoría del básico y la extensión |
-| 10–18 | 10 | Derivar Bayes, κ, ξ y sus varianzas |
-| 19–20 | 2 | Creencias y varianzas del pago |
-| 21–25 | 5 | CARA, riqueza, equivalente cierto y CPO |
-| 26–30 | 4 | Mercado, sensibilidad y prueba |
-| 31–35 | 3 | Código, Lean, correcciones y discusión |
+| 10–18 | 9 | Derivar Bayes, κ, ξ y sus varianzas |
+| 19–20 | 1,5 | Creencias y varianzas del pago |
+| 21–25 | 4,5 | CARA, riqueza, equivalente cierto y CPO |
+| 26–31 | 4 | Mercado, prueba y efectos de signo opuesto |
+| 32–33 | 2 | Extensión y reversión del resultado |
+| 34–38 | 3 | Código, Lean, correcciones y discusión |
 
 Si falta tiempo, dedicar menos a la auditoría original y conservar las derivaciones 10–16 y 21–24.
 
@@ -74,7 +75,7 @@ Su media es C₀+ω(m−RP); su varianza es ω²v porque las constantes no contr
 
 En la CPO, precio, creencias y aversión permanecen fijos. Derivar cada término: cero, m−RP y −gvω. Despejar solo tras comprobar gv>0. Segunda derivada negativa y completar el cuadrado justifican máximo único.
 
-## 25–30. Precio y resultado
+## 25–31. Precio y resultado
 
 Interpretar numerador y denominador de demanda antes de agregar. λ representa masa, h reúne masa y respuesta al riesgo. Vaciado: demanda agregada igual a una acción. Despejar P paso a paso.
 
@@ -84,15 +85,27 @@ La prueba exige a fijo: sentimiento y riesgo institucional no cambian con μ. De
 
 El gráfico compara fórmulas con los mismos parámetros. La curva publicada se interpreta como fórmula impresa, no como una estimación de datos reales.
 
-## 31–33. Qué está verificado
+## 30. Dos efectos de signo opuesto
 
-El código revisa 5.760 comparaciones exactas, 60 mercados, 144 casos del cuadrado posterior, 16 pares de varianzas, 120.000 observaciones simuladas y 12 integrales CARA. Los informes incluyen tolerancias; Monte Carlo no sustituye una prueba.
+Decir: «Aumentar μ mejora directamente cuánto sigue el pronóstico público a θ. Al mismo tiempo, baja la varianza percibida por los particulares y sube B. Este segundo cambio reduce K, porque los particulares responden a μθ y las instituciones a θ». Mostrar ∂K/∂B=−a(1−μ)/[R(a+B)²]<0 para μ<1. La proposición 4 demuestra que el efecto directo domina cuando el sentimiento queda fijo. G(1/2)=23/55 corresponde solo a los parámetros del ejemplo.
 
-Lean comprueba 26 declaraciones algebraicas. Bayes, la teoría gaussiana de independencia y la integral probabilística completa permanecen abiertos en Lean. No confundir un argumento matemático escrito con una formalización integral de probabilidad.
+## 32. Extensión: el sentimiento responde a la divulgación
+
+Ahora ρ₁(μ) y ρ₂(μ) cambian con la precisión, sin depender de θ. Esto mueve a y n₄. Explicar la derivada general antes de las condiciones: el término aB′−Ba′ identifica cómo cambia el peso relativo de particulares e instituciones. Si ρ₁′≥0 y ρ₂′≤0, el resultado creciente se conserva. La segunda desigualdad significa menor optimismo y mayor aversión particular; «calmar» sería ambiguo, pues aliviar un pánico también podría elevar ρ₂. La proposición 5 tiene prueba escrita y comprobación racional; aún no tiene prueba Lean.
+
+## 33. Cuándo se invierte el resultado
+
+Usar el ejemplo logarítmico ρ₂=ln(1+cμ)/b y ρ₁=0. Al inicio, K′(0)=(101−36c)/392. Por eso la pendiente es cero en c*=101/36, positiva por debajo y negativa por encima. Con c=5, K(0,1)=1768/2803≈0,631, menor que K(0)=9/14≈0,643. El peso particular crece tan rápido que domina el efecto directo. Todos los casos llegan a K(1)=1/R. El umbral es específico de esa parametrización; la condición general es la proposición 5(iii).
+
+## 34–36. Qué está verificado
+
+El código revisa 5.760 comparaciones exactas, 60 mercados, 144 casos del cuadrado posterior, 16 pares de varianzas, 120.000 observaciones de señal y 12 integrales CARA. Añade 100.000 extracciones por cada θ=−1 y θ=1 para dos niveles de μ (400.000 en total) para contrastar el precio esperado. Comprueba las identidades exactas de la proposición 5, cuatro trayectorias monótonas y el umbral. Los informes incluyen tolerancias; Monte Carlo no sustituye una prueba.
+
+Lean comprueba 26 declaraciones algebraicas que apoyan las proposiciones 1–4. La proposición 5 completa, Bayes, la teoría gaussiana de independencia y la integral probabilística completa permanecen abiertos en Lean. La extensión sí tiene prueba matemática escrita y comprobaciones exactas; lo pendiente es su formalización. No confundir un argumento escrito con una formalización integral de probabilidad.
 
 Para cumplir el requisito de mostrar una derivación manuscrita, preparar personalmente las páginas de hand/, fotografiarlas y agregarlas. Actualmente la guía es tipografiada y no se presenta como evidencia manuscrita.
 
-## 34–35. Alcance y preguntas
+## 37–38. Alcance y preguntas
 
 El modelo no está calibrado a una sola empresa: caracteriza una clase de mercados estilizados bajo supuestos fuertes. La elección de acciones lo hace interpretable. No trasladar automáticamente el resultado a bonos del gobierno ni a ganancias de políticos.
 
@@ -106,6 +119,6 @@ El aprendizaje desde precios es la limitación principal. Si todos conocieran pe
 
 **¿Las instituciones ganan siempre?** No hay un resultado de rentabilidad extraordinaria. Riesgo, precio, costos y referencia son necesarios para formularlo.
 
-**¿Todo el resultado está probado en Lean?** La parte algebraica indicada sí. El puente probabilístico completo y la corrida integral del curso están pendientes.
+**¿Todo el resultado está probado en Lean?** Hay componentes algebraicos comprobados de las proposiciones 1–4. La proposición 5 y el puente probabilístico no están formalizados todavía; también falta la corrida integral del curso.
 
 **¿Por qué el ruido de la señal pública no es ε?** η afecta lo que se aprende antes de negociar. ε afecta el pago final y sigue incierto incluso para la institución informada.
