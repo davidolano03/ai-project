@@ -7,6 +7,7 @@ from fractions import Fraction as F
 from itertools import product
 import csv
 import json
+from signal_checks import run as run_signal_checks
 
 HERE=Path(__file__).resolve().parent
 OUTPUT,FIGURES=HERE/"output",HERE/"figures"
@@ -122,12 +123,14 @@ figure=r"""% Generated from checked data. No screenshots of published figures.
 \end{tikzpicture}
 """
 (FIGURES/"information.tex").write_text(figure,encoding="utf-8")
+signal_report=run_signal_checks(OUTPUT)
 report={"status":"PASS","comparison":"expected coefficient for corrected model",
         "baseline_exact":str(baseline),"printed_mu_01_exact":str(printed(F(1,10))),
         "corrected_mu_01_exact":str(coefficient(*baseparams,F(1,10))),
         "comparative_static_pairs":checked_pairs,"market_cases":market_cases,
         "formal_probability_bridge":"not checked by this script or preliminary Lean",
-        "date":"2026-10-08"}
+        "signal_and_cara":signal_report,
+        "date":"2026-11-02"}
 (OUTPUT/"verification.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
 print(json.dumps(report,indent=2))
 print("PASS: exact counterexample, four-group comparative statics, FOCs, clearing, figure data.")

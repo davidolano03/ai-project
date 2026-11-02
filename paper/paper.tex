@@ -1,40 +1,597 @@
-% Required repository path. This is not the final paper.
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish]{babel}
+\usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
-\usepackage{xcolor}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,graphicx,pgfplots}
 \usepackage[colorlinks=true,allcolors=blue!50!black]{hyperref}
-\title{Transparencia, sentimiento y fundamentos\\\large Estado del manuscrito}
-\author{David Julio Olano Silva Nevado}
-\date{8 de octubre de 2026}
+\emergencystretch=1em
+\pgfplotsset{compat=1.18}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\K}{\mathcal K}
+\newtheorem{proposition}{Proposición}
+\newtheorem{assumption}{Supuesto}
+\title{Transparencia, sentimiento y fundamentos\\
+\large Una corrección de la información parcial en Zhang y Zhang (2023)}
+\author{David Julio Olano Silva Nevado\\IA y Modelamiento Económico, UP}
+\date{2 de noviembre de 2026}
 \begin{document}
 \maketitle
-\textbf{Estado: manuscrito final en preparación.} Este documento mantiene el
-archivo requerido por la estructura y permite verificar su compilación.
-La entrega actual es \texttt{proposal/proposal.pdf} y \texttt{slides/topic.pdf}.
-Este archivo todavía no cumple la extensión de 8--20 páginas del paper final.
-\section*{Pregunta y corrección propuesta}
-¿Bajo qué condiciones la transparencia aumenta la sensibilidad esperada del
-precio a los fundamentos con inversionistas afectados por sentimiento?
-Se corregirá el bloque de información pública de Zhang y Zhang (2023),
-proposición 5(ii), pp.~15--16, mediante componentes informativos independientes
-y varianza residual condicional.
-\section*{Trabajo preliminar}
-El repositorio incluye un contraejemplo a la afirmación universal publicada,
-una prueba algebraica de monotonicidad del coeficiente corregido con cuatro
-grupos, verificaciones numéricas exactas y sus fuentes.
-La reducción del modelo gaussiano a ese coeficiente necesita una
-formalización probabilística adicional. La auditoría preliminar no constituye
-una corrida integral del procedimiento final de AppliedModelingLib.
-\section*{Contenido por desarrollar}
-El manuscrito final incorporará supuestos numerados, revisión de literatura
-ampliada, derivaciones y proposiciones propias, simulaciones, limitaciones,
-apéndice manuscrito y una tabla que corresponda cada resultado con su prueba
-Lean. Su commit se fijará antes de ejecutar el procedimiento del curso.
-\begin{center}
-\url{https://github.com/davidolano03/ai-project}
+\begin{abstract}
+\noindent Estudio cuándo una señal pública más precisa aumenta la sensibilidad
+esperada del precio de una acción a sus fundamentos, manteniendo fijo el
+sentimiento. Audito la sección 6.2 de Zhang y Zhang (2023): una señal
+determinista escalada revela todo el fundamento si su factor es conocido y
+positivo, mientras que las varianzas impresas no recuperan los extremos
+informativos. Propongo una señal gaussiana con ruido y derivo mediante Bayes
+su componente público y residuo oculto. Desde utilidad CARA obtengo la
+demanda óptima, el precio de equilibrio y una proposición de sensibilidad
+creciente bajo condiciones explícitas. Código y simulaciones reproducen los
+resultados. Lean certifica componentes algebraicos, con un alcance
+probabilístico todavía parcial. La aplicación corresponde a acciones con
+información desigual entre inversionistas, divulgación exógena y sin
+inferencia adicional desde el precio.
+\end{abstract}
+
+\section{Pregunta y contribución}
+\textquestiondown{}Cuándo una mayor precisión de la información pública hace
+que el precio responda más a las noticias sobre el pago futuro de una acción?
+Demuestro que la sensibilidad del precio esperado aumenta con la precisión
+pública, bajo creencias normales, CARA, sentimiento fijo, oferta fija y sin
+aprendizaje adicional desde precios. La conclusión trata de respuesta a
+fundamentos, sin establecer aumentos universales del nivel ni del bienestar.
+
+Conservo los cuatro grupos de Zhang y Zhang \cite{zhang2023} y reespecifico
+su sección 6.2, ecuaciones (38)--(44), pp.~15--16 y proposición 5(ii).
+La primera entrega postulaba las proporciones de varianza. Aquí las derivo
+desde una señal ruidosa y Bayes, y obtengo la condición de primer orden
+(CPO) desde la utilidad esperada CARA.
+
+\section{Punto de partida y literatura}
+El pago monetario futuro de una acción se representa de forma consistente por
+\begin{equation}\label{eq:payoff}
+ F=P_0+\theta+\epsilon.
+\end{equation}
+$P_0$ es una referencia conocida, $\theta$ la innovación fundamental y
+$\epsilon$ una sorpresa final. Son cantidades monetarias por acción.
+$\theta$ resume el efecto económico de la noticia sobre el pago futuro;
+no es una cantidad de artículos ni una puntuación de sentimiento.
+
+En el modelo básico de Zhang y Zhang las instituciones observan $\theta$
+y los particulares no reciben información sobre su realización. Su ecuación
+(15), p.~5, atribuye al particular racional varianza
+$\sigma_\epsilon^2+\sigma_\theta^2$. En la extensión, la ecuación (39)
+define $\kappa=\mu\theta$ y la ecuación (40) usa
+$\sigma_\epsilon^2+\mu^2\sigma_\theta^2$. La proposición 5(ii) afirma
+una mayor sensibilidad frente al modelo básico para cualquier $\mu$.
+
+Si $\mu$ es conocido y positivo, $\theta=\kappa/\mu$: escalar el dato no
+oculta su valor. En $\mu=0$, la varianza impresa elimina la incertidumbre
+fundamental todavía presente; en $\mu=1$ la conserva aunque la noticia
+ya se conoce. $\Var(\mu\theta)=\mu^2s$ es una identidad correcta para la
+varianza marginal de la señal escalada. El problema es interpretarla como
+incertidumbre restante después de observarla.
+
+La auditoría de las fórmulas impresas admite un contraejemplo. Fijo
+$\lambda_i=1/4$, $\gamma=R=1$, estados y sesgos sentimentales cero, y
+$\sigma_\epsilon^2=s=\tau_1^2=\tau_2^2=1$. Estados cero no eliminan las
+varianzas subjetivas. Entonces
+\begin{equation}\label{eq:counter}
+ K_0=\frac9{14}\simeq0{,}642857,\quad
+ K^I(0)=\frac12,\quad K^I(0{,}1)=\frac{66943}{121303}\simeq0{,}551866<K_0.
+\end{equation}
+La comparación relevante es $K^I(0{,}1)$ frente al básico $K_0$.
+$K^I(0)$ muestra además que la extensión no recupera su punto de partida.
+El hallazgo concierne a las fórmulas e interpretación impresas; no identifica
+si el origen fue editorial ni establece un efecto empírico de transparencia.
+
+Di Maggio y Pagano \cite{dimaggio2018} modelan diferencias de procesamiento,
+divulgación y decisiones del emisor, un mecanismo distinto del presente.
+Grossman y Stiglitz \cite{grossman1980} muestran la importancia de información
+costosa y aprendizaje desde precios; aquí restringir esa inferencia es un
+supuesto explícito. El condicionamiento gaussiano es estándar. La contribución
+es la reparación concreta y la derivación de sensibilidad de cuatro grupos.
+La búsqueda delimitada de título, DOI, versiones y correcciones no sustenta
+una afirmación de novedad universal. Los tres trabajos citados son artículos
+publicados; el de Di Maggio y Pagano apareció en línea en 2017 y en volumen
+en 2018.
+
+\section{Aplicación y supuestos económicos}
+La aplicación elegida es la negociación secundaria de una acción de una
+empresa cotizada. La empresa es el emisor, pero no elige su divulgación
+estratégicamente en el modelo. Un ejemplo es una noticia sobre demanda
+futura: algunos inversionistas observan mejor su componente fundamental,
+mientras el público recibe un reporte imperfecto. Observar exactamente
+$\theta$ es una idealización de la ventaja institucional.
+
+Información privada significa aquí que un dato pertenece al conjunto
+informativo de unos inversionistas y no al de otros. Puede representar
+análisis especializado u observación de indicadores. El modelo no identifica
+el canal de filtraciones de directivos ni operaciones de políticos. Si solo
+el emisor conoce algo y ningún inversionista lo observa, ambos grupos lo
+desconocen: no corresponde asignarlo a una $\theta$ institucional conocida.
+
+\begin{assumption}[Pago]\label{as:payoff}
+$P_0$ es conocido, $\theta\sim N(0,s)$ con $s>0$,
+$\epsilon\sim N(0,e)$ con $e=\sigma_\epsilon^2>0$; son independientes.
+La oferta es una acción y $R=1+r_f>0$.
+\end{assumption}
+\begin{assumption}[Señal]\label{as:signal}
+Para $0<\mu<1$, todos observan $y=\theta+\eta$, con
+$\eta\sim N(0,t)$ independiente de $\theta,\epsilon$,
+$t=s(1-\mu)/\mu>0$. Las instituciones observan además $\theta$.
+Defino $\kappa=\E[\theta\mid y]$ y $\xi=\theta-\kappa$.
+En $\mu=0$ defino $\kappa=0,\xi=\theta$; en $\mu=1$,
+$\kappa=\theta,\xi=0$.
+\end{assumption}
+\begin{assumption}[Grupos y sentimiento]\label{as:sent}
+Las masas $\lambda_i>0$ suman uno. Los grupos $1,2$ son institucionales y
+$3,4$ particulares. Los grupos $2,4$ tienen estados $\rho_1,\rho_2$,
+sesgos $\delta_1,\delta_2$ y varianzas subjetivas $\tau_1^2,\tau_2^2\geq0$.
+Los estados son independientes de noticias y ruido; todos estos parámetros
+permanecen fijos al comparar transparencia.
+\end{assumption}
+\begin{assumption}[Preferencias y creencias]\label{as:beliefs}
+Cada creencia sobre el pago es normal, con media $m_i$ y varianza $v_i$.
+$g_1=g_3=\gamma>0$, $g_2=\gamma e^{-b\rho_1}$,
+$g_4=\gamma e^{-b\rho_2}$, $b>0$.
+Los errores sentimentales subjetivos $\zeta_j\sim N(\delta_j,\tau_j^2)$
+son independientes de los componentes informativos y la sorpresa final.
+Describen creencias, no pagos adicionales reales. Las posiciones son reales
+sin restricciones de venta corta ni endeudamiento.
+\end{assumption}
+\begin{assumption}[Información mantenida]\label{as:price}
+Los particulares actualizan con $y$ y no extraen información adicional del
+precio. Los agentes toman el precio como dado. No se modelan adquisición
+costosa de información, elección del emisor ni reacción del sentimiento a
+la divulgación.
+\end{assumption}
+
+La secuencia es: fijar parámetros, realizar $\theta$ y la señal, formar
+creencias, negociar y vaciar el mercado, y realizar $\epsilon$. Los grupos
+racionales carecen del sesgo sentimental especificado. El supuesto
+\ref{as:price} limita una interpretación de expectativas racionales que
+aprovechen toda la información del precio.
+
+\section{Derivación de la información pública y oculta}
+\subsection{Bayes y la distribución posterior}
+La varianza de ruido $t$ mide imprecisión: un $t$ menor hace más útil el
+reporte. Para un fundamento posible $x$ y un reporte observado $y$, Bayes da
+\begin{align}
+ f(x\mid y)&\propto f(y\mid x)f(x)\\
+ &\propto \exp\left\{-\frac12
+       \left[\frac{x^2}{s}+\frac{(y-x)^2}{t}\right]\right\}.
+\end{align}
+Expando y completo el cuadrado:
+\begin{align}
+ \frac{x^2}{s}+\frac{(y-x)^2}{t}
+ &=\left(\frac1s+\frac1t\right)x^2-\frac{2y}{t}x+\frac{y^2}{t}\\
+ &=\frac{s+t}{st}\left(x-\frac{s}{s+t}y\right)^2+\frac{y^2}{s+t}.
+ \label{eq:posterior-square}
+\end{align}
+El último término no depende de $x$ y queda en la normalización. Reconocer
+el núcleo normal entrega
+\begin{equation}\label{eq:posterior}
+ \theta\mid y\sim N\left(\frac{s}{s+t}y,\frac{st}{s+t}\right).
+\end{equation}
+Por eso defino
+\begin{equation}\label{eq:mu}
+ \mu=\frac{s}{s+t},\qquad \kappa=\mu y,\qquad \xi=\theta-\mu y.
+\end{equation}
+$\mu$ es adimensional. Ahora dividir $\kappa$ por $\mu$ recupera
+$y=\theta+\eta$, que todavía contiene ruido. La señal es realmente parcial.
+
+\begin{proposition}[Descomposición informativa]\label{prop:information}
+Bajo los supuestos \ref{as:payoff}--\ref{as:signal}, $\theta=\kappa+\xi$.
+Los componentes son gaussianos independientes, de media cero, y
+\begin{equation}\label{eq:variances}
+ \Var(\kappa)=\mu s,\quad \Var(\xi)=(1-\mu)s.
+\end{equation}
+Además,
+\begin{equation}\label{eq:bridge}
+ \E[\theta\mid\kappa]=\kappa,\quad
+ \Var(\theta\mid\kappa)=(1-\mu)s,\quad
+ \E[\kappa\mid\theta]=\mu\theta.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Para el interior, $\Cov(\theta,\eta)=0$ por independencia y
+$\Var(y)=s+t$. Aplicando $\Var(cX)=c^2\Var(X)$,
+\begin{align}
+ \Var(\kappa)&=\Var(\mu(\theta+\eta))=\mu^2(s+t)\\
+ &=\frac{s^2}{(s+t)^2}(s+t)=\frac{s^2}{s+t}=\mu s.
+\end{align}
+Escribo $\xi=(1-\mu)\theta-\mu\eta$ y desarrollo todos los términos:
+\begin{align}
+ \Var(\xi)&=(1-\mu)^2s+\mu^2t-2\mu(1-\mu)\Cov(\theta,\eta)\\
+ &=\frac{t^2s+s^2t}{(s+t)^2}
+ =\frac{st(s+t)}{(s+t)^2}=\frac{st}{s+t}=(1-\mu)s.
+\end{align}
+La covarianza entre los componentes nuevos es
+\begin{align}
+ \Cov(\kappa,\xi)
+ &=\Cov(\mu(\theta+\eta),(1-\mu)\theta-\mu\eta)\\
+ &=\mu(1-\mu)s-\mu^2t
+ =\mu[(1-\mu)s-\mu t]=0.
+\end{align}
+Son transformaciones lineales de normales independientes y, por tanto,
+conjuntamente gaussianos. Para ese caso, covarianza cero implica
+independencia; la implicación no es general fuera del caso gaussiano.
+Así $\E[\xi\mid\kappa]=0$ y $\Var(\xi\mid\kappa)=\Var(\xi)$.
+Sumar el componente conocido $\kappa$ prueba las dos primeras identidades
+de \eqref{eq:bridge}. La última sigue de
+$\E[\mu(\theta+\eta)\mid\theta]=\mu\theta$. Los extremos se verifican
+directamente con las definiciones degeneradas del supuesto \ref{as:signal}.
+$\mu=0$ representa ausencia de señal, no una normal con varianza infinita.
+\end{proof}
+
+La ley de varianza total permite interpretar la descomposición:
+\begin{equation}
+ s=\Var(\E[\theta\mid y])+\E[\Var(\theta\mid y)]
+   =\mu s+(1-\mu)s.
+\end{equation}
+El primer término mide cómo varían los pronósticos públicos entre escenarios.
+El segundo mide la incertidumbre que queda después del reporte. $\mu$
+representa una fracción de varianza, no del valor realizado de $\theta$.
+
+Por ejemplo, con $s=t=100$ se obtiene $\mu=1/2$. Si $y=8$ soles por acción,
+$\kappa=4$: el pronóstico posterior es 4 y la varianza residual 50, con
+desviación estándar $\sqrt{50}\simeq7{,}071$ soles por acción.
+Si $P_0=100$ y $e=4$, el particular espera 104 con varianza 54.
+Una institución que observa $\theta=10$ espera 110 con varianza 4.
+La sorpresa $\epsilon$ todavía modifica el pago realizado.
+
+\section{Varianzas y medias del pago percibido}
+Una institución racional conoce $\theta$:
+\begin{equation}
+ m_1=P_0+\theta,\qquad v_1=\Var(\epsilon\mid\theta)=e.
+\end{equation}
+El particular racional conoce $\kappa$ y desconoce $\xi,\epsilon$:
+\begin{align}
+ m_3&=P_0+\kappa+\E[\xi\mid\kappa]+\E[\epsilon\mid\kappa]=P_0+\kappa,\\
+ v_3&=\Var(\xi+\epsilon\mid\kappa)\\
+ &=\Var(\xi\mid\kappa)+\Var(\epsilon\mid\kappa)
+       +2\Cov(\xi,\epsilon\mid\kappa)=(1-\mu)s+e.
+\end{align}
+La covarianza condicional es cero por las independencias del modelo.
+Añadir un error subjetivo independiente $\zeta_j$ desplaza la media en
+$\delta_j$ y añade $\tau_j^2$ a la varianza. Con $d=(1-\mu)s$:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Grupo & Media $m_i$ & Varianza $v_i$ & Aversión $g_i$\\
+\midrule
+1. Institución racional & $P_0+\theta$ & $e$ & $\gamma$\\
+2. Institución sentimental & $P_0+\theta+\delta_1$ & $e+\tau_1^2$ & $\gamma e^{-b\rho_1}$\\
+3. Particular racional & $P_0+\kappa$ & $e+d$ & $\gamma$\\
+4. Particular sentimental & $P_0+\kappa+\delta_2$ & $e+d+\tau_2^2$ & $\gamma e^{-b\rho_2}$\\
+\bottomrule
+\end{tabular}
 \end{center}
+La empresa paga el mismo $F$ a todos. Estas son creencias distintas sobre
+ese pago. Un desplazamiento constante $\delta_j$ no genera varianza:
+la incertidumbre subjetiva adicional está en $\tau_j^2$.
+Un estado $\rho_j=0$ implica $g_i=\gamma>0$; el agente sigue evitando riesgo.
+
+\section{De utilidad CARA a la CPO}
+\subsection{Riqueza, esperanza y varianza}
+Con riqueza inicial $w_{0i}$ y posición $\omega_i$ al precio $P$,
+\begin{align}
+ W_i&=(w_{0i}-P\omega_i)R+\omega_i F\\
+ &=Rw_{0i}+\omega_i(F-RP)=C_{0i}+\omega_i(F-RP).
+\end{align}
+Durante la elección, $P,\omega_i,g_i,m_i,v_i$ son constantes. Por linealidad,
+\begin{equation}
+ M_i=\E_i[W_i]=C_{0i}+\omega_i(m_i-RP).
+\end{equation}
+Sumar una constante no altera una varianza; escalarla multiplica por el
+cuadrado del factor:
+\begin{align}
+ V_i=\Var_i(W_i)
+ &=\Var_i(C_{0i}+\omega_i(F-RP))\\
+ &=\omega_i^2\Var_i(F-RP)=\omega_i^2\Var_i(F)=\omega_i^2v_i.
+\end{align}
+Duplicar la posición cuadruplica la varianza de riqueza. CARA utiliza esas
+varianzas para valorar riesgo; las varianzas provienen del pago y las creencias.
+
+\subsection{Utilidad esperada y equivalente cierto}
+La utilidad es $U_i(W)=-e^{-g_iW}$, con
+$U_i'=g_i e^{-g_iW}>0$, $U_i''=-g_i^2e^{-g_iW}<0$ y
+$-U_i''/U_i'=g_i$. La aversión absoluta es constante respecto de riqueza,
+aunque difiere entre grupos o estados. La riqueza es normal bajo las
+creencias del agente. Usando la identidad normal del apéndice,
+\begin{align}
+ \E_i[U_i(W_i)]
+ &=-\exp(-g_iM_i+g_i^2V_i/2)\\
+ &=-\exp[-g_i(M_i-g_iV_i/2)].
+\end{align}
+Como $z\mapsto-e^{-g_i z}$ es creciente, maximizar utilidad equivale a
+maximizar el equivalente cierto
+\begin{equation}\label{eq:ce}
+ CE_i=C_{0i}+\omega_i(m_i-RP)-\frac{g_iv_i}{2}\omega_i^2.
+\end{equation}
+El equivalente cierto se mide en dinero y genera la misma elección.
+No es una igualdad numérica con la utilidad esperada.
+
+\begin{proposition}[Demanda óptima]\label{prop:demand}
+Bajo los supuestos \ref{as:payoff}--\ref{as:price}, cada grupo tiene una
+única posición óptima
+\begin{equation}\label{eq:demand}
+ \omega_i^*=\frac{m_i-RP}{g_iv_i}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+En \eqref{eq:ce}, la derivada del ingreso fijo es cero; la del término
+lineal es $m_i-RP$; la de la penalización es
+$-(g_iv_i/2)2\omega_i=-g_iv_i\omega_i$. Por tanto,
+\begin{align}
+ CE_i'&=m_i-RP-g_iv_i\omega_i=0,\\
+ g_iv_i\omega_i&=m_i-RP,\qquad
+ \omega_i^*=(m_i-RP)/(g_iv_i).
+\end{align}
+Dividir es válido porque $g_i,v_i>0$. La segunda derivada es
+$CE_i''=-g_iv_i<0$. Además,
+\begin{equation}\label{eq:square}
+ CE_i(\omega_i)=CE_i(\omega_i^*)-
+ \frac{g_iv_i}{2}(\omega_i-\omega_i^*)^2.
+\end{equation}
+El término restado es no negativo y solo se anula en el óptimo:
+hay máximo global único.
+\end{proof}
+El numerador es pago esperado menos costo financiado. El denominador
+penaliza exposición por aversión y varianza. Para el particular racional,
+\begin{equation}
+ \omega_3^*=\frac{P_0+\kappa-RP}{\gamma[e+(1-\mu)s]}.
+\end{equation}
+La información cambia el pronóstico y la incertidumbre. Una posición
+negativa representa venta corta permitida por el modelo.
+
+\section{Precio de equilibrio y resultado propio}
+Defino pesos $h_i=\lambda_i/(g_iv_i)>0$, $H=\sum_i h_i$,
+$a=h_1+h_2$ y $B=h_3+h_4$. Reúnen masa y respuesta al riesgo, y no tienen
+que sumar uno.
+\begin{proposition}[Precio y sensibilidad esperada]\label{prop:price}
+Bajo los supuestos \ref{as:payoff}--\ref{as:price}, el precio es único:
+\begin{equation}\label{eq:price}
+ P=\frac{HP_0+a\theta+B\kappa+h_2\delta_1+h_4\delta_2-1}{RH}.
+\end{equation}
+Con sentimiento fijo,
+\begin{equation}\label{eq:K}
+ \bar P=\E[P\mid\theta,\rho_1,\rho_2]=C(\mu)+\K(\mu)\theta,\quad
+ \K(\mu)=\frac{a+\mu B}{R(a+B)},
+\end{equation}
+con $C(\mu)=[HP_0+h_2\delta_1+h_4\delta_2-1]/(RH)$.
+\end{proposition}
+\begin{proof}
+La oferta de una acción exige
+\begin{align}
+ 1&=\sum_i\lambda_i\omega_i^*
+   =\sum_i h_i(m_i-RP)=\sum_i h_i m_i-RPH.
+\end{align}
+Despejar da $P=(\sum_i h_i m_i-1)/(RH)$, único porque $R,H>0$.
+Sustituir las cuatro medias da \eqref{eq:price}. Los pesos no dependen de
+las realizaciones de noticias. La independencia del sentimiento y la
+proposición \ref{prop:information} dan
+$\E[\kappa\mid\theta,\rho_1,\rho_2]=\mu\theta$, probando \eqref{eq:K}.
+\end{proof}
+$\K$ mide la respuesta del precio esperado al fundamento. Mantener fija
+la señal realizada y derivar \eqref{eq:price} respecto de $\theta$ daría
+$a/(RH)$, otra comparación. Si $\K=0{,}6$, una noticia adicional de una
+unidad monetaria cambia el precio esperado en $0{,}6$ unidades.
+
+\begin{proposition}[Mayor sensibilidad con sentimiento fijo]\label{prop:main}
+Bajo los supuestos \ref{as:payoff}--\ref{as:price}, si
+$0\leq x<y\leq1$, entonces $\K(x)<\K(y)$.
+Además $0<\K(\mu)\leq1/R$ y $\K(1)=1/R$.
+\end{proposition}
+\begin{proof}
+$a>0$ es constante porque las instituciones conservan varianzas y aversiones.
+Sean $n_3=\lambda_3/\gamma>0$, $n_4=\lambda_4/g_4>0$,
+$e_3=e>0$, $e_4=e+\tau_2^2>0$. Entonces
+\begin{equation}
+ d_j=e_j+(1-\mu)s>0,\quad
+ B=\sum_{j=3}^4 n_j/d_j,\quad
+ B'=\sum_{j=3}^4 n_js/d_j^2.
+\end{equation}
+La regla del cociente permite desarrollar
+\begin{align}
+ \K'&=\frac{(B+\mu B')(a+B)-(a+\mu B)B'}{R(a+B)^2}\\
+ &=\frac{B^2+a[B-(1-\mu)B']}{R(a+B)^2}.
+\end{align}
+En cada sumando,
+\begin{equation}
+ \frac{n_j}{d_j}-(1-\mu)\frac{n_js}{d_j^2}
+ =\frac{n_j[d_j-(1-\mu)s]}{d_j^2}
+ =\frac{n_je_j}{d_j^2}>0.
+\end{equation}
+Por tanto
+\begin{equation}\label{eq:derivative}
+ \boxed{\K'=\frac{B^2+a\sum_{j=3}^4 n_je_j/d_j^2}{R(a+B)^2}>0.}
+\end{equation}
+La función es continua en el intervalo cerrado y diferenciable dentro:
+el incremento es estricto. $a+\mu B\leq a+B$ prueba la cota superior,
+la positividad de parámetros la inferior, y sustituir $\mu=1$ da $1/R$.
+El apéndice ofrece una identidad de diferencias finitas.
+\end{proof}
+Con $\mu=0$ se recupera el coeficiente básico, porque los particulares
+conservan toda la incertidumbre $s$. Con $\mu=1$ aún existe riesgo final
+$e>0$. La prima por riesgo y los sesgos siguen afectando el nivel del precio.
+
+\section{Verificación reproducible}
+El punto de entrada es \texttt{python code/verify.py}, sin dependencias
+externas. Comprueba el contraejemplo, identidades de posterior y momentos,
+CPO, máximo y vaciado de mercado, y genera las cifras y datos de gráficos.
+El barrido racional compara 5\,760 pares de transparencias y 60 mercados.
+Una simulación gaussiana con semilla fija contrasta momentos y covarianzas.
+También contrasta la expresión CARA con integración numérica determinista.
+Las simulaciones verifican implementación; la prueba general es analítica.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Escenario & $\mu=0$ & $\mu=0{,}1$ & $\mu=1$\\
+\midrule
+Básico, referencia constante & $0{,}642857$ & $0{,}642857$ & $0{,}642857$\\
+Fórmula publicada & $0{,}500000$ & $0{,}551866$ & $1$\\
+Corrección propuesta & $0{,}642857$ & $0{,}669346$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Los parámetros son los de \eqref{eq:counter}. La primera fila es una
+referencia constante; no representa cambios informativos del básico.
+El valor corregido en $0{,}1$ es exactamente $583/871$.
+\begin{figure}[ht]
+\centering
+\input{../code/figures/information.tex}
+\caption{Sensibilidad esperada: la corrección recupera el básico y aumenta
+hasta $1/R$. Datos del código, sin estimación empírica.}
+\end{figure}
+Los informes \texttt{code/output/verification.json} y
+\texttt{signal-verification.json} detallan recuentos y tolerancias.
+El código exporta momentos y posterior para poder reproducir los ejemplos.
+
+\section{Alcance, emisores y límites}
+El modelo caracteriza un mecanismo bajo condiciones explícitas. No es una
+estimación de una empresa particular ni una afirmación válida para todo
+mercado. La misma acción tiene un pago común; un grupo conoce el fundamento
+y otro recibe un reporte imperfecto. Aplicarlo a bonos soberanos requeriría
+incorporar pago contractual, incumplimiento y sus determinantes.
+
+Deben distinguirse tres casos. Información conocida solo por el emisor:
+ambos grupos de inversionistas la desconocen. Información privada de algunos
+inversionistas por análisis u observación: esta es la interpretación elegida,
+idealizada como conocimiento exacto. Información transmitida desde un
+directivo a un agente: requiere especificar transmisión, incentivos y
+selección del receptor, elementos ausentes aquí. La palabra privada no
+identifica por sí sola el origen de esa ventaja.
+
+Tampoco se demuestra una ganancia extraordinaria de instituciones. La
+demanda depende del precio y del riesgo final; una mejor previsión puede
+modificar la posición sin garantizar una rentabilidad superior en cada
+realización. Comparar rendimientos requiere un referente, costos y horizonte.
+El objeto demostrado es sensibilidad $\K$, no un alfa de inversión.
+
+El supuesto de no inferir del precio es material. Si los particulares
+conocieran todos los pesos, sesgos y la oferta fija, podrían despejar
+\begin{equation}
+ \theta=\frac{RHP-HP_0-B\kappa-h_2\delta_1-h_4\delta_2+1}{a}.
+\end{equation}
+Por eso no presento esta solución como un equilibrio de expectativas
+racionales con inferencia completa. Una extensión con oferta aleatoria o
+señales institucionales imperfectas exigiría resolver creencias y precio
+conjuntamente.
+
+Si el sentimiento responde a la transparencia, cambian $a$ y $B$ por
+canales adicionales y la prueba actual no aplica directamente. Tampoco se
+prueba bienestar, reducción de volatilidad total ni desaparición de errores
+de valoración.
+
+\section{Conclusión}
+La señal ruidosa permite derivar las varianzas mediante Bayes.
+CARA y normalidad entregan demanda y precio. La sensibilidad esperada
+aumenta bajo sentimiento fijo y ausencia de inferencia adicional desde precios.
+\label{endbody}
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
+\clearpage
+\appendix
+\section{Integral normal para CARA}
+Para $W\sim N(M,V)$, $V>0$, completo el cuadrado del exponente:
+\begin{equation}
+ aw-\frac{(w-M)^2}{2V}
+ =-\frac{[w-(M+aV)]^2}{2V}+aM+\frac{a^2V}{2}.
+\end{equation}
+Extraigo las constantes de la integral:
+\begin{align}
+ \E[e^{aW}]&=e^{aM+a^2V/2}
+ \int_{\mathbb R}\frac{e^{-[w-(M+aV)]^2/(2V)}}{\sqrt{2\pi V}}\,dw\\
+ &=e^{aM+a^2V/2}.
+\end{align}
+La integral vale uno porque es una densidad normal con media $M+aV$ y
+varianza $V$. Tomar $a=-g_i$ y el signo negativo de la utilidad da el
+resultado. Si $\omega_i=0$, la riqueza es constante y la misma fórmula se
+verifica directamente, sin utilizar una densidad de varianza cero.
+
+\section{Diferencia finita}
+Sean $d_j(z)=e_j+(1-z)s$ y $B_z=\sum_jn_j/d_j(z)$. Al poner las fracciones
+sobre denominador común y simplificar,
+\begin{equation}
+ \K(y)-\K(x)=
+ \frac{(y-x)\left[B_xB_y+
+ a\sum_{j=3}^4 n_je_j/(d_j(x)d_j(y))\right]}
+ {R(a+B_x)(a+B_y)}>0.
+\end{equation}
+La regla usada es
+$(1-x)n_j/d_j(x)-(1-y)n_j/d_j(y)
+=n_je_j(y-x)/[d_j(x)d_j(y)]$. Los denominadores son positivos.
+El código verifica la identidad exactamente; Lean prueba la monotonicidad
+del coeficiente por una descomposición equivalente.
+
+\section{Correspondencia con Lean y alcance}
+La carpeta preliminar conserva las pruebas anteriores y añade
+\texttt{SignalCARA.lean}. Sus informes permiten revisar las compilaciones.
+La auditoría es parcial: identidades sobre momentos no prueban por sí mismas
+Bayes, independencia gaussiana ni una integral de utilidad.
+\begin{center}\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{6.3cm}>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+Resultado & Declaración / archivo & Alcance\\
+\midrule
+Prop.~\ref{prop:information}
+& \texttt{public\_variance}, \texttt{hidden\_variance},
+\texttt{public\_hidden\_covariance}, \texttt{posterior\_square}
+en \texttt{SignalCARA.lean}
+& Identidades algebraicas probadas. Bayes e independencia probabilística
+abiertos en Lean.\\
+Prop.~\ref{prop:demand}
+& \texttt{cara\_normal\_exponent} en \texttt{SignalCARA.lean};
+\texttt{demand\_maximizes}, \texttt{demand\_satisfies\_FOC}
+en \texttt{BaselineAudit.lean}
+& Exponente, CPO y máximo probados; integral normal abierta en Lean.\\
+Prop.~\ref{prop:price}
+& \texttt{market\_clearing} en \texttt{BaselineAudit.lean}
+& Vaciado algebraico probado; esperanza requiere puente probabilístico.\\
+Prop.~\ref{prop:main}
+& \texttt{four\_group\_information\_increases},
+\texttt{full\_information\_endpoint} en \texttt{Transparency.lean}
+& Monotonicidad y extremo probados para el coeficiente algebraico
+con parámetros positivos explícitos.\\
+\bottomrule
+\end{tabular}
+\end{center}
+No se presenta esta carpeta como una corrida integral de AppliedModelingLib
+sobre un commit fijado. Ese procedimiento y el control
+\texttt{paper\_contribution.py check ... --fast} quedan pendientes.
+El paper final del curso debe reportar el commit formalizado y el resultado
+de esa comprobación.
+
+\section{Auditoría de contribuciones de IA}
+El registro documenta afirmaciones, veredictos y comprobaciones.
+Los diálogos de \texttt{prompts.md} son simulados y están identificados así.
+\begin{center}\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}p{4.5cm}>{\raggedright\arraybackslash}p{4.3cm}}
+\toprule
+Afirmación revisada & Veredicto & Comprobación\\
+\midrule
+Asignar $\mu s$ y $(1-\mu)s$ basta como derivación.
+& Incompleto: era una especificación.
+& Señal, Bayes, varianzas y covarianza desarrolladas.\\
+Media-varianza es numéricamente igual a utilidad esperada CARA.
+& Requiere precisión: es un equivalente cierto con igual elección.
+& Integral normal y monotonía de la transformación.\\
+La transparencia siempre mejora el precio.
+& Demasiado amplio: sensibilidad esperada con sentimiento fijo.
+& Prueba, barrido racional y Lean algebraico.\\
+Información institucional implica filtración del emisor.
+& No se desprende del modelo.
+& Lectura de secciones 3 y 6.2 y delimitación propia.\\
+\bottomrule
+\end{tabular}
+\end{center}
+La guía \texttt{hand/derivaciones-guia.md} organiza las derivaciones para
+reproducirlas a mano. Una guía tipografiada no sustituye el apéndice
+manuscrito personal exigido por el curso.
 \end{document}

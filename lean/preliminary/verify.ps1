@@ -16,7 +16,8 @@ Push-Location $PSScriptRoot
 try {
   foreach ($entry in @(
     @{ Source='BaselineAudit.lean'; Log='baseline-check.txt' },
-    @{ Source='Transparency.lean'; Log='transparency-check.txt' }
+    @{ Source='Transparency.lean'; Log='transparency-check.txt' },
+    @{ Source='SignalCARA.lean'; Log='signal-cara-check.txt' }
   )) {
     $lines = & $leanBinary $entry.Source 2>&1
     $result = $LASTEXITCODE

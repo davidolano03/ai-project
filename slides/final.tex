@@ -1,33 +1,679 @@
-% Future final presentation. Explicit status without the template toy model.
 \documentclass[aspectratio=169,11pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish]{babel}
-\usepackage{amsmath,amssymb}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,booktabs,pgfplots,listings}
+\pgfplotsset{compat=1.18}
 \usetheme{default}
 \usecolortheme{seahorse}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{frametitle}{size=\large}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\K}{\mathcal K}
+\newcommand{\idea}[1]{\par\medskip\textbf{Interpretación:} #1}
+\lstset{basicstyle=\ttfamily\scriptsize,columns=fullflexible,keepspaces=true,
+ escapeinside={(*@}{@*)},
+ literate={ℝ}{{\(\mathbb R\)}}1 {≠}{{\(\ne\)}}1 {μ}{{\(\mu\)}}1
+ {≤}{{\(\leq\)}}1 {∀}{{\(\forall\)}}1 {∧}{{\(\land\)}}1}
 \title{Transparencia, sentimiento y fundamentos}
-\subtitle{Presentación final en preparación}
+\subtitle{Una señal pública con ruido y su efecto sobre el precio esperado}
 \author{David Julio Olano Silva Nevado}
-\date{Estado: 8 de octubre de 2026}
+\date{4 de noviembre de 2026}
 \begin{document}
 \begin{frame}[plain]
- \titlepage
- \begin{center}\small\url{https://github.com/davidolano03/ai-project}\end{center}
+\titlepage
+\begin{center}\small\url{https://github.com/davidolano03/ai-project}\end{center}
 \end{frame}
-\begin{frame}{Estado del proyecto}
- La entrega actual está en \texttt{proposal/proposal.pdf}
- y \texttt{slides/topic.pdf}.
- \medskip
- \begin{itemize}
-  \item Pregunta y corrección de información pública definidas.
-  \item Pruebas algebraicas preliminares y verificaciones reproducibles.
-  \item Manuscrito final, revisión ampliada, formalización probabilística
-        y apéndice manuscrito pendientes.
- \end{itemize}
- Esta presentación se desarrollará para el turno final del 4 de noviembre.
+
+\begin{frame}{La pregunta y el resultado}
+\large
+\textquestiondown{}Una señal pública más precisa hace que el precio responda
+más a los fundamentos de una empresa?
+\normalsize\medskip
+\[
+ \K=\frac{\partial\,\E[P\mid\theta,\rho_1,\rho_2]}{\partial\theta}.
+\]
+Si \(\K=0{,}6\), S/ 1 adicional de noticia produce una respuesta esperada
+del precio de S/ 0,60.
+\idea{Obtengo una respuesta creciente con precisión pública, manteniendo
+fijo el sentimiento y sin aprendizaje adicional desde precios.}
+\end{frame}
+
+\begin{frame}{La aplicación: una acción de una empresa cotizada}
+\begin{itemize}
+\item La empresa es el emisor de la acción.
+\item Las instituciones observan la innovación fundamental \(\theta\).
+\item Los particulares reciben un reporte público imperfecto.
+\end{itemize}
+\medskip
+Ejemplo ilustrativo: una noticia sobre la demanda futura de sus productos.
+\idea{Estudio cómo negocian inversionistas con información desigual.
+La divulgación de la empresa es exógena.}
+\small\medskip\par
+Fuente: Zhang y Zhang (2023), secciones 3 y 6.2.
+La observación institucional exacta es una idealización.
+\end{frame}
+
+\begin{frame}{Quién conoce la información importa}
+\small
+\begin{tabular}{p{4.1cm}p{7.4cm}}
+\toprule
+Situación & Tratamiento en este trabajo\\
+\midrule
+Solo el emisor conoce el dato
+& Los inversionistas lo desconocen. No es la \(\theta\) observada por instituciones.\\[0.15cm]
+Algunos inversionistas conocen mejor los fundamentos
+& Es la asimetría estudiada, idealizada como observación de \(\theta\).\\[0.15cm]
+Un directivo transmite un dato a un agente
+& El modelo no especifica esa transmisión ni los incentivos del emisor.\\
+\bottomrule
+\end{tabular}
+\normalsize
+\idea{Información privada describe quién sabe qué. Su origen necesita
+una hipótesis adicional.}
+\end{frame}
+
+\begin{frame}{El pago futuro y la secuencia}
+\[
+ \underbrace{F}_{\text{pago final}}
+ =\underbrace{P_0}_{\text{referencia conocida}}
+ +\underbrace{\theta}_{\text{fundamento}}
+ +\underbrace{\epsilon}_{\text{sorpresa final}}.
+\]
+\(\theta\sim N(0,s)\), \(\epsilon\sim N(0,e)\), independientes,
+\(s>0,\ e>0\).
+\medskip\par
+Primero se observan señales y se negocia. Después se realiza \(\epsilon\).
+\idea{\(\theta=10\) añade S/ 10 al pago esperado.
+La sorpresa final todavía puede cambiar el pago realizado.}
+\small\medskip\par
+\(F,P_0,\theta,\epsilon\): dinero por acción.
+\(s,e\): unidades monetarias al cuadrado por acción al cuadrado.
+\end{frame}
+
+\begin{frame}{El punto de partida que voy a corregir}
+En el modelo básico del paper, las instituciones observan \(\theta\).
+Los particulares no reciben información pública sobre su realización.
+\[
+ \text{Particular racional:}\qquad
+ \E[F]=P_0,\quad \Var(F)=e+s.
+\]
+La extensión publicada introduce
+\[
+ \kappa=\mu\theta,\qquad v_3^I=e+\mu^2s.
+\]
+\idea{La sección 6.2 intenta representar divulgación parcial.
+Revisaré si esas ecuaciones conservan información oculta.}
+\small\medskip\par
+Fuente: ecuaciones (15), (39)--(40), pp. 5 y 15.
+\end{frame}
+
+\begin{frame}{Escalar un dato exacto permite reconstruirlo}
+\[
+ \kappa=\mu\theta,\quad \mu>0
+ \quad\Longrightarrow\quad \theta=\frac{\kappa}{\mu}.
+\]
+Si el público conoce \(\mu=0{,}1\) y observa \(\kappa=1\),
+recupera \(\theta=10\).
+\idea{La señal necesita ruido o un componente desconocido para dejar
+incertidumbre real. Reducir su tamaño numérico no basta.}
+\small\medskip\par
+Auditoría de la ecuación (39), con parámetro conocido.
+Lean comprueba la identidad algebraica.
+\end{frame}
+
+\begin{frame}{La varianza publicada no conserva los extremos}
+La varianza mide cuánto pueden separarse los resultados del pronóstico.
+\[
+ v_3^I=e+\mu^2s.
+\]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Información & Fórmula publicada & Riesgo restante coherente\\
+\midrule
+Ninguna, \(\mu=0\) & \(e\) & \(e+s\)\\
+Completa, \(\mu=1\) & \(e+s\) & \(e\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+\idea{Una noticia ya observada deja de ser una incógnita.
+La sorpresa final sigue siendo incierta.}
+\small\medskip\par
+La columna derecha fija los extremos. La fórmula intermedia requiere
+construir una estructura de información.
+\end{frame}
+
+\begin{frame}{El contraejemplo compara la extensión con el básico}
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Escenario & Respuesta por S/ 1 de fundamento\\
+\midrule
+Básico, sin información pública & S/ \(0{,}643\)\\
+Extensión impresa, \(\mu=0\) & S/ \(0{,}500\)\\
+Extensión impresa, \(\mu=0{,}1\) & S/ \(0{,}552\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+La proposición 5(ii) afirma mejora frente al básico, pero \(0{,}552<0{,}643\).
+\idea{Un caso admisible cuestiona la afirmación universal impresa.
+La comparación relevante es la primera fila con la tercera.}
+\small\medskip\par
+\(\lambda_i=1/4,\ \gamma=R=1\), sesgos y estados cero.
+\(e=s=\tau_1^2=\tau_2^2=1\). Lean verifica las fracciones exactas.
+\end{frame}
+
+\begin{frame}{Nuestra señal pública contiene ruido}
+\[
+ \underbrace{y}_{\text{reporte observado}}
+ =\underbrace{\theta}_{\text{fundamento}}
+ +\underbrace{\eta}_{\text{ruido del reporte}},
+ \qquad \eta\sim N(0,t).
+\]
+\(\eta\) es independiente de \(\theta,\epsilon\), con \(t>0\).
+\medskip\par
+\(t\) mide imprecisión del reporte: cuanto menor es, más útil resulta.
+\idea{Observar el reporte no permite separar exactamente fundamento y ruido.}
+\small\medskip\par
+\(y,\eta\) se miden en dinero por acción. La institución observa además
+\(\theta\). El reporte resume información económicamente relevante.
+\end{frame}
+
+\begin{frame}{Bayes: combinar el conocimiento previo con el reporte}
+Para un posible fundamento \(x\) y un dato observado \(y\):
+\[
+ f(x\mid y)\propto f(y\mid x)f(x)
+ \propto\exp\left\{-\frac12
+ \left[\frac{x^2}{s}+\frac{(y-x)^2}{t}\right]\right\}.
+\]
+\[
+ \frac{x^2}{s}+\frac{(y-x)^2}{t}
+ =\left(\frac1s+\frac1t\right)x^2-\frac{2y}{t}x+\frac{y^2}{t}.
+\]
+\idea{La distribución previa aporta \(x^2/s\).
+La distancia entre el fundamento posible y el reporte aporta \((y-x)^2/t\).}
+\end{frame}
+
+\begin{frame}{Completar el cuadrado entrega el pronóstico}
+\[
+ \frac{x^2}{s}+\frac{(y-x)^2}{t}
+ =\frac{s+t}{st}\left(x-\frac{s}{s+t}y\right)^2+\frac{y^2}{s+t}.
+\]
+El último término es constante respecto de \(x\). Reconozco una normal:
+\[
+ \theta\mid y\sim
+ N\left(\underbrace{\frac{s}{s+t}y}_{\text{media posterior}},
+ \underbrace{\frac{st}{s+t}}_{\text{varianza posterior}}\right).
+\]
+\idea{El reporte cambia el pronóstico y reduce la incertidumbre previa \(s\).}
+\end{frame}
+
+\begin{frame}{Definir \(\mu\), \(\kappa\) y \(\xi\) después de Bayes}
+\[
+ \underbrace{\mu=\frac{s}{s+t}}_{\text{peso del reporte}},\qquad
+ \underbrace{\kappa=\mu y}_{\text{pronóstico público}},\qquad
+ \underbrace{\xi=\theta-\kappa}_{\text{error todavía oculto}}.
+\]
+\(\theta=\kappa+\xi\). Con menor ruido \(t\), el público asigna más peso
+al reporte y \(\mu\) aumenta.
+\idea{\(\kappa\) resume lo aprendido sobre el fundamento.
+Dividir por \(\mu\) solo recupera el reporte ruidoso \(y\).}
+\small\medskip\par
+Esta construcción justifica las proporciones de varianza de la propuesta.
+\end{frame}
+
+\begin{frame}{Derivación de la varianza pública}
+Como \(\theta\) y \(\eta\) son independientes,
+\[
+ \Var(y)=\Var(\theta+\eta)=s+t.
+\]
+Escalar una variable multiplica su varianza por el cuadrado del factor:
+\[
+ \Var(\kappa)=\Var(\mu y)=\mu^2(s+t)
+ =\frac{s^2}{(s+t)^2}(s+t)
+ =\frac{s^2}{s+t}=\boxed{\mu s}.
+\]
+\idea{La proporción surge del pronóstico de Bayes y de la varianza del
+reporte. No se obtiene multiplicando directamente \(\theta\) por \(\mu\).}
+\end{frame}
+
+\begin{frame}{Derivación de la varianza oculta}
+Primero reescribo el residuo:
+\[
+ \xi=\theta-\mu(\theta+\eta)=(1-\mu)\theta-\mu\eta.
+\]
+La independencia elimina el término cruzado:
+\[
+ \Var(\xi)=(1-\mu)^2s+\mu^2t
+ =\frac{t^2s+s^2t}{(s+t)^2}
+ =\frac{st}{s+t}=\boxed{(1-\mu)s}.
+\]
+\idea{El residuo combina el fundamento no explicado y el ruido del pronóstico.}
+\end{frame}
+
+\begin{frame}{Por qué el componente público no revela el residuo}
+\[
+ \Cov(\kappa,\xi)
+ =\mu(1-\mu)s-\mu^2t
+ =\mu[(1-\mu)s-\mu t]=0.
+\]
+Ambos componentes son conjuntamente normales.
+En ese caso, covarianza cero implica independencia.
+\[
+ \E[\theta\mid\kappa]=\kappa,\qquad
+ \Var(\theta\mid\kappa)=(1-\mu)s.
+\]
+\idea{Después de observar \(\kappa\), sigue faltando \(\xi\).
+Su incertidumbre disminuye al aumentar la precisión pública.}
+\end{frame}
+
+\begin{frame}{Un ejemplo que distingue promedio e incertidumbre}
+Si \(s=t=100\), entonces \(\mu=1/2\). El reporte es \(y=8\):
+\[
+ \kappa=\tfrac12(8)=4,\qquad
+ \Var(\xi)=\tfrac12(100)=50.
+\]
+Con \(P_0=100\) y \(e=4\):
+\[
+ \E[F\mid y]=104,\qquad \Var(F\mid y)=50+4=54.
+\]
+\idea{Espero 104, pero puedo equivocarme.
+La parte oculta y la sorpresa final explican el riesgo que permanece.}
+\small\medskip\par
+Varianza 50 implica desviación estándar \(\sqrt{50}\simeq7{,}071\).
+Las varianzas se expresan en unidades monetarias al cuadrado.
+\end{frame}
+
+\begin{frame}{Los extremos ahora representan lo que queremos}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Precisión pública & \(\mu=0\) & \(\mu=0{,}5\) & \(\mu=1\)\\
+\midrule
+Varianza pública, \(s=100\) & 0 & 50 & 100\\
+Varianza oculta & 100 & 50 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+En cero defino ausencia de señal: \(\kappa=0,\xi=\theta\).
+En uno defino señal exacta: \(\kappa=\theta,\xi=0\).
+\idea{La variación total sigue siendo 100.
+Una parte cada vez mayor pasa a ser observable.}
+\small\medskip\par
+El 50\% se refiere a varianza, no a la mitad del valor realizado de \(\theta\).
+\end{frame}
+
+\begin{frame}{Las creencias de los cuatro grupos}
+\small
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Grupo & Media \(m_i\) & Varianza \(v_i\) & Aversión \(g_i\)\\
+\midrule
+Institución racional & \(P_0+\theta\) & \(e\) & \(\gamma\)\\[0.1cm]
+Institución sentimental & \(P_0+\theta+\delta_1\) & \(e+\tau_1^2\) & \(\gamma e^{-b\rho_1}\)\\[0.1cm]
+Particular racional & \(P_0+\kappa\) & \(e+(1-\mu)s\) & \(\gamma\)\\[0.1cm]
+Particular sentimental & \(P_0+\kappa+\delta_2\) & \(e+(1-\mu)s+\tau_2^2\) & \(\gamma e^{-b\rho_2}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+\normalsize
+\(\delta_j\): sesgo en el pronóstico. \(\tau_j^2\): varianza subjetiva adicional.
+\(\rho_j\): estado sentimental. \(b>0\): sensibilidad de aversión al estado.
+\idea{Todos reciben el mismo pago real. La tabla describe sus creencias.}
+\end{frame}
+
+\begin{frame}{Cómo se obtiene cada varianza del pago}
+Para el particular racional, \(\kappa\) ya es conocido:
+\[
+ F=P_0+\kappa+\xi+\epsilon.
+\]
+\[
+ v_3=\Var(\xi+\epsilon\mid\kappa)
+ =(1-\mu)s+e+
+ \underbrace{2\Cov(\xi,\epsilon\mid\kappa)}_{0}.
+\]
+Para una institución, \(\theta\) ya es conocido y \(v_1=e\).
+Un error sentimental independiente añade \(\tau_j^2\).
+\idea{Las independencias justifican sumar varianzas.
+Un sesgo constante cambia la media, sin añadir varianza.}
+\end{frame}
+
+\begin{frame}{CARA: cómo el agente valora la riqueza}
+\[
+ U_i(W)=-e^{-g_iW},\qquad g_i>0.
+\]
+\[
+ U_i'(W)=g_i e^{-g_iW}>0,\qquad
+ U_i''(W)=-g_i^2e^{-g_iW}<0.
+\]
+\[
+ -\frac{U_i''(W)}{U_i'(W)}=g_i.
+\]
+\idea{El agente prefiere más riqueza y evita riesgo.
+Su aversión absoluta es constante respecto de su riqueza.}
+\small\medskip\par
+\(g_i\) tiene unidades de inverso de dinero y permanece fijo al elegir.
+\end{frame}
+
+\begin{frame}{Comprar acciones modifica media y varianza de riqueza}
+\[
+ W_i=(w_{0i}-P\omega_i)R+\omega_i F
+ =\underbrace{Rw_{0i}}_{C_{0i}}+\omega_i(F-RP).
+\]
+\[
+ M_i=\E_i[W_i]=C_{0i}+\omega_i(m_i-RP),
+\]
+\[
+ V_i=\Var_i(W_i)
+ =\omega_i^2\Var_i(F-RP)=\boxed{\omega_i^2v_i}.
+\]
+\idea{Duplicar la cantidad de acciones cuadruplica la varianza de riqueza.
+El precio pagado es conocido durante la elección.}
+\small\medskip\par
+\(\omega_i\): cantidad de acciones. \(R=1+r_f\): factor seguro.
+\end{frame}
+
+\begin{frame}{La normalidad conecta CARA con media-varianza}
+Para riqueza normal, \(\E[e^{aW}]=e^{aM+a^2V/2}\).
+\[
+ \E_i[U_i(W_i)]
+ =-\exp\left(-g_iM_i+\frac{g_i^2V_i}{2}\right)
+ =-\exp\left[-g_i\left(M_i-\frac{g_iV_i}{2}\right)\right].
+\]
+La transformación \(-e^{-g_i z}\) es creciente. Maximizar utilidad
+equivale a maximizar
+\[
+ CE_i=C_{0i}+\omega_i(m_i-RP)-\frac{g_iv_i}{2}\omega_i^2.
+\]
+\idea{El equivalente cierto suma beneficio esperado y resta una
+penalización por riesgo. La integral completa está en el anexo A1.}
+\end{frame}
+
+\begin{frame}{Derivar la CPO, término por término}
+\[
+ CE_i=C_{0i}+\omega_i(m_i-RP)-\tfrac12g_iv_i\omega_i^2.
+\]
+\[
+ \frac{\partial CE_i}{\partial\omega_i}
+ =\underbrace{0}_{\text{constante}}
+ +\underbrace{(m_i-RP)}_{\text{término lineal}}
+ -\underbrace{g_iv_i\omega_i}_{\text{derivada del cuadrado}}=0.
+\]
+\[
+ \boxed{\omega_i^*=\frac{m_i-RP}{g_iv_i}},\qquad
+ \frac{\partial^2 CE_i}{\partial\omega_i^2}=-g_iv_i<0.
+\]
+\idea{El óptimo equilibra beneficio marginal y costo marginal del riesgo.
+La concavidad garantiza un máximo único.}
+\end{frame}
+
+\begin{frame}{La demanda del particular racional}
+\[
+ \omega_3^*=
+ \frac{\overbrace{P_0+\kappa}^{\text{pago esperado}}-
+       \overbrace{RP}^{\text{costo financiado}}}
+ {\underbrace{\gamma}_{\text{aversión}}
+  \underbrace{[e+(1-\mu)s]}_{\text{varianza que permanece}}}.
+\]
+\idea{La información modifica cuánto espera recibir y cuánto riesgo cree
+estar tomando. Ambos canales afectan su demanda.}
+\medskip\par
+La fórmula permite posiciones negativas. El resultado usa esa libertad
+de negociar, masas positivas y riesgo final \(e>0\).
+\end{frame}
+
+\begin{frame}{El precio iguala demanda agregada y oferta}
+\[
+ 1=\sum_i\lambda_i\omega_i^*
+ =\sum_i\frac{\lambda_i}{g_iv_i}(m_i-RP).
+\]
+Defino \(h_i=\lambda_i/(g_iv_i)\) y \(H=\sum_i h_i\). Entonces
+\[
+ 1=\sum_i h_im_i-RPH,\qquad
+ \boxed{P=\frac{\sum_i h_im_i-1}{RH}}.
+\]
+\idea{Los grupos con mayor masa, menor aversión o menor varianza percibida
+tienen mayor peso en la respuesta agregada.}
+\small\medskip\par
+\(\lambda_i>0\) suman uno. La oferta normalizada es una acción.
+\end{frame}
+
+\begin{frame}{De la señal realizada al precio esperado}
+Con \(a=h_1+h_2\), \(B=h_3+h_4\) y \(H=a+B\):
+\[
+ P=\frac{HP_0+a\theta+B\kappa+h_2\delta_1+h_4\delta_2-1}{RH}.
+\]
+El ruido público tiene media cero:
+\[
+ \E[\kappa\mid\theta]=\E[\mu(\theta+\eta)\mid\theta]=\mu\theta.
+\]
+Por tanto,
+\[
+ \bar P=C(\mu)+\underbrace{\frac{a+\mu B}{R(a+B)}}_{\K(\mu)}\theta.
+\]
+\idea{\(\K\) mide sensibilidad esperada. El promedio elimina la realización
+particular del ruido del reporte.}
+\end{frame}
+
+\begin{frame}{La proposición propia y todas sus condiciones}
+Si \(0\leq x<y\leq1\), entonces
+\[
+ \boxed{\K(y)>\K(x)},\qquad 0<\K(\mu)\leq1/R,\quad \K(1)=1/R.
+\]
+\begin{itemize}
+\item Cuatro masas positivas, \(R>0\), \(s>0\), \(e>0\).
+\item Estados, sesgos, aversiones y varianzas sentimentales fijos.
+\item Ruido público independiente y aprendizaje desde la señal especificada.
+\item Oferta fija y posiciones reales sin restricciones.
+\end{itemize}
+\idea{La conclusión trata de cuánto responde el precio esperado a una noticia.}
+\end{frame}
+
+\begin{frame}{Por qué la sensibilidad aumenta}
+Sean \(d_j=e_j+(1-\mu)s\), \(B=\sum_{j=3}^4n_j/d_j\),
+con \(n_j,e_j>0\). Las instituciones mantienen \(a\) fijo.
+\[
+ \K'=\frac{B^2+a[B-(1-\mu)B']}{R(a+B)^2}.
+\]
+Para cada grupo particular:
+\[
+ \frac{n_j}{d_j}-(1-\mu)\frac{n_js}{d_j^2}
+ =\frac{n_je_j}{d_j^2}>0.
+\]
+\[
+ \boxed{\K'=\frac{B^2+a\sum_j n_je_j/d_j^2}{R(a+B)^2}>0}.
+\]
+\idea{El aumento de respuesta al fundamento domina el cambio de pesos
+cuando mantenemos fijo el sentimiento.}
+\end{frame}
+
+\begin{frame}{La corrección recupera el básico y aumenta con precisión}
+\begin{center}
+\resizebox{0.83\textwidth}{!}{\input{../code/figures/information.tex}}
+\end{center}
+\small
+En \(\mu=0{,}1\): publicado \(0{,}551866\), básico \(0{,}642857\),
+corregido \(0{,}669346\). Parámetros del contraejemplo.
+\end{frame}
+
+\begin{frame}{Qué comprueba el código}
+\begin{itemize}
+\item Fracciones exactas del contraejemplo y de la corrección.
+\item Posterior, varianzas y covarianza mediante identidades racionales.
+\item CPO, máximo y vaciado de mercado en cuatro grupos.
+\item 5\,760 comparaciones exactas de sensibilidad y 60 mercados.
+\item Momentos gaussianos simulados con semilla fija e integral CARA numérica.
+\end{itemize}
+\idea{Las simulaciones permiten detectar errores de implementación.
+La demostración general depende de los supuestos escritos.}
+\small\medskip\par
+Un único comando: \texttt{python code/verify.py}.
+\end{frame}
+
+\begin{frame}[fragile]{Lean comprueba pasos algebraicos identificables}
+Ejemplo: la proporción pública sale de una identidad, no de una hipótesis
+que ya afirme el resultado.
+\begin{lstlisting}
+theorem public_variance (s t : (*@ \(\mathbb R\) @*)) (h : s + t (*@ \(\ne\) @*) 0) :
+    (s / (s + t)) ^ 2 * (s + t) =
+      (s / (s + t)) * s := by
+  field_simp
+\end{lstlisting}
+\small
+Además, \texttt{four\_group\_information\_increases} prueba la
+monotonicidad del coeficiente de cuatro grupos.
+\normalsize
+\idea{Bayes, normalidad conjunta e integral CARA tienen derivación escrita.
+Su formalización probabilística completa permanece abierta.}
+\end{frame}
+
+\begin{frame}{Dónde corregí la explicación de la IA}
+\begin{center}\small
+\begin{tabular}{p{4.6cm}p{6.7cm}}
+\toprule
+Afirmación inicial & Veredicto y comprobación\\
+\midrule
+Asignar \(\mu s\) y \((1-\mu)s\) basta como derivación
+& Era un supuesto. Ahora lo derivo desde \(y=\theta+\eta\) y Bayes.\\[0.15cm]
+Media-varianza es la utilidad esperada CARA
+& Es un equivalente cierto. La integral y la transformación creciente
+justifican la misma elección.\\[0.15cm]
+Más transparencia siempre mejora el precio
+& El resultado demostrado es sensibilidad esperada bajo condiciones fijas.\\
+\bottomrule
+\end{tabular}
+\end{center}
+\normalsize
+El paso que debo poder reproducir a mano es la expansión de \(\Var(\xi)\)
+y su covarianza con \(\kappa\). La guía está en \texttt{hand/}.
+\end{frame}
+
+\begin{frame}{El límite principal: aprender del precio cambiaría el problema}
+Si todos conocieran pesos, sesgos y oferta fija, podrían despejar:
+\[
+ \theta=\frac{RHP-HP_0-B\kappa-h_2\delta_1-h_4\delta_2+1}{a}.
+\]
+Por eso mantengo explícita la restricción de no inferir información
+adicional del precio.
+\idea{Resolver un mercado con esa inferencia exige un equilibrio informativo
+distinto, por ejemplo con oferta aleatoria o señales institucionales imperfectas.}
+\small\medskip\par
+Tampoco se demuestra una ganancia extraordinaria institucional:
+eso requiere una medida de rendimiento, costos y referencia.
+\end{frame}
+
+\begin{frame}{Preguntas para la discusión}
+\large
+\begin{enumerate}
+\item \textquestiondown{}Qué interpretación económica defiende mejor
+la ausencia de aprendizaje adicional desde precios?
+\item \textquestiondown{}Conviene extender primero el modelo con oferta
+aleatoria o con información institucional imperfecta?
+\item \textquestiondown{}Qué reacción del sentimiento a la precisión pública
+podría cambiar el resultado?
+\end{enumerate}
+\normalsize\medskip
+El paper desarrolla cuatro proposiciones. La prueba Lean actual certifica
+su parte algebraica y declara los pasos probabilísticos pendientes.
+\end{frame}
+
+\appendix
+\begin{frame}{A1. La integral normal detrás de CARA}
+Para \(W\sim N(M,V)\), \(V>0\):
+\[
+ aw-\frac{(w-M)^2}{2V}
+ =-\frac{[w-(M+aV)]^2}{2V}+aM+\frac{a^2V}{2}.
+\]
+\[
+ \E[e^{aW}]
+ =e^{aM+a^2V/2}
+ \underbrace{\int_{\mathbb R}
+ \frac{e^{-[w-(M+aV)]^2/(2V)}}{\sqrt{2\pi V}}\,dw}_{1}
+ =e^{aM+a^2V/2}.
+\]
+\idea{Completar el cuadrado deja una densidad que integra uno.
+Sustituyo \(a=-g_i\). Si \(V=0\), la riqueza es constante.}
+\end{frame}
+
+\begin{frame}{A2. Los términos cruzados de la varianza oculta}
+\[
+ \Var(A X+B Y)
+ =A^2\Var(X)+B^2\Var(Y)+2AB\Cov(X,Y).
+\]
+Con \(A=1-\mu\), \(B=-\mu\), \(X=\theta\), \(Y=\eta\):
+\[
+ \Var(\xi)=(1-\mu)^2s+\mu^2t
+ -2\mu(1-\mu)\underbrace{\Cov(\theta,\eta)}_0.
+\]
+\[
+ (1-\mu)^2s+\mu^2t
+ =\frac{t^2s+s^2t}{(s+t)^2}
+ =\frac{st}{s+t}.
+\]
+\idea{Independencia del ruido y el fundamento elimina la covarianza.}
+\end{frame}
+
+\begin{frame}{A3. La CPO da un máximo global}
+\[
+ CE(\omega^*)-CE(\omega)
+ =\frac{gv}{2}(\omega-\omega^*)^2\geq0.
+\]
+\(g,v>0\), por lo que la igualdad solo ocurre si \(\omega=\omega^*\).
+\idea{La posición de la CPO domina cualquier otra posición real.
+Lean verifica esta identidad y la desigualdad.}
+\small\medskip\par
+Si se prohibiera vender en corto, habría que resolver el problema
+restringido; la demanda sería el máximo entre cero y la solución interior.
+\end{frame}
+
+\begin{frame}{A4. Una diferencia finita evita aproximar derivadas}
+Con \(d_j(z)=e_j+(1-z)s\) y \(B_z=\sum_j n_j/d_j(z)\):
+\[
+ \K(y)-\K(x)=
+ \frac{(y-x)\left[B_xB_y+
+ a\sum_j\frac{n_je_j}{d_j(x)d_j(y)}\right]}
+ {R(a+B_x)(a+B_y)}.
+\]
+Todos los términos son positivos para \(x<y\leq1\).
+\idea{El incremento es exacto y cubre los extremos.
+El código comprueba la identidad con fracciones.}
+\end{frame}
+
+\begin{frame}{A5. Qué queda para completar el paper del curso}
+\begin{itemize}
+\item Formalización probabilística de Bayes, gaussianas e integral CARA.
+\item Procedimiento integral de AppliedModelingLib sobre un commit fijado.
+\item Apéndice manuscrito personal con todas las manipulaciones.
+\end{itemize}
+\medskip
+Los archivos actuales identifican esas tareas pendientes.
+\idea{La presentación final es un avance para recibir crítica.
+Las instrucciones actuales fijan el paper final para el 26 de noviembre.}
+\small\medskip\par
+Fuente: issue 7 del curso, secciones 4--6, consultado el 2 de noviembre.
+\end{frame}
+
+\begin{frame}{A6. Fuentes y ubicación de resultados}
+\small
+Zhang y Zhang (2023), \emph{Information asymmetry, sentiment interactions,
+and asset price}. NAJEF 67, 101920.
+\par\medskip
+Modelo: pp. 3--6. Transparencia: sección 6.2, pp. 15--16.
+Ecuaciones (39)--(44) y proposición 5(ii).
+\par\medskip
+Di Maggio y Pagano (2018), \emph{Financial Disclosure and Market
+Transparency with Costly Information Processing}. Review of Finance 22(1),
+117--153. Publicación en línea: 2017.
+\par\medskip
+Grossman y Stiglitz (1980), \emph{On the Impossibility of Informationally
+Efficient Markets}. AER 70(3), 393--408.
+\par\medskip
+Derivaciones y condiciones: \texttt{paper/paper.pdf}.
+Verificación: \texttt{code/verify.py}. Pruebas: \texttt{lean/preliminary/}.
 \end{frame}
 \end{document}
