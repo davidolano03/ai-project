@@ -1,0 +1,2 @@
+# Preserve PDF bytes: cross-reference offsets depend on exact line endings.
+*.pdf binary
