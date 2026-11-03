@@ -23,9 +23,9 @@
 | [Lean](lean/README.md) | Cinco proposiciones probadas, incluida probabilidad y sentimiento variable; --fast: código 0; comparación directa: 5 MATCH |
 | [Apéndice manuscrito](hand/derivaciones-manuscritas.pdf) | Seis fotos reales ordenadas: Bayes, posterior, varianzas y CARA/CPO; incluidas también en el paper y el Beamer. Otras derivaciones manuscritas por aportar; alcance en hand/README.md |
 | Corrida de Lean del curso | Ejecutada sobre el commit 55409d5; versiones e informes en lean/verification/. No se afirma aceptación automática integral v12 |
-| [Registro IA](prompts.md) | Ejemplos de estudio existentes; el estudiante añadirá sus conversaciones reales en crudo |
+| [Registro IA](prompts.md) | Registro histórico conservado y seis intercambios reales de estudio del 3 de noviembre (19–24), con sus preguntas, respuestas y capturas; revisión del estudiante pendiente |
 
-La nota histórica del 2 de noviembre en prompts.md precede a la corrida actual de Lean. Se conserva como registro; el estado vigente de las cinco proposiciones está en lean/README.md.
+Los apartados 1–18 de prompts.md conservan el registro histórico de estudio; los apartados 19–24 contienen intercambios reales de la conversación del 3 de noviembre. Las afirmaciones históricas sobre pruebas pendientes preceden a la corrida actual: el estado vigente de las cinco proposiciones está en lean/README.md.
 
 **Reproducir.** Python ≥3.10: python code/verify.py, sin bibliotecas externas. Desde cada carpeta, latexmk -pdf paper.tex, latexmk -pdf final.tex, latexmk -pdf topic.tex y latexmk -pdf proposal.tex. Los cuatro PDFs guardados proceden de la compilación de GitHub Actions, con el workflow intacto de la plantilla. Tectonic y el editor nativo se usaron además para comprobaciones locales. Lean: instrucciones en lean/README.md; las pruebas actuales están en la raíz de lean/, con soporte reproducible para AppliedModelingLib. preliminary/ conserva las pruebas históricas. El chequeo focalizado y la comparación independiente directa no equivalen a un recibo integral v12; su alcance se detalla en lean/README.md.
 
