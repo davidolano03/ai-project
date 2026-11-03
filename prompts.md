@@ -444,40 +444,40 @@ Nota de procedencia: los diálogos de estudio de este archivo son ejemplos simul
 
 ## Simulación 15. Derivar las proporciones desde una señal
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > No quiero asumir directamente Var(κ)=μs. Supón que el público observa y=θ+η, con varianzas s y t. ¿Cómo llegas al peso μ y a esa varianza?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 Bayes combina las densidades normal previa y del ruido. Completar el cuadrado da θ|y normal con media s·y/(s+t) y varianza st/(s+t). Defino μ=s/(s+t) y κ=μy. La independencia implica Var(y)=s+t. Entonces Var(κ)=μ²(s+t)=s²/(s+t)=μs. La proporción se deriva del pronóstico posterior; no significa que κ sea una fracción exacta del θ realizado.
 
 ## Simulación 16. Residuo y covarianza
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > Si ξ=θ−κ, muéstrame la varianza sin saltarte términos. ¿Por qué afirmas que κ y ξ son independientes?
 
-**Codex (respuesta simulada):**
+**Codex:**
 
 ξ=(1−μ)θ−μη. Su varianza es (1−μ)²s+μ²t−2μ(1−μ)Cov(θ,η). La independencia original anula la covarianza. Sustituir μ=s/(s+t) entrega st/(s+t)=(1−μ)s. Después calculo Cov(κ,ξ)=μ(1−μ)s−μ²t=0. Como son conjuntamente gaussianos, esa covarianza cero implica independencia. Sin normalidad conjunta no basta ese cálculo para concluir independencia.
 
 ## Simulación 17. CARA, riqueza y CPO
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿Por qué aparece ω² en la varianza de riqueza y cómo pasas de utilidad exponencial a la CPO? ¿CARA determina la varianza del pago?
 
-**Codex (respuesta simulada):**
+**Codex :**
 
 La cartera produce W=C₀+ω(F−RP). Durante la elección, las constantes no generan varianza y Var(ωF)=ω²Var(F)=ω²v. CARA utiliza esa varianza, que proviene de la información y las creencias. Si W es normal con media M y varianza V, integrar la utilidad da E[U]=−exp(−gM+g²V/2). La transformación creciente permite maximizar CE=M−gV/2. Sustituyendo M y V resulta CE=C₀+ω(m−RP)−gvω²/2. Derivar entrega m−RP−gvω=0; dividir por gv>0 da la demanda. La segunda derivada −gv<0 y completar el cuadrado prueban el máximo único.
 
-## Simulación 18. Emisor y ventaja informativa
+## . Emisor y ventaja informativa
 
-**Estudiante (simulado):**
+**Estudiante:**
 
 > ¿La información privada significa que la empresa oculta un dato y lo transmite a ciertos agentes? ¿El modelo demuestra que esos agentes ganan más?
 
-**Codex (respuesta simulada):**
+**Codex :**
 
 El modelo especifica conjuntos informativos de inversionistas. No incluye una empresa que elige a quién transmitir un dato. La aplicación se delimita a una acción con información desigual entre instituciones y particulares; observar θ exactamente es una idealización. Un dato que solo conoce el emisor no pertenece a la θ conocida por instituciones. Para modelar una filtración se necesitan un canal y sus incentivos. La ventaja informativa puede modificar posiciones, pero no demuestra una rentabilidad extraordinaria: hacen falta precio, riesgo, costos, horizonte y referencia de comparación. El resultado obtenido corresponde a sensibilidad esperada del precio.
