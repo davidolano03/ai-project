@@ -1,0 +1,1 @@
+papers/Olano26Transparencia/PaperInterface.lean:113:40: error: unexpected token '|'; expected ']'

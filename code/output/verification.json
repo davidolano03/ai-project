@@ -7,7 +7,7 @@
   "printed_increasing_but_below_baseline_up_to": "0.26",
   "comparative_static_pairs": 5760,
   "market_cases": 60,
-  "formal_probability_bridge": "Monte Carlo diagnostics only; not formally proved by preliminary Lean",
+  "formal_probability_bridge": "Computational diagnostics only; separate formal proof coverage is documented in lean/README.md",
   "signal_and_cara": {
     "status": "PASS",
     "exact_posterior_cases": 144,
@@ -37,7 +37,7 @@
     "cara_quadrature_cases": 12,
     "cara_max_relative_error": 2.220446049250313e-16,
     "cara_tolerance": 1e-10,
-    "limitations": "Finite checks and simulation; no formal probability bridge."
+    "limitations": "Finite checks and simulation only; separate formal proof coverage is documented in lean/README.md."
   },
   "expected_price_bridge_monte_carlo": [
     {

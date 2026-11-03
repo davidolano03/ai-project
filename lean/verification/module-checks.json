@@ -1,0 +1,34 @@
+[
+  {
+    "module": "Information",
+    "exit_code": 0
+  },
+  {
+    "module": "CARA",
+    "exit_code": 0
+  },
+  {
+    "module": "Price",
+    "exit_code": 0
+  },
+  {
+    "module": "Sensitivity",
+    "exit_code": 0
+  },
+  {
+    "module": "Assumptions",
+    "exit_code": 0
+  },
+  {
+    "module": "MainTheorems",
+    "exit_code": 0
+  },
+  {
+    "module": "PaperInterface",
+    "exit_code": 0
+  },
+  {
+    "module": "ProofInterface",
+    "exit_code": 1
+  }
+]

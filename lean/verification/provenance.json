@@ -1,0 +1,32 @@
+{
+  "source": {
+    "commit": "55409d500deba8b66072bd75d042d1faa962cdad",
+    "pdf_url": "https://github.com/davidolano03/ai-project/blob/55409d500deba8b66072bd75d042d1faa962cdad/paper/paper.pdf",
+    "sha256": {
+      "paper/paper.pdf": "8f3410472d3966a3e3be75828373686cb443772f9effb906bee67306f9f054c1",
+      "paper/paper.tex": "8745553b2b2e9b05224abff3fcc446213bfdfca147d73103fab9e7012a546ebe",
+      "paper/references.bib": "5cf4a03d6accb022ce323d12d822b57942538a2141a6c3999869ad6e4538aef6"
+    }
+  },
+  "library_base": "194edcc95df74806a39b961d10dedddc6e730cce",
+  "lean": "4.30.0-rc2",
+  "mathlib": "5450b53e5ddc75d46418fabb605edbf36bd0beb6",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "course_check_exit": 0,
+  "direct_source_comparison": "5 MATCH",
+  "full_protocol_receipt": "not_issued",
+  "proof_files_sha256": {
+    "Assumptions.lean": "f989b43b48cd4371eb15bf511621217e884157d3bd04fd88a049b56dfd6ea6ef",
+    "CARA.lean": "fed1f220d0917f503bef2516256d8a818fcf38bca6b694ff0ec82029266ef94e",
+    "Endogenous.lean": "97f1c69e400f81db12032a888828a5cab24ab3ad8c215168bde08892f6eb135b",
+    "Information.lean": "af5bc9c47b73f52d4c55cb7aa21a9b9c586de4f7c349ebf53a73582dcc459404",
+    "MainTheorems.lean": "a921b9cbf94cffb0bf57bda66a0687aa9490cf12fbfc435d75d2324e3f3f1f21",
+    "Model.lean": "d418483d4ac37e53ca3eac8e7a7ce966b6a99137a071633a4adae03a7b9c4266",
+    "PaperInterface.lean": "d1dcb38d739a6a22c7d797c604b895896d78453c1682e2cd2ce8cad5f9e29623",
+    "Price.lean": "8177ff46349ac6d4459c223d49acffbb420e495511f71070ddf96b0be7e79ccc",
+    "ProofInterface.lean": "73a116aace8db03236c472dfdddf5a6856126f5beb8ee161c80df7632b1b091f",
+    "Sensitivity.lean": "63a80a37a8104219d5cda58dac941e10553940c096e816b11753ce804205ed02"
+  },
+  "proof_files_hash_encoding": "UTF-8 with LF line endings"
+}

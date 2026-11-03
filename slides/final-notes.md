@@ -1,124 +1,304 @@
 # Guion de la presentación final
 
-Versión del 2 de noviembre de 2026, integración de la extensión. Presentación programada: 4 de noviembre, 08:20–09:05 Lima. Objetivo: 30 minutos de exposición y 15 de discusión. 38 diapositivas principales y 6 de consulta. Las fórmulas completas están en el manuscrito.
+Secuencia alineada con el manual de estudio del modelo corregido y ampliado.
+38 diapositivas principales y 24 de consulta. Mantiene el tema visual y el título.
+La ruta principal está pensada para aproximadamente 30 minutos; el apéndice permite responder una pregunta en el momento.
 
-## Ruta y tiempos
+## Ruta de exposición
 
-| Diapositivas | Minutos | Propósito |
+| Bloque | Minutos orientativos | Propósito |
 |---|---:|---|
-| 1–5 | 3 | Pregunta, aplicación, quién sabe qué y unidades |
-| 6–9 | 3 | Auditoría del básico y la extensión |
-| 10–18 | 9 | Derivar Bayes, κ, ξ y sus varianzas |
-| 19–20 | 1,5 | Creencias y varianzas del pago |
-| 21–25 | 4,5 | CARA, riqueza, equivalente cierto y CPO |
-| 26–31 | 4 | Mercado, prueba y efectos de signo opuesto |
-| 32–33 | 2 | Extensión y reversión del resultado |
-| 34–38 | 3 | Código, Lean, correcciones y discusión |
+| 1–6 | 4 | Pregunta, pago, varianza y actores |
+| 7–14 | 7 | Señal, Bayes, componentes y extremos |
+| 15–21 | 6 | Creencias, sentimiento, CARA y CPO |
+| 22–27 | 5 | Mercado, sensibilidad y dos efectos |
+| 28–34 | 6 | Corrección y extensión con umbral |
+| 35–38 | 2 | Evidencia, alcance y respuesta final |
 
-Si falta tiempo, dedicar menos a la auditoría original y conservar las derivaciones 10–16 y 21–24.
+Los tiempos son una guía: conviene ensayar. No leer cada fila de las tablas; explicar qué cambia entre los grupos.
 
-## 1–5. Qué estamos estudiando
+## Guion por diapositiva y vínculo con el manual
 
-Decir: «Mi unidad de análisis es la negociación de una acción de una empresa cotizada. La empresa emite la acción, pero no decide estratégicamente qué divulgar dentro de este modelo. Comparo cómo negocian instituciones y particulares con información diferente».
+### 1. Portada
 
-Información oculta es relativa al observador. Un reporte público y un dato reservado a algunos inversionistas son cosas distintas. El modelo no dice que todos los bancos conozcan toda la empresa; observar θ exactamente es una idealización. Si un dato solo lo conoce el emisor, no pertenece a la información institucional observada.
+Presentar el tema como una corrección informativa y una extensión del sentimiento.
 
-θ es una innovación monetaria por acción, no una cantidad de noticias. F=P₀+θ+ε. Con P₀=100, θ=10, ε=−2, el pago es 108. Se observa información antes de negociar y ε después.
+Manual: secciones 1.
 
-## 6–9. El contraejemplo sin confundir puntos de partida
+### 2. La pregunta que queremos responder
 
-Básico significa que las instituciones conocen θ y los particulares no reciben una señal sobre su realización. Sus pronósticos previos de θ tienen media cero y varianza s. La acción puede responder a noticias por la negociación institucional.
+Formular la pregunta sin usar K, rho ni derivadas todavía. La contribución tiene dos partes: señal coherente y reacción del sentimiento.
 
-En la extensión impresa κ=μθ, conocer μ>0 permite dividir y recuperar θ. El argumento requiere factor conocido y observación exacta. El segundo problema son las varianzas: ausencia de información requiere conservar s; información completa requiere retirarla del riesgo residual.
+Manual: secciones 1, 18.
 
-La comparación del contraejemplo es **0,552 frente a 0,643**. La cifra 0,500 viene de evaluar la extensión en cero y evidencia que no recupera el básico. No afirmar que 0,552 sea menor que 0,500 ni atribuir el resultado a desconfianza. Estados y sesgos cero no eliminan las varianzas subjetivas fijadas en uno.
+### 3. Precio de hoy y pago futuro
 
-## 10–13. De primitivas a posterior
+P0 es referencia del pago, no la riqueza del inversionista ni necesariamente el precio actual. Se negocia antes de conocer epsilon.
 
-Decir: «Voy a justificar las proporciones desde un reporte con ruido, no solo a escribirlas». y=θ+η; θ y η son independientes con varianzas s y t.
+Manual: secciones 2.
 
-Bayes combina la distribución previa y la precisión del reporte. Usar x para un posible fundamento evita confundirlo con y, el dato que ya observamos. Abrir (y−x)² y completar el cuadrado en x. El coeficiente del cuadrado determina la precisión posterior; su inverso es la varianza. La media es s y/(s+t).
+### 4. Qué significa una varianza
 
-Definir μ=s/(s+t) después de derivar el posterior. No es la proporción exacta del valor realizado θ: es el peso del reporte y la fracción explicada de varianza. κ=μy es un resumen público; ξ=θ−κ es el residuo.
+Definir E y Var antes de usarlos en el modelo. Mostrar por qué el cuadrado impide que los errores positivo y negativo se cancelen.
 
-## 14. Varianza pública
+Manual: secciones 3.
 
-Nombrar las reglas: independencia anula Cov(θ,η); varianzas suman s+t. Var(μy)=μ²Var(y). Sustituir μ y cancelar un s+t. El resultado μs se deriva. Aunque la varianza de κ aumente con μ, observarla resuelve ese componente. Su varianza marginal describe diferencias entre escenarios.
+### 5. Las incertidumbres y las reglas que usaremos
 
-## 15–16. Varianza oculta y covarianza
+m y v solo describen la notación normal en esta diapositiva; c y d son constantes auxiliares. s es incertidumbre fundamental previa y e la sorpresa final.
 
-Reescribir ξ=(1−μ)θ−μη. No aplicar suma simple sin explicar el término cruzado. La regla general es Var(aX+bY)=a²Var(X)+b²Var(Y)+2abCov(X,Y). Aquí la covarianza original es cero.
+Manual: secciones 3.
 
-Sustituir μ=s/(s+t) y 1−μ=t/(s+t). El numerador t²s+s²t se factoriza como st(s+t). Así sale (1−μ)s.
+### 6. Los cuatro grupos y la información disponible
 
-Calcular además Cov(κ,ξ)=0. Decir la condición que permite independencia: **son conjuntamente gaussianos**. Covarianza cero por sí sola no basta en general. De ahí E[ξ|κ]=0 y Var(ξ|κ)=Var(ξ).
+Institucional no significa automáticamente información ilegal. Si solo el emisor conoce un dato, ambos grupos de inversionistas lo desconocen. La restricción sobre precios se declara aquí desde el inicio.
 
-## 17–18. Traducir las fórmulas
+Manual: secciones 2, 17.
 
-Ejemplo s=t=100, y=8: μ=0,5, κ=4, varianza residual 50. No afirmar que θ sea 4. Con pago base 100 y e=4, la media es 104 y la varianza 54.
+### 7. Nuestra señal pública contiene ruido
 
-Explicar la diferencia de unidades: la raíz de 50 es 7,071 en dinero por acción; la varianza 50 está en unidades al cuadrado. Los extremos se definen aparte: μ=0 sin señal y μ=1 señal exacta. No definir una normal de varianza infinita.
+y es el reporte y eta su ruido; t es varianza del ruido. Un menor t significa más precisión, manteniendo fija s.
 
-## 19–20. Los cuatro grupos
+Manual: secciones 4.
 
-Dos diferencias independientes: información y sentimiento. δ cambia la media; τ² añade incertidumbre subjetiva; ρ cambia aversión. Una constante no tiene varianza. No decir que la empresa paga más a los sentimentales: todos reciben F, aunque sus creencias difieran.
+### 8. Bayes: del reporte al pronóstico
 
-Institución racional: solo ε incierto. Particular racional: ξ y ε inciertos. Sus varianzas suman porque son independientes, incluso después de observar κ. Los otros grupos añaden su error subjetivo independiente.
+Explicar que condicionar significa usar un dato ya conocido. La densidad previa y la probabilidad del reporte se multiplican. El término constante solo normaliza la densidad. El desarrollo completo está disponible en el apéndice, sin aplazar la definición de ninguna variable.
 
-## 21–24. CARA y la CPO
+Manual: secciones 5.
 
-CARA es una preferencia sobre riqueza; no determina s, t o e. Derivar U' y U'' muestra que se prefiere más riqueza y se evita riesgo. El cociente −U''/U'=g no depende de la riqueza.
+### 9. Definir \mu, \kappa y \xi después de Bayes
 
-Partir del presupuesto, no directamente de la fórmula de demanda. Si se gastan Pω en acciones, queda w₀−Pω en el activo seguro. La riqueza final es Rw₀+ω(F−RP).
+mu es adimensional y es fracción de varianza explicada. Kappa es pronóstico público y xi el error residual, ambos en dinero por acción. No se conoce una fracción exacta de cada noticia realizada.
 
-Su media es C₀+ω(m−RP); su varianza es ω²v porque las constantes no contribuyen. La normalidad permite integrar la utilidad exponencial. Mostrar E[U]=−exp[−g(M−gV/2)]. El equivalente cierto CE=M−gV/2 genera la misma elección; no es numéricamente igual a E[U].
+Manual: secciones 5, 6.
 
-En la CPO, precio, creencias y aversión permanecen fijos. Derivar cada término: cero, m−RP y −gvω. Despejar solo tras comprobar gv>0. Segunda derivada negativa y completar el cuadrado justifican máximo único.
+### 10. Derivación de la varianza pública
 
-## 25–31. Precio y resultado
+La varianza de y es s+t; multiplicar por mu al cuadrado y sustituir mu=s/(s+t) produce mu*s. No se asume la proporción.
 
-Interpretar numerador y denominador de demanda antes de agregar. λ representa masa, h reúne masa y respuesta al riesgo. Vaciado: demanda agregada igual a una acción. Despejar P paso a paso.
+Manual: secciones 6.
 
-Para obtener el precio esperado usar E[κ|θ]=μθ, derivada del ruido de media cero. El coeficiente K pertenece a ese promedio. Mantener fija κ y derivar precio realizado sería otra comparación.
+### 11. Derivación de la varianza oculta
 
-La prueba exige a fijo: sentimiento y riesgo institucional no cambian con μ. Definir nⱼ, eⱼ y dⱼ antes de mostrar K'. La resta B−(1−μ)B' se simplifica a suma de términos positivos. La conclusión es sensibilidad esperada, no bienestar ni aumento del nivel para cualquier noticia.
+Reescribir xi antes de calcular la varianza. El ruido eta y theta son independientes; sus coeficientes se elevan al cuadrado.
 
-El gráfico compara fórmulas con los mismos parámetros. La curva publicada se interpreta como fórmula impresa, no como una estimación de datos reales.
+Manual: secciones 6.
 
-## 30. Dos efectos de signo opuesto
+### 12. Por qué el componente público no revela el residuo
 
-Decir: «Aumentar μ mejora directamente cuánto sigue el pronóstico público a θ. Al mismo tiempo, baja la varianza percibida por los particulares y sube B. Este segundo cambio reduce K, porque los particulares responden a μθ y las instituciones a θ». Mostrar ∂K/∂B=−a(1−μ)/[R(a+B)²]<0 para μ<1. La proposición 4 demuestra que el efecto directo domina cuando el sentimiento queda fijo. G(1/2)=23/55 corresponde solo a los parámetros del ejemplo.
+Covarianza cero implica independencia aquí por normalidad conjunta. Distinguir varianza marginal de kappa de varianza posterior del fundamento.
 
-## 32. Extensión: el sentimiento responde a la divulgación
+Manual: secciones 6.
 
-Ahora ρ₁(μ) y ρ₂(μ) cambian con la precisión, sin depender de θ. Esto mueve a y n₄. Explicar la derivada general antes de las condiciones: el término aB′−Ba′ identifica cómo cambia el peso relativo de particulares e instituciones. Si ρ₁′≥0 y ρ₂′≤0, el resultado creciente se conserva. La segunda desigualdad significa menor optimismo y mayor aversión particular; «calmar» sería ambiguo, pues aliviar un pánico también podría elevar ρ₂. La proposición 5 tiene prueba escrita y comprobación racional; aún no tiene prueba Lean.
+### 13. Un ejemplo que distingue promedio e incertidumbre
 
-## 33. Cuándo se invierte el resultado
+Un pronóstico de 104 no es un pago seguro. La desviación estándar traduce la varianza de nuevo a unidades monetarias.
 
-Usar el ejemplo logarítmico ρ₂=ln(1+cμ)/b y ρ₁=0. Al inicio, K′(0)=(101−36c)/392. Por eso la pendiente es cero en c*=101/36, positiva por debajo y negativa por encima. Con c=5, K(0,1)=1768/2803≈0,631, menor que K(0)=9/14≈0,643. El peso particular crece tan rápido que domina el efecto directo. Todos los casos llegan a K(1)=1/R. El umbral es específico de esa parametrización; la condición general es la proposición 5(iii).
+Manual: secciones 6.
 
-## 34–36. Qué está verificado
+### 14. Los extremos ahora representan lo que queremos
 
-El código revisa 5.760 comparaciones exactas, 60 mercados, 144 casos del cuadrado posterior, 16 pares de varianzas, 120.000 observaciones de señal y 12 integrales CARA. Añade 100.000 extracciones por cada θ=−1 y θ=1 para dos niveles de μ (400.000 en total) para contrastar el precio esperado. Comprueba las identidades exactas de la proposición 5, cuatro trayectorias monótonas y el umbral. Los informes incluyen tolerancias; Monte Carlo no sustituye una prueba.
+En mu=0 se define ausencia de señal, no una normal de varianza infinita. En mu=1 se conoce theta, pero epsilon sigue incierto.
 
-Lean comprueba 26 declaraciones algebraicas que apoyan las proposiciones 1–4. La proposición 5 completa, Bayes, la teoría gaussiana de independencia y la integral probabilística completa permanecen abiertos en Lean. La extensión sí tiene prueba matemática escrita y comprobaciones exactas; lo pendiente es su formalización. No confundir un argumento escrito con una formalización integral de probabilidad.
+Manual: secciones 6.
 
-Para cumplir el requisito de mostrar una derivación manuscrita, preparar personalmente las páginas de hand/, fotografiarlas y agregarlas. Actualmente la guía es tipografiada y no se presenta como evidencia manuscrita.
+### 15. Media y varianza del pago que cree cada grupo
 
-## 37–38. Alcance y preguntas
+Presentar m y v antes de la tabla de grupos. Conocer una cantidad elimina su incertidumbre condicional, aunque varíe entre escenarios.
 
-El modelo no está calibrado a una sola empresa: caracteriza una clase de mercados estilizados bajo supuestos fuertes. La elección de acciones lo hace interpretable. No trasladar automáticamente el resultado a bonos del gobierno ni a ganancias de políticos.
+Manual: secciones 8.
 
-El aprendizaje desde precios es la limitación principal. Si todos conocieran pesos y oferta fija, podrían despejar θ. Resolver ese equilibrio informativo requeriría introducir y analizar incertidumbre adicional. Las preguntas de discusión piden crítica precisamente sobre esa extensión y sobre sentimiento endógeno.
+### 16. Tres parámetros distintos del sentimiento
 
-## Preguntas frecuentes
+Los parámetros sentimentales no añaden pagos reales distintos para cada grupo. Los errores subjetivos son independientes y añaden tau cuadrado a la varianza. rho=0 conserva aversión gamma positiva.
 
-**¿Es una corrección o una extensión?** Audito una inconsistencia concreta y propongo una estructura alternativa. La representación gaussiana es estándar; la aportación es reparar esta especificación y rederivar su sensibilidad de cuatro grupos.
+Manual: secciones 8.
 
-**¿La información oculta pertenece al emisor?** El modelo especifica qué conoce cada inversionista. No modela un propietario estratégico de la información.
+### 17. Las creencias de los cuatro grupos
 
-**¿Las instituciones ganan siempre?** No hay un resultado de rentabilidad extraordinaria. Riesgo, precio, costos y referencia son necesarios para formularlo.
+Leer la tabla como cuatro creencias sobre el mismo pago. Justificar cada suma de varianzas por independencia. gamma, b, rho, delta y tau ya están definidos.
 
-**¿Todo el resultado está probado en Lean?** Hay componentes algebraicos comprobados de las proposiciones 1–4. La proposición 5 y el puente probabilístico no están formalizados todavía; también falta la corrida integral del curso.
+Manual: secciones 8.
 
-**¿Por qué el ruido de la señal pública no es ε?** η afecta lo que se aprende antes de negociar. ε afecta el pago final y sigue incierto incluso para la institución informada.
+### 18. Comprar acciones: presupuesto y riesgo de riqueza
+
+Definir todas las cantidades antes de la ecuación de riqueza. C0 es riqueza segura, diferente del intercepto de precio C(mu). P se toma como dado al elegir.
+
+Manual: secciones 9.
+
+### 19. CARA: cómo el agente valora la riqueza
+
+CARA evalúa el riesgo que proviene de los pagos; no genera las varianzas. g puede variar entre estados y seguir siendo constante respecto de riqueza.
+
+Manual: secciones 10.
+
+### 20. De la utilidad al equivalente cierto
+
+q es auxiliar y no es el peso institucional a. La identidad normal se obtiene completando el cuadrado y la integral queda en el apéndice para consulta inmediata. CE no es numéricamente utilidad esperada.
+
+Manual: secciones 10.
+
+### 21. Derivar la CPO, término por término
+
+Derivar constante, término lineal y cuadrático. g y v son positivos. Una posición negativa es venta corta permitida; la prueba global se puede consultar en A3.
+
+Manual: secciones 11.
+
+### 22. Del tamaño de cada grupo a su peso en el mercado
+
+lambda es masa de agentes, no participación accionaria. Definir h, H, a y B antes de cualquier fórmula que los use. La oferta es el 1 del numerador, no un dato de rentabilidad.
+
+Manual: secciones 12.
+
+### 23. Precio esperado y sensibilidad al fundamento
+
+Distinguir E[theta|kappa] de E[kappa|theta]. Aquí se fija el fundamento y se promedia el ruido. C incluye referencia, sesgos y prima por absorber oferta.
+
+Manual: secciones 7, 12.
+
+### 24. La proposición propia y todas sus condiciones
+
+mu_L y mu_H son dos niveles de precisión, bajo y alto. La afirmación requiere sentimiento fijo. K creciente no garantiza que toda noticia suba el precio.
+
+Manual: secciones 13.
+
+### 25. Preparar la derivada sin ocultar parámetros
+
+n agrupa masa y aversión; e3/e4 es riesgo que no desaparece con el reporte; d es varianza total percibida. El índice j aquí toma 3 y 4; no es el j=1,2 de los estados sentimentales.
+
+Manual: secciones 13.
+
+### 26. Por qué la sensibilidad aumenta
+
+Cada d_j menos la incertidumbre residual equivale a e_j positivo. La cancelación prueba que la derivada es positiva para todo el intervalo, no solo para una simulación.
+
+Manual: secciones 13.
+
+### 27. Dos efectos de signo opuesto
+
+Explicar por qué dar más peso a particulares parcialmente informados reduce sensibilidad a mu fijo. Esta es la corrección de la intuición que antes sumaba dos efectos positivos.
+
+Manual: secciones 13, 18.
+
+### 28. La corrección frente a Zhang y Zhang
+
+La crítica es específica a las fórmulas e interpretación de información parcial. La varianza marginal de una señal escalada no es la incertidumbre restante tras observarla.
+
+Manual: secciones 4, 14.
+
+### 29. El sentimiento también puede responder a la divulgación
+
+Solo se relaja el estado sentimental fijo. delta y tau siguen constantes. rho creciente representa menor aversión, no un cambio automático de la media creída.
+
+Manual: secciones 15.
+
+### 30. La derivada general y los signos del sentimiento
+
+Los dos términos nuevos son no negativos bajo los signos indicados. rho2 menor significa mayor aversión particular; evitar decir solamente que el mercado se calma.
+
+Manual: secciones 15.
+
+### 31. Con instituciones fijas: condición exacta y cota suficiente
+
+La cota hace no negativo el último paréntesis; B al cuadrado y el término del particular racional siguen siendo positivos incluso cuando hay igualdad.
+
+Manual: secciones 15.
+
+### 32. Un escenario concreto de optimismo creciente
+
+Todos los parámetros de la calibración ya se han definido. c>-1 garantiza que el argumento del logaritmo es positivo en todo el intervalo. c=0 recupera sentimiento fijo.
+
+Manual: secciones 15.
+
+### 33. Derivar el umbral de reversión
+
+La derivada en cero es lateral dentro del intervalo. El umbral no afirma caída permanente: con información completa K vuelve a 1/R.
+
+Manual: secciones 15.
+
+### 34. Cuándo se invierte el resultado
+
+Con c=5, K(0.1)=1768/2803 es menor que K(0)=9/14. La información es mejor, pero el cambio del peso particular domina al inicio.
+
+Manual: secciones 15.
+
+### 35. Qué comprueba el código
+
+Explicar qué verifican el código y las simulaciones, con recuentos reales del repositorio. Una simulación no constituye la prueba general.
+
+Manual: secciones 19.
+
+### 36. Las cinco proposiciones comprobadas con Lean
+
+Los cinco endpoints compilaron y sus axiomas son los estándares de Lean. El chequeo --fast terminó con código 0. La revisión independiente directa comparó las cinco proposiciones con sus Specs: 5 MATCH. Distinguir esta revisión de un recibo automático de aceptación integral v12, que no se ha emitido. El cuadro del apéndice del paper y lean/README.md indican los mismos estados.
+
+Manual: secciones 19.
+
+### 37. El límite principal: aprender del precio cambiaría el problema
+
+La restricción de información se declaró desde el comienzo. Esta fórmula muestra por qué es material: si el particular usara el precio y conociera todos los pesos, podría despejar theta.
+
+Manual: secciones 17.
+
+### 38. Respuesta a la pregunta de investigación
+
+Cerrar volviendo a la pregunta. La novedad es la condición y reversión, junto con la reparación de la señal. No extender la conclusión a alfa ni bienestar.
+
+Manual: secciones 1, 18, 20.
+
+## Regla para responder preguntas
+
+Primero nombrar la variable y sus unidades; después indicar qué se mantiene fijo; finalmente interpretar la ecuación.
+Las definiciones se introducen antes de la tabla o ecuación que las utiliza. Para una manipulación extensa, abrir en el momento la diapositiva de consulta correspondiente.
+
+## Variables en su primera aparición
+
+| Símbolo | Primera explicación |
+|---|---|
+| P, F, P0, theta, epsilon | 3: precio y pago |
+| E, Var, desviación estándar | 4: incertidumbre |
+| s, e, Cov y N(media,varianza) | 5: supuestos y reglas |
+| i=1,2,3,4 | 6: grupos |
+| y, eta, t | 7: reporte |
+| x, f y proporcionalidad | 8: Bayes |
+| mu, kappa, xi | 9: posterior y residuo |
+| m_i, v_i, E_i, Var_i | 15: creencias |
+| delta, tau², rho, gamma, b, g_i | 16: sentimiento |
+| w0, omega, R, W, C0, M_i, V_i | 18: riqueza |
+| U y aversión absoluta | 19: CARA |
+| q y CE | 20: identidad normal y equivalente cierto |
+| lambda, h, H, a, B | 22: mercado |
+| C(mu), P medio y K | 23: precio esperado |
+| n3/n4, e3/e4, d_j y prima | 25: derivada |
+| a(mu), n4(mu) y sus derivadas | 29: extensión |
+| c | 32: trayectoria logarítmica |
+| c* | 33: umbral |
+| G | Apéndice: fracción de brecha |
+
+## Consultas preparadas
+
+La varianza pública creciente y la residual decreciente se explican en 10–14; la derivación extendida usa A2.
+La identidad exponencial normal se demuestra en A1; el máximo global de la CPO, en A3.
+La comparación numérica con el modelo básico está en el apéndice y utiliza parámetros ya definidos en el cuerpo principal.
+La auditoría específica de afirmaciones de IA conserva su tabla en el apéndice.
+Los glosarios finales permiten recuperar de inmediato cualquier unidad o índice.
+
+## Estado de integración
+
+La diapositiva 36, el apéndice del paper y lean/README.md registran cinco proposiciones probadas, chequeo --fast con salida 0 y comparación directa 5 MATCH. El manuscrito formalizado es el commit 55409d5; no se alteraron sus cinco proposiciones.
+No se generan fotos manuscritas ni conversaciones reales del estudiante.
+
+
+## Fotografías manuscritas del estudiante: A17–A22
+
+- **A17 (página 55 del PDF):** mostrar la foto que comienza con la señal y la regla de Bayes. Explicar qué distribución es previa y cuál es la verosimilitud. Los supuestos s,t>0 e independencia se mantienen.
+- **A18 (página 56):** mostrar el desarrollo del cuadrado y reconocer media y varianza posteriores. Al retirar constantes se usa proporcionalidad, no aproximación numérica.
+- **A19 (página 57):** mostrar las definiciones de mu, kappa y xi y el cálculo de sus varianzas. Las proporciones se derivan, no se asignan sin justificación.
+- **A20 (página 58):** explicar presupuesto, posición en acciones y financiamiento. R es un factor bruto conocido. Aclarar que v representa la varianza: la primera normal de la foto debería escribirse N(m,v), de acuerdo con las fórmulas posteriores.
+- **A21 (página 59):** seguir el cuadrado completo y la normalización. q es auxiliar y se sustituye por −g. Señalar el signo negativo omitido en una línea: E[U(W)]=−E[exp(qW)]. La página siguiente lo recupera.
+- **A22 (página 60):** explicar el equivalente cierto y la CPO. El término de riesgo se resta al derivar; el resultado final manuscrito es correcto. Añadir verbalmente CE″=−gv<0 con g,v>0, que prueba máximo único y aún no está manuscrito.
+
+Las seis fotos corresponden a hand/derivaciones-manuscritas.pdf y al apéndice del paper. Se conservan sin retocar. Las precisiones tipografiadas no se presentan como correcciones manuscritas del estudiante. La ruta principal de 38 diapositivas permanece igual.
+
+El material personal pendiente y las fuentes pasan a A23 y A24. Quedan por fotografiar covarianza y consecuencias condicionales, extremos, creencias de grupos, índice de Arrow–Pratt y condición de segundo orden, precio, monotonicidad y extensión con sentimiento. Las conversaciones reales siguen por aportar personalmente.

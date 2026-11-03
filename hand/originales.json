@@ -1,0 +1,41 @@
+{
+  "description": "Fotografías reales del estudiante; originales sin retoque.",
+  "pages": [
+    {
+      "page": 1,
+      "file": "01-bayes-definicion.jpg",
+      "original_attachment": "codex-clipboard-1ec56125-0ab8-49ca-ad09-bb8eedf69c7a.jpg",
+      "sha256": "c1f4bc56bc1ea56ab1b466d1685288f5be57781d0d8260d903d4591cb90115f7"
+    },
+    {
+      "page": 2,
+      "file": "02-bayes-desarrollo.jpg",
+      "original_attachment": "codex-clipboard-9d4eb80a-ae51-4ed8-bd0f-f8eaef8a164b.jpg",
+      "sha256": "43c061f2842790771c38501344cbbd092d1dd6a12745e2cc8d0e0d1dcf35138e"
+    },
+    {
+      "page": 3,
+      "file": "03-varianzas.jpg",
+      "original_attachment": "codex-clipboard-5122e6f5-fb82-4ce7-8324-c1881531cd3e.jpg",
+      "sha256": "70d2cd885177efc2d4eb3828b700edbbdd425b649fc7ecc582bd738fa7d3cf8c"
+    },
+    {
+      "page": 4,
+      "file": "04-cara-riqueza.jpg",
+      "original_attachment": "codex-clipboard-ca3bf605-fb43-4083-8cd8-d57d4e962acb.jpg",
+      "sha256": "795ec159b918f76642ce88ec8647b1400affa0601f3fd6b6abf015d39bd81997"
+    },
+    {
+      "page": 5,
+      "file": "05-cara-integral.jpg",
+      "original_attachment": "codex-clipboard-f72ad57a-aa3a-4c39-ab07-ded6018cd2de.jpg",
+      "sha256": "43b5bca8c282b402b35e690bb231e974bf8dd7ac11b69166e203f2d529e6fe8a"
+    },
+    {
+      "page": 6,
+      "file": "06-cara-cpo.jpg",
+      "original_attachment": "codex-clipboard-3d3e1d30-74db-4322-8064-4ccf536b8e30.jpg",
+      "sha256": "214bd4a6a5227ccf4e73ae4fb2309c013208fd07f37c89e9bb217aadd42b28b3"
+    }
+  ]
+}

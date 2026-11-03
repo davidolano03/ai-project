@@ -1,0 +1,1127 @@
+{
+  "schema": 1,
+  "paper": "Olano26Transparencia",
+  "title": "Transparencia, sentimiento y fundamentos: Una corrección de la información parcial en Zhang y Zhang (2023)",
+  "source_url": "https://github.com/davidolano03/ai-project/blob/55409d500deba8b66072bd75d042d1faa962cdad/paper/paper.tex",
+  "source_version": "own unpublished manuscript commit 55409d500deba8b66072bd75d042d1faa962cdad",
+  "source_artifact_path": "source/paper.tex",
+  "source_artifact_sha256": "8745553b2b2e9b05224abff3fcc446213bfdfca147d73103fab9e7012a546ebe",
+  "source_inventory_kind": "source_curated",
+  "source_curated": true,
+  "source_coverage_mode": "named_theoretical_statements",
+  "source_inventory_policy": "The ordinary surface contains exactly the five numbered propositions. The six numbered assumptions are retained as source-semantic prerequisites. Unnumbered derivations, equations, examples, figures, simulations, scope prose, and audit/meta appendices remain source-inventoried support or deep-audit material rather than additional result rows. Canonical v11 review binds one transparent PaperInterface Spec to each selected source claim; retained source claims without a current Spec route remain explicit audit work rather than disappearing from the inventory.",
+  "items": {
+    "olano26_assumption_payoff": {
+      "source_kind": "assumption",
+      "source_location": "source/paper.tex:130-134",
+      "statement": "Assumption 1 (Pago) fixes the Gaussian payoff fundamentals, positive variances, independence, unit supply, and positive gross risk-free return.",
+      "source_note": "Named source assumption; retained in the semantic-prerequisite lane and not counted as a proposition result.",
+      "claim_bearing": false,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.assumption.payoff",
+          "source_locator": "source/paper.tex:130-134",
+          "source_quote_sha256": "0adf6f9c96e6450bb1d1d9993395579ffa4a40518996b7b3f1c9e27acafa7057",
+          "semantic_claim": "The payoff setup has known P0, independent centered Gaussian theta and epsilon with positive variances, unit supply, and R > 0.",
+          "reviewed_lean_route": "Olano26Transparencia.FixedMarket"
+        }
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 130,
+          "line_end": 134,
+          "quoted_text": "\\begin{assumption}[Pago]\\label{as:payoff}\n$P_0$ es conocido, $\\theta\\sim N(0,s)$ con $s>0$,\n$\\epsilon\\sim N(0,e)$ con $e=\\sigma_\\epsilon^2>0$; son independientes.\nLa oferta es una acción y $R=1+r_f>0$.\n\\end{assumption}",
+          "quoted_text_sha256": "0adf6f9c96e6450bb1d1d9993395579ffa4a40518996b7b3f1c9e27acafa7057"
+        }
+      ]
+    },
+    "olano26_assumption_signal": {
+      "source_kind": "assumption",
+      "source_location": "source/paper.tex:135-142",
+      "statement": "Assumption 2 (Señal) defines the partial Gaussian signal, kappa and xi, and the no-signal and full-signal endpoint conventions.",
+      "source_note": "Named source assumption; retained in the semantic-prerequisite lane and not counted as a proposition result.",
+      "claim_bearing": false,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.assumption.signal",
+          "source_locator": "source/paper.tex:135-142",
+          "source_quote_sha256": "bb480c2eed7253a1acfada0b80e289bcfc6ddbb6ee91b81c843bc40336d0a783",
+          "semantic_claim": "For interior transparency the public signal is theta plus independent Gaussian noise, kappa is the posterior expectation and xi the residual, with explicit mu = 0 and mu = 1 endpoints.",
+          "reviewed_lean_route": "Olano26Transparencia.informationLaw"
+        }
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 135,
+          "line_end": 142,
+          "quoted_text": "\\begin{assumption}[Señal]\\label{as:signal}\nPara $0<\\mu<1$, todos observan $y=\\theta+\\eta$, con\n$\\eta\\sim N(0,t)$ independiente de $\\theta,\\epsilon$,\n$t=s(1-\\mu)/\\mu>0$. Las instituciones observan además $\\theta$.\nDefino $\\kappa=\\E[\\theta\\mid y]$ y $\\xi=\\theta-\\kappa$.\nEn $\\mu=0$ defino $\\kappa=0,\\xi=\\theta$; en $\\mu=1$,\n$\\kappa=\\theta,\\xi=0$.\n\\end{assumption}",
+          "quoted_text_sha256": "bb480c2eed7253a1acfada0b80e289bcfc6ddbb6ee91b81c843bc40336d0a783"
+        }
+      ]
+    },
+    "olano26_assumption_groups_sentiment": {
+      "source_kind": "assumption",
+      "source_location": "source/paper.tex:143-149",
+      "statement": "Assumption 3 (Grupos y sentimiento) fixes group masses, institutional/retail roles, sentiment states, biases, subjective variances, and independence from news and noise.",
+      "source_note": "Named source assumption; retained in the semantic-prerequisite lane and not counted as a proposition result.",
+      "claim_bearing": false,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.assumption.groups_sentiment",
+          "source_locator": "source/paper.tex:143-149",
+          "source_quote_sha256": "ae03e7552bb5fb6a402144c89e7367139a80a1ba769fe5a6d4eb48bcb5eb4a79",
+          "semantic_claim": "Positive group masses sum to one, groups have the stated institutional/retail roles and sentiment parameters, and those states are fixed and independent when transparency is compared.",
+          "reviewed_lean_route": "Olano26Transparencia.FixedMarket"
+        }
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 143,
+          "line_end": 149,
+          "quoted_text": "\\begin{assumption}[Grupos y sentimiento]\\label{as:sent}\nLas masas $\\lambda_i>0$ suman uno. Los grupos $1,2$ son institucionales y\n$3,4$ particulares. Los grupos $2,4$ tienen estados $\\rho_1,\\rho_2$,\nsesgos $\\delta_1,\\delta_2$ y varianzas subjetivas $\\tau_1^2,\\tau_2^2\\geq0$.\nLos estados son independientes de noticias y ruido; todos estos parámetros\npermanecen fijos al comparar transparencia.\n\\end{assumption}",
+          "quoted_text_sha256": "ae03e7552bb5fb6a402144c89e7367139a80a1ba769fe5a6d4eb48bcb5eb4a79"
+        }
+      ]
+    },
+    "olano26_assumption_preferences_beliefs": {
+      "source_kind": "assumption",
+      "source_location": "source/paper.tex:150-158",
+      "statement": "Assumption 4 (Preferencias y creencias) specifies Gaussian payoff beliefs, sentiment-dependent CARA coefficients, independent subjective errors, and unconstrained real positions.",
+      "source_note": "Named source assumption; retained in the semantic-prerequisite lane and not counted as a proposition result.",
+      "claim_bearing": false,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.assumption.preferences_beliefs",
+          "source_locator": "source/paper.tex:150-158",
+          "source_quote_sha256": "07b7ee3e0fd8ae001f19b966096a0671f5a66ff990c97c0aa3b1237e71e59aef",
+          "semantic_claim": "Each group has a Gaussian payoff belief with the stated sentiment-dependent CARA coefficient, independent subjective belief error, and an unconstrained real position.",
+          "reviewed_lean_route": "Olano26Transparencia.FixedMarket"
+        }
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 150,
+          "line_end": 158,
+          "quoted_text": "\\begin{assumption}[Preferencias y creencias]\\label{as:beliefs}\nCada creencia sobre el pago es normal, con media $m_i$ y varianza $v_i$.\n$g_1=g_3=\\gamma>0$, $g_2=\\gamma e^{-b\\rho_1}$,\n$g_4=\\gamma e^{-b\\rho_2}$, $b>0$.\nLos errores sentimentales subjetivos $\\zeta_j\\sim N(\\delta_j,\\tau_j^2)$\nson independientes de los componentes informativos y la sorpresa final.\nDescriben creencias, no pagos adicionales reales. Las posiciones son reales\nsin restricciones de venta corta ni endeudamiento.\n\\end{assumption}",
+          "quoted_text_sha256": "07b7ee3e0fd8ae001f19b966096a0671f5a66ff990c97c0aa3b1237e71e59aef"
+        }
+      ]
+    },
+    "olano26_assumption_price_information": {
+      "source_kind": "assumption",
+      "source_location": "source/paper.tex:159-164",
+      "statement": "Assumption 5 (Información mantenida) makes retail agents update from y without extracting additional price information and makes all agents price takers.",
+      "source_note": "Named source assumption; retained in the semantic-prerequisite lane and not counted as a proposition result.",
+      "claim_bearing": false,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.assumption.price_information",
+          "source_locator": "source/paper.tex:159-164",
+          "source_quote_sha256": "f11fca4672a1a2eb2ca6e0e9e2820c0c7ed794bd1dc5fea1799f1f3402efe1bc",
+          "semantic_claim": "Retail agents update from the public signal without inferring extra information from price, agents take price as given, and the listed extensions are outside the model.",
+          "reviewed_lean_route": "Olano26Transparencia.FixedMarket"
+        }
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 159,
+          "line_end": 164,
+          "quoted_text": "\\begin{assumption}[Información mantenida]\\label{as:price}\nLos particulares actualizan con $y$ y no extraen información adicional del\nprecio. Los agentes toman el precio como dado. No se modelan adquisición\ncostosa de información, elección del emisor ni reacción del sentimiento a\nla divulgación.\n\\end{assumption}",
+          "quoted_text_sha256": "f11fca4672a1a2eb2ca6e0e9e2820c0c7ed794bd1dc5fea1799f1f3402efe1bc"
+        }
+      ]
+    },
+    "olano26_proposition_1": {
+      "source_kind": "proposition",
+      "source_location": "source/paper.tex:200-212",
+      "statement": "Proposition 1 gives the Gaussian kappa/xi information decomposition, variances, independence, and the three conditional-moment identities, including transparency endpoints.",
+      "source_note": "The single result row covers all clauses printed inside the numbered proposition; its supporting derivation is not promoted to another claim.",
+      "claim_bearing": true,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.proposition.1",
+          "source_locator": "source/paper.tex:200-212",
+          "source_quote_sha256": "499ca7c9096249c7d605f731ac3d25bfe54ad48ace1f7a38c91206d95bedd1c2",
+          "semantic_claim": "Under Assumptions 1--2, theta decomposes as independent centered Gaussian kappa plus xi with variances mu s and (1-mu)s, and the displayed conditional expectation and variance identities hold.",
+          "reviewed_lean_route": "Olano26Transparencia.informationDecomposition"
+        }
+      ],
+      "semantic_contract": {
+        "spec_declaration": "Olano26Transparencia.PaperInterface.informationDecompositionSpecSpec",
+        "evidence_declaration": "Olano26Transparencia.informationDecomposition",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      },
+      "lean_declarations": [
+        "Olano26Transparencia.informationDecomposition"
+      ],
+      "support_lean_declarations": [
+        "Olano26Transparencia.PaperInterface.informationDecompositionSpecSpec"
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 200,
+          "line_end": 212,
+          "quoted_text": "\\begin{proposition}[Descomposición informativa]\\label{prop:information}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:signal}, $\\theta=\\kappa+\\xi$.\nLos componentes son gaussianos independientes, de media cero, y\n\\begin{equation}\\label{eq:variances}\n \\Var(\\kappa)=\\mu s,\\quad \\Var(\\xi)=(1-\\mu)s.\n\\end{equation}\nAdemás,\n\\begin{equation}\\label{eq:bridge}\n \\E[\\theta\\mid\\kappa]=\\kappa,\\quad\n \\Var(\\theta\\mid\\kappa)=(1-\\mu)s,\\quad\n \\E[\\kappa\\mid\\theta]=\\mu\\theta.\n\\end{equation}\n\\end{proposition}",
+          "quoted_text_sha256": "499ca7c9096249c7d605f731ac3d25bfe54ad48ace1f7a38c91206d95bedd1c2"
+        }
+      ]
+    },
+    "olano26_proposition_2": {
+      "source_kind": "proposition",
+      "source_location": "source/paper.tex:335-341",
+      "statement": "Proposition 2 states the unique optimal position and its closed-form demand formula.",
+      "source_note": "The single result row includes uniqueness and the displayed formula.",
+      "claim_bearing": true,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.proposition.2",
+          "source_locator": "source/paper.tex:335-341",
+          "source_quote_sha256": "134c9ded8324733945c5f2c402aab9dedc3ff9f9bfeae693da8f411285a447b9",
+          "semantic_claim": "Under Assumptions 1--5, each group has the unique optimal position (m_i - R P)/(g_i v_i).",
+          "reviewed_lean_route": "Olano26Transparencia.optimalDemandResult"
+        }
+      ],
+      "semantic_contract": {
+        "spec_declaration": "Olano26Transparencia.PaperInterface.optimalDemandSpecSpec",
+        "evidence_declaration": "Olano26Transparencia.optimalDemandResult",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      },
+      "lean_declarations": [
+        "Olano26Transparencia.optimalDemandResult"
+      ],
+      "support_lean_declarations": [
+        "Olano26Transparencia.PaperInterface.optimalDemandSpecSpec"
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 335,
+          "line_end": 341,
+          "quoted_text": "\\begin{proposition}[Demanda óptima]\\label{prop:demand}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:price}, cada grupo tiene una\núnica posición óptima\n\\begin{equation}\\label{eq:demand}\n \\omega_i^*=\\frac{m_i-RP}{g_iv_i}.\n\\end{equation}\n\\end{proposition}",
+          "quoted_text_sha256": "134c9ded8324733945c5f2c402aab9dedc3ff9f9bfeae693da8f411285a447b9"
+        }
+      ]
+    },
+    "olano26_proposition_3": {
+      "source_kind": "proposition",
+      "source_location": "source/paper.tex:372-383",
+      "statement": "Proposition 3 states the unique market-clearing price and the affine expected-price formula with intercept C(mu) and sensitivity K(mu), including the no-signal endpoint.",
+      "source_note": "The single result row includes price uniqueness, the displayed price, conditional expected price, C(mu), and K(mu); no supporting derivation is promoted.",
+      "claim_bearing": true,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.proposition.3",
+          "source_locator": "source/paper.tex:372-383",
+          "source_quote_sha256": "44a661d7f5b71a0af9f88e4a7c82bc256101a9011ac0ec3a51678cc7dd131730",
+          "semantic_claim": "Under Assumptions 1--5, market clearing has the displayed unique price and, with fixed sentiment, conditional expected price equals C(mu) + K(mu) theta with the displayed C and K formulas for the full transparency domain.",
+          "reviewed_lean_route": "Olano26Transparencia.priceSensitivity"
+        }
+      ],
+      "semantic_contract": {
+        "spec_declaration": "Olano26Transparencia.PaperInterface.priceSensitivitySpecSpec",
+        "evidence_declaration": "Olano26Transparencia.priceSensitivity",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      },
+      "lean_declarations": [
+        "Olano26Transparencia.priceSensitivity"
+      ],
+      "support_lean_declarations": [
+        "Olano26Transparencia.PaperInterface.priceSensitivitySpecSpec"
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 372,
+          "line_end": 383,
+          "quoted_text": "\\begin{proposition}[Precio y sensibilidad esperada]\\label{prop:price}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:price}, el precio es único:\n\\begin{equation}\\label{eq:price}\n P=\\frac{HP_0+a\\theta+B\\kappa+h_2\\delta_1+h_4\\delta_2-1}{RH}.\n\\end{equation}\nCon sentimiento fijo,\n\\begin{equation}\\label{eq:K}\n \\bar P=\\E[P\\mid\\theta,\\rho_1,\\rho_2]=C(\\mu)+\\K(\\mu)\\theta,\\quad\n \\K(\\mu)=\\frac{a+\\mu B}{R(a+B)},\n\\end{equation}\ncon $C(\\mu)=[HP_0+h_2\\delta_1+h_4\\delta_2-1]/(RH)$.\n\\end{proposition}",
+          "quoted_text_sha256": "44a661d7f5b71a0af9f88e4a7c82bc256101a9011ac0ec3a51678cc7dd131730"
+        }
+      ]
+    },
+    "olano26_proposition_4": {
+      "source_kind": "proposition",
+      "source_location": "source/paper.tex:401-405",
+      "statement": "Proposition 4 states strict monotonicity of K under fixed sentiment, positivity, the upper bound 1/R, and the full-information endpoint.",
+      "source_note": "The single result row includes every clause printed in the numbered proposition.",
+      "claim_bearing": true,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.proposition.4",
+          "source_locator": "source/paper.tex:401-405",
+          "source_quote_sha256": "cab52c661ffbc896b4d78744e5affed8aa6d7c938fe49d2b90de24bf9dcd3211",
+          "semantic_claim": "Under Assumptions 1--5, K is strictly increasing on [0,1], is positive and at most 1/R, and K(1) = 1/R.",
+          "reviewed_lean_route": "Olano26Transparencia.fixedSentimentMonotonicity"
+        }
+      ],
+      "semantic_contract": {
+        "spec_declaration": "Olano26Transparencia.PaperInterface.fixedSentimentMonotonicitySpecSpec",
+        "evidence_declaration": "Olano26Transparencia.fixedSentimentMonotonicity",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      },
+      "lean_declarations": [
+        "Olano26Transparencia.fixedSentimentMonotonicity"
+      ],
+      "support_lean_declarations": [
+        "Olano26Transparencia.PaperInterface.fixedSentimentMonotonicitySpecSpec"
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 401,
+          "line_end": 405,
+          "quoted_text": "\\begin{proposition}[Mayor sensibilidad con sentimiento fijo]\\label{prop:main}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:price}, si\n$0\\leq x<y\\leq1$, entonces $\\K(x)<\\K(y)$.\nAdemás $0<\\K(\\mu)\\leq1/R$ y $\\K(1)=1/R$.\n\\end{proposition}",
+          "quoted_text_sha256": "cab52c661ffbc896b4d78744e5affed8aa6d7c938fe49d2b90de24bf9dcd3211"
+        }
+      ]
+    },
+    "olano26_assumption_endogenous_sentiment": {
+      "source_kind": "assumption",
+      "source_location": "source/paper.tex:461-467",
+      "statement": "Assumption 6 makes both sentiment states differentiable functions of transparency on [0,1] while retaining the other model assumptions.",
+      "source_note": "Named source assumption; retained in the semantic-prerequisite lane and not counted as a proposition result.",
+      "claim_bearing": false,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.assumption.endogenous_sentiment",
+          "source_locator": "source/paper.tex:461-467",
+          "source_quote_sha256": "52361cb1066e44503a16b716454be7794a1f8bf4028a173cf76ea33cc164af9a",
+          "semantic_claim": "The sentiment states are differentiable functions on [0,1], independent of the stated shocks, and replace only the fixed-state portions of Assumptions 3 and 5.",
+          "reviewed_lean_route": "Olano26Transparencia.EndogenousMarket"
+        }
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 461,
+          "line_end": 467,
+          "quoted_text": "\\begin{assumption}[Sentimiento endógeno a la transparencia]\\label{as:endo}\nLos estados son funciones diferenciables $\\rho_1(\\mu)$ y $\\rho_2(\\mu)$ en\n$[0,1]$, independientes de noticias, ruido y sorpresa final. Este supuesto\nreemplaza la parte del supuesto~\\ref{as:sent} que fija los estados y la\nexclusión correspondiente del supuesto~\\ref{as:price}; todo lo demás se\nmantiene.\n\\end{assumption}",
+          "quoted_text_sha256": "52361cb1066e44503a16b716454be7794a1f8bf4028a173cf76ea33cc164af9a"
+        }
+      ]
+    },
+    "olano26_proposition_5": {
+      "source_kind": "proposition",
+      "source_location": "source/paper.tex:477-495",
+      "statement": "Proposition 5 gives the derivative formula, the sentiment-sign monotonicity result, the constant-rho1 criterion and sufficient condition, the logarithmic countertrajectory threshold and c=5 reversal, and K(1)=1/R.",
+      "source_note": "The single result row includes all four numbered clauses and the final endpoint statement; none is split into an extra source claim.",
+      "claim_bearing": true,
+      "source_claim_atoms": [
+        {
+          "id": "olano26.proposition.5",
+          "source_locator": "source/paper.tex:477-495",
+          "source_quote_sha256": "be7999f55fa8525d9eb09d6deb62db6c6667743678daffea29e053c1aa925d29",
+          "semantic_claim": "Under Assumption 6 and the stated sign restrictions, clauses (i)--(iv) and the K(1)=1/R endpoint hold exactly as displayed.",
+          "reviewed_lean_route": "Olano26Transparencia.endogenousSentiment"
+        }
+      ],
+      "semantic_contract": {
+        "spec_declaration": "Olano26Transparencia.PaperInterface.endogenousSentimentSpecSpec",
+        "evidence_declaration": "Olano26Transparencia.endogenousSentiment",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      },
+      "lean_declarations": [
+        "Olano26Transparencia.endogenousSentiment"
+      ],
+      "support_lean_declarations": [
+        "Olano26Transparencia.PaperInterface.endogenousSentimentSpecSpec"
+      ],
+      "source_anchor_evidence": [
+        {
+          "path": "source/paper.tex",
+          "line_start": 477,
+          "line_end": 495,
+          "quoted_text": "\\begin{proposition}[Cuándo sobrevive el resultado]\\label{prop:endo}\nBajo el supuesto~\\ref{as:endo} y las restricciones de signo de la\nproposición~\\ref{prop:main}:\n\\begin{enumerate}\n \\item[(i)] $\\displaystyle\\K'(\\mu)=\\frac{B(a+B)-(1-\\mu)(aB'-Ba')}{R(a+B)^2}$;\n \\item[(ii)] si $\\rho_1'(\\mu)\\geq0$ y $\\rho_2'(\\mu)\\leq0$ en $[0,1]$, $\\K$ es\n estrictamente creciente;\n \\item[(iii)] si $\\rho_1$ es constante, $\\K'(\\mu)>0$ si y solo si\n \\[\n B^2+a\\left[\\frac{n_3e_3}{d_3^2}+\\frac{n_4}{d_4}\n \\left(\\frac{e_4}{d_4}-(1-\\mu)b\\rho_2'(\\mu)\\right)\\right]>0,\n \\]\n y basta $(1-\\mu)b\\rho_2'(\\mu)\\leq e_4/d_4(\\mu)$;\n \\item[(iv)] con los parámetros de \\eqref{eq:counter} y\n $\\rho_2(\\mu)=b^{-1}\\ln(1+c\\mu)$, $c>-1$: $\\K'(0)<0$ si y solo si\n $c>101/36$; con $c=5$, $\\K(0{,}1)=1768/2803<9/14=\\K(0)$. Siempre\n $\\K(1)=1/R$.\n\\end{enumerate}\n\\end{proposition}",
+          "quoted_text_sha256": "be7999f55fa8525d9eb09d6deb62db6c6667743678daffea29e053c1aa925d29"
+        }
+      ]
+    }
+  },
+  "approved_review_context_schema": 1,
+  "semantic_contract_schema": 1,
+  "semantic_route_schema": 2,
+  "source_anchor_evidence_required": true,
+  "source_spec_correspondence_schema": 1,
+  "paper_interface_namespace": "Olano26Transparencia",
+  "semantic_preflight_import_module": "Olano26Transparencia.ProofInterface",
+  "closeout_review_policy": {
+    "schema": 1,
+    "source_scope": "all_named_theory",
+    "repeat_final_scope": "main_primary",
+    "required_final_adversary_count": 1,
+    "scheduling": {
+      "initial_semantic_review": [],
+      "final_adversarial_review": []
+    }
+  },
+  "source_named_result_inventory_review": {
+    "schema": 1,
+    "complete": true,
+    "validator": "context-isolated source-only inventory reviewer preserved in .work/olano-intake/formalization-run.jsonl",
+    "method": "Read the complete pinned TeX source without Lean or authoring context; inventoried all six numbered assumptions and five numbered propositions, classified every other presentation as supporting/deep-audit material, and partitioned the source into main text, bibliography, theory appendix, and audit/meta appendix. Exact locators below are rematerialized against the unchanged pinned bytes.",
+    "validated_at": "2026-11-02T23:05:43Z",
+    "prose_definition_presentations": [],
+    "discovered_prose_definition_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "source_artifact_sha256": "8745553b2b2e9b05224abff3fcc446213bfdfca147d73103fab9e7012a546ebe",
+    "candidate_presentations": [
+      {
+        "schema": 1,
+        "id": "olano26_candidate_01",
+        "presentation_label": "Abstract",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered summary and scope prose; it restates or previews selected numbered results rather than presenting another named theorem.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 22,
+          "line_end": 39,
+          "quoted_text": "\\begin{abstract}\n\\noindent Estudio cuándo una señal pública más precisa aumenta la sensibilidad\nesperada del precio de una acción a sus fundamentos, manteniendo fijo el\nsentimiento. Audito la sección 6.2 de Zhang y Zhang (2023): una señal\ndeterminista escalada revela todo el fundamento si su factor es conocido y\npositivo, mientras que las varianzas impresas no recuperan los extremos\ninformativos. Propongo una señal gaussiana con ruido y derivo mediante Bayes\nsu componente público y residuo oculto. Desde utilidad CARA obtengo la\ndemanda óptima, el precio de equilibrio y una proposición de sensibilidad\ncreciente bajo condiciones explícitas. Código y simulaciones reproducen los\nresultados. Si la divulgación también cambia el sentimiento, el resultado\nse mantiene cuando reduce el optimismo de los particulares y puede invertirse cuando los\nvuelve más optimistas con suficiente rapidez; caracterizo la condición exacta.\nLean certifica componentes algebraicos, con un alcance probabilístico\ntodavía parcial. La aplicación corresponde a acciones con\ninformación desigual entre inversionistas, divulgación exógena y sin\ninferencia adicional desde el precio.\n\\end{abstract}",
+          "quoted_text_sha256": "ac7710e3ef146ed86a74e83525dcd99602da19e47a0e271b72eb684f7147fe36"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_02",
+        "presentation_label": "Pregunta y contribución",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered overview and contribution prose; the mathematical assertions are restatements or context for later numbered propositions.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 41,
+          "line_end": 56,
+          "quoted_text": "\\section{Pregunta y contribución}\n\\textquestiondown{}Cuándo una mayor precisión de la información pública hace\nque el precio responda más a las noticias sobre el pago futuro de una acción?\nDemuestro que la sensibilidad del precio esperado aumenta con la precisión\npública, bajo creencias normales, CARA, sentimiento fijo, oferta fija y sin\naprendizaje adicional desde precios. La conclusión trata de respuesta a\nfundamentos, sin establecer aumentos universales del nivel ni del bienestar.\n\nConservo los cuatro grupos de Zhang y Zhang \\cite{zhang2023} y reespecifico\nsu sección 6.2, ecuaciones (38)--(44), pp.~15--16 y proposición 5(ii).\nLa primera entrega postulaba las proporciones de varianza. Aquí las derivo\ndesde una señal ruidosa y Bayes, y obtengo la condición de primer orden\n(CPO) desde la utilidad esperada CARA. Además, relajo el supuesto de\nsentimiento fijo: la proposición~\\ref{prop:endo} muestra cuándo la\nmonotonicidad sobrevive a un sentimiento que responde a la divulgación y\nda un ejemplo en que una transparencia baja reduce la sensibilidad.",
+          "quoted_text_sha256": "40f48eb4e1c8454ff63a8535134303f864b1abf9633016146b85f83b129a1dd1"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_03",
+        "presentation_label": "Payoff equation and adjoining definitions",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Governing model equation and definitions used as semantic prerequisites, not an additional named result.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 59,
+          "line_end": 65,
+          "quoted_text": "El pago monetario futuro de una acción se representa de forma consistente por\n\\begin{equation}\\label{eq:payoff}\n F=P_0+\\theta+\\epsilon.\n\\end{equation}\n$P_0$ es una referencia conocida, $\\theta$ la innovación fundamental y\n$\\epsilon$ una sorpresa final. Son cantidades monetarias por acción.\n$\\theta$ resume el efecto económico de la noticia sobre el pago futuro;",
+          "quoted_text_sha256": "c3d1f2d69fbd0624c15c5b4abae1cd6c92c8e473de6b7164b76f73b203395f75"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_04",
+        "presentation_label": "Diagnosis of the original information formulas",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered explanatory diagnosis and variance identities supporting the paper's setup, without a standalone named result environment.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 67,
+          "line_end": 80,
+          "quoted_text": "\nEn el modelo básico de Zhang y Zhang las instituciones observan $\\theta$\ny los particulares no reciben información sobre su realización. Su ecuación\n(15), p.~5, atribuye al particular racional varianza\n$\\sigma_\\epsilon^2+\\sigma_\\theta^2$. En la extensión, la ecuación (39)\ndefine $\\kappa=\\mu\\theta$ y la ecuación (40) usa\n$\\sigma_\\epsilon^2+\\mu^2\\sigma_\\theta^2$. La proposición 5(ii) afirma\nuna mayor sensibilidad frente al modelo básico para cualquier $\\mu$.\n\nSi $\\mu$ es conocido y positivo, $\\theta=\\kappa/\\mu$: escalar el dato no\noculta su valor. En $\\mu=0$, la varianza impresa elimina la incertidumbre\nfundamental todavía presente; en $\\mu=1$ la conserva aunque la noticia\nya se conoce. $\\Var(\\mu\\theta)=\\mu^2s$ es una identidad correcta para la\nvarianza marginal de la señal escalada. El problema es interpretarla como",
+          "quoted_text_sha256": "60f27742eb37bd168992465d5b582eea1f2c8e8975b90b515cab76c53f10e005"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_05",
+        "presentation_label": "Counterexample equation and analysis",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered counterexample construction and cutoff discussion that supports Proposition 5 rather than adding a sixth result row.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 82,
+          "line_end": 101,
+          "quoted_text": "\nLa auditoría de las fórmulas impresas admite un contraejemplo. Fijo\n$\\lambda_i=1/4$, $\\gamma=R=1$, estados y sesgos sentimentales cero, y\n$\\sigma_\\epsilon^2=s=\\tau_1^2=\\tau_2^2=1$. Estados cero no eliminan las\nvarianzas subjetivas. Entonces\n\\begin{equation}\\label{eq:counter}\n K_0=\\frac9{14}\\simeq0{,}642857,\\quad\n K^I(0)=\\frac12,\\quad K^I(0{,}1)=\\frac{66943}{121303}\\simeq0{,}551866<K_0.\n\\end{equation}\nLa comparación relevante es $K^I(0{,}1)$ frente al básico $K_0$.\n$K^I(0)$ muestra además que la extensión no recupera su punto de partida.\nEl coeficiente impreso sí crece con $\\mu$: escribiendo\n$K^I=1-(1-\\mu)B^I/(a+B^I)$ con $R=1$, el peso impreso $B^I$ decrece porque\nsus varianzas $1+\\mu^2$ y $2+\\mu^2$ aumentan, y el producto de dos\nfactores no negativos decrecientes también decrece. El problema es su nivel\ninicial: por esa monotonicidad y el cálculo exacto en $\\mu=0{,}26$,\n$K^I(\\mu)<K_0$ para todo $\\mu\\in[0;\\,0{,}26]$, y el corte ocurre cerca de\n$\\mu\\simeq0{,}2649$. La comparación de la proposición 5(ii) falla en esa\nregión de transparencia baja.\nEl hallazgo concierne a las fórmulas e interpretación impresas; no identifica",
+          "quoted_text_sha256": "60945c826fad5f4812db4a7e5b349277a0a0a4ff0321933f047c27d294be04eb"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_06",
+        "presentation_label": "Application and economic setup prose",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Governing interpretation and information-set context preceding the numbered assumptions; not a separate named theorem.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 114,
+          "line_end": 127,
+          "quoted_text": "\n\\section{Aplicación y supuestos económicos}\nLa aplicación elegida es la negociación secundaria de una acción de una\nempresa cotizada. La empresa es el emisor, pero no elige su divulgación\nestratégicamente en el modelo. Un ejemplo es una noticia sobre demanda\nfutura: algunos inversionistas observan mejor su componente fundamental,\nmientras el público recibe un reporte imperfecto. Observar exactamente\n$\\theta$ es una idealización de la ventaja institucional.\n\nInformación privada significa aquí que un dato pertenece al conjunto\ninformativo de unos inversionistas y no al de otros. Puede representar\nanálisis especializado u observación de indicadores. El modelo no identifica\nel canal de filtraciones de directivos ni operaciones de políticos. Si solo\nel emisor conoce algo y ningún inversionista lo observa, ambos grupos lo",
+          "quoted_text_sha256": "b31ee61a31956e492198d574b9dfeb982706cc466b3ff75499886ae1df69511a"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_07",
+        "presentation_label": "Model sequence",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered timing and interpretation paragraph attached to the maintained-information assumption.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 165,
+          "line_end": 169,
+          "quoted_text": "\nLa secuencia es: fijar parámetros, realizar $\\theta$ y la señal, formar\ncreencias, negociar y vaciar el mercado, y realizar $\\epsilon$. Los grupos\nracionales carecen del sesgo sentimental especificado. El supuesto\n\\ref{as:price} limita una interpretación de expectativas racionales que",
+          "quoted_text_sha256": "d4434a56bea0db98ea2c026e3dd789f2d92879f11fe5389bd8c0ed5b42ba6de1"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_08",
+        "presentation_label": "Bayes and completing-the-square derivation",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered derivation supporting Proposition 1; proof support does not become another source claim.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 173,
+          "line_end": 188,
+          "quoted_text": "\\subsection{Bayes y la distribución posterior}\nLa varianza de ruido $t$ mide imprecisión: un $t$ menor hace más útil el\nreporte. Para un fundamento posible $x$ y un reporte observado $y$, Bayes da\n\\begin{align}\n f(x\\mid y)&\\propto f(y\\mid x)f(x)\\\\\n &\\propto \\exp\\left\\{-\\frac12\n       \\left[\\frac{x^2}{s}+\\frac{(y-x)^2}{t}\\right]\\right\\}.\n\\end{align}\nExpando y completo el cuadrado:\n\\begin{align}\n \\frac{x^2}{s}+\\frac{(y-x)^2}{t}\n &=\\left(\\frac1s+\\frac1t\\right)x^2-\\frac{2y}{t}x+\\frac{y^2}{t}\\\\\n &=\\frac{s+t}{st}\\left(x-\\frac{s}{s+t}y\\right)^2+\\frac{y^2}{s+t}.\n \\label{eq:posterior-square}\n\\end{align}\nEl último término no depende de $x$ y queda en la normalización. Reconocer",
+          "quoted_text_sha256": "0abba8ec645a0e3681fbb4511eb1fe7188014ae6ff54a6b3147bd97053cc36df"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_09",
+        "presentation_label": "Posterior distribution display",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered posterior-distribution display used as source context for Proposition 1.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 189,
+          "line_end": 192,
+          "quoted_text": "el núcleo normal entrega\n\\begin{equation}\\label{eq:posterior}\n \\theta\\mid y\\sim N\\left(\\frac{s}{s+t}y,\\frac{st}{s+t}\\right).\n\\end{equation}",
+          "quoted_text_sha256": "e2be7e393fb175dedfe48b2deb958dcf0f6bd03528f63db5cbe00e1b0f32c148"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_10",
+        "presentation_label": "Transparency weight and partial-signal prose",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Governing definition and interpretation immediately before Proposition 1, not an independently numbered result.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 193,
+          "line_end": 198,
+          "quoted_text": "Por eso defino\n\\begin{equation}\\label{eq:mu}\n \\mu=\\frac{s}{s+t},\\qquad \\kappa=\\mu y,\\qquad \\xi=\\theta-\\mu y.\n\\end{equation}\n$\\mu$ es adimensional. Ahora dividir $\\kappa$ por $\\mu$ recupera\n$y=\\theta+\\eta$, que todavía contiene ruido. La señal es realmente parcial.",
+          "quoted_text_sha256": "7ca8d72bf83ef7286495189799d1577ca34770d733aa5763839954122f076872"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_11",
+        "presentation_label": "Proof of Proposition 1",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Printed proof support for the selected proposition; it is not a duplicate claim row.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 213,
+          "line_end": 242,
+          "quoted_text": "\\begin{proof}\nPara el interior, $\\Cov(\\theta,\\eta)=0$ por independencia y\n$\\Var(y)=s+t$. Aplicando $\\Var(cX)=c^2\\Var(X)$,\n\\begin{align}\n \\Var(\\kappa)&=\\Var(\\mu(\\theta+\\eta))=\\mu^2(s+t)\\\\\n &=\\frac{s^2}{(s+t)^2}(s+t)=\\frac{s^2}{s+t}=\\mu s.\n\\end{align}\nEscribo $\\xi=(1-\\mu)\\theta-\\mu\\eta$ y desarrollo todos los términos:\n\\begin{align}\n \\Var(\\xi)&=(1-\\mu)^2s+\\mu^2t-2\\mu(1-\\mu)\\Cov(\\theta,\\eta)\\\\\n &=\\frac{t^2s+s^2t}{(s+t)^2}\n =\\frac{st(s+t)}{(s+t)^2}=\\frac{st}{s+t}=(1-\\mu)s.\n\\end{align}\nLa covarianza entre los componentes nuevos es\n\\begin{align}\n \\Cov(\\kappa,\\xi)\n &=\\Cov(\\mu(\\theta+\\eta),(1-\\mu)\\theta-\\mu\\eta)\\\\\n &=\\mu(1-\\mu)s-\\mu^2t\n =\\mu[(1-\\mu)s-\\mu t]=0.\n\\end{align}\nSon transformaciones lineales de normales independientes y, por tanto,\nconjuntamente gaussianos. Para ese caso, covarianza cero implica\nindependencia; la implicación no es general fuera del caso gaussiano.\nAsí $\\E[\\xi\\mid\\kappa]=0$ y $\\Var(\\xi\\mid\\kappa)=\\Var(\\xi)$.\nSumar el componente conocido $\\kappa$ prueba las dos primeras identidades\nde \\eqref{eq:bridge}. La última sigue de\n$\\E[\\mu(\\theta+\\eta)\\mid\\theta]=\\mu\\theta$. Los extremos se verifican\ndirectamente con las definiciones degeneradas del supuesto \\ref{as:signal}.\n$\\mu=0$ representa ausencia de señal, no una normal con varianza infinita.\n\\end{proof}",
+          "quoted_text_sha256": "dc95f04e647ecb57f7ee42ed7d10e18f479faa97480c113cbff6c21da6881a27"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_12",
+        "presentation_label": "Total-variance identity and interpretation",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered follow-up identity and interpretation attached to Proposition 1.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 243,
+          "line_end": 250,
+          "quoted_text": "\nLa ley de varianza total permite interpretar la descomposición:\n\\begin{equation}\n s=\\Var(\\E[\\theta\\mid y])+\\E[\\Var(\\theta\\mid y)]\n   =\\mu s+(1-\\mu)s.\n\\end{equation}\nEl primer término mide cómo varían los pronósticos públicos entre escenarios.\nEl segundo mide la incertidumbre que queda después del reporte. $\\mu$",
+          "quoted_text_sha256": "750e2b87048bd023918ab3cd1ed7fd469c49d1d047ab13d1a5c1f96d6507229f"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_13",
+        "presentation_label": "Numerical information example",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Illustrative numerical example without a named theorem-like presentation.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 252,
+          "line_end": 257,
+          "quoted_text": "\nPor ejemplo, con $s=t=100$ se obtiene $\\mu=1/2$. Si $y=8$ soles por acción,\n$\\kappa=4$: el pronóstico posterior es 4 y la varianza residual 50, con\ndesviación estándar $\\sqrt{50}\\simeq7{,}071$ soles por acción.\nSi $P_0=100$ y $e=4$, el particular espera 104 con varianza 54.\nUna institución que observa $\\theta=10$ espera 110 con varianza 4.",
+          "quoted_text_sha256": "2a40799b061973f72b2c7f5556c61ad913fb26e2baadd961679a3d0f4f5ba742"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_14",
+        "presentation_label": "Perceived-payoff means and variances",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Model formulas and a group table governing later propositions; retained as semantic context, not a new result.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 259,
+          "line_end": 290,
+          "quoted_text": "\n\\section{Varianzas y medias del pago percibido}\nUna institución racional conoce $\\theta$:\n\\begin{equation}\n m_1=P_0+\\theta,\\qquad v_1=\\Var(\\epsilon\\mid\\theta)=e.\n\\end{equation}\nEl particular racional conoce $\\kappa$ y desconoce $\\xi,\\epsilon$:\n\\begin{align}\n m_3&=P_0+\\kappa+\\E[\\xi\\mid\\kappa]+\\E[\\epsilon\\mid\\kappa]=P_0+\\kappa,\\\\\n v_3&=\\Var(\\xi+\\epsilon\\mid\\kappa)\\\\\n &=\\Var(\\xi\\mid\\kappa)+\\Var(\\epsilon\\mid\\kappa)\n       +2\\Cov(\\xi,\\epsilon\\mid\\kappa)=(1-\\mu)s+e.\n\\end{align}\nLa covarianza condicional es cero por las independencias del modelo.\nAñadir un error subjetivo independiente $\\zeta_j$ desplaza la media en\n$\\delta_j$ y añade $\\tau_j^2$ a la varianza. Con $d=(1-\\mu)s$:\n\\begin{center}\\small\n\\begin{tabular}{llll}\n\\toprule\nGrupo & Media $m_i$ & Varianza $v_i$ & Aversión $g_i$\\\\\n\\midrule\n1. Institución racional & $P_0+\\theta$ & $e$ & $\\gamma$\\\\\n2. Institución sentimental & $P_0+\\theta+\\delta_1$ & $e+\\tau_1^2$ & $\\gamma e^{-b\\rho_1}$\\\\\n3. Particular racional & $P_0+\\kappa$ & $e+d$ & $\\gamma$\\\\\n4. Particular sentimental & $P_0+\\kappa+\\delta_2$ & $e+d+\\tau_2^2$ & $\\gamma e^{-b\\rho_2}$\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nLa empresa paga el mismo $F$ a todos. Estas son creencias distintas sobre\nese pago. Un desplazamiento constante $\\delta_j$ no genera varianza:\nla incertidumbre subjetiva adicional está en $\\tau_j^2$.\nUn estado $\\rho_j=0$ implica $g_i=\\gamma>0$; el agente sigue evitando riesgo.",
+          "quoted_text_sha256": "310cf8ce461a679bc552a29fc739e2ff3c5cd8c59108414cf6e53d3560c08b10"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_15",
+        "presentation_label": "Wealth expectation and variance derivation",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered derivation supporting Proposition 2.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 293,
+          "line_end": 311,
+          "quoted_text": "\\subsection{Riqueza, esperanza y varianza}\nCon riqueza inicial $w_{0i}$ y posición $\\omega_i$ al precio $P$,\n\\begin{align}\n W_i&=(w_{0i}-P\\omega_i)R+\\omega_i F\\\\\n &=Rw_{0i}+\\omega_i(F-RP)=C_{0i}+\\omega_i(F-RP).\n\\end{align}\nDurante la elección, $P,\\omega_i,g_i,m_i,v_i$ son constantes. Por linealidad,\n\\begin{equation}\n M_i=\\E_i[W_i]=C_{0i}+\\omega_i(m_i-RP).\n\\end{equation}\nSumar una constante no altera una varianza; escalarla multiplica por el\ncuadrado del factor:\n\\begin{align}\n V_i=\\Var_i(W_i)\n &=\\Var_i(C_{0i}+\\omega_i(F-RP))\\\\\n &=\\omega_i^2\\Var_i(F-RP)=\\omega_i^2\\Var_i(F)=\\omega_i^2v_i.\n\\end{align}\nDuplicar la posición cuadruplica la varianza de riqueza. CARA utiliza esas\nvarianzas para valorar riesgo; las varianzas provienen del pago y las creencias.",
+          "quoted_text_sha256": "562b2bd30c684d6db65683ccbe3dde89c1b5144f76932caf635cb61676e0fdbb"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_16",
+        "presentation_label": "Expected utility and certainty equivalent",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "CARA objective identities and governing definition supporting Proposition 2, not a separate numbered claim.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 313,
+          "line_end": 332,
+          "quoted_text": "\\subsection{Utilidad esperada y equivalente cierto}\nLa utilidad es $U_i(W)=-e^{-g_iW}$, con\n$U_i'=g_i e^{-g_iW}>0$, $U_i''=-g_i^2e^{-g_iW}<0$ y\n$-U_i''/U_i'=g_i$. La aversión absoluta es constante respecto de riqueza,\naunque difiere entre grupos o estados. La riqueza es normal bajo las\ncreencias del agente. Usando la identidad normal del apéndice,\n\\begin{align}\n \\E_i[U_i(W_i)]\n &=-\\exp(-g_iM_i+g_i^2V_i/2)\\\\\n &=-\\exp[-g_i(M_i-g_iV_i/2)].\n\\end{align}\nComo $z\\mapsto-e^{-g_i z}$ es creciente, maximizar utilidad equivale a\nmaximizar el equivalente cierto\n\\begin{equation}\\label{eq:ce}\n CE_i=C_{0i}+\\omega_i(m_i-RP)-\\frac{g_iv_i}{2}\\omega_i^2.\n\\end{equation}\nEl equivalente cierto se mide en dinero y genera la misma elección.\nNo es una igualdad numérica con la utilidad esperada. Zhang y Zhang\nescriben $E[U(W_{i,t})]=E(W_{i,t})-\\tfrac12\\gamma(\\rho)\\Var(W_{i,t})$\n(ecuación (7), p.~5); la expresión correcta es la del equivalente cierto,",
+          "quoted_text_sha256": "93b33b047171d3de901315ce77254030d9a59228ff92f19a4fb67bf67c66cd7e"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_17",
+        "presentation_label": "Proof of Proposition 2",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Printed proof support for the selected demand proposition.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 342,
+          "line_end": 359,
+          "quoted_text": "\\begin{proof}\nEn \\eqref{eq:ce}, la derivada del ingreso fijo es cero; la del término\nlineal es $m_i-RP$; la de la penalización es\n$-(g_iv_i/2)2\\omega_i=-g_iv_i\\omega_i$. Por tanto,\n\\begin{align}\n CE_i'&=m_i-RP-g_iv_i\\omega_i=0,\\\\\n g_iv_i\\omega_i&=m_i-RP,\\qquad\n \\omega_i^*=(m_i-RP)/(g_iv_i).\n\\end{align}\nDividir es válido porque $g_i,v_i>0$. La segunda derivada es\n$CE_i''=-g_iv_i<0$. Además,\n\\begin{equation}\\label{eq:square}\n CE_i(\\omega_i)=CE_i(\\omega_i^*)-\n \\frac{g_iv_i}{2}(\\omega_i-\\omega_i^*)^2.\n\\end{equation}\nEl término restado es no negativo y solo se anula en el óptimo:\nhay máximo global único.\n\\end{proof}",
+          "quoted_text_sha256": "69fe1a5509dc1c5bc3243e7a307409404d177acf60e22484c139b1f54ebc7139"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_18",
+        "presentation_label": "Specialized demand formula",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered specialization and interpretation following Proposition 2.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 360,
+          "line_end": 365,
+          "quoted_text": "El numerador es pago esperado menos costo financiado. El denominador\npenaliza exposición por aversión y varianza. Para el particular racional,\n\\begin{equation}\n \\omega_3^*=\\frac{P_0+\\kappa-RP}{\\gamma[e+(1-\\mu)s]}.\n\\end{equation}\nLa información cambia el pronóstico y la incertidumbre. Una posición",
+          "quoted_text_sha256": "1279a9cd596918abb59975cc6d949a0f74fc7a2aac92430c2e9dcdb8c88eca5e"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_19",
+        "presentation_label": "Price-section definitions",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Governing definitions of the aggregate coefficients used in Proposition 3.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 367,
+          "line_end": 371,
+          "quoted_text": "\n\\section{Precio de equilibrio y resultado propio}\nDefino pesos $h_i=\\lambda_i/(g_iv_i)>0$, $H=\\sum_i h_i$,\n$a=h_1+h_2$ y $B=h_3+h_4$. Reúnen masa y respuesta al riesgo, y no tienen\nque sumar uno.",
+          "quoted_text_sha256": "fe2517ba9e701bdd9f80c2346a17c2c4afd93b17c6cf239f27c835cafad4149d"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_20",
+        "presentation_label": "Proof of Proposition 3",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Printed market-clearing and conditional-expectation proof support for Proposition 3.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 384,
+          "line_end": 395,
+          "quoted_text": "\\begin{proof}\nLa oferta de una acción exige\n\\begin{align}\n 1&=\\sum_i\\lambda_i\\omega_i^*\n   =\\sum_i h_i(m_i-RP)=\\sum_i h_i m_i-RPH.\n\\end{align}\nDespejar da $P=(\\sum_i h_i m_i-1)/(RH)$, único porque $R,H>0$.\nSustituir las cuatro medias da \\eqref{eq:price}. Los pesos no dependen de\nlas realizaciones de noticias. La independencia del sentimiento y la\nproposición \\ref{prop:information} dan\n$\\E[\\kappa\\mid\\theta,\\rho_1,\\rho_2]=\\mu\\theta$, probando \\eqref{eq:K}.\n\\end{proof}",
+          "quoted_text_sha256": "ed37b983cac613117d738e96c1d1db81bc2356277ccd4ad5a22ec26531b8d85c"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_21",
+        "presentation_label": "Interpretation of price sensitivity",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered economic interpretation following Proposition 3.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 396,
+          "line_end": 399,
+          "quoted_text": "$\\K$ mide la respuesta del precio esperado al fundamento. Mantener fija\nla señal realizada y derivar \\eqref{eq:price} respecto de $\\theta$ daría\n$a/(RH)$, otra comparación. Si $\\K=0{,}6$, una noticia adicional de una\nunidad monetaria cambia el precio esperado en $0{,}6$ unidades.",
+          "quoted_text_sha256": "5b9ff39eebc8ee0d095bc34af857bdde1cc6883dcac2cfabd968482dbed5b9b7"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_22",
+        "presentation_label": "Proof of Proposition 4",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Printed derivative, positivity, bound, and endpoint proof support for Proposition 4.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 406,
+          "line_end": 434,
+          "quoted_text": "\\begin{proof}\n$a>0$ es constante porque las instituciones conservan varianzas y aversiones.\nSean $n_3=\\lambda_3/\\gamma>0$, $n_4=\\lambda_4/g_4>0$,\n$e_3=e>0$, $e_4=e+\\tau_2^2>0$. Entonces\n\\begin{equation}\n d_j=e_j+(1-\\mu)s>0,\\quad\n B=\\sum_{j=3}^4 n_j/d_j,\\quad\n B'=\\sum_{j=3}^4 n_js/d_j^2.\n\\end{equation}\nLa regla del cociente permite desarrollar\n\\begin{align}\n \\K'&=\\frac{(B+\\mu B')(a+B)-(a+\\mu B)B'}{R(a+B)^2}\\\\\n &=\\frac{B^2+a[B-(1-\\mu)B']}{R(a+B)^2}.\n\\end{align}\nEn cada sumando,\n\\begin{equation}\n \\frac{n_j}{d_j}-(1-\\mu)\\frac{n_js}{d_j^2}\n =\\frac{n_j[d_j-(1-\\mu)s]}{d_j^2}\n =\\frac{n_je_j}{d_j^2}>0.\n\\end{equation}\nPor tanto\n\\begin{equation}\\label{eq:derivative}\n \\boxed{\\K'=\\frac{B^2+a\\sum_{j=3}^4 n_je_j/d_j^2}{R(a+B)^2}>0.}\n\\end{equation}\nLa función es continua en el intervalo cerrado y diferenciable dentro:\nel incremento es estricto. $a+\\mu B\\leq a+B$ prueba la cota superior,\nla positividad de parámetros la inferior, y sustituir $\\mu=1$ da $1/R$.\nEl apéndice ofrece una identidad de diferencias finitas.\n\\end{proof}",
+          "quoted_text_sha256": "6abbf83f2eb61f11c7ef3f7de7809457779a52d7bd2d194c3eca0f5675e0c372"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_23",
+        "presentation_label": "Full-information endpoint interpretation",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered post-proposition endpoint interpretation, not a visibly named result.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 435,
+          "line_end": 437,
+          "quoted_text": "Con $\\mu=0$ se recupera el coeficiente básico, porque los particulares\nconservan toda la incertidumbre $s$. Con $\\mu=1$ aún existe riesgo final\n$e>0$. La prima por riesgo y los sesgos siguen afectando el nivel del precio.",
+          "quoted_text_sha256": "53ecc09f1b7da215f6d4fbcfad69052fc047396832b48d6d4c4767352630289a"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_24",
+        "presentation_label": "Two opposing effects",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Labelled explanatory paragraph, derivative identity, and example motivating Proposition 5 without forming another theorem-like result.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 439,
+          "line_end": 454,
+          "quoted_text": "\\paragraph{Dos efectos de signo opuesto.} Una señal más precisa mejora\ndirectamente la respuesta del pronóstico público: en promedio, los\nparticulares responden con $\\mu\\theta$. También reduce su riesgo percibido\ny aumenta su peso $B$. Ese segundo efecto va en contra, porque los\nparticulares responden a una fracción de la noticia y las instituciones a\ntoda ella: con $\\mu$ fijo,\n\\begin{equation}\\label{eq:weight}\n \\frac{\\partial\\K}{\\partial B}=-\\frac{a(1-\\mu)}{R(a+B)^2}<0\n \\qquad(\\mu<1).\n\\end{equation}\nLa proposición~\\ref{prop:main} muestra que, con sentimiento fijo, el\nprimer efecto domina. Un indicador cuantitativo es la fracción de la\nbrecha de información completa que cierra cada nivel de transparencia,\n$G(\\mu)=[\\K(\\mu)-\\K(0)]/[\\K(1)-\\K(0)]\\in[0,1]$. Con los parámetros de\n\\eqref{eq:counter}, $G(1/2)=23/55\\simeq0{,}42$: la mitad de la precisión\ncierra menos de la mitad de la brecha.",
+          "quoted_text_sha256": "987b3299a7a671e3083dffc2034a84b3a84b8baeece6f7227c2c1b9827054235"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_25",
+        "presentation_label": "Consequences of endogenous sentiment",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered implications and coefficient definitions following Assumption 6 and preceding Proposition 5.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 468,
+          "line_end": 476,
+          "quoted_text": "La condición $\\rho_2'\\leq0$ reduce el optimismo y aumenta la aversión de los\nparticulares. Se trata de una respuesta especificada a $\\mu$, no de una\nfunción de sentimiento derivada de una decisión óptima. En los extremos,\nlas derivadas se interpretan lateralmente.\n\nEntonces $a(\\mu)=\\lambda_1/(\\gamma e)+\\lambda_2e^{b\\rho_1(\\mu)}/[\\gamma(e+\\tau_1^2)]$\ny $n_4(\\mu)=\\lambda_4e^{b\\rho_2(\\mu)}/\\gamma$. Como los estados no dependen\nde $\\theta$, la fórmula \\eqref{eq:K} sigue valiendo para cada $\\mu$.\n",
+          "quoted_text_sha256": "48e25042e4849b8e3f770e6bf726511beac3317a0650504501eeffe4edc8cbef"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_26",
+        "presentation_label": "Proof of Proposition 5",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Printed proof support for clauses (i)--(iv) of the selected proposition.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 496,
+          "line_end": 522,
+          "quoted_text": "\\begin{proof}\n(i) Escribo $\\K=R^{-1}[1-(1-\\mu)B/(a+B)]$ y uso\n$\\frac{d}{d\\mu}\\frac{B}{a+B}=\\frac{aB'-Ba'}{(a+B)^2}$.\n\n(ii) Ahora $B'=s\\sum_j n_j/d_j^2+n_4'/d_4$, con $n_4'=b\\rho_2'n_4\\leq0$,\ny $a'=b\\rho_1'\\lambda_2e^{b\\rho_1}/[\\gamma(e+\\tau_1^2)]\\geq0$. El\nnumerador de (i) es\n\\[\n \\underbrace{B^2+a\\textstyle\\sum_j n_je_j/d_j^2}_{>0\\ \\text{por \\eqref{eq:derivative}}}\n \\;-\\;(1-\\mu)a\\,\\frac{n_4'}{d_4}\\;+\\;(1-\\mu)B\\,a',\n\\]\ny los dos últimos términos son no negativos. Luego $\\K'>0$.\n\n(iii) Con $a'=0$, el numerador es $B^2+a[B-(1-\\mu)B']$, y\n$B-(1-\\mu)B'=\\sum_j n_je_j/d_j^2-(1-\\mu)n_4b\\rho_2'/d_4$. Si\n$(1-\\mu)b\\rho_2'\\leq e_4/d_4$, el corchete es positivo.\n\n(iv) Con $n_4(\\mu)=\\tfrac14(1+c\\mu)$, $b\\rho_2'(0)=c$. En $\\mu=0$:\n$d_3=2$, $d_4=3$, $a=3/8$, $B=1/8+1/12=5/24$. La condición de (iii) es\n$\\tfrac{25}{576}+\\tfrac38[\\tfrac1{16}+\\tfrac1{12}(\\tfrac23-c)]>0$, es\ndecir, $c<32(\\tfrac{25}{576}+\\tfrac3{128}+\\tfrac1{48})=\\tfrac{101}{36}$.\nLa suma es $101/1152$ y, más explícitamente,\n$\\K'(0)=(101-36c)/392$; así la pendiente es cero en el umbral y negativa\nsi y solo si $c>101/36$.\nEl valor con $c=5$ es un cálculo exacto. Finalmente,\n$\\K(1)=(a+B)/[R(a+B)]=1/R$ para cualquier trayectoria.\n\\end{proof}",
+          "quoted_text_sha256": "d1c7b3ab1b4494101ae7c47a416852d7365914d80b388fdef28033e06c9df9c7"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_27",
+        "presentation_label": "Mechanism interpretation",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered restatement and mechanism discussion following Proposition 5.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 523,
+          "line_end": 528,
+          "quoted_text": "\nEl mecanismo es el de \\eqref{eq:weight}. Si la divulgación vuelve mucho\nmás optimistas, y por tanto menos aversos, a los particulares, su peso\ncrece por dos vías y la respuesta promedio del precio puede caer para\ntransparencias bajas. Con divulgación completa se recupera siempre $1/R$.\n",
+          "quoted_text_sha256": "193cef09f955cfbc7a59d6004ad524ce581dadb0ced29b13338bb0e4bd51488c"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_28",
+        "presentation_label": "Sensitivity figure",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Figure and caption illustrating threshold behavior; figures do not become ordinary named-theory rows.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 529,
+          "line_end": 536,
+          "quoted_text": "\\begin{figure}[ht]\n\\centering\n\\input{../code/figures/endogenous.tex}\n\\caption{Sensibilidad con $n_4(\\mu)=\\tfrac14(1+c\\mu)$ y los parámetros de\n\\eqref{eq:counter}. Con $c\\leq0$ el resultado se mantiene; en $c=101/36$\nla pendiente inicial es cero; con $c=5$ la sensibilidad cae al inicio.\nDatos de \\texttt{code/verify.py}.}\n\\end{figure}",
+          "quoted_text_sha256": "67f9b21cb7eff38a9bb646a6c24d77e54099a81c8904250ba64a6f5208a68619"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_29",
+        "presentation_label": "Reproducible verification prose",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered computational and simulation assertions outside the selected numbered propositions.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 538,
+          "line_end": 557,
+          "quoted_text": "\\section{Verificación reproducible}\nEl punto de entrada es \\texttt{python code/verify.py}, sin dependencias\nexternas. Comprueba el contraejemplo, identidades de posterior y momentos,\nCPO, máximo y vaciado de mercado, y genera las cifras y datos de gráficos.\nEl barrido racional compara 5\\,760 pares de transparencias y 60 mercados.\nUna simulación gaussiana con semilla fija contrasta momentos y covarianzas.\nTambién contrasta la expresión CARA con integración numérica determinista.\nPara el puente al precio esperado, simula\n$\\kappa\\mid\\theta\\sim N(\\mu\\theta,\\mu(1-\\mu)s)$ con $100\\,000$ extracciones\npor valor de $\\theta$, promedia el precio \\eqref{eq:price} con estados\nsentimentales no nulos y estima $\\K$ por diferencias: en $\\mu=0{,}25$ la\nfórmula da $0{,}55749$ y la simulación $0{,}55714$; en $\\mu=0{,}6$,\n$0{,}71641$ y $0{,}71652$. En aritmética exacta, el script comprueba además\nel signo de \\eqref{eq:weight}, el intervalo $[0;\\,0{,}26]$ de la fórmula\nimpresa, $G(1/2)=23/55$ y la proposición~\\ref{prop:endo}: la derivada de\n(i) frente a cocientes de diferencias, cuatro trayectorias que cumplen (ii),\nel umbral $101/36$ y la reversión con $c=5$.\nLas simulaciones verifican implementación; la prueba general es analítica.\n\n\\begin{center}",
+          "quoted_text_sha256": "93af0a02552ca69e3acdd0674a919f75de58c4caa43cbc9570fae7db83c6dacc"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_30",
+        "presentation_label": "Scenario table and exact-value prose",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Numerical table and adjoining explanation, not a named theorem-like source presentation.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 558,
+          "line_end": 570,
+          "quoted_text": "\\begin{tabular}{lrrr}\n\\toprule\nEscenario & $\\mu=0$ & $\\mu=0{,}1$ & $\\mu=1$\\\\\n\\midrule\nBásico, referencia constante & $0{,}642857$ & $0{,}642857$ & $0{,}642857$\\\\\nFórmula publicada & $0{,}500000$ & $0{,}551866$ & $1$\\\\\nCorrección propuesta & $0{,}642857$ & $0{,}669346$ & $1$\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nLos parámetros son los de \\eqref{eq:counter}. La primera fila es una\nreferencia constante; no representa cambios informativos del básico.\nEl valor corregido en $0{,}1$ es exactamente $583/871$.",
+          "quoted_text_sha256": "b3e11cde25f56c666bd1bb0ef0d042f3749392ff52fd12698770dd382ced07fe"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_31",
+        "presentation_label": "Expected-sensitivity figure",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Figure-level reproducibility presentation outside the numbered proposition surface.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 571,
+          "line_end": 580,
+          "quoted_text": "\\begin{figure}[ht]\n\\centering\n\\input{../code/figures/information.tex}\n\\caption{Sensibilidad esperada: la corrección recupera el básico y aumenta\nhasta $1/R$. Datos del código, sin estimación empírica.}\n\\end{figure}\nLos informes \\texttt{code/output/verification.json} y\n\\texttt{signal-verification.json} detallan recuentos y tolerancias.\nEl código exporta momentos y posterior para poder reproducir los ejemplos.\n",
+          "quoted_text_sha256": "558e59d1d25d60454d29f8f445df8d41c43515e22bcecd3e86a2ab23f28eb003"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_32",
+        "presentation_label": "Scope, issuers, and limitations",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered scope and negative-result prose; retained for deep audit without promotion to a theorem row.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 581,
+          "line_end": 603,
+          "quoted_text": "\\section{Alcance, emisores y límites}\nEl modelo caracteriza un mecanismo bajo condiciones explícitas. No es una\nestimación de una empresa particular ni una afirmación válida para todo\nmercado. La misma acción tiene un pago común; un grupo conoce el fundamento\ny otro recibe un reporte imperfecto. Aplicarlo a bonos soberanos requeriría\nincorporar pago contractual, incumplimiento y sus determinantes.\n\nDeben distinguirse tres casos. Información conocida solo por el emisor:\nambos grupos de inversionistas la desconocen. Información privada de algunos\ninversionistas por análisis u observación: esta es la interpretación elegida,\nidealizada como conocimiento exacto. Información transmitida desde un\ndirectivo a un agente: requiere especificar transmisión, incentivos y\nselección del receptor, elementos ausentes aquí. La palabra privada no\nidentifica por sí sola el origen de esa ventaja.\n\nTampoco se demuestra una ganancia extraordinaria de instituciones. La\ndemanda depende del precio y del riesgo final; una mejor previsión puede\nmodificar la posición sin garantizar una rentabilidad superior en cada\nrealización. Comparar rendimientos requiere un referente, costos y horizonte.\nEl objeto demostrado es sensibilidad $\\K$, no un alfa de inversión.\n\nEl supuesto de no inferir del precio es material. Si los particulares\nconocieran todos los pesos, sesgos y la oferta fija, podrían despejar",
+          "quoted_text_sha256": "1c28a2875920e624eda54524efef4260aa55beb0f4d3328ab1fa5392b39843f0"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_33",
+        "presentation_label": "Price inversion equation",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered inference limitation and displayed rearrangement within the scope discussion.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 604,
+          "line_end": 611,
+          "quoted_text": "\\begin{equation}\n \\theta=\\frac{RHP-HP_0-B\\kappa-h_2\\delta_1-h_4\\delta_2+1}{a}.\n\\end{equation}\nPor eso no presento esta solución como un equilibrio de expectativas\nracionales con inferencia completa. Una extensión con oferta aleatoria o\nseñales institucionales imperfectas exigiría resolver creencias y precio\nconjuntamente.\n",
+          "quoted_text_sha256": "26a5dba6b40b1de567a25fb5770b39d752c90de3fa177489f69000ab11893e87"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_34",
+        "presentation_label": "Open cases and non-results",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Expressly unproved scope qualifications, not asserted named results.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 612,
+          "line_end": 617,
+          "quoted_text": "Si el sentimiento responde a la transparencia, la\nproposición~\\ref{prop:endo} da la condición exacta; queda abierto el caso en\nque el sentimiento responde a la propia noticia $\\theta$, que cambiaría la\ndefinición de $\\K$. Tampoco se prueba bienestar, reducción de volatilidad\ntotal ni desaparición de errores de valoración.\n",
+          "quoted_text_sha256": "68af887ac6a2785027c252c4c5c0ff370b97dadb62b6e5744397fa0474da759c"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_35",
+        "presentation_label": "Conclusion",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Unnumbered conclusion restating the selected numbered results and their interpretation.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 618,
+          "line_end": 624,
+          "quoted_text": "\\section{Conclusión}\nLa señal ruidosa permite derivar las varianzas mediante Bayes.\nCARA y normalidad entregan demanda y precio. La sensibilidad esperada\naumenta bajo sentimiento fijo y ausencia de inferencia adicional desde precios.\nSi la divulgación vuelve a los particulares más optimistas con suficiente\nrapidez, el resultado puede invertirse para transparencias bajas.\n\\label{endbody}",
+          "quoted_text_sha256": "26c742ebd730575c84932f9a41717bf7c92fbdfcb24cb650e85c973c0cc507c5"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_36",
+        "presentation_label": "Appendix: normal integral for CARA",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Appendix-only unnumbered derivation supporting the demand proof.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 630,
+          "line_end": 646,
+          "quoted_text": "\\section{Integral normal para CARA}\nPara $W\\sim N(M,V)$, $V>0$, completo el cuadrado del exponente:\n\\begin{equation}\n aw-\\frac{(w-M)^2}{2V}\n =-\\frac{[w-(M+aV)]^2}{2V}+aM+\\frac{a^2V}{2}.\n\\end{equation}\nExtraigo las constantes de la integral:\n\\begin{align}\n \\E[e^{aW}]&=e^{aM+a^2V/2}\n \\int_{\\mathbb R}\\frac{e^{-[w-(M+aV)]^2/(2V)}}{\\sqrt{2\\pi V}}\\,dw\\\\\n &=e^{aM+a^2V/2}.\n\\end{align}\nLa integral vale uno porque es una densidad normal con media $M+aV$ y\nvarianza $V$. Tomar $a=-g_i$ y el signo negativo de la utilidad da el\nresultado. Si $\\omega_i=0$, la riqueza es constante y la misma fórmula se\nverifica directamente, sin utilizar una densidad de varianza cero.\n",
+          "quoted_text_sha256": "6f437ea6c00e3750b67b7dd779c159a215f92fe73200b440b74bbc4bed7bb4a1"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_37",
+        "presentation_label": "Appendix: finite difference",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Appendix-only unnumbered identity and algebraic rule supporting Proposition 4.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 647,
+          "line_end": 662,
+          "quoted_text": "\\section{Diferencia finita}\nSean $d_j(z)=e_j+(1-z)s$ y $B_z=\\sum_jn_j/d_j(z)$. Al poner las fracciones\nsobre denominador común y simplificar,\n\\begin{equation}\n \\K(y)-\\K(x)=\n \\frac{(y-x)\\left[B_xB_y+\n a\\sum_{j=3}^4 n_je_j/(d_j(x)d_j(y))\\right]}\n {R(a+B_x)(a+B_y)}>0.\n\\end{equation}\nLa regla usada es\n$(1-x)n_j/d_j(x)-(1-y)n_j/d_j(y)\n=n_je_j(y-x)/[d_j(x)d_j(y)]$. Los denominadores son positivos.\nEl código verifica la identidad exactamente; Lean prueba la monotonicidad\ndel coeficiente por una descomposición equivalente.\n\n\\clearpage",
+          "quoted_text_sha256": "f2eaaef186d47ee4d037637e4d600452c31c1747712a0852b888a0e3523d2860"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_38",
+        "presentation_label": "Appendix: Lean correspondence and scope",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Audit/meta correspondence table and explanatory prose, not manuscript theorem content.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 663,
+          "line_end": 705,
+          "quoted_text": "\\section{Correspondencia con Lean y alcance}\nLa carpeta preliminar conserva las pruebas anteriores y añade\n\\texttt{SignalCARA.lean}. Sus informes permiten revisar las compilaciones.\nLa auditoría es parcial: identidades sobre momentos no prueban por sí mismas\nBayes, independencia gaussiana ni una integral de utilidad.\n\\begin{center}\\small\n\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.8cm}>{\\raggedright\\arraybackslash}p{6.3cm}>{\\raggedright\\arraybackslash}p{5cm}}\n\\toprule\nResultado & Declaración / archivo & Alcance\\\\\n\\midrule\nProp.~\\ref{prop:information}\n& \\texttt{public\\_variance}, \\texttt{hidden\\_variance},\n\\texttt{public\\_hidden\\_covariance}, \\texttt{posterior\\_square}\nen \\texttt{SignalCARA.lean}\n& Identidades algebraicas probadas. Bayes e independencia probabilística\nabiertos en Lean.\\\\\nProp.~\\ref{prop:demand}\n& \\texttt{cara\\_normal\\_exponent} en \\texttt{SignalCARA.lean};\n\\texttt{demand\\_maximizes}, \\texttt{demand\\_satisfies\\_FOC}\nen \\texttt{BaselineAudit.lean}\n& Exponente, CPO y máximo probados; integral normal abierta en Lean.\\\\\nProp.~\\ref{prop:price}\n& \\texttt{market\\_clearing} en \\texttt{BaselineAudit.lean}\n& Vaciado algebraico probado; esperanza requiere puente probabilístico.\\\\\nProp.~\\ref{prop:main}\n& \\texttt{four\\_group\\_information\\_increases},\n\\texttt{full\\_information\\_endpoint} en \\texttt{Transparency.lean}\n& Monotonicidad y extremo probados para el coeficiente algebraico\ncon parámetros positivos explícitos.\\\\\nProp.~\\ref{prop:endo}\n& ---\n& Abierto en Lean: pendiente de la corrida de AppliedModelingLib.\nComprobado en aritmética exacta.\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nNo se presenta esta carpeta como una corrida integral de AppliedModelingLib\nsobre un commit fijado. Ese procedimiento y el control\n\\texttt{paper\\_contribution.py check ... --fast} quedan pendientes.\nEl paper final del curso debe reportar el commit formalizado y el resultado\nde esa comprobación.\n\n\\clearpage",
+          "quoted_text_sha256": "fa0384057cea7a77a99b12397180c089c03b796eab25a8191fbdc9da5f68c8a0"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "olano26_candidate_39",
+        "presentation_label": "Appendix: AI contribution audit",
+        "visible_kind": "holistic",
+        "scope_disposition": "deep_audit_material",
+        "semantic_basis": "Audit/meta contribution records and course-delivery prose, not mathematical result presentations.",
+        "discovery_basis": "holistic_full_text_review",
+        "source_anchor": {
+          "path": "source/paper.tex",
+          "line_start": 706,
+          "line_end": 745,
+          "quoted_text": "\\section{Auditoría de contribuciones de IA}\nEl registro documenta afirmaciones, veredictos y comprobaciones.\nLos diálogos de \\texttt{prompts.md} son simulados y están identificados así.\n\\begin{center}\\small\n\\begin{tabular}{>{\\raggedright\\arraybackslash}p{4.2cm}>{\\raggedright\\arraybackslash}p{4.5cm}>{\\raggedright\\arraybackslash}p{4.3cm}}\n\\toprule\nAfirmación revisada & Veredicto & Comprobación\\\\\n\\midrule\nAsignar $\\mu s$ y $(1-\\mu)s$ basta como derivación.\n& Incompleto: era una especificación.\n& Señal, Bayes, varianzas y covarianza desarrolladas.\\\\\nMedia-varianza es numéricamente igual a utilidad esperada CARA.\n& Requiere precisión: es un equivalente cierto con igual elección.\n& Integral normal y monotonía de la transformación.\\\\\nLa transparencia siempre mejora el precio.\n& Demasiado amplio: sensibilidad esperada con sentimiento fijo.\n& Prueba, barrido racional y Lean algebraico.\\\\\nInformación institucional implica filtración del emisor.\n& No se desprende del modelo.\n& Lectura de secciones 3 y 6.2 y delimitación propia.\\\\\nClaude: más peso de los particulares y mejor información empujan $\\K$ en\nla misma dirección.\n& Incorrecto: $\\partial\\K/\\partial B<0$ con $\\mu$ fijo.\n& Derivada \\eqref{eq:weight}; detectado al contrastar con Codex;\ncomprobado en \\texttt{verify.py}.\\\\\nClaude: el resultado vale ``solo si'' la divulgación reduce la\nincertidumbre residual.\n& No demostrado: el coeficiente impreso también crece con $\\mu$.\n& Monotonicidad de $K^I$; título y conclusiones corregidos.\\\\\nClaude: condición exacta y contraejemplo con sentimiento endógeno.\n& Correcto en lo verificado.\n& Derivación algebraica independiente y aritmética exacta;\nmanuscrito personal pendiente en \\texttt{hand/}.\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nLa guía \\texttt{hand/derivaciones-guia.md} organiza las derivaciones para\nreproducirlas a mano. Una guía tipografiada no sustituye el apéndice\nmanuscrito personal exigido por el curso.\n\\end{document}",
+          "quoted_text_sha256": "b832f33cb264cebf2f4bab3e107bca32e5badbc754d455a3a198efb9cdcc3580"
+        }
+      }
+    ],
+    "discovered_candidate_presentation_sha256": "d9badba70d39182befb6d7a7724e95912825b3914d7957d4a56d2ac1cd79b183",
+    "discovered_named_result_sha256": "b725344b5164a97b8621e1a6a98ca1857d006a2730d466c1017033718eec9d50",
+    "source_region_partition": {
+      "schema": 1,
+      "complete": true,
+      "validator": "context-isolated source-only inventory reviewer preserved in .work/olano-intake/formalization-run.jsonl",
+      "method": "Partition the exact pinned TeX into preamble, main text, bibliography commands, theory appendix, and audit/meta appendix; assignments use byte-rematerialized source anchors.",
+      "validated_at": "2026-11-02T23:05:43Z",
+      "source_artifact_sha256": "8745553b2b2e9b05224abff3fcc446213bfdfca147d73103fab9e7012a546ebe",
+      "canonical_source_path": "source/paper.tex",
+      "regions": [
+        {
+          "id": "preamble",
+          "kind": "supplement",
+          "source_anchor": {
+            "path": "source/paper.tex",
+            "line_start": 1,
+            "line_end": 19,
+            "quoted_text": "\\documentclass[11pt]{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[T1]{fontenc}\n\\usepackage[spanish,es-nodecimaldot]{babel}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{amsmath,amssymb,amsthm,booktabs,array,graphicx,pgfplots}\n\\usepackage[colorlinks=true,allcolors=blue!50!black]{hyperref}\n\\emergencystretch=1em\n\\pgfplotsset{compat=1.18}\n\\newcommand{\\E}{\\mathbb E}\n\\newcommand{\\Var}{\\operatorname{Var}}\n\\newcommand{\\Cov}{\\operatorname{Cov}}\n\\newcommand{\\K}{\\mathcal K}\n\\newtheorem{proposition}{Proposición}\n\\newtheorem{assumption}{Supuesto}\n\\title{Transparencia, sentimiento y fundamentos\\\\\n\\large Una corrección de la información parcial en Zhang y Zhang (2023)}\n\\author{David Julio Olano Silva Nevado\\\\IA y Modelamiento Económico, UP}\n\\date{2 de noviembre de 2026}",
+            "quoted_text_sha256": "0654db30fc2863f809f586ca1d22480b327143257c81ca8433586f2e3b720907"
+          }
+        },
+        {
+          "id": "main_text",
+          "kind": "main_text",
+          "source_anchor": {
+            "path": "source/paper.tex",
+            "line_start": 20,
+            "line_end": 624,
+            "quoted_text": "\\begin{document}\n\\maketitle\n\\begin{abstract}\n\\noindent Estudio cuándo una señal pública más precisa aumenta la sensibilidad\nesperada del precio de una acción a sus fundamentos, manteniendo fijo el\nsentimiento. Audito la sección 6.2 de Zhang y Zhang (2023): una señal\ndeterminista escalada revela todo el fundamento si su factor es conocido y\npositivo, mientras que las varianzas impresas no recuperan los extremos\ninformativos. Propongo una señal gaussiana con ruido y derivo mediante Bayes\nsu componente público y residuo oculto. Desde utilidad CARA obtengo la\ndemanda óptima, el precio de equilibrio y una proposición de sensibilidad\ncreciente bajo condiciones explícitas. Código y simulaciones reproducen los\nresultados. Si la divulgación también cambia el sentimiento, el resultado\nse mantiene cuando reduce el optimismo de los particulares y puede invertirse cuando los\nvuelve más optimistas con suficiente rapidez; caracterizo la condición exacta.\nLean certifica componentes algebraicos, con un alcance probabilístico\ntodavía parcial. La aplicación corresponde a acciones con\ninformación desigual entre inversionistas, divulgación exógena y sin\ninferencia adicional desde el precio.\n\\end{abstract}\n\n\\section{Pregunta y contribución}\n\\textquestiondown{}Cuándo una mayor precisión de la información pública hace\nque el precio responda más a las noticias sobre el pago futuro de una acción?\nDemuestro que la sensibilidad del precio esperado aumenta con la precisión\npública, bajo creencias normales, CARA, sentimiento fijo, oferta fija y sin\naprendizaje adicional desde precios. La conclusión trata de respuesta a\nfundamentos, sin establecer aumentos universales del nivel ni del bienestar.\n\nConservo los cuatro grupos de Zhang y Zhang \\cite{zhang2023} y reespecifico\nsu sección 6.2, ecuaciones (38)--(44), pp.~15--16 y proposición 5(ii).\nLa primera entrega postulaba las proporciones de varianza. Aquí las derivo\ndesde una señal ruidosa y Bayes, y obtengo la condición de primer orden\n(CPO) desde la utilidad esperada CARA. Además, relajo el supuesto de\nsentimiento fijo: la proposición~\\ref{prop:endo} muestra cuándo la\nmonotonicidad sobrevive a un sentimiento que responde a la divulgación y\nda un ejemplo en que una transparencia baja reduce la sensibilidad.\n\n\\section{Punto de partida y literatura}\nEl pago monetario futuro de una acción se representa de forma consistente por\n\\begin{equation}\\label{eq:payoff}\n F=P_0+\\theta+\\epsilon.\n\\end{equation}\n$P_0$ es una referencia conocida, $\\theta$ la innovación fundamental y\n$\\epsilon$ una sorpresa final. Son cantidades monetarias por acción.\n$\\theta$ resume el efecto económico de la noticia sobre el pago futuro;\nno es una cantidad de artículos ni una puntuación de sentimiento.\n\nEn el modelo básico de Zhang y Zhang las instituciones observan $\\theta$\ny los particulares no reciben información sobre su realización. Su ecuación\n(15), p.~5, atribuye al particular racional varianza\n$\\sigma_\\epsilon^2+\\sigma_\\theta^2$. En la extensión, la ecuación (39)\ndefine $\\kappa=\\mu\\theta$ y la ecuación (40) usa\n$\\sigma_\\epsilon^2+\\mu^2\\sigma_\\theta^2$. La proposición 5(ii) afirma\nuna mayor sensibilidad frente al modelo básico para cualquier $\\mu$.\n\nSi $\\mu$ es conocido y positivo, $\\theta=\\kappa/\\mu$: escalar el dato no\noculta su valor. En $\\mu=0$, la varianza impresa elimina la incertidumbre\nfundamental todavía presente; en $\\mu=1$ la conserva aunque la noticia\nya se conoce. $\\Var(\\mu\\theta)=\\mu^2s$ es una identidad correcta para la\nvarianza marginal de la señal escalada. El problema es interpretarla como\nincertidumbre restante después de observarla.\n\nLa auditoría de las fórmulas impresas admite un contraejemplo. Fijo\n$\\lambda_i=1/4$, $\\gamma=R=1$, estados y sesgos sentimentales cero, y\n$\\sigma_\\epsilon^2=s=\\tau_1^2=\\tau_2^2=1$. Estados cero no eliminan las\nvarianzas subjetivas. Entonces\n\\begin{equation}\\label{eq:counter}\n K_0=\\frac9{14}\\simeq0{,}642857,\\quad\n K^I(0)=\\frac12,\\quad K^I(0{,}1)=\\frac{66943}{121303}\\simeq0{,}551866<K_0.\n\\end{equation}\nLa comparación relevante es $K^I(0{,}1)$ frente al básico $K_0$.\n$K^I(0)$ muestra además que la extensión no recupera su punto de partida.\nEl coeficiente impreso sí crece con $\\mu$: escribiendo\n$K^I=1-(1-\\mu)B^I/(a+B^I)$ con $R=1$, el peso impreso $B^I$ decrece porque\nsus varianzas $1+\\mu^2$ y $2+\\mu^2$ aumentan, y el producto de dos\nfactores no negativos decrecientes también decrece. El problema es su nivel\ninicial: por esa monotonicidad y el cálculo exacto en $\\mu=0{,}26$,\n$K^I(\\mu)<K_0$ para todo $\\mu\\in[0;\\,0{,}26]$, y el corte ocurre cerca de\n$\\mu\\simeq0{,}2649$. La comparación de la proposición 5(ii) falla en esa\nregión de transparencia baja.\nEl hallazgo concierne a las fórmulas e interpretación impresas; no identifica\nsi el origen fue editorial ni establece un efecto empírico de transparencia.\n\nDi Maggio y Pagano \\cite{dimaggio2018} modelan diferencias de procesamiento,\ndivulgación y decisiones del emisor, un mecanismo distinto del presente.\nGrossman y Stiglitz \\cite{grossman1980} muestran la importancia de información\ncostosa y aprendizaje desde precios; aquí restringir esa inferencia es un\nsupuesto explícito. El condicionamiento gaussiano es estándar. La contribución\nes la reparación concreta y la derivación de sensibilidad de cuatro grupos.\nLa búsqueda delimitada de título, DOI, versiones y correcciones no sustenta\nuna afirmación de novedad universal. Los tres trabajos citados son artículos\npublicados; el de Di Maggio y Pagano apareció en línea en 2017 y en volumen\nen 2018.\n\n\\section{Aplicación y supuestos económicos}\nLa aplicación elegida es la negociación secundaria de una acción de una\nempresa cotizada. La empresa es el emisor, pero no elige su divulgación\nestratégicamente en el modelo. Un ejemplo es una noticia sobre demanda\nfutura: algunos inversionistas observan mejor su componente fundamental,\nmientras el público recibe un reporte imperfecto. Observar exactamente\n$\\theta$ es una idealización de la ventaja institucional.\n\nInformación privada significa aquí que un dato pertenece al conjunto\ninformativo de unos inversionistas y no al de otros. Puede representar\nanálisis especializado u observación de indicadores. El modelo no identifica\nel canal de filtraciones de directivos ni operaciones de políticos. Si solo\nel emisor conoce algo y ningún inversionista lo observa, ambos grupos lo\ndesconocen: no corresponde asignarlo a una $\\theta$ institucional conocida.\n\n\\begin{assumption}[Pago]\\label{as:payoff}\n$P_0$ es conocido, $\\theta\\sim N(0,s)$ con $s>0$,\n$\\epsilon\\sim N(0,e)$ con $e=\\sigma_\\epsilon^2>0$; son independientes.\nLa oferta es una acción y $R=1+r_f>0$.\n\\end{assumption}\n\\begin{assumption}[Señal]\\label{as:signal}\nPara $0<\\mu<1$, todos observan $y=\\theta+\\eta$, con\n$\\eta\\sim N(0,t)$ independiente de $\\theta,\\epsilon$,\n$t=s(1-\\mu)/\\mu>0$. Las instituciones observan además $\\theta$.\nDefino $\\kappa=\\E[\\theta\\mid y]$ y $\\xi=\\theta-\\kappa$.\nEn $\\mu=0$ defino $\\kappa=0,\\xi=\\theta$; en $\\mu=1$,\n$\\kappa=\\theta,\\xi=0$.\n\\end{assumption}\n\\begin{assumption}[Grupos y sentimiento]\\label{as:sent}\nLas masas $\\lambda_i>0$ suman uno. Los grupos $1,2$ son institucionales y\n$3,4$ particulares. Los grupos $2,4$ tienen estados $\\rho_1,\\rho_2$,\nsesgos $\\delta_1,\\delta_2$ y varianzas subjetivas $\\tau_1^2,\\tau_2^2\\geq0$.\nLos estados son independientes de noticias y ruido; todos estos parámetros\npermanecen fijos al comparar transparencia.\n\\end{assumption}\n\\begin{assumption}[Preferencias y creencias]\\label{as:beliefs}\nCada creencia sobre el pago es normal, con media $m_i$ y varianza $v_i$.\n$g_1=g_3=\\gamma>0$, $g_2=\\gamma e^{-b\\rho_1}$,\n$g_4=\\gamma e^{-b\\rho_2}$, $b>0$.\nLos errores sentimentales subjetivos $\\zeta_j\\sim N(\\delta_j,\\tau_j^2)$\nson independientes de los componentes informativos y la sorpresa final.\nDescriben creencias, no pagos adicionales reales. Las posiciones son reales\nsin restricciones de venta corta ni endeudamiento.\n\\end{assumption}\n\\begin{assumption}[Información mantenida]\\label{as:price}\nLos particulares actualizan con $y$ y no extraen información adicional del\nprecio. Los agentes toman el precio como dado. No se modelan adquisición\ncostosa de información, elección del emisor ni reacción del sentimiento a\nla divulgación.\n\\end{assumption}\n\nLa secuencia es: fijar parámetros, realizar $\\theta$ y la señal, formar\ncreencias, negociar y vaciar el mercado, y realizar $\\epsilon$. Los grupos\nracionales carecen del sesgo sentimental especificado. El supuesto\n\\ref{as:price} limita una interpretación de expectativas racionales que\naprovechen toda la información del precio.\n\n\\section{Derivación de la información pública y oculta}\n\\subsection{Bayes y la distribución posterior}\nLa varianza de ruido $t$ mide imprecisión: un $t$ menor hace más útil el\nreporte. Para un fundamento posible $x$ y un reporte observado $y$, Bayes da\n\\begin{align}\n f(x\\mid y)&\\propto f(y\\mid x)f(x)\\\\\n &\\propto \\exp\\left\\{-\\frac12\n       \\left[\\frac{x^2}{s}+\\frac{(y-x)^2}{t}\\right]\\right\\}.\n\\end{align}\nExpando y completo el cuadrado:\n\\begin{align}\n \\frac{x^2}{s}+\\frac{(y-x)^2}{t}\n &=\\left(\\frac1s+\\frac1t\\right)x^2-\\frac{2y}{t}x+\\frac{y^2}{t}\\\\\n &=\\frac{s+t}{st}\\left(x-\\frac{s}{s+t}y\\right)^2+\\frac{y^2}{s+t}.\n \\label{eq:posterior-square}\n\\end{align}\nEl último término no depende de $x$ y queda en la normalización. Reconocer\nel núcleo normal entrega\n\\begin{equation}\\label{eq:posterior}\n \\theta\\mid y\\sim N\\left(\\frac{s}{s+t}y,\\frac{st}{s+t}\\right).\n\\end{equation}\nPor eso defino\n\\begin{equation}\\label{eq:mu}\n \\mu=\\frac{s}{s+t},\\qquad \\kappa=\\mu y,\\qquad \\xi=\\theta-\\mu y.\n\\end{equation}\n$\\mu$ es adimensional. Ahora dividir $\\kappa$ por $\\mu$ recupera\n$y=\\theta+\\eta$, que todavía contiene ruido. La señal es realmente parcial.\n\n\\begin{proposition}[Descomposición informativa]\\label{prop:information}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:signal}, $\\theta=\\kappa+\\xi$.\nLos componentes son gaussianos independientes, de media cero, y\n\\begin{equation}\\label{eq:variances}\n \\Var(\\kappa)=\\mu s,\\quad \\Var(\\xi)=(1-\\mu)s.\n\\end{equation}\nAdemás,\n\\begin{equation}\\label{eq:bridge}\n \\E[\\theta\\mid\\kappa]=\\kappa,\\quad\n \\Var(\\theta\\mid\\kappa)=(1-\\mu)s,\\quad\n \\E[\\kappa\\mid\\theta]=\\mu\\theta.\n\\end{equation}\n\\end{proposition}\n\\begin{proof}\nPara el interior, $\\Cov(\\theta,\\eta)=0$ por independencia y\n$\\Var(y)=s+t$. Aplicando $\\Var(cX)=c^2\\Var(X)$,\n\\begin{align}\n \\Var(\\kappa)&=\\Var(\\mu(\\theta+\\eta))=\\mu^2(s+t)\\\\\n &=\\frac{s^2}{(s+t)^2}(s+t)=\\frac{s^2}{s+t}=\\mu s.\n\\end{align}\nEscribo $\\xi=(1-\\mu)\\theta-\\mu\\eta$ y desarrollo todos los términos:\n\\begin{align}\n \\Var(\\xi)&=(1-\\mu)^2s+\\mu^2t-2\\mu(1-\\mu)\\Cov(\\theta,\\eta)\\\\\n &=\\frac{t^2s+s^2t}{(s+t)^2}\n =\\frac{st(s+t)}{(s+t)^2}=\\frac{st}{s+t}=(1-\\mu)s.\n\\end{align}\nLa covarianza entre los componentes nuevos es\n\\begin{align}\n \\Cov(\\kappa,\\xi)\n &=\\Cov(\\mu(\\theta+\\eta),(1-\\mu)\\theta-\\mu\\eta)\\\\\n &=\\mu(1-\\mu)s-\\mu^2t\n =\\mu[(1-\\mu)s-\\mu t]=0.\n\\end{align}\nSon transformaciones lineales de normales independientes y, por tanto,\nconjuntamente gaussianos. Para ese caso, covarianza cero implica\nindependencia; la implicación no es general fuera del caso gaussiano.\nAsí $\\E[\\xi\\mid\\kappa]=0$ y $\\Var(\\xi\\mid\\kappa)=\\Var(\\xi)$.\nSumar el componente conocido $\\kappa$ prueba las dos primeras identidades\nde \\eqref{eq:bridge}. La última sigue de\n$\\E[\\mu(\\theta+\\eta)\\mid\\theta]=\\mu\\theta$. Los extremos se verifican\ndirectamente con las definiciones degeneradas del supuesto \\ref{as:signal}.\n$\\mu=0$ representa ausencia de señal, no una normal con varianza infinita.\n\\end{proof}\n\nLa ley de varianza total permite interpretar la descomposición:\n\\begin{equation}\n s=\\Var(\\E[\\theta\\mid y])+\\E[\\Var(\\theta\\mid y)]\n   =\\mu s+(1-\\mu)s.\n\\end{equation}\nEl primer término mide cómo varían los pronósticos públicos entre escenarios.\nEl segundo mide la incertidumbre que queda después del reporte. $\\mu$\nrepresenta una fracción de varianza, no del valor realizado de $\\theta$.\n\nPor ejemplo, con $s=t=100$ se obtiene $\\mu=1/2$. Si $y=8$ soles por acción,\n$\\kappa=4$: el pronóstico posterior es 4 y la varianza residual 50, con\ndesviación estándar $\\sqrt{50}\\simeq7{,}071$ soles por acción.\nSi $P_0=100$ y $e=4$, el particular espera 104 con varianza 54.\nUna institución que observa $\\theta=10$ espera 110 con varianza 4.\nLa sorpresa $\\epsilon$ todavía modifica el pago realizado.\n\n\\section{Varianzas y medias del pago percibido}\nUna institución racional conoce $\\theta$:\n\\begin{equation}\n m_1=P_0+\\theta,\\qquad v_1=\\Var(\\epsilon\\mid\\theta)=e.\n\\end{equation}\nEl particular racional conoce $\\kappa$ y desconoce $\\xi,\\epsilon$:\n\\begin{align}\n m_3&=P_0+\\kappa+\\E[\\xi\\mid\\kappa]+\\E[\\epsilon\\mid\\kappa]=P_0+\\kappa,\\\\\n v_3&=\\Var(\\xi+\\epsilon\\mid\\kappa)\\\\\n &=\\Var(\\xi\\mid\\kappa)+\\Var(\\epsilon\\mid\\kappa)\n       +2\\Cov(\\xi,\\epsilon\\mid\\kappa)=(1-\\mu)s+e.\n\\end{align}\nLa covarianza condicional es cero por las independencias del modelo.\nAñadir un error subjetivo independiente $\\zeta_j$ desplaza la media en\n$\\delta_j$ y añade $\\tau_j^2$ a la varianza. Con $d=(1-\\mu)s$:\n\\begin{center}\\small\n\\begin{tabular}{llll}\n\\toprule\nGrupo & Media $m_i$ & Varianza $v_i$ & Aversión $g_i$\\\\\n\\midrule\n1. Institución racional & $P_0+\\theta$ & $e$ & $\\gamma$\\\\\n2. Institución sentimental & $P_0+\\theta+\\delta_1$ & $e+\\tau_1^2$ & $\\gamma e^{-b\\rho_1}$\\\\\n3. Particular racional & $P_0+\\kappa$ & $e+d$ & $\\gamma$\\\\\n4. Particular sentimental & $P_0+\\kappa+\\delta_2$ & $e+d+\\tau_2^2$ & $\\gamma e^{-b\\rho_2}$\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nLa empresa paga el mismo $F$ a todos. Estas son creencias distintas sobre\nese pago. Un desplazamiento constante $\\delta_j$ no genera varianza:\nla incertidumbre subjetiva adicional está en $\\tau_j^2$.\nUn estado $\\rho_j=0$ implica $g_i=\\gamma>0$; el agente sigue evitando riesgo.\n\n\\section{De utilidad CARA a la CPO}\n\\subsection{Riqueza, esperanza y varianza}\nCon riqueza inicial $w_{0i}$ y posición $\\omega_i$ al precio $P$,\n\\begin{align}\n W_i&=(w_{0i}-P\\omega_i)R+\\omega_i F\\\\\n &=Rw_{0i}+\\omega_i(F-RP)=C_{0i}+\\omega_i(F-RP).\n\\end{align}\nDurante la elección, $P,\\omega_i,g_i,m_i,v_i$ son constantes. Por linealidad,\n\\begin{equation}\n M_i=\\E_i[W_i]=C_{0i}+\\omega_i(m_i-RP).\n\\end{equation}\nSumar una constante no altera una varianza; escalarla multiplica por el\ncuadrado del factor:\n\\begin{align}\n V_i=\\Var_i(W_i)\n &=\\Var_i(C_{0i}+\\omega_i(F-RP))\\\\\n &=\\omega_i^2\\Var_i(F-RP)=\\omega_i^2\\Var_i(F)=\\omega_i^2v_i.\n\\end{align}\nDuplicar la posición cuadruplica la varianza de riqueza. CARA utiliza esas\nvarianzas para valorar riesgo; las varianzas provienen del pago y las creencias.\n\n\\subsection{Utilidad esperada y equivalente cierto}\nLa utilidad es $U_i(W)=-e^{-g_iW}$, con\n$U_i'=g_i e^{-g_iW}>0$, $U_i''=-g_i^2e^{-g_iW}<0$ y\n$-U_i''/U_i'=g_i$. La aversión absoluta es constante respecto de riqueza,\naunque difiere entre grupos o estados. La riqueza es normal bajo las\ncreencias del agente. Usando la identidad normal del apéndice,\n\\begin{align}\n \\E_i[U_i(W_i)]\n &=-\\exp(-g_iM_i+g_i^2V_i/2)\\\\\n &=-\\exp[-g_i(M_i-g_iV_i/2)].\n\\end{align}\nComo $z\\mapsto-e^{-g_i z}$ es creciente, maximizar utilidad equivale a\nmaximizar el equivalente cierto\n\\begin{equation}\\label{eq:ce}\n CE_i=C_{0i}+\\omega_i(m_i-RP)-\\frac{g_iv_i}{2}\\omega_i^2.\n\\end{equation}\nEl equivalente cierto se mide en dinero y genera la misma elección.\nNo es una igualdad numérica con la utilidad esperada. Zhang y Zhang\nescriben $E[U(W_{i,t})]=E(W_{i,t})-\\tfrac12\\gamma(\\rho)\\Var(W_{i,t})$\n(ecuación (7), p.~5); la expresión correcta es la del equivalente cierto,\naunque la demanda resultante coincide.\n\n\\begin{proposition}[Demanda óptima]\\label{prop:demand}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:price}, cada grupo tiene una\núnica posición óptima\n\\begin{equation}\\label{eq:demand}\n \\omega_i^*=\\frac{m_i-RP}{g_iv_i}.\n\\end{equation}\n\\end{proposition}\n\\begin{proof}\nEn \\eqref{eq:ce}, la derivada del ingreso fijo es cero; la del término\nlineal es $m_i-RP$; la de la penalización es\n$-(g_iv_i/2)2\\omega_i=-g_iv_i\\omega_i$. Por tanto,\n\\begin{align}\n CE_i'&=m_i-RP-g_iv_i\\omega_i=0,\\\\\n g_iv_i\\omega_i&=m_i-RP,\\qquad\n \\omega_i^*=(m_i-RP)/(g_iv_i).\n\\end{align}\nDividir es válido porque $g_i,v_i>0$. La segunda derivada es\n$CE_i''=-g_iv_i<0$. Además,\n\\begin{equation}\\label{eq:square}\n CE_i(\\omega_i)=CE_i(\\omega_i^*)-\n \\frac{g_iv_i}{2}(\\omega_i-\\omega_i^*)^2.\n\\end{equation}\nEl término restado es no negativo y solo se anula en el óptimo:\nhay máximo global único.\n\\end{proof}\nEl numerador es pago esperado menos costo financiado. El denominador\npenaliza exposición por aversión y varianza. Para el particular racional,\n\\begin{equation}\n \\omega_3^*=\\frac{P_0+\\kappa-RP}{\\gamma[e+(1-\\mu)s]}.\n\\end{equation}\nLa información cambia el pronóstico y la incertidumbre. Una posición\nnegativa representa venta corta permitida por el modelo.\n\n\\section{Precio de equilibrio y resultado propio}\nDefino pesos $h_i=\\lambda_i/(g_iv_i)>0$, $H=\\sum_i h_i$,\n$a=h_1+h_2$ y $B=h_3+h_4$. Reúnen masa y respuesta al riesgo, y no tienen\nque sumar uno.\n\\begin{proposition}[Precio y sensibilidad esperada]\\label{prop:price}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:price}, el precio es único:\n\\begin{equation}\\label{eq:price}\n P=\\frac{HP_0+a\\theta+B\\kappa+h_2\\delta_1+h_4\\delta_2-1}{RH}.\n\\end{equation}\nCon sentimiento fijo,\n\\begin{equation}\\label{eq:K}\n \\bar P=\\E[P\\mid\\theta,\\rho_1,\\rho_2]=C(\\mu)+\\K(\\mu)\\theta,\\quad\n \\K(\\mu)=\\frac{a+\\mu B}{R(a+B)},\n\\end{equation}\ncon $C(\\mu)=[HP_0+h_2\\delta_1+h_4\\delta_2-1]/(RH)$.\n\\end{proposition}\n\\begin{proof}\nLa oferta de una acción exige\n\\begin{align}\n 1&=\\sum_i\\lambda_i\\omega_i^*\n   =\\sum_i h_i(m_i-RP)=\\sum_i h_i m_i-RPH.\n\\end{align}\nDespejar da $P=(\\sum_i h_i m_i-1)/(RH)$, único porque $R,H>0$.\nSustituir las cuatro medias da \\eqref{eq:price}. Los pesos no dependen de\nlas realizaciones de noticias. La independencia del sentimiento y la\nproposición \\ref{prop:information} dan\n$\\E[\\kappa\\mid\\theta,\\rho_1,\\rho_2]=\\mu\\theta$, probando \\eqref{eq:K}.\n\\end{proof}\n$\\K$ mide la respuesta del precio esperado al fundamento. Mantener fija\nla señal realizada y derivar \\eqref{eq:price} respecto de $\\theta$ daría\n$a/(RH)$, otra comparación. Si $\\K=0{,}6$, una noticia adicional de una\nunidad monetaria cambia el precio esperado en $0{,}6$ unidades.\n\n\\begin{proposition}[Mayor sensibilidad con sentimiento fijo]\\label{prop:main}\nBajo los supuestos \\ref{as:payoff}--\\ref{as:price}, si\n$0\\leq x<y\\leq1$, entonces $\\K(x)<\\K(y)$.\nAdemás $0<\\K(\\mu)\\leq1/R$ y $\\K(1)=1/R$.\n\\end{proposition}\n\\begin{proof}\n$a>0$ es constante porque las instituciones conservan varianzas y aversiones.\nSean $n_3=\\lambda_3/\\gamma>0$, $n_4=\\lambda_4/g_4>0$,\n$e_3=e>0$, $e_4=e+\\tau_2^2>0$. Entonces\n\\begin{equation}\n d_j=e_j+(1-\\mu)s>0,\\quad\n B=\\sum_{j=3}^4 n_j/d_j,\\quad\n B'=\\sum_{j=3}^4 n_js/d_j^2.\n\\end{equation}\nLa regla del cociente permite desarrollar\n\\begin{align}\n \\K'&=\\frac{(B+\\mu B')(a+B)-(a+\\mu B)B'}{R(a+B)^2}\\\\\n &=\\frac{B^2+a[B-(1-\\mu)B']}{R(a+B)^2}.\n\\end{align}\nEn cada sumando,\n\\begin{equation}\n \\frac{n_j}{d_j}-(1-\\mu)\\frac{n_js}{d_j^2}\n =\\frac{n_j[d_j-(1-\\mu)s]}{d_j^2}\n =\\frac{n_je_j}{d_j^2}>0.\n\\end{equation}\nPor tanto\n\\begin{equation}\\label{eq:derivative}\n \\boxed{\\K'=\\frac{B^2+a\\sum_{j=3}^4 n_je_j/d_j^2}{R(a+B)^2}>0.}\n\\end{equation}\nLa función es continua en el intervalo cerrado y diferenciable dentro:\nel incremento es estricto. $a+\\mu B\\leq a+B$ prueba la cota superior,\nla positividad de parámetros la inferior, y sustituir $\\mu=1$ da $1/R$.\nEl apéndice ofrece una identidad de diferencias finitas.\n\\end{proof}\nCon $\\mu=0$ se recupera el coeficiente básico, porque los particulares\nconservan toda la incertidumbre $s$. Con $\\mu=1$ aún existe riesgo final\n$e>0$. La prima por riesgo y los sesgos siguen afectando el nivel del precio.\n\n\\paragraph{Dos efectos de signo opuesto.} Una señal más precisa mejora\ndirectamente la respuesta del pronóstico público: en promedio, los\nparticulares responden con $\\mu\\theta$. También reduce su riesgo percibido\ny aumenta su peso $B$. Ese segundo efecto va en contra, porque los\nparticulares responden a una fracción de la noticia y las instituciones a\ntoda ella: con $\\mu$ fijo,\n\\begin{equation}\\label{eq:weight}\n \\frac{\\partial\\K}{\\partial B}=-\\frac{a(1-\\mu)}{R(a+B)^2}<0\n \\qquad(\\mu<1).\n\\end{equation}\nLa proposición~\\ref{prop:main} muestra que, con sentimiento fijo, el\nprimer efecto domina. Un indicador cuantitativo es la fracción de la\nbrecha de información completa que cierra cada nivel de transparencia,\n$G(\\mu)=[\\K(\\mu)-\\K(0)]/[\\K(1)-\\K(0)]\\in[0,1]$. Con los parámetros de\n\\eqref{eq:counter}, $G(1/2)=23/55\\simeq0{,}42$: la mitad de la precisión\ncierra menos de la mitad de la brecha.\n\n\\section{Extensión: sentimiento que responde a la transparencia}\nEl supuesto~\\ref{as:sent} fija el sentimiento al comparar transparencias.\nUna divulgación más precisa podría reducir el optimismo de los particulares o volverlos\nmás optimistas. Relajo solo esa parte.\n\n\\begin{assumption}[Sentimiento endógeno a la transparencia]\\label{as:endo}\nLos estados son funciones diferenciables $\\rho_1(\\mu)$ y $\\rho_2(\\mu)$ en\n$[0,1]$, independientes de noticias, ruido y sorpresa final. Este supuesto\nreemplaza la parte del supuesto~\\ref{as:sent} que fija los estados y la\nexclusión correspondiente del supuesto~\\ref{as:price}; todo lo demás se\nmantiene.\n\\end{assumption}\nLa condición $\\rho_2'\\leq0$ reduce el optimismo y aumenta la aversión de los\nparticulares. Se trata de una respuesta especificada a $\\mu$, no de una\nfunción de sentimiento derivada de una decisión óptima. En los extremos,\nlas derivadas se interpretan lateralmente.\n\nEntonces $a(\\mu)=\\lambda_1/(\\gamma e)+\\lambda_2e^{b\\rho_1(\\mu)}/[\\gamma(e+\\tau_1^2)]$\ny $n_4(\\mu)=\\lambda_4e^{b\\rho_2(\\mu)}/\\gamma$. Como los estados no dependen\nde $\\theta$, la fórmula \\eqref{eq:K} sigue valiendo para cada $\\mu$.\n\n\\begin{proposition}[Cuándo sobrevive el resultado]\\label{prop:endo}\nBajo el supuesto~\\ref{as:endo} y las restricciones de signo de la\nproposición~\\ref{prop:main}:\n\\begin{enumerate}\n \\item[(i)] $\\displaystyle\\K'(\\mu)=\\frac{B(a+B)-(1-\\mu)(aB'-Ba')}{R(a+B)^2}$;\n \\item[(ii)] si $\\rho_1'(\\mu)\\geq0$ y $\\rho_2'(\\mu)\\leq0$ en $[0,1]$, $\\K$ es\n estrictamente creciente;\n \\item[(iii)] si $\\rho_1$ es constante, $\\K'(\\mu)>0$ si y solo si\n \\[\n B^2+a\\left[\\frac{n_3e_3}{d_3^2}+\\frac{n_4}{d_4}\n \\left(\\frac{e_4}{d_4}-(1-\\mu)b\\rho_2'(\\mu)\\right)\\right]>0,\n \\]\n y basta $(1-\\mu)b\\rho_2'(\\mu)\\leq e_4/d_4(\\mu)$;\n \\item[(iv)] con los parámetros de \\eqref{eq:counter} y\n $\\rho_2(\\mu)=b^{-1}\\ln(1+c\\mu)$, $c>-1$: $\\K'(0)<0$ si y solo si\n $c>101/36$; con $c=5$, $\\K(0{,}1)=1768/2803<9/14=\\K(0)$. Siempre\n $\\K(1)=1/R$.\n\\end{enumerate}\n\\end{proposition}\n\\begin{proof}\n(i) Escribo $\\K=R^{-1}[1-(1-\\mu)B/(a+B)]$ y uso\n$\\frac{d}{d\\mu}\\frac{B}{a+B}=\\frac{aB'-Ba'}{(a+B)^2}$.\n\n(ii) Ahora $B'=s\\sum_j n_j/d_j^2+n_4'/d_4$, con $n_4'=b\\rho_2'n_4\\leq0$,\ny $a'=b\\rho_1'\\lambda_2e^{b\\rho_1}/[\\gamma(e+\\tau_1^2)]\\geq0$. El\nnumerador de (i) es\n\\[\n \\underbrace{B^2+a\\textstyle\\sum_j n_je_j/d_j^2}_{>0\\ \\text{por \\eqref{eq:derivative}}}\n \\;-\\;(1-\\mu)a\\,\\frac{n_4'}{d_4}\\;+\\;(1-\\mu)B\\,a',\n\\]\ny los dos últimos términos son no negativos. Luego $\\K'>0$.\n\n(iii) Con $a'=0$, el numerador es $B^2+a[B-(1-\\mu)B']$, y\n$B-(1-\\mu)B'=\\sum_j n_je_j/d_j^2-(1-\\mu)n_4b\\rho_2'/d_4$. Si\n$(1-\\mu)b\\rho_2'\\leq e_4/d_4$, el corchete es positivo.\n\n(iv) Con $n_4(\\mu)=\\tfrac14(1+c\\mu)$, $b\\rho_2'(0)=c$. En $\\mu=0$:\n$d_3=2$, $d_4=3$, $a=3/8$, $B=1/8+1/12=5/24$. La condición de (iii) es\n$\\tfrac{25}{576}+\\tfrac38[\\tfrac1{16}+\\tfrac1{12}(\\tfrac23-c)]>0$, es\ndecir, $c<32(\\tfrac{25}{576}+\\tfrac3{128}+\\tfrac1{48})=\\tfrac{101}{36}$.\nLa suma es $101/1152$ y, más explícitamente,\n$\\K'(0)=(101-36c)/392$; así la pendiente es cero en el umbral y negativa\nsi y solo si $c>101/36$.\nEl valor con $c=5$ es un cálculo exacto. Finalmente,\n$\\K(1)=(a+B)/[R(a+B)]=1/R$ para cualquier trayectoria.\n\\end{proof}\n\nEl mecanismo es el de \\eqref{eq:weight}. Si la divulgación vuelve mucho\nmás optimistas, y por tanto menos aversos, a los particulares, su peso\ncrece por dos vías y la respuesta promedio del precio puede caer para\ntransparencias bajas. Con divulgación completa se recupera siempre $1/R$.\n\n\\begin{figure}[ht]\n\\centering\n\\input{../code/figures/endogenous.tex}\n\\caption{Sensibilidad con $n_4(\\mu)=\\tfrac14(1+c\\mu)$ y los parámetros de\n\\eqref{eq:counter}. Con $c\\leq0$ el resultado se mantiene; en $c=101/36$\nla pendiente inicial es cero; con $c=5$ la sensibilidad cae al inicio.\nDatos de \\texttt{code/verify.py}.}\n\\end{figure}\n\n\\section{Verificación reproducible}\nEl punto de entrada es \\texttt{python code/verify.py}, sin dependencias\nexternas. Comprueba el contraejemplo, identidades de posterior y momentos,\nCPO, máximo y vaciado de mercado, y genera las cifras y datos de gráficos.\nEl barrido racional compara 5\\,760 pares de transparencias y 60 mercados.\nUna simulación gaussiana con semilla fija contrasta momentos y covarianzas.\nTambién contrasta la expresión CARA con integración numérica determinista.\nPara el puente al precio esperado, simula\n$\\kappa\\mid\\theta\\sim N(\\mu\\theta,\\mu(1-\\mu)s)$ con $100\\,000$ extracciones\npor valor de $\\theta$, promedia el precio \\eqref{eq:price} con estados\nsentimentales no nulos y estima $\\K$ por diferencias: en $\\mu=0{,}25$ la\nfórmula da $0{,}55749$ y la simulación $0{,}55714$; en $\\mu=0{,}6$,\n$0{,}71641$ y $0{,}71652$. En aritmética exacta, el script comprueba además\nel signo de \\eqref{eq:weight}, el intervalo $[0;\\,0{,}26]$ de la fórmula\nimpresa, $G(1/2)=23/55$ y la proposición~\\ref{prop:endo}: la derivada de\n(i) frente a cocientes de diferencias, cuatro trayectorias que cumplen (ii),\nel umbral $101/36$ y la reversión con $c=5$.\nLas simulaciones verifican implementación; la prueba general es analítica.\n\n\\begin{center}\n\\begin{tabular}{lrrr}\n\\toprule\nEscenario & $\\mu=0$ & $\\mu=0{,}1$ & $\\mu=1$\\\\\n\\midrule\nBásico, referencia constante & $0{,}642857$ & $0{,}642857$ & $0{,}642857$\\\\\nFórmula publicada & $0{,}500000$ & $0{,}551866$ & $1$\\\\\nCorrección propuesta & $0{,}642857$ & $0{,}669346$ & $1$\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nLos parámetros son los de \\eqref{eq:counter}. La primera fila es una\nreferencia constante; no representa cambios informativos del básico.\nEl valor corregido en $0{,}1$ es exactamente $583/871$.\n\\begin{figure}[ht]\n\\centering\n\\input{../code/figures/information.tex}\n\\caption{Sensibilidad esperada: la corrección recupera el básico y aumenta\nhasta $1/R$. Datos del código, sin estimación empírica.}\n\\end{figure}\nLos informes \\texttt{code/output/verification.json} y\n\\texttt{signal-verification.json} detallan recuentos y tolerancias.\nEl código exporta momentos y posterior para poder reproducir los ejemplos.\n\n\\section{Alcance, emisores y límites}\nEl modelo caracteriza un mecanismo bajo condiciones explícitas. No es una\nestimación de una empresa particular ni una afirmación válida para todo\nmercado. La misma acción tiene un pago común; un grupo conoce el fundamento\ny otro recibe un reporte imperfecto. Aplicarlo a bonos soberanos requeriría\nincorporar pago contractual, incumplimiento y sus determinantes.\n\nDeben distinguirse tres casos. Información conocida solo por el emisor:\nambos grupos de inversionistas la desconocen. Información privada de algunos\ninversionistas por análisis u observación: esta es la interpretación elegida,\nidealizada como conocimiento exacto. Información transmitida desde un\ndirectivo a un agente: requiere especificar transmisión, incentivos y\nselección del receptor, elementos ausentes aquí. La palabra privada no\nidentifica por sí sola el origen de esa ventaja.\n\nTampoco se demuestra una ganancia extraordinaria de instituciones. La\ndemanda depende del precio y del riesgo final; una mejor previsión puede\nmodificar la posición sin garantizar una rentabilidad superior en cada\nrealización. Comparar rendimientos requiere un referente, costos y horizonte.\nEl objeto demostrado es sensibilidad $\\K$, no un alfa de inversión.\n\nEl supuesto de no inferir del precio es material. Si los particulares\nconocieran todos los pesos, sesgos y la oferta fija, podrían despejar\n\\begin{equation}\n \\theta=\\frac{RHP-HP_0-B\\kappa-h_2\\delta_1-h_4\\delta_2+1}{a}.\n\\end{equation}\nPor eso no presento esta solución como un equilibrio de expectativas\nracionales con inferencia completa. Una extensión con oferta aleatoria o\nseñales institucionales imperfectas exigiría resolver creencias y precio\nconjuntamente.\n\nSi el sentimiento responde a la transparencia, la\nproposición~\\ref{prop:endo} da la condición exacta; queda abierto el caso en\nque el sentimiento responde a la propia noticia $\\theta$, que cambiaría la\ndefinición de $\\K$. Tampoco se prueba bienestar, reducción de volatilidad\ntotal ni desaparición de errores de valoración.\n\n\\section{Conclusión}\nLa señal ruidosa permite derivar las varianzas mediante Bayes.\nCARA y normalidad entregan demanda y precio. La sensibilidad esperada\naumenta bajo sentimiento fijo y ausencia de inferencia adicional desde precios.\nSi la divulgación vuelve a los particulares más optimistas con suficiente\nrapidez, el resultado puede invertirse para transparencias bajas.\n\\label{endbody}",
+            "quoted_text_sha256": "2f12de9f6df52c06794c12c87ee80757459ee97ae833f6be4535917604a990af"
+          }
+        },
+        {
+          "id": "bibliography",
+          "kind": "supplement",
+          "source_anchor": {
+            "path": "source/paper.tex",
+            "line_start": 625,
+            "line_end": 628,
+            "quoted_text": "\\clearpage\n\\bibliographystyle{plain}\n\\bibliography{references}\n\\clearpage",
+            "quoted_text_sha256": "563bf693d03f6e8435bc1fc40ce9569af648a15f4b3daba1359d7aad808830a8"
+          }
+        },
+        {
+          "id": "appendix_theory",
+          "kind": "appendix",
+          "source_anchor": {
+            "path": "source/paper.tex",
+            "line_start": 629,
+            "line_end": 662,
+            "quoted_text": "\\appendix\n\\section{Integral normal para CARA}\nPara $W\\sim N(M,V)$, $V>0$, completo el cuadrado del exponente:\n\\begin{equation}\n aw-\\frac{(w-M)^2}{2V}\n =-\\frac{[w-(M+aV)]^2}{2V}+aM+\\frac{a^2V}{2}.\n\\end{equation}\nExtraigo las constantes de la integral:\n\\begin{align}\n \\E[e^{aW}]&=e^{aM+a^2V/2}\n \\int_{\\mathbb R}\\frac{e^{-[w-(M+aV)]^2/(2V)}}{\\sqrt{2\\pi V}}\\,dw\\\\\n &=e^{aM+a^2V/2}.\n\\end{align}\nLa integral vale uno porque es una densidad normal con media $M+aV$ y\nvarianza $V$. Tomar $a=-g_i$ y el signo negativo de la utilidad da el\nresultado. Si $\\omega_i=0$, la riqueza es constante y la misma fórmula se\nverifica directamente, sin utilizar una densidad de varianza cero.\n\n\\section{Diferencia finita}\nSean $d_j(z)=e_j+(1-z)s$ y $B_z=\\sum_jn_j/d_j(z)$. Al poner las fracciones\nsobre denominador común y simplificar,\n\\begin{equation}\n \\K(y)-\\K(x)=\n \\frac{(y-x)\\left[B_xB_y+\n a\\sum_{j=3}^4 n_je_j/(d_j(x)d_j(y))\\right]}\n {R(a+B_x)(a+B_y)}>0.\n\\end{equation}\nLa regla usada es\n$(1-x)n_j/d_j(x)-(1-y)n_j/d_j(y)\n=n_je_j(y-x)/[d_j(x)d_j(y)]$. Los denominadores son positivos.\nEl código verifica la identidad exactamente; Lean prueba la monotonicidad\ndel coeficiente por una descomposición equivalente.\n\n\\clearpage",
+            "quoted_text_sha256": "6f9905fff6d6a8e1e1e884e5fca745188553e69668fd094df0875bdeb7204fb1"
+          }
+        },
+        {
+          "id": "appendix_audit_meta",
+          "kind": "supplement",
+          "source_anchor": {
+            "path": "source/paper.tex",
+            "line_start": 663,
+            "line_end": 745,
+            "quoted_text": "\\section{Correspondencia con Lean y alcance}\nLa carpeta preliminar conserva las pruebas anteriores y añade\n\\texttt{SignalCARA.lean}. Sus informes permiten revisar las compilaciones.\nLa auditoría es parcial: identidades sobre momentos no prueban por sí mismas\nBayes, independencia gaussiana ni una integral de utilidad.\n\\begin{center}\\small\n\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.8cm}>{\\raggedright\\arraybackslash}p{6.3cm}>{\\raggedright\\arraybackslash}p{5cm}}\n\\toprule\nResultado & Declaración / archivo & Alcance\\\\\n\\midrule\nProp.~\\ref{prop:information}\n& \\texttt{public\\_variance}, \\texttt{hidden\\_variance},\n\\texttt{public\\_hidden\\_covariance}, \\texttt{posterior\\_square}\nen \\texttt{SignalCARA.lean}\n& Identidades algebraicas probadas. Bayes e independencia probabilística\nabiertos en Lean.\\\\\nProp.~\\ref{prop:demand}\n& \\texttt{cara\\_normal\\_exponent} en \\texttt{SignalCARA.lean};\n\\texttt{demand\\_maximizes}, \\texttt{demand\\_satisfies\\_FOC}\nen \\texttt{BaselineAudit.lean}\n& Exponente, CPO y máximo probados; integral normal abierta en Lean.\\\\\nProp.~\\ref{prop:price}\n& \\texttt{market\\_clearing} en \\texttt{BaselineAudit.lean}\n& Vaciado algebraico probado; esperanza requiere puente probabilístico.\\\\\nProp.~\\ref{prop:main}\n& \\texttt{four\\_group\\_information\\_increases},\n\\texttt{full\\_information\\_endpoint} en \\texttt{Transparency.lean}\n& Monotonicidad y extremo probados para el coeficiente algebraico\ncon parámetros positivos explícitos.\\\\\nProp.~\\ref{prop:endo}\n& ---\n& Abierto en Lean: pendiente de la corrida de AppliedModelingLib.\nComprobado en aritmética exacta.\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nNo se presenta esta carpeta como una corrida integral de AppliedModelingLib\nsobre un commit fijado. Ese procedimiento y el control\n\\texttt{paper\\_contribution.py check ... --fast} quedan pendientes.\nEl paper final del curso debe reportar el commit formalizado y el resultado\nde esa comprobación.\n\n\\clearpage\n\\section{Auditoría de contribuciones de IA}\nEl registro documenta afirmaciones, veredictos y comprobaciones.\nLos diálogos de \\texttt{prompts.md} son simulados y están identificados así.\n\\begin{center}\\small\n\\begin{tabular}{>{\\raggedright\\arraybackslash}p{4.2cm}>{\\raggedright\\arraybackslash}p{4.5cm}>{\\raggedright\\arraybackslash}p{4.3cm}}\n\\toprule\nAfirmación revisada & Veredicto & Comprobación\\\\\n\\midrule\nAsignar $\\mu s$ y $(1-\\mu)s$ basta como derivación.\n& Incompleto: era una especificación.\n& Señal, Bayes, varianzas y covarianza desarrolladas.\\\\\nMedia-varianza es numéricamente igual a utilidad esperada CARA.\n& Requiere precisión: es un equivalente cierto con igual elección.\n& Integral normal y monotonía de la transformación.\\\\\nLa transparencia siempre mejora el precio.\n& Demasiado amplio: sensibilidad esperada con sentimiento fijo.\n& Prueba, barrido racional y Lean algebraico.\\\\\nInformación institucional implica filtración del emisor.\n& No se desprende del modelo.\n& Lectura de secciones 3 y 6.2 y delimitación propia.\\\\\nClaude: más peso de los particulares y mejor información empujan $\\K$ en\nla misma dirección.\n& Incorrecto: $\\partial\\K/\\partial B<0$ con $\\mu$ fijo.\n& Derivada \\eqref{eq:weight}; detectado al contrastar con Codex;\ncomprobado en \\texttt{verify.py}.\\\\\nClaude: el resultado vale ``solo si'' la divulgación reduce la\nincertidumbre residual.\n& No demostrado: el coeficiente impreso también crece con $\\mu$.\n& Monotonicidad de $K^I$; título y conclusiones corregidos.\\\\\nClaude: condición exacta y contraejemplo con sentimiento endógeno.\n& Correcto en lo verificado.\n& Derivación algebraica independiente y aritmética exacta;\nmanuscrito personal pendiente en \\texttt{hand/}.\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nLa guía \\texttt{hand/derivaciones-guia.md} organiza las derivaciones para\nreproducirlas a mano. Una guía tipografiada no sustituye el apéndice\nmanuscrito personal exigido por el curso.\n\\end{document}",
+            "quoted_text_sha256": "466692fd0accf9adfc47e5e93b8646866d7493fadf607509e11654836a7e9a02"
+          }
+        }
+      ],
+      "source_item_regions": {
+        "olano26_assumption_endogenous_sentiment": "main_text",
+        "olano26_assumption_groups_sentiment": "main_text",
+        "olano26_assumption_payoff": "main_text",
+        "olano26_assumption_preferences_beliefs": "main_text",
+        "olano26_assumption_price_information": "main_text",
+        "olano26_assumption_signal": "main_text",
+        "olano26_proposition_1": "main_text",
+        "olano26_proposition_2": "main_text",
+        "olano26_proposition_3": "main_text",
+        "olano26_proposition_4": "main_text",
+        "olano26_proposition_5": "main_text"
+      },
+      "candidate_presentation_regions": {
+        "olano26_candidate_01": "main_text",
+        "olano26_candidate_02": "main_text",
+        "olano26_candidate_03": "main_text",
+        "olano26_candidate_04": "main_text",
+        "olano26_candidate_05": "main_text",
+        "olano26_candidate_06": "main_text",
+        "olano26_candidate_07": "main_text",
+        "olano26_candidate_08": "main_text",
+        "olano26_candidate_09": "main_text",
+        "olano26_candidate_10": "main_text",
+        "olano26_candidate_11": "main_text",
+        "olano26_candidate_12": "main_text",
+        "olano26_candidate_13": "main_text",
+        "olano26_candidate_14": "main_text",
+        "olano26_candidate_15": "main_text",
+        "olano26_candidate_16": "main_text",
+        "olano26_candidate_17": "main_text",
+        "olano26_candidate_18": "main_text",
+        "olano26_candidate_19": "main_text",
+        "olano26_candidate_20": "main_text",
+        "olano26_candidate_21": "main_text",
+        "olano26_candidate_22": "main_text",
+        "olano26_candidate_23": "main_text",
+        "olano26_candidate_24": "main_text",
+        "olano26_candidate_25": "main_text",
+        "olano26_candidate_26": "main_text",
+        "olano26_candidate_27": "main_text",
+        "olano26_candidate_28": "main_text",
+        "olano26_candidate_29": "main_text",
+        "olano26_candidate_30": "main_text",
+        "olano26_candidate_31": "main_text",
+        "olano26_candidate_32": "main_text",
+        "olano26_candidate_33": "main_text",
+        "olano26_candidate_34": "main_text",
+        "olano26_candidate_35": "main_text",
+        "olano26_candidate_36": "appendix_theory",
+        "olano26_candidate_37": "appendix_theory",
+        "olano26_candidate_38": "appendix_audit_meta",
+        "olano26_candidate_39": "appendix_audit_meta"
+      },
+      "prose_definition_presentation_regions": {},
+      "promoted_source_items": []
+    }
+  }
+}

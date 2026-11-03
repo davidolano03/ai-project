@@ -96,7 +96,7 @@ def run(output):
         "cara_quadrature_cases": len(quadrature_errors),
         "cara_max_relative_error": max(quadrature_errors),
         "cara_tolerance": 1e-10,
-        "limitations": "Finite checks and simulation; no formal probability bridge.",
+        "limitations": "Finite checks and simulation only; separate formal proof coverage is documented in lean/README.md.",
     }
     (output/"signal-verification.json").write_text(
         json.dumps(report, indent=2), encoding="utf-8")
