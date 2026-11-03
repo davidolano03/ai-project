@@ -16,7 +16,7 @@
 | Componente | Estado al 2 de noviembre |
 |---|---|
 | [Primera entrega](proposal/proposal.pdf) y [slides iniciales](slides/topic.pdf) | Conservadas |
-| [Presentación final](slides/final.pdf) | 38 diapositivas principales y 6 de anexo, fuentes LaTeX |
+| [Presentación final](slides/final.pdf) | 38 diapositivas principales y 18 de consulta; variables, derivaciones e interpretación en orden, con fuentes LaTeX |
 | [Manuscrito](paper/paper.pdf) | Derivaciones, cinco proposiciones (incluida la extensión con sentimiento que responde a la transparencia), pruebas, simulaciones, alcance y referencias |
 | [Guion de exposición](slides/final-notes.md) | Ruta de 30 minutos, ejemplos y respuestas |
 | [Código](code/verify.py) | Un comando, aritmética exacta, Monte Carlo e integración CARA |
