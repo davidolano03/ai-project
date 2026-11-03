@@ -1,7 +1,7 @@
 # Guion de la presentación final
 
 Secuencia alineada con el manual de estudio del modelo corregido y ampliado.
-38 diapositivas principales y 18 de consulta. Mantiene el tema visual y el título.
+38 diapositivas principales y 21 de consulta. Mantiene el tema visual y el título.
 La ruta principal está pensada para aproximadamente 30 minutos; el apéndice permite responder una pregunta en el momento.
 
 ## Ruta de exposición
@@ -288,3 +288,14 @@ Los glosarios finales permiten recuperar de inmediato cualquier unidad o índice
 
 La diapositiva 36, el apéndice del paper y lean/README.md registran cinco proposiciones probadas, chequeo --fast con salida 0 y comparación directa 5 MATCH. El manuscrito formalizado es el commit 55409d5; no se alteraron sus cinco proposiciones.
 No se generan fotos manuscritas ni conversaciones reales del estudiante.
+
+
+## Fotografías manuscritas del estudiante: A17–A19
+
+- **A17 (página 55 del PDF):** mostrar la foto que comienza con la señal y la regla de Bayes. Explicar qué distribución es previa y cuál es la verosimilitud. Los supuestos s,t>0 e independencia se mantienen.
+- **A18 (página 56):** mostrar el desarrollo del cuadrado y reconocer media y varianza posteriores. Al retirar constantes se usa proporcionalidad, no igualdad de densidades normalizadas ni aproximación numérica.
+- **A19 (página 57):** mostrar las definiciones de mu, kappa y xi y el cálculo de sus varianzas. Es la evidencia personal para revisar la afirmación de que bastaba asignar directamente las proporciones de varianza.
+
+Las tres fotos corresponden a las páginas de hand/derivaciones-manuscritas.pdf y a las últimas tres páginas del paper. Las imágenes se conservan sin retocar. La ruta principal de 38 diapositivas permanece igual; se puede mostrar la consulta al explicar Bayes o las varianzas.
+
+El material personal pendiente y las fuentes pasan a A20 y A21. Las fotos recibidas no incluyen todavía CARA/CPO, precio, monotonicidad ni la extensión con sentimiento.

@@ -1,0 +1,23 @@
+{
+  "description": "Fotografías reales del estudiante; originales sin retoque.",
+  "pages": [
+    {
+      "page": 1,
+      "file": "01-bayes-definicion.jpg",
+      "original_attachment": "codex-clipboard-1ec56125-0ab8-49ca-ad09-bb8eedf69c7a.jpg",
+      "sha256": "c1f4bc56bc1ea56ab1b466d1685288f5be57781d0d8260d903d4591cb90115f7"
+    },
+    {
+      "page": 2,
+      "file": "02-bayes-desarrollo.jpg",
+      "original_attachment": "codex-clipboard-9d4eb80a-ae51-4ed8-bd0f-f8eaef8a164b.jpg",
+      "sha256": "43c061f2842790771c38501344cbbd092d1dd6a12745e2cc8d0e0d1dcf35138e"
+    },
+    {
+      "page": 3,
+      "file": "03-varianzas.jpg",
+      "original_attachment": "codex-clipboard-5122e6f5-fb82-4ce7-8324-c1881531cd3e.jpg",
+      "sha256": "70d2cd885177efc2d4eb3828b700edbbdd425b649fc7ecc582bd738fa7d3cf8c"
+    }
+  ]
+}

@@ -884,8 +884,8 @@ y lo comprobé derivando.\\
 \end{tabular}
 \end{center}
 \normalsize
-El paso que debo poder reproducir a mano es la expansión de \(\Var(\xi)\)
-y su covarianza con \(\kappa\). La guía está en \texttt{hand/}.
+Fotos personales de Bayes y varianzas: A17--A19 y \texttt{hand/}.
+La covarianza entre \(\kappa\) y \(\xi\) aún debe añadirse a mano.
 \end{frame}
 
 \begin{frame}{A14. La fracción de brecha de sensibilidad que se cierra}
@@ -936,9 +936,67 @@ la relación es no lineal.}
 \end{tabular}
 \end{frame}
 
-\begin{frame}{A17. Material personal de la entrega}
+
+\begin{frame}[label=hand-bayes]{A17. Manuscrito 1/3: definición de Bayes}
+\begin{columns}[c]
+\column{.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.77\paperheight,keepaspectratio]{../hand/01-bayes-definicion.jpg}
+\column{.50\textwidth}
+\small
+Fotografía original del estudiante.
+\[
+y=\theta+\eta,\qquad
+f(x\mid y)\propto f(y\mid x)f_\theta(x).
+\]
+La página parte de las densidades y desarrolla el cuadrado.
+\medskip\par
+Condiciones del modelo: \(s,t>0\) e independencia de \(\theta,\eta\).
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=hand-posterior]{A18. Manuscrito 2/3: posterior y sus momentos}
+\begin{columns}[c]
+\column{.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.77\paperheight,keepaspectratio]{../hand/02-bayes-desarrollo.jpg}
+\column{.50\textwidth}
+\small
+Fotografía original del estudiante.
+\[
+\theta\mid y\sim
+N\left(\frac{s}{s+t}y,\frac{st}{s+t}\right).
+\]
+El centro del cuadrado da la media; su coeficiente permite identificar la varianza.
+\medskip\par
+Al retirar factores constantes se usa proporcionalidad, \(\propto\).
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=hand-varianzas]{A19. Manuscrito 3/3: varianzas pública y oculta}
+\begin{columns}[c]
+\column{.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.77\paperheight,keepaspectratio]{../hand/03-varianzas.jpg}
+\column{.50\textwidth}
+\small
+Fotografía original del estudiante.
+\[
+\mu=\frac{s}{s+t},\quad
+\kappa=\mu y,\quad \xi=\theta-\kappa.
+\]
+\[
+\Var(\kappa)=\mu s,\qquad
+\Var(\xi)=(1-\mu)s.
+\]
+Las proporciones se obtienen expandiendo las varianzas y anulando
+la covarianza del ruido con el fundamento por independencia.
+\end{columns}
+\end{frame}
+
+\begin{frame}{A20. Material personal de la entrega}
 \begin{itemize}
-\item Fotos o escaneos de las derivaciones manuscritas del estudiante.
+\item Tres fotos reales de Bayes y varianzas incorporadas; otras derivaciones manuscritas por aportar.
 \item Conversaciones reales en crudo en el registro de prompts.
 \item Revisión final del documento y las diapositivas.
 \end{itemize}
@@ -946,7 +1004,7 @@ la relación es no lineal.}
 conversaciones reales deben corresponder al trabajo efectivamente realizado.}
 \end{frame}
 
-\begin{frame}{A18. Fuentes y ubicación de resultados}
+\begin{frame}{A21. Fuentes y ubicación de resultados}
 \small
 Zhang y Zhang (2023), \emph{Information asymmetry, sentiment interactions,
 and asset price}. NAJEF 67, 101920.

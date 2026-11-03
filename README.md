@@ -16,12 +16,12 @@
 | Componente | Estado al 3 de noviembre |
 |---|---|
 | [Primera entrega](proposal/proposal.pdf) y [slides iniciales](slides/topic.pdf) | Conservadas |
-| [Presentación final](slides/final.pdf) | 38 diapositivas principales y 18 de consulta; variables, derivaciones e interpretación en orden, con fuentes LaTeX |
+| [Presentación final](slides/final.pdf) | 38 diapositivas principales y 21 de consulta; variables, derivaciones e interpretación en orden, con fuentes LaTeX |
 | [Manuscrito](paper/paper.pdf) | Derivaciones, cinco proposiciones (incluida la extensión con sentimiento que responde a la transparencia), pruebas, simulaciones, alcance y referencias |
 | [Guion de exposición](slides/final-notes.md) | Ruta de 30 minutos, ejemplos y respuestas |
 | [Código](code/verify.py) | Un comando, aritmética exacta, Monte Carlo e integración CARA |
 | [Lean](lean/README.md) | Cinco proposiciones probadas, incluida probabilidad y sentimiento variable; --fast: código 0; comparación directa: 5 MATCH |
-| [Guía manuscrita](hand/derivaciones-guia.md) | Preparada para reproducir personalmente; **escaneos manuscritos pendientes** |
+| [Apéndice manuscrito](hand/derivaciones-manuscritas.pdf) | Tres fotos reales ordenadas: Bayes, posterior y varianzas; incluidas también en el paper y el Beamer. Otras derivaciones manuscritas por aportar; alcance en hand/README.md |
 | Corrida de Lean del curso | Ejecutada sobre el commit 55409d5; versiones e informes en lean/verification/. No se afirma aceptación automática integral v12 |
 | [Registro IA](prompts.md) | Ejemplos de estudio existentes; el estudiante añadirá sus conversaciones reales en crudo |
 
