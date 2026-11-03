@@ -442,7 +442,7 @@ El resultado objetivo es K(y)>K(x) para 0≤x<y≤1 bajo condiciones explícitas
 
 Nota de procedencia: los diálogos de estudio de este archivo son ejemplos simulados, no transcripciones reales. Las incorporaciones siguientes conservan esa identificación.
 
-## Simulación 15. Derivar las proporciones desde una señal
+## Prompt 15. Derivar las proporciones desde una señal
 
 **Estudiante:**
 
@@ -452,7 +452,7 @@ Nota de procedencia: los diálogos de estudio de este archivo son ejemplos simul
 
 Bayes combina las densidades normal previa y del ruido. Completar el cuadrado da θ|y normal con media s·y/(s+t) y varianza st/(s+t). Defino μ=s/(s+t) y κ=μy. La independencia implica Var(y)=s+t. Entonces Var(κ)=μ²(s+t)=s²/(s+t)=μs. La proporción se deriva del pronóstico posterior; no significa que κ sea una fracción exacta del θ realizado.
 
-## Simulación 16. Residuo y covarianza
+## Prompt 16. Residuo y covarianza
 
 **Estudiante:**
 
@@ -462,7 +462,7 @@ Bayes combina las densidades normal previa y del ruido. Completar el cuadrado da
 
 ξ=(1−μ)θ−μη. Su varianza es (1−μ)²s+μ²t−2μ(1−μ)Cov(θ,η). La independencia original anula la covarianza. Sustituir μ=s/(s+t) entrega st/(s+t)=(1−μ)s. Después calculo Cov(κ,ξ)=μ(1−μ)s−μ²t=0. Como son conjuntamente gaussianos, esa covarianza cero implica independencia. Sin normalidad conjunta no basta ese cálculo para concluir independencia.
 
-## Simulación 17. CARA, riqueza y CPO
+## Prompt 17. CARA, riqueza y CPO
 
 **Estudiante:**
 
