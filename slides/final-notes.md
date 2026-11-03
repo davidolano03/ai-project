@@ -1,7 +1,7 @@
 # Guion de la presentación final
 
 Secuencia alineada con el manual de estudio del modelo corregido y ampliado.
-38 diapositivas principales y 21 de consulta. Mantiene el tema visual y el título.
+38 diapositivas principales y 24 de consulta. Mantiene el tema visual y el título.
 La ruta principal está pensada para aproximadamente 30 minutos; el apéndice permite responder una pregunta en el momento.
 
 ## Ruta de exposición
@@ -290,12 +290,15 @@ La diapositiva 36, el apéndice del paper y lean/README.md registran cinco propo
 No se generan fotos manuscritas ni conversaciones reales del estudiante.
 
 
-## Fotografías manuscritas del estudiante: A17–A19
+## Fotografías manuscritas del estudiante: A17–A22
 
 - **A17 (página 55 del PDF):** mostrar la foto que comienza con la señal y la regla de Bayes. Explicar qué distribución es previa y cuál es la verosimilitud. Los supuestos s,t>0 e independencia se mantienen.
-- **A18 (página 56):** mostrar el desarrollo del cuadrado y reconocer media y varianza posteriores. Al retirar constantes se usa proporcionalidad, no igualdad de densidades normalizadas ni aproximación numérica.
-- **A19 (página 57):** mostrar las definiciones de mu, kappa y xi y el cálculo de sus varianzas. Es la evidencia personal para revisar la afirmación de que bastaba asignar directamente las proporciones de varianza.
+- **A18 (página 56):** mostrar el desarrollo del cuadrado y reconocer media y varianza posteriores. Al retirar constantes se usa proporcionalidad, no aproximación numérica.
+- **A19 (página 57):** mostrar las definiciones de mu, kappa y xi y el cálculo de sus varianzas. Las proporciones se derivan, no se asignan sin justificación.
+- **A20 (página 58):** explicar presupuesto, posición en acciones y financiamiento. R es un factor bruto conocido. Aclarar que v representa la varianza: la primera normal de la foto debería escribirse N(m,v), de acuerdo con las fórmulas posteriores.
+- **A21 (página 59):** seguir el cuadrado completo y la normalización. q es auxiliar y se sustituye por −g. Señalar el signo negativo omitido en una línea: E[U(W)]=−E[exp(qW)]. La página siguiente lo recupera.
+- **A22 (página 60):** explicar el equivalente cierto y la CPO. El término de riesgo se resta al derivar; el resultado final manuscrito es correcto. Añadir verbalmente CE″=−gv<0 con g,v>0, que prueba máximo único y aún no está manuscrito.
 
-Las tres fotos corresponden a las páginas de hand/derivaciones-manuscritas.pdf y a las últimas tres páginas del paper. Las imágenes se conservan sin retocar. La ruta principal de 38 diapositivas permanece igual; se puede mostrar la consulta al explicar Bayes o las varianzas.
+Las seis fotos corresponden a hand/derivaciones-manuscritas.pdf y al apéndice del paper. Se conservan sin retocar. Las precisiones tipografiadas no se presentan como correcciones manuscritas del estudiante. La ruta principal de 38 diapositivas permanece igual.
 
-El material personal pendiente y las fuentes pasan a A20 y A21. Las fotos recibidas no incluyen todavía CARA/CPO, precio, monotonicidad ni la extensión con sentimiento.
+El material personal pendiente y las fuentes pasan a A23 y A24. Quedan por fotografiar covarianza y consecuencias condicionales, extremos, creencias de grupos, índice de Arrow–Pratt y condición de segundo orden, precio, monotonicidad y extensión con sentimiento. Las conversaciones reales siguen por aportar personalmente.

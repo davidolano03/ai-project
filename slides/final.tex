@@ -884,7 +884,7 @@ y lo comprobé derivando.\\
 \end{tabular}
 \end{center}
 \normalsize
-Fotos personales de Bayes y varianzas: A17--A19 y \texttt{hand/}.
+Fotos personales de Bayes, varianzas y CARA/CPO: A17--A22 y \texttt{hand/}.
 La covarianza entre \(\kappa\) y \(\xi\) aún debe añadirse a mano.
 \end{frame}
 
@@ -937,7 +937,7 @@ la relación es no lineal.}
 \end{frame}
 
 
-\begin{frame}[label=hand-bayes]{A17. Manuscrito 1/3: definición de Bayes}
+\begin{frame}[label=hand-bayes]{A17. Manuscrito 1/6: definición de Bayes}
 \begin{columns}[c]
 \column{.48\textwidth}
 \centering
@@ -955,7 +955,7 @@ Condiciones del modelo: \(s,t>0\) e independencia de \(\theta,\eta\).
 \end{columns}
 \end{frame}
 
-\begin{frame}[label=hand-posterior]{A18. Manuscrito 2/3: posterior y sus momentos}
+\begin{frame}[label=hand-posterior]{A18. Manuscrito 2/6: posterior y sus momentos}
 \begin{columns}[c]
 \column{.48\textwidth}
 \centering
@@ -973,7 +973,7 @@ Al retirar factores constantes se usa proporcionalidad, \(\propto\).
 \end{columns}
 \end{frame}
 
-\begin{frame}[label=hand-varianzas]{A19. Manuscrito 3/3: varianzas pública y oculta}
+\begin{frame}[label=hand-varianzas]{A19. Manuscrito 3/6: varianzas pública y oculta}
 \begin{columns}[c]
 \column{.48\textwidth}
 \centering
@@ -994,17 +994,82 @@ la covarianza del ruido con el fundamento por independencia.
 \end{columns}
 \end{frame}
 
-\begin{frame}{A20. Material personal de la entrega}
+
+\begin{frame}[label=hand-cara-wealth]{A20. Manuscrito 4/6: CARA y riqueza}
+\begin{columns}[c]
+\column{.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.77\paperheight,keepaspectratio]{../hand/04-cara-riqueza.jpg}
+\column{.50\textwidth}
+\small
+Fotografía original del estudiante.
+\[
+W=Rw_0+\omega(F-RP).
+\]
+\[
+M=Rw_0+\omega(m-RP),\quad V=\omega^2v.
+\]
+El presupuesto permite ahorrar o pedir prestado al mismo factor bruto \(R\).
+\medskip\par
+Precisión: \(v\) es varianza. Nuestra convención es
+\(F\mid\mathcal I\sim N(m,v)\), aunque la foto escribe \(v^2\).
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=hand-cara-integral]{A21. Manuscrito 5/6: esperanza exponencial}
+\begin{columns}[c]
+\column{.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.77\paperheight,keepaspectratio]{../hand/05-cara-integral.jpg}
+\column{.50\textwidth}
+\small
+Fotografía original del estudiante.
+\[
+\E[e^{qW}]=e^{qM+q^2V/2}.
+\]
+Completar el cuadrado deja una densidad normal cuya integral total es uno.
+\medskip\par
+Con \(q=-g\), la utilidad lleva el signo negativo:
+\[
+\E[U(W)]=-\E[e^{qW}].
+\]
+Ese signo falta en una línea de la foto y se recupera en la página siguiente.
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=hand-cara-cpo]{A22. Manuscrito 6/6: equivalente cierto y CPO}
+\begin{columns}[c]
+\column{.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.77\paperheight,keepaspectratio]{../hand/06-cara-cpo.jpg}
+\column{.50\textwidth}
+\small
+Fotografía original del estudiante.
+\[
+CE=Rw_0+\omega(m-RP)-\frac g2\omega^2v.
+\]
+\[
+CE'=m-RP-g\omega v=0,
+\qquad \omega^*=\frac{m-RP}{gv}.
+\]
+La ganancia marginal esperada se iguala a la penalización marginal por riesgo.
+\medskip\par
+Comprobación adicional, aún no manuscrita:
+\(CE''=-gv<0\) asegura el máximo único.
+\end{columns}
+\end{frame}
+
+\begin{frame}{A23. Material personal de la entrega}
 \begin{itemize}
-\item Tres fotos reales de Bayes y varianzas incorporadas; otras derivaciones manuscritas por aportar.
-\item Conversaciones reales en crudo en el registro de prompts.
+\item Seis fotos reales de Bayes, varianzas y CARA/CPO incorporadas; otras derivaciones manuscritas por aportar.
+\item Conversaciones reales en crudo por añadir al registro de prompts.
 \item Revisión final del documento y las diapositivas.
 \end{itemize}
 \idea{La guía tipografiada ayuda a estudiar; el manuscrito personal y las
 conversaciones reales deben corresponder al trabajo efectivamente realizado.}
 \end{frame}
 
-\begin{frame}{A21. Fuentes y ubicación de resultados}
+\begin{frame}{A24. Fuentes y ubicación de resultados}
 \small
 Zhang y Zhang (2023), \emph{Information asymmetry, sentiment interactions,
 and asset price}. NAJEF 67, 101920.

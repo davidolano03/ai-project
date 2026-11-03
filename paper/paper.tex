@@ -753,17 +753,17 @@ manuscrito personal pendiente en \texttt{hand/}.\\
 \end{tabular}
 \end{center}
 La guía \texttt{hand/derivaciones-guia.md} organiza las derivaciones para
-reproducirlas a mano. Las tres fotografías reales recibidas se incluyen en el
-apéndice siguiente; el PDF independiente está en \texttt{hand/}. Cubren Bayes y las
-varianzas. Las demás derivaciones manuscritas de la guía, incluida la
+reproducirlas a mano. Las seis fotografías reales recibidas se incluyen en el
+apéndice siguiente; el PDF independiente está en \texttt{hand/}. Cubren Bayes, las
+varianzas y CARA/CPO. Las demás derivaciones manuscritas de la guía, incluida la
 extensión de sentimiento, quedan por aportar personalmente.
 
 \clearpage
 \section{Derivaciones manuscritas del estudiante}\label{app:hand}
 Fotografías originales aportadas por David Julio Olano Silva Nevado,
 ordenadas según la derivación. La escritura y los cálculos se conservan
-tal como fueron recibidos. El material fotografiado cubre Bayes y las
-varianzas; las partes restantes se indican en \texttt{hand/README.md}.
+tal como fueron recibidos. El material fotografiado cubre Bayes, las
+varianzas y CARA/CPO; las partes restantes se indican en \texttt{hand/README.md}.
 \subsection*{1. Definición de Bayes y preparación}
 \begin{center}
 \includegraphics[width=\linewidth,height=.76\textheight,keepaspectratio]{../hand/01-bayes-definicion.jpg}
@@ -777,6 +777,36 @@ varianzas; las partes restantes se indican en \texttt{hand/README.md}.
 \subsection*{3. Pronóstico público y derivación de las varianzas}
 \begin{center}
 \includegraphics[width=\linewidth,height=.86\textheight,keepaspectratio]{../hand/03-varianzas.jpg}
+\end{center}
+
+\clearpage
+\subsection*{4. CARA: presupuesto y riqueza}
+\noindent\small
+Nota de lectura: en el proyecto, \(v=\Var(F\mid\mathcal I)\), por lo que
+\(F\mid\mathcal I\sim N(m,v)\), no \(N(m,v^2)\). El factor \(R\) es bruto.
+\normalsize
+\begin{center}
+\includegraphics[width=\linewidth,height=.82\textheight,keepaspectratio]{../hand/04-cara-riqueza.jpg}
+\end{center}
+\clearpage
+\subsection*{5. CARA: esperanza exponencial normal}
+\noindent\small
+En una línea intermedia falta un signo: con \(q=-g\),
+\(\mathbb E[U(W)\mid\mathcal I]=-\mathbb E[e^{qW}\mid\mathcal I]\).
+El cálculo auxiliar de la esperanza exponencial es correcto.
+\normalsize
+\begin{center}
+\includegraphics[width=\linewidth,height=.82\textheight,keepaspectratio]{../hand/05-cara-integral.jpg}
+\end{center}
+\clearpage
+\subsection*{6. Equivalente cierto y CPO}
+\noindent\small
+La derivada del término de riesgo lleva signo negativo, como en el resultado
+final manuscrito. La comprobación adicional del máximo es
+\(CE''(\omega)=-gv<0\), con \(g,v>0\); no figura en la foto.
+\normalsize
+\begin{center}
+\includegraphics[width=\linewidth,height=.82\textheight,keepaspectratio]{../hand/06-cara-cpo.jpg}
 \end{center}
 
 \end{document}

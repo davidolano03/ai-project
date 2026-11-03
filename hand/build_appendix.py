@@ -13,13 +13,16 @@ PAGES = [
     ("01-bayes-definicion.jpg", "1. Bayes: definición y preparación"),
     ("02-bayes-desarrollo.jpg", "2. Bayes: posterior, media y varianza"),
     ("03-varianzas.jpg", "3. Pronóstico público y derivación de varianzas"),
+    ("04-cara-riqueza.jpg", "4. CARA: presupuesto y riqueza"),
+    ("05-cara-integral.jpg", "5. CARA: esperanza exponencial normal"),
+    ("06-cara-cpo.jpg", "6. Equivalente cierto y CPO"),
 ]
 
 
 def main():
     output = ROOT / "derivaciones-manuscritas.pdf"
     pdf = canvas.Canvas(str(output), pagesize=A4, pageCompression=1)
-    pdf.setTitle("Derivaciones manuscritas: Bayes y varianzas")
+    pdf.setTitle("Derivaciones manuscritas: Bayes, varianzas, CARA y CPO")
     pdf.setAuthor("David Julio Olano Silva Nevado")
     width, height = A4
     margin = 28
