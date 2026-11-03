@@ -25,6 +25,8 @@
 | Corrida de Lean del curso | Ejecutada sobre el commit 55409d5; versiones e informes en lean/verification/. No se afirma aceptación automática integral v12 |
 | [Registro IA](prompts.md) | Ejemplos de estudio existentes; el estudiante añadirá sus conversaciones reales en crudo |
 
+La nota histórica del 2 de noviembre en prompts.md precede a la corrida actual de Lean. Se conserva como registro; el estado vigente de las cinco proposiciones está en lean/README.md.
+
 **Reproducir.** Python ≥3.10: python code/verify.py, sin bibliotecas externas. Desde cada carpeta, latexmk -pdf paper.tex, latexmk -pdf final.tex, latexmk -pdf topic.tex y latexmk -pdf proposal.tex. Los cuatro PDFs guardados proceden de la compilación de GitHub Actions, con el workflow intacto de la plantilla. Tectonic y el editor nativo se usaron además para comprobaciones locales. Lean: instrucciones en lean/README.md; las pruebas actuales están en la raíz de lean/, con soporte reproducible para AppliedModelingLib. preliminary/ conserva las pruebas históricas. El chequeo focalizado y la comparación independiente directa no equivalen a un recibo integral v12; su alcance se detalla en lean/README.md.
 
 **Calendario verificado.** Presentación final: 4 de noviembre, 08:20–09:05 Lima. Preparación orientada a quedar lista esta noche por indicación del estudiante. La [instrucción vigente](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/7) fija el paper final para el **26 de noviembre, 22:00**. La presentación es un avance para crítica. Repositorio: rama → PR → main. No se publica ningún comentario en el issue del profesor.
