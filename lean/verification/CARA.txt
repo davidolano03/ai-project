@@ -1,0 +1,3 @@
+papers/Olano26Transparencia/CARA.lean:141:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`

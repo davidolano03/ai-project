@@ -1,0 +1,23 @@
++ lake build +Olano26Transparencia.PaperInterface
+ℹ [3480/3648] Replayed AppliedModelingLib.Foundations.Probability.FiniteExpectation
+info: AppliedModelingLib/Foundations/Probability/FiniteExpectation.lean:2917:14: Try this:
+  [apply] abel_nf
+⚠ [3551/3648] Replayed AppliedModelingLib.Foundations.Probability.MeasureInequalities
+warning: AppliedModelingLib/Foundations/Probability/MeasureInequalities.lean:1751:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  intro n
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: AppliedModelingLib/Foundations/Probability/MeasureInequalities.lean:2446:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  intro n
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: AppliedModelingLib/Foundations/Probability/MeasureInequalities.lean:2447:2: The following tactic starts with 2 goals and ends with 3 goals, 2 of which are not operated on.
+  apply eLpNorm_two_le_nnreal_of_integral_sq_le (hX := hsum_memLp n)
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+Build completed successfully (3650 jobs).
++ git diff --check -- papers/Olano26Transparencia papers/Olano26Transparencia.lean lakefile.toml ':(exclude)papers/Olano26Transparencia/source/'
+warning: in the working copy of 'papers/Olano26Transparencia/Price.lean', LF will be replaced by CRLF the next time Git touches it

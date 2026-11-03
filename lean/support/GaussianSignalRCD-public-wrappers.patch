@@ -1,0 +1,45 @@
+diff --git a/AppliedModelingLib/Foundations/Probability/GaussianSignalRCD.lean b/AppliedModelingLib/Foundations/Probability/GaussianSignalRCD.lean
+index fd1f6593..1d6eb45f 100644
+--- a/AppliedModelingLib/Foundations/Probability/GaussianSignalRCD.lean
++++ b/AppliedModelingLib/Foundations/Probability/GaussianSignalRCD.lean
+@@ -476,0 +477,40 @@ private theorem gaussianSignalPair_score_residual_joint_law
++/-- The residual marginal law used by downstream paper formalizations. -/
++theorem gaussianSignalPair_residual_marginal
++    (mean priorVariance noiseVariance : ℝ)
++    (hpriorVariance : 0 < priorVariance)
++    (hnoiseVariance : 0 < noiseVariance) :
++    (gaussianSignalPair mean priorVariance noiseVariance).map
++        (gaussianSignalResidual priorVariance noiseVariance) =
++      gaussianReal
++        (gaussianSignalPriorWeight priorVariance noiseVariance * mean)
++        (gaussianSignalPosteriorVariance priorVariance noiseVariance) :=
++  gaussianSignalPair_residual_law
++    mean priorVariance noiseVariance hpriorVariance hnoiseVariance
++
++/-- The additive score and its Gaussian residual are independent. -/
++theorem gaussianSignalPair_score_residual_independent
++    (mean priorVariance noiseVariance : ℝ)
++    (hpriorVariance : 0 < priorVariance)
++    (hnoiseVariance : 0 < noiseVariance) :
++    gaussianSignalScore ⟂ᵢ[
++      gaussianSignalPair mean priorVariance noiseVariance]
++      gaussianSignalResidual priorVariance noiseVariance :=
++  gaussianSignalPair_score_residual_indep
++    mean priorVariance noiseVariance hpriorVariance hnoiseVariance
++
++/-- The exact product law of the score and its independent residual. -/
++theorem gaussianSignalPair_score_residual_jointLaw
++    (mean priorVariance noiseVariance : ℝ)
++    (hpriorVariance : 0 < priorVariance)
++    (hnoiseVariance : 0 < noiseVariance) :
++    (gaussianSignalPair mean priorVariance noiseVariance).map
++        (fun pair : ℝ × ℝ =>
++          (gaussianSignalScore pair,
++            gaussianSignalResidual priorVariance noiseVariance pair)) =
++      (gaussianReal mean (priorVariance + noiseVariance).toNNReal).prod
++        (gaussianReal
++          (gaussianSignalPriorWeight priorVariance noiseVariance * mean)
++          (gaussianSignalPosteriorVariance priorVariance noiseVariance)) :=
++  gaussianSignalPair_score_residual_joint_law
++    mean priorVariance noiseVariance hpriorVariance hnoiseVariance
++

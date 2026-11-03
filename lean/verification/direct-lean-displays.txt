@@ -1,0 +1,274 @@
+def Olano26Transparencia.informationDecompositionSpec : Prop :=
+(∀ (s t : ℝ),
+    0 < s →
+      0 < t →
+        (∀ (pair : ℝ × ℝ),
+            Olano26Transparencia.fundamental pair =
+              Olano26Transparencia.publicComponent s t pair + Olano26Transparencia.hiddenComponent s t pair) ∧
+          MeasureTheory.Measure.map (Olano26Transparencia.publicComponent s t)
+                (Olano26Transparencia.informationLaw s t) =
+              ProbabilityTheory.gaussianReal 0 (Olano26Transparencia.transparencyWeight s t * s).toNNReal ∧
+            MeasureTheory.Measure.map (Olano26Transparencia.hiddenComponent s t)
+                  (Olano26Transparencia.informationLaw s t) =
+                ProbabilityTheory.gaussianReal 0 ((1 - Olano26Transparencia.transparencyWeight s t) * s).toNNReal ∧
+              ProbabilityTheory.IndepFun (Olano26Transparencia.publicComponent s t)
+                  (Olano26Transparencia.hiddenComponent s t) (Olano26Transparencia.informationLaw s t) ∧
+                (∫ (x : ℝ),
+                        x ∂MeasureTheory.Measure.map (Olano26Transparencia.publicComponent s t)
+                          (Olano26Transparencia.informationLaw s t) =
+                      0 ∧
+                    ProbabilityTheory.variance id
+                          (MeasureTheory.Measure.map (Olano26Transparencia.publicComponent s t)
+                            (Olano26Transparencia.informationLaw s t)) =
+                        Olano26Transparencia.transparencyWeight s t * s ∧
+                      ∫ (x : ℝ),
+                            x ∂MeasureTheory.Measure.map (Olano26Transparencia.hiddenComponent s t)
+                              (Olano26Transparencia.informationLaw s t) =
+                          0 ∧
+                        ProbabilityTheory.variance id
+                            (MeasureTheory.Measure.map (Olano26Transparencia.hiddenComponent s t)
+                              (Olano26Transparencia.informationLaw s t)) =
+                          (1 - Olano26Transparencia.transparencyWeight s t) * s) ∧
+                  (⇑(ProbabilityTheory.condDistrib Olano26Transparencia.fundamental Olano26Transparencia.publicReport
+                          (Olano26Transparencia.informationLaw s
+                            t)) =ᵐ[MeasureTheory.Measure.map Olano26Transparencia.publicReport
+                        (Olano26Transparencia.informationLaw s t)]
+                      fun report =>
+                      ProbabilityTheory.gaussianReal (Olano26Transparencia.posteriorMean s t report)
+                        (Olano26Transparencia.residualVariance s t).toNNReal) ∧
+                    (∀ (report : ℝ),
+                        ∫ (theta : ℝ),
+                              theta ∂ProbabilityTheory.gaussianReal (Olano26Transparencia.posteriorMean s t report)
+                                (Olano26Transparencia.residualVariance s t).toNNReal =
+                            Olano26Transparencia.posteriorMean s t report ∧
+                          ProbabilityTheory.variance id
+                              (ProbabilityTheory.gaussianReal (Olano26Transparencia.posteriorMean s t report)
+                                (Olano26Transparencia.residualVariance s t).toNNReal) =
+                            Olano26Transparencia.residualVariance s t) ∧
+                      (∀ (pair : ℝ × ℝ),
+                          Olano26Transparencia.publicComponent s t pair / Olano26Transparencia.transparencyWeight s t =
+                            Olano26Transparencia.publicReport pair) ∧
+                        (∀ (theta : ℝ),
+                            ∫ (eta : ℝ),
+                                Olano26Transparencia.transparencyWeight s t *
+                                  (theta + eta) ∂ProbabilityTheory.gaussianReal 0 t.toNNReal =
+                              Olano26Transparencia.transparencyWeight s t * theta) ∧
+                          (Olano26Transparencia.informationLaw s t)[Olano26Transparencia.fundamental |
+                                MeasurableSpace.comap (Olano26Transparencia.publicComponent s t)
+                                  Real.measurableSpace] =ᵐ[Olano26Transparencia.informationLaw s t]
+                              Olano26Transparencia.publicComponent s t ∧
+                            ProbabilityTheory.condVar
+                                (MeasurableSpace.comap (Olano26Transparencia.publicComponent s t) Real.measurableSpace)
+                                Olano26Transparencia.fundamental
+                                (Olano26Transparencia.informationLaw s t) =ᵐ[Olano26Transparencia.informationLaw s t]
+                              fun x => (1 - Olano26Transparencia.transparencyWeight s t) * s) ∧
+  (∀ (theta : ℝ),
+      Olano26Transparencia.noSignalPublic theta = 0 ∧
+        Olano26Transparencia.noSignalHidden theta = theta ∧
+          theta = Olano26Transparencia.noSignalPublic theta + Olano26Transparencia.noSignalHidden theta ∧
+            Olano26Transparencia.fullSignalPublic theta = theta ∧
+              Olano26Transparencia.fullSignalHidden theta = 0 ∧
+                theta = Olano26Transparencia.fullSignalPublic theta + Olano26Transparencia.fullSignalHidden theta) ∧
+    ∀ (s : ℝ),
+      0 < s →
+        (MeasureTheory.Measure.map
+                (fun pair => Olano26Transparencia.noSignalPublic (Olano26Transparencia.fundamental pair))
+                (Olano26Transparencia.informationLaw s 0) =
+              ProbabilityTheory.gaussianReal 0 0 ∧
+            MeasureTheory.Measure.map
+                  (fun pair => Olano26Transparencia.noSignalHidden (Olano26Transparencia.fundamental pair))
+                  (Olano26Transparencia.informationLaw s 0) =
+                ProbabilityTheory.gaussianReal 0 s.toNNReal ∧
+              ProbabilityTheory.IndepFun
+                (fun pair => Olano26Transparencia.noSignalPublic (Olano26Transparencia.fundamental pair))
+                (fun pair => Olano26Transparencia.noSignalHidden (Olano26Transparencia.fundamental pair))
+                (Olano26Transparencia.informationLaw s 0)) ∧
+          (MeasureTheory.Measure.map
+                  (fun pair => Olano26Transparencia.fullSignalPublic (Olano26Transparencia.fundamental pair))
+                  (Olano26Transparencia.informationLaw s 0) =
+                ProbabilityTheory.gaussianReal 0 s.toNNReal ∧
+              MeasureTheory.Measure.map
+                    (fun pair => Olano26Transparencia.fullSignalHidden (Olano26Transparencia.fundamental pair))
+                    (Olano26Transparencia.informationLaw s 0) =
+                  ProbabilityTheory.gaussianReal 0 0 ∧
+                ProbabilityTheory.IndepFun
+                  (fun pair => Olano26Transparencia.fullSignalPublic (Olano26Transparencia.fundamental pair))
+                  (fun pair => Olano26Transparencia.fullSignalHidden (Olano26Transparencia.fundamental pair))
+                  (Olano26Transparencia.informationLaw s 0)) ∧
+            ((Olano26Transparencia.informationLaw s 0)[Olano26Transparencia.fundamental |
+                  MeasurableSpace.comap
+                    (fun pair => Olano26Transparencia.noSignalPublic (Olano26Transparencia.fundamental pair))
+                    Real.measurableSpace] =ᵐ[Olano26Transparencia.informationLaw s 0]
+                fun pair => Olano26Transparencia.noSignalPublic (Olano26Transparencia.fundamental pair)) ∧
+              (ProbabilityTheory.condVar
+                    (MeasurableSpace.comap
+                      (fun pair => Olano26Transparencia.noSignalPublic (Olano26Transparencia.fundamental pair))
+                      Real.measurableSpace)
+                    Olano26Transparencia.fundamental
+                    (Olano26Transparencia.informationLaw s 0) =ᵐ[Olano26Transparencia.informationLaw s 0]
+                  fun x => s) ∧
+                ((Olano26Transparencia.informationLaw s 0)[Olano26Transparencia.fundamental |
+                      MeasurableSpace.comap
+                        (fun pair => Olano26Transparencia.fullSignalPublic (Olano26Transparencia.fundamental pair))
+                        Real.measurableSpace] =ᵐ[Olano26Transparencia.informationLaw s 0]
+                    fun pair => Olano26Transparencia.fullSignalPublic (Olano26Transparencia.fundamental pair)) ∧
+                  ProbabilityTheory.condVar
+                      (MeasurableSpace.comap
+                        (fun pair => Olano26Transparencia.fullSignalPublic (Olano26Transparencia.fundamental pair))
+                        Real.measurableSpace)
+                      Olano26Transparencia.fundamental
+                      (Olano26Transparencia.informationLaw s 0) =ᵐ[Olano26Transparencia.informationLaw s 0]
+                    fun x => 0
+def Olano26Transparencia.optimalDemandSpec : Prop :=
+∀ (mean variance c R price riskAversion : ℝ),
+  0 < variance →
+    0 < riskAversion →
+      (∀ (position : ℝ),
+          Olano26Transparencia.expectedCARAUtility mean variance c R price riskAversion position ≤
+            Olano26Transparencia.expectedCARAUtility mean variance c R price riskAversion
+              (Olano26Transparencia.optimalDemand mean variance R price riskAversion)) ∧
+        ∀ (position : ℝ),
+          Olano26Transparencia.expectedCARAUtility mean variance c R price riskAversion position =
+              Olano26Transparencia.expectedCARAUtility mean variance c R price riskAversion
+                (Olano26Transparencia.optimalDemand mean variance R price riskAversion) ↔
+            position = Olano26Transparencia.optimalDemand mean variance R price riskAversion
+def Olano26Transparencia.priceSensitivitySpec : Prop :=
+(∀ (M : Olano26Transparencia.FixedMarket) (mu theta kappa : ℝ),
+    0 ≤ mu →
+      mu ≤ 1 → ∀ (price : ℝ), M.aggregateDemand mu theta kappa price = 1 ↔ price = M.equilibriumPrice mu theta kappa) ∧
+  (∀ (M : Olano26Transparencia.FixedMarket) (t theta : ℝ),
+      0 ≤ t →
+        M.expectedPriceGivenFundamental t theta =
+          M.priceIntercept (Olano26Transparencia.transparencyWeight M.s t) +
+            M.sensitivity (Olano26Transparencia.transparencyWeight M.s t) * theta) ∧
+    ∀ (M : Olano26Transparencia.FixedMarket) (theta : ℝ),
+      M.equilibriumPrice 0 theta 0 = M.priceIntercept 0 + M.sensitivity 0 * theta
+def Olano26Transparencia.fixedSentimentMonotonicitySpec : Prop :=
+∀ (M : Olano26Transparencia.FixedMarket),
+  (∀ (x y : ℝ), 0 ≤ x → x < y → y ≤ 1 → M.sensitivity x < M.sensitivity y) ∧
+    (∀ (mu : ℝ), 0 ≤ mu → mu ≤ 1 → 0 < M.sensitivity mu ∧ M.sensitivity mu ≤ 1 / M.R) ∧ M.sensitivity 1 = 1 / M.R
+def Olano26Transparencia.endogenousSentimentSpec : Prop :=
+(∀ (M : Olano26Transparencia.EndogenousMarket),
+    (∀ (mu : ℝ),
+        0 ≤ mu →
+          mu ≤ 1 →
+            HasDerivWithinAt M.sensitivity
+              (Olano26Transparencia.endogenousDerivativeNumerator mu (M.a mu) (M.aPrime mu) (M.B mu) (M.BPrime mu) /
+                (M.R * (M.a mu + M.B mu) ^ 2))
+              (Set.Icc 0 1) mu) ∧
+      ((∀ mu ∈ Set.Icc 0 1, 0 ≤ derivWithin M.rho1 (Set.Icc 0 1) mu) →
+          (∀ mu ∈ Set.Icc 0 1, derivWithin M.rho2 (Set.Icc 0 1) mu ≤ 0) → StrictMonoOn M.sensitivity (Set.Icc 0 1)) ∧
+        (∀ (mu constant : ℝ),
+            0 ≤ mu →
+              mu ≤ 1 →
+                Set.EqOn M.rho1 (fun x => constant) (Set.Icc 0 1) →
+                  (0 < derivWithin M.sensitivity (Set.Icc 0 1) mu ↔
+                      0 < Olano26Transparencia.endogenousRetailBracket M mu) ∧
+                    ((1 - mu) * M.b * derivWithin M.rho2 (Set.Icc 0 1) mu ≤ M.e4 / M.d4 mu →
+                      0 < derivWithin M.sensitivity (Set.Icc 0 1) mu)) ∧
+          M.sensitivity 1 = 1 / M.R) ∧
+  (∀ (b c mu : ℝ),
+      0 < b →
+        -1 < c →
+          0 ≤ mu →
+            mu ≤ 1 →
+              Olano26Transparencia.counterLogTrajectorySensitivity b c mu =
+                Olano26Transparencia.counterTrajectorySensitivity c mu) ∧
+    (∀ (c : ℝ), -1 < c → (deriv (Olano26Transparencia.counterTrajectorySensitivity c) 0 < 0 ↔ c > 101 / 36)) ∧
+      (Olano26Transparencia.counterTrajectorySensitivity 5 (1 / 10) = 1768 / 2803 ∧
+          Olano26Transparencia.counterTrajectorySensitivity 5 (1 / 10) < 9 / 14) ∧
+        ∀ (c : ℝ), -1 < c → Olano26Transparencia.counterTrajectorySensitivity c 1 = 1
+structure Olano26Transparencia.FixedMarket : Type
+number of parameters: 0
+fields:
+  Olano26Transparencia.FixedMarket.P0 : ℝ
+  Olano26Transparencia.FixedMarket.R : ℝ
+  Olano26Transparencia.FixedMarket.gamma : ℝ
+  Olano26Transparencia.FixedMarket.b : ℝ
+  Olano26Transparencia.FixedMarket.e : ℝ
+  Olano26Transparencia.FixedMarket.s : ℝ
+  Olano26Transparencia.FixedMarket.tau1Sq : ℝ
+  Olano26Transparencia.FixedMarket.tau2Sq : ℝ
+  Olano26Transparencia.FixedMarket.lambda1 : ℝ
+  Olano26Transparencia.FixedMarket.lambda2 : ℝ
+  Olano26Transparencia.FixedMarket.lambda3 : ℝ
+  Olano26Transparencia.FixedMarket.lambda4 : ℝ
+  Olano26Transparencia.FixedMarket.rho1 : ℝ
+  Olano26Transparencia.FixedMarket.rho2 : ℝ
+  Olano26Transparencia.FixedMarket.delta1 : ℝ
+  Olano26Transparencia.FixedMarket.delta2 : ℝ
+  Olano26Transparencia.FixedMarket.R_pos : 0 < self.R
+  Olano26Transparencia.FixedMarket.gamma_pos : 0 < self.gamma
+  Olano26Transparencia.FixedMarket.b_pos : 0 < self.b
+  Olano26Transparencia.FixedMarket.e_pos : 0 < self.e
+  Olano26Transparencia.FixedMarket.s_pos : 0 < self.s
+  Olano26Transparencia.FixedMarket.tau1Sq_nonneg : 0 ≤ self.tau1Sq
+  Olano26Transparencia.FixedMarket.tau2Sq_nonneg : 0 ≤ self.tau2Sq
+  Olano26Transparencia.FixedMarket.lambda1_pos : 0 < self.lambda1
+  Olano26Transparencia.FixedMarket.lambda2_pos : 0 < self.lambda2
+  Olano26Transparencia.FixedMarket.lambda3_pos : 0 < self.lambda3
+  Olano26Transparencia.FixedMarket.lambda4_pos : 0 < self.lambda4
+  Olano26Transparencia.FixedMarket.lambda_sum : self.lambda1 + self.lambda2 + self.lambda3 + self.lambda4 = 1
+constructor:
+  Olano26Transparencia.FixedMarket.mk
+    (P0 R gamma b e s tau1Sq tau2Sq lambda1 lambda2 lambda3 lambda4 rho1 rho2 delta1 delta2 : ℝ) (R_pos : 0 < R)
+    (gamma_pos : 0 < gamma) (b_pos : 0 < b) (e_pos : 0 < e) (s_pos : 0 < s) (tau1Sq_nonneg : 0 ≤ tau1Sq)
+    (tau2Sq_nonneg : 0 ≤ tau2Sq) (lambda1_pos : 0 < lambda1) (lambda2_pos : 0 < lambda2) (lambda3_pos : 0 < lambda3)
+    (lambda4_pos : 0 < lambda4) (lambda_sum : lambda1 + lambda2 + lambda3 + lambda4 = 1) :
+    Olano26Transparencia.FixedMarket
+structure Olano26Transparencia.EndogenousMarket : Type
+number of parameters: 0
+fields:
+  Olano26Transparencia.EndogenousMarket.P0 : ℝ
+  Olano26Transparencia.EndogenousMarket.R : ℝ
+  Olano26Transparencia.EndogenousMarket.gamma : ℝ
+  Olano26Transparencia.EndogenousMarket.b : ℝ
+  Olano26Transparencia.EndogenousMarket.e : ℝ
+  Olano26Transparencia.EndogenousMarket.s : ℝ
+  Olano26Transparencia.EndogenousMarket.tau1Sq : ℝ
+  Olano26Transparencia.EndogenousMarket.tau2Sq : ℝ
+  Olano26Transparencia.EndogenousMarket.lambda1 : ℝ
+  Olano26Transparencia.EndogenousMarket.lambda2 : ℝ
+  Olano26Transparencia.EndogenousMarket.lambda3 : ℝ
+  Olano26Transparencia.EndogenousMarket.lambda4 : ℝ
+  Olano26Transparencia.EndogenousMarket.delta1 : ℝ
+  Olano26Transparencia.EndogenousMarket.delta2 : ℝ
+  Olano26Transparencia.EndogenousMarket.rho1 : ℝ → ℝ
+  Olano26Transparencia.EndogenousMarket.rho2 : ℝ → ℝ
+  Olano26Transparencia.EndogenousMarket.rho1_differentiableOn : DifferentiableOn ℝ self.rho1 (Set.Icc 0 1)
+  Olano26Transparencia.EndogenousMarket.rho2_differentiableOn : DifferentiableOn ℝ self.rho2 (Set.Icc 0 1)
+  Olano26Transparencia.EndogenousMarket.R_pos : 0 < self.R
+  Olano26Transparencia.EndogenousMarket.gamma_pos : 0 < self.gamma
+  Olano26Transparencia.EndogenousMarket.b_pos : 0 < self.b
+  Olano26Transparencia.EndogenousMarket.e_pos : 0 < self.e
+  Olano26Transparencia.EndogenousMarket.s_pos : 0 < self.s
+  Olano26Transparencia.EndogenousMarket.tau1Sq_nonneg : 0 ≤ self.tau1Sq
+  Olano26Transparencia.EndogenousMarket.tau2Sq_nonneg : 0 ≤ self.tau2Sq
+  Olano26Transparencia.EndogenousMarket.lambda1_pos : 0 < self.lambda1
+  Olano26Transparencia.EndogenousMarket.lambda2_pos : 0 < self.lambda2
+  Olano26Transparencia.EndogenousMarket.lambda3_pos : 0 < self.lambda3
+  Olano26Transparencia.EndogenousMarket.lambda4_pos : 0 < self.lambda4
+  Olano26Transparencia.EndogenousMarket.lambda_sum : self.lambda1 + self.lambda2 + self.lambda3 + self.lambda4 = 1
+constructor:
+  Olano26Transparencia.EndogenousMarket.mk
+    (P0 R gamma b e s tau1Sq tau2Sq lambda1 lambda2 lambda3 lambda4 delta1 delta2 : ℝ) (rho1 rho2 : ℝ → ℝ)
+    (rho1_differentiableOn : DifferentiableOn ℝ rho1 (Set.Icc 0 1))
+    (rho2_differentiableOn : DifferentiableOn ℝ rho2 (Set.Icc 0 1)) (R_pos : 0 < R) (gamma_pos : 0 < gamma)
+    (b_pos : 0 < b) (e_pos : 0 < e) (s_pos : 0 < s) (tau1Sq_nonneg : 0 ≤ tau1Sq) (tau2Sq_nonneg : 0 ≤ tau2Sq)
+    (lambda1_pos : 0 < lambda1) (lambda2_pos : 0 < lambda2) (lambda3_pos : 0 < lambda3) (lambda4_pos : 0 < lambda4)
+    (lambda_sum : lambda1 + lambda2 + lambda3 + lambda4 = 1) : Olano26Transparencia.EndogenousMarket
+theorem Olano26Transparencia.informationDecomposition : Olano26Transparencia.informationDecompositionSpec :=
+⋯
+theorem Olano26Transparencia.optimalDemandResult : Olano26Transparencia.optimalDemandSpec :=
+Olano26Transparencia.expectedCARAUtility_unique_maximizer
+theorem Olano26Transparencia.priceSensitivity : Olano26Transparencia.priceSensitivitySpec :=
+⋯
+theorem Olano26Transparencia.fixedSentimentMonotonicity : Olano26Transparencia.fixedSentimentMonotonicitySpec :=
+Olano26Transparencia.FixedMarket.fixedSentimentSensitivity
+theorem Olano26Transparencia.endogenousSentiment : Olano26Transparencia.endogenousSentimentSpec :=
+⋯
+'Olano26Transparencia.informationDecomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.optimalDemandResult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.priceSensitivity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.fixedSentimentMonotonicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.endogenousSentiment' depends on axioms: [propext, Classical.choice, Quot.sound]

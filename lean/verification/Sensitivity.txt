@@ -1,0 +1,3 @@
+papers/Olano26Transparencia/Sensitivity.lean:58:5: warning: unused variable `hx`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`

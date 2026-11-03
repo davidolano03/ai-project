@@ -626,20 +626,20 @@ La demostración general depende de los supuestos escritos.}
 Un único comando: \texttt{python code/verify.py}.
 \end{frame}
 
-\begin{frame}{Cómo se comprueban los resultados con Lean}
+\begin{frame}{Las cinco proposiciones comprobadas con Lean}
 \begin{itemize}
-\item El enunciado formal identifica variables, dominio y supuestos.
-\item El kernel comprueba que la conclusión se deriva de ellos.
-\item La revisión independiente compara ese enunciado con el manuscrito.
+\item Información: gaussianas, independencia y momentos condicionales.
+\item Demanda: utilidad esperada CARA y máximo global único.
+\item Precio: vaciado único y puente al precio esperado.
+\item Transparencia fija: crecimiento estricto y extremo completo.
+\item Sentimiento variable: condiciones, umbral $101/36$ y reversión.
 \end{itemize}
-\medskip
-Las cinco proposiciones siguen la misma secuencia de la exposición:
-información, demanda, precio, transparencia fija y sentimiento variable.
-\idea{El resultado verificable debe incluir declaración, archivo,
-estado y commit del manuscrito. La tabla de alcance se entrega en el repositorio.}
+\idea{Las cinco pruebas compilan sin axiomas propios. Una revisión
+independiente encontró correspondencia con los cinco enunciados del paper.}
 \small\medskip\par
-Integración del procedimiento formal en revisión; el cierre registrará su
-resultado real antes de publicar la entrega.
+Fuente: commit \texttt{55409d5}. Chequeo del curso \texttt{--fast}: salida 0.
+Informes en \texttt{lean/verification/}.
+La comparación directa no se presenta como aceptación del protocolo integral v12.
 \end{frame}
 
 \begin{frame}{El límite principal: aprender del precio cambiaría el problema}

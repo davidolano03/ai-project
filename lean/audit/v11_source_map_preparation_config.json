@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "paper": "Olano26Transparencia",
+  "namespace": "Olano26Transparencia",
+  "paper_interface_module": "PaperInterface",
+  "semantic_preflight_import_module": "Olano26Transparencia.ProofInterface",
+  "semantic_route_schema": 2,
+  "closeout_review_policy": {
+    "schema": 1,
+    "source_scope": "all_named_theory",
+    "repeat_final_scope": "main_primary",
+    "required_final_adversary_count": 1,
+    "scheduling": {
+      "initial_semantic_review": [],
+      "final_adversarial_review": []
+    }
+  },
+  "source_version": "own unpublished manuscript commit 55409d500deba8b66072bd75d042d1faa962cdad",
+  "include_specs": [
+    "informationDecompositionSpec",
+    "optimalDemandSpec",
+    "priceSensitivitySpec",
+    "fixedSentimentMonotonicitySpec",
+    "endogenousSentimentSpec"
+  ],
+  "source_item_for_spec": {
+    "informationDecompositionSpec": "olano26_proposition_1",
+    "optimalDemandSpec": "olano26_proposition_2",
+    "priceSensitivitySpec": "olano26_proposition_3",
+    "fixedSentimentMonotonicitySpec": "olano26_proposition_4",
+    "endogenousSentimentSpec": "olano26_proposition_5"
+  },
+  "evidence_declaration_for_spec": {
+    "informationDecompositionSpec": "Olano26Transparencia.informationDecomposition",
+    "optimalDemandSpec": "Olano26Transparencia.optimalDemandResult",
+    "priceSensitivitySpec": "Olano26Transparencia.priceSensitivity",
+    "fixedSentimentMonotonicitySpec": "Olano26Transparencia.fixedSentimentMonotonicity",
+    "endogenousSentimentSpec": "Olano26Transparencia.endogenousSentiment"
+  },
+  "source_semantic_declarations": {},
+  "paper_semantic_prerequisite_sources": {},
+  "library_semantic_prerequisite_sources": {},
+  "semantic_context_requirements": {},
+  "model_convention_ids_by_source_item": {},
+  "source_named_result_inventory_review": {
+    "complete": true,
+    "validator": "context-isolated source-only inventory reviewer preserved in .work/olano-intake/formalization-run.jsonl",
+    "method": "Read the complete pinned TeX source without Lean or authoring context; inventoried all six numbered assumptions and five numbered propositions, classified every other presentation as supporting/deep-audit material, and partitioned the source into main text, bibliography, theory appendix, and audit/meta appendix. Exact locators below are rematerialized against the unchanged pinned bytes.",
+    "validated_at": "2026-11-02T23:05:43Z",
+    "prose_definition_presentations": [],
+    "candidate_presentations": [
+      {"id":"olano26_candidate_01","source_locator":"source/paper.tex:22-39","presentation_label":"Abstract","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered summary and scope prose; it restates or previews selected numbered results rather than presenting another named theorem."},
+      {"id":"olano26_candidate_02","source_locator":"source/paper.tex:41-56","presentation_label":"Pregunta y contribución","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered overview and contribution prose; the mathematical assertions are restatements or context for later numbered propositions."},
+      {"id":"olano26_candidate_03","source_locator":"source/paper.tex:59-65","presentation_label":"Payoff equation and adjoining definitions","scope_disposition":"deep_audit_material","semantic_basis":"Governing model equation and definitions used as semantic prerequisites, not an additional named result."},
+      {"id":"olano26_candidate_04","source_locator":"source/paper.tex:67-80","presentation_label":"Diagnosis of the original information formulas","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered explanatory diagnosis and variance identities supporting the paper's setup, without a standalone named result environment."},
+      {"id":"olano26_candidate_05","source_locator":"source/paper.tex:82-101","presentation_label":"Counterexample equation and analysis","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered counterexample construction and cutoff discussion that supports Proposition 5 rather than adding a sixth result row."},
+      {"id":"olano26_candidate_06","source_locator":"source/paper.tex:114-127","presentation_label":"Application and economic setup prose","scope_disposition":"deep_audit_material","semantic_basis":"Governing interpretation and information-set context preceding the numbered assumptions; not a separate named theorem."},
+      {"id":"olano26_candidate_07","source_locator":"source/paper.tex:165-169","presentation_label":"Model sequence","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered timing and interpretation paragraph attached to the maintained-information assumption."},
+      {"id":"olano26_candidate_08","source_locator":"source/paper.tex:173-188","presentation_label":"Bayes and completing-the-square derivation","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered derivation supporting Proposition 1; proof support does not become another source claim."},
+      {"id":"olano26_candidate_09","source_locator":"source/paper.tex:189-192","presentation_label":"Posterior distribution display","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered posterior-distribution display used as source context for Proposition 1."},
+      {"id":"olano26_candidate_10","source_locator":"source/paper.tex:193-198","presentation_label":"Transparency weight and partial-signal prose","scope_disposition":"deep_audit_material","semantic_basis":"Governing definition and interpretation immediately before Proposition 1, not an independently numbered result."},
+      {"id":"olano26_candidate_11","source_locator":"source/paper.tex:213-242","presentation_label":"Proof of Proposition 1","scope_disposition":"deep_audit_material","semantic_basis":"Printed proof support for the selected proposition; it is not a duplicate claim row."},
+      {"id":"olano26_candidate_12","source_locator":"source/paper.tex:243-250","presentation_label":"Total-variance identity and interpretation","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered follow-up identity and interpretation attached to Proposition 1."},
+      {"id":"olano26_candidate_13","source_locator":"source/paper.tex:252-257","presentation_label":"Numerical information example","scope_disposition":"deep_audit_material","semantic_basis":"Illustrative numerical example without a named theorem-like presentation."},
+      {"id":"olano26_candidate_14","source_locator":"source/paper.tex:259-290","presentation_label":"Perceived-payoff means and variances","scope_disposition":"deep_audit_material","semantic_basis":"Model formulas and a group table governing later propositions; retained as semantic context, not a new result."},
+      {"id":"olano26_candidate_15","source_locator":"source/paper.tex:293-311","presentation_label":"Wealth expectation and variance derivation","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered derivation supporting Proposition 2."},
+      {"id":"olano26_candidate_16","source_locator":"source/paper.tex:313-332","presentation_label":"Expected utility and certainty equivalent","scope_disposition":"deep_audit_material","semantic_basis":"CARA objective identities and governing definition supporting Proposition 2, not a separate numbered claim."},
+      {"id":"olano26_candidate_17","source_locator":"source/paper.tex:342-359","presentation_label":"Proof of Proposition 2","scope_disposition":"deep_audit_material","semantic_basis":"Printed proof support for the selected demand proposition."},
+      {"id":"olano26_candidate_18","source_locator":"source/paper.tex:360-365","presentation_label":"Specialized demand formula","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered specialization and interpretation following Proposition 2."},
+      {"id":"olano26_candidate_19","source_locator":"source/paper.tex:367-371","presentation_label":"Price-section definitions","scope_disposition":"deep_audit_material","semantic_basis":"Governing definitions of the aggregate coefficients used in Proposition 3."},
+      {"id":"olano26_candidate_20","source_locator":"source/paper.tex:384-395","presentation_label":"Proof of Proposition 3","scope_disposition":"deep_audit_material","semantic_basis":"Printed market-clearing and conditional-expectation proof support for Proposition 3."},
+      {"id":"olano26_candidate_21","source_locator":"source/paper.tex:396-399","presentation_label":"Interpretation of price sensitivity","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered economic interpretation following Proposition 3."},
+      {"id":"olano26_candidate_22","source_locator":"source/paper.tex:406-434","presentation_label":"Proof of Proposition 4","scope_disposition":"deep_audit_material","semantic_basis":"Printed derivative, positivity, bound, and endpoint proof support for Proposition 4."},
+      {"id":"olano26_candidate_23","source_locator":"source/paper.tex:435-437","presentation_label":"Full-information endpoint interpretation","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered post-proposition endpoint interpretation, not a visibly named result."},
+      {"id":"olano26_candidate_24","source_locator":"source/paper.tex:439-454","presentation_label":"Two opposing effects","scope_disposition":"deep_audit_material","semantic_basis":"Labelled explanatory paragraph, derivative identity, and example motivating Proposition 5 without forming another theorem-like result."},
+      {"id":"olano26_candidate_25","source_locator":"source/paper.tex:468-476","presentation_label":"Consequences of endogenous sentiment","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered implications and coefficient definitions following Assumption 6 and preceding Proposition 5."},
+      {"id":"olano26_candidate_26","source_locator":"source/paper.tex:496-522","presentation_label":"Proof of Proposition 5","scope_disposition":"deep_audit_material","semantic_basis":"Printed proof support for clauses (i)--(iv) of the selected proposition."},
+      {"id":"olano26_candidate_27","source_locator":"source/paper.tex:523-528","presentation_label":"Mechanism interpretation","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered restatement and mechanism discussion following Proposition 5."},
+      {"id":"olano26_candidate_28","source_locator":"source/paper.tex:529-536","presentation_label":"Sensitivity figure","scope_disposition":"deep_audit_material","semantic_basis":"Figure and caption illustrating threshold behavior; figures do not become ordinary named-theory rows."},
+      {"id":"olano26_candidate_29","source_locator":"source/paper.tex:538-557","presentation_label":"Reproducible verification prose","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered computational and simulation assertions outside the selected numbered propositions."},
+      {"id":"olano26_candidate_30","source_locator":"source/paper.tex:558-570","presentation_label":"Scenario table and exact-value prose","scope_disposition":"deep_audit_material","semantic_basis":"Numerical table and adjoining explanation, not a named theorem-like source presentation."},
+      {"id":"olano26_candidate_31","source_locator":"source/paper.tex:571-580","presentation_label":"Expected-sensitivity figure","scope_disposition":"deep_audit_material","semantic_basis":"Figure-level reproducibility presentation outside the numbered proposition surface."},
+      {"id":"olano26_candidate_32","source_locator":"source/paper.tex:581-603","presentation_label":"Scope, issuers, and limitations","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered scope and negative-result prose; retained for deep audit without promotion to a theorem row."},
+      {"id":"olano26_candidate_33","source_locator":"source/paper.tex:604-611","presentation_label":"Price inversion equation","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered inference limitation and displayed rearrangement within the scope discussion."},
+      {"id":"olano26_candidate_34","source_locator":"source/paper.tex:612-617","presentation_label":"Open cases and non-results","scope_disposition":"deep_audit_material","semantic_basis":"Expressly unproved scope qualifications, not asserted named results."},
+      {"id":"olano26_candidate_35","source_locator":"source/paper.tex:618-624","presentation_label":"Conclusion","scope_disposition":"deep_audit_material","semantic_basis":"Unnumbered conclusion restating the selected numbered results and their interpretation."},
+      {"id":"olano26_candidate_36","source_locator":"source/paper.tex:630-646","presentation_label":"Appendix: normal integral for CARA","scope_disposition":"deep_audit_material","semantic_basis":"Appendix-only unnumbered derivation supporting the demand proof."},
+      {"id":"olano26_candidate_37","source_locator":"source/paper.tex:647-662","presentation_label":"Appendix: finite difference","scope_disposition":"deep_audit_material","semantic_basis":"Appendix-only unnumbered identity and algebraic rule supporting Proposition 4."},
+      {"id":"olano26_candidate_38","source_locator":"source/paper.tex:663-705","presentation_label":"Appendix: Lean correspondence and scope","scope_disposition":"deep_audit_material","semantic_basis":"Audit/meta correspondence table and explanatory prose, not manuscript theorem content."},
+      {"id":"olano26_candidate_39","source_locator":"source/paper.tex:706-745","presentation_label":"Appendix: AI contribution audit","scope_disposition":"deep_audit_material","semantic_basis":"Audit/meta contribution records and course-delivery prose, not mathematical result presentations."}
+    ],
+    "source_region_partition": {
+      "complete": true,
+      "validator": "context-isolated source-only inventory reviewer preserved in .work/olano-intake/formalization-run.jsonl",
+      "method": "Partition the exact pinned TeX into preamble, main text, bibliography commands, theory appendix, and audit/meta appendix; assignments use byte-rematerialized source anchors.",
+      "validated_at": "2026-11-02T23:05:43Z",
+      "regions": [
+        {"id":"preamble","kind":"supplement","source_locator":"source/paper.tex:1-19"},
+        {"id":"main_text","kind":"main_text","source_locator":"source/paper.tex:20-624"},
+        {"id":"bibliography","kind":"supplement","source_locator":"source/paper.tex:625-628"},
+        {"id":"appendix_theory","kind":"appendix","source_locator":"source/paper.tex:629-662"},
+        {"id":"appendix_audit_meta","kind":"supplement","source_locator":"source/paper.tex:663-745"}
+      ],
+      "source_item_regions": {
+        "olano26_assumption_payoff":"main_text",
+        "olano26_assumption_signal":"main_text",
+        "olano26_assumption_groups_sentiment":"main_text",
+        "olano26_assumption_preferences_beliefs":"main_text",
+        "olano26_assumption_price_information":"main_text",
+        "olano26_proposition_1":"main_text",
+        "olano26_proposition_2":"main_text",
+        "olano26_proposition_3":"main_text",
+        "olano26_proposition_4":"main_text",
+        "olano26_assumption_endogenous_sentiment":"main_text",
+        "olano26_proposition_5":"main_text"
+      },
+      "candidate_presentation_regions": {
+        "olano26_candidate_01":"main_text","olano26_candidate_02":"main_text","olano26_candidate_03":"main_text","olano26_candidate_04":"main_text","olano26_candidate_05":"main_text","olano26_candidate_06":"main_text","olano26_candidate_07":"main_text","olano26_candidate_08":"main_text","olano26_candidate_09":"main_text","olano26_candidate_10":"main_text","olano26_candidate_11":"main_text","olano26_candidate_12":"main_text","olano26_candidate_13":"main_text","olano26_candidate_14":"main_text","olano26_candidate_15":"main_text","olano26_candidate_16":"main_text","olano26_candidate_17":"main_text","olano26_candidate_18":"main_text","olano26_candidate_19":"main_text","olano26_candidate_20":"main_text","olano26_candidate_21":"main_text","olano26_candidate_22":"main_text","olano26_candidate_23":"main_text","olano26_candidate_24":"main_text","olano26_candidate_25":"main_text","olano26_candidate_26":"main_text","olano26_candidate_27":"main_text","olano26_candidate_28":"main_text","olano26_candidate_29":"main_text","olano26_candidate_30":"main_text","olano26_candidate_31":"main_text","olano26_candidate_32":"main_text","olano26_candidate_33":"main_text","olano26_candidate_34":"main_text","olano26_candidate_35":"main_text",
+        "olano26_candidate_36":"appendix_theory","olano26_candidate_37":"appendix_theory",
+        "olano26_candidate_38":"appendix_audit_meta","olano26_candidate_39":"appendix_audit_meta"
+      },
+      "prose_definition_presentation_regions": {},
+      "promoted_source_items": []
+    }
+  }
+}

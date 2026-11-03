@@ -229,9 +229,9 @@ Explicar qué verifican el código y las simulaciones, con recuentos reales del 
 
 Manual: secciones 19.
 
-### 36. Cómo se comprueban los resultados con Lean
+### 36. Las cinco proposiciones comprobadas con Lean
 
-Actualizar esta diapositiva con el estado final real al cerrar el PR. El compilador comprueba lógica; la auditoría compara con la fuente. No atribuir a la IA pruebas que no existan.
+Los cinco endpoints compilaron y sus axiomas son los estándares de Lean. El chequeo --fast terminó con código 0. La revisión independiente directa comparó las cinco proposiciones con sus Specs: 5 MATCH. Distinguir esta revisión de un recibo automático de aceptación integral v12, que no se ha emitido. El cuadro del apéndice del paper y lean/README.md indican los mismos estados.
 
 Manual: secciones 19.
 
@@ -286,5 +286,5 @@ Los glosarios finales permiten recuperar de inmediato cualquier unidad o índice
 
 ## Estado de integración
 
-La diapositiva de Lean deberá reflejar el resultado real del cierre antes de publicar la versión final.
+La diapositiva 36, el apéndice del paper y lean/README.md registran cinco proposiciones probadas, chequeo --fast con salida 0 y comparación directa 5 MATCH. El manuscrito formalizado es el commit 55409d5; no se alteraron sus cinco proposiciones.
 No se generan fotos manuscritas ni conversaciones reales del estudiante.

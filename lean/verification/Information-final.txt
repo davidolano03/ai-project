@@ -1,0 +1,9 @@
+papers/Olano26Transparencia/Information.lean:332:21: warning: unused variable `ht`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+papers/Olano26Transparencia/Information.lean:417:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+papers/Olano26Transparencia/Information.lean:431:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`

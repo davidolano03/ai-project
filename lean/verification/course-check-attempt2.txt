@@ -1,0 +1,47 @@
++ lake build +Olano26Transparencia.PaperInterface
+ℹ [3480/3503] Replayed AppliedModelingLib.Foundations.Probability.FiniteExpectation
+info: AppliedModelingLib/Foundations/Probability/FiniteExpectation.lean:2917:14: Try this:
+  [apply] abel_nf
+⚠ [3552/3649] Replayed AppliedModelingLib.Foundations.Probability.MeasureInequalities
+warning: AppliedModelingLib/Foundations/Probability/MeasureInequalities.lean:1751:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  intro n
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: AppliedModelingLib/Foundations/Probability/MeasureInequalities.lean:2446:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  intro n
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: AppliedModelingLib/Foundations/Probability/MeasureInequalities.lean:2447:2: The following tactic starts with 2 goals and ends with 3 goals, 2 of which are not operated on.
+  apply eLpNorm_two_le_nnreal_of_integral_sq_le (hX := hsum_memLp n)
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+✔ [3649/3649] Built Olano26Transparencia.PaperInterface (14s)
+Build completed successfully (3649 jobs).
+error: could not verify the semantic Lean import closure for Olano26Transparencia: Lake could not build the entry module: ote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: papers/Olano26Transparencia/Endogenous.lean:421:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: papers/Olano26Transparencia/Endogenous.lean:411:40: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [3650/3657] Built Olano26Transparencia.Sensitivity (15s)
+✔ [3651/3657] Built Olano26Transparencia.Price (14s)
+✔ [3652/3657] Built Olano26Transparencia.CARA (16s)
+✔ [3653/3657] Built Olano26Transparencia.Information (14s)
+✔ [3655/3657] Built Olano26Transparencia.MainTheorems (14s)
+✖ [3656/3657] Building Olano26Transparencia.ProofInterface (13s)
+trace: .> LEAN_PATH=C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\cslib\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\AppliedModelingLib\.lake\packages\Vlasov\Vlasov\.lake\build\lib\lean;C:\Users\Bienvenido\Documents\Codex\AppliedModelingLib-Olano26\.lake\build\lib\lean c:\Users\Bienvenido\Documents\GitHub\ai-05-ide\.work\elan\toolchains\leanprover--lean4---v4.30.0-rc2\bin\lean.exe C:\Users\Bienvenido\Documents\Codex\AppliedModelingLib-Olano26\papers\Olano26Transparencia\ProofInterface.lean -o C:\Users\Bienvenido\Documents\Codex\AppliedModelingLib-Olano26\.lake\build\lib\lean\Olano26Transparencia\ProofInterface.olean -i C:\Users\Bienvenido\Documents\Codex\AppliedModelingLib-Olano26\.lake\build\lib\lean\Olano26Transparencia\ProofInterface.ilean -c C:\Users\Bienvenido\Documents\Codex\AppliedModelingLib-Olano26\.lake\build\ir\Olano26Transparencia\ProofInterface.c --setup C:\Users\Bienvenido\Documents\Codex\AppliedModelingLib-Olano26\.lake\build\ir\Olano26Transparencia\ProofInterface.setup.json --json
+error: papers/Olano26Transparencia/ProofInterface.lean:25:8: `Olano26Transparencia.optimalDemand` has already been declared
+info: papers/Olano26Transparencia/ProofInterface.lean:48:0: 'Olano26Transparencia.informationAvailable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: papers/Olano26Transparencia/ProofInterface.lean:49:0: 'Olano26Transparencia.optimalDemand' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: papers/Olano26Transparencia/ProofInterface.lean:50:0: 'Olano26Transparencia.priceSensitivity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: papers/Olano26Transparencia/ProofInterface.lean:51:0: 'Olano26Transparencia.fixedSentimentMonotonicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: papers/Olano26Transparencia/ProofInterface.lean:52:0: 'Olano26Transparencia.endogenousSentiment' depends on axioms: [propext, Classical.choice, Quot.sound]
+error: Lean exited with code 1
+Some required targets logged failures:
+- Olano26Transparencia.ProofInterface
+
+error: build failed

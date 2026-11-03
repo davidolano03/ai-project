@@ -1,0 +1,5 @@
+'Olano26Transparencia.informationAvailable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.optimalDemandResult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.priceSensitivity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.fixedSentimentMonotonicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Olano26Transparencia.endogenousSentiment' depends on axioms: [propext, Classical.choice, Quot.sound]

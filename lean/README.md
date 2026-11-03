@@ -1,18 +1,39 @@
-# Lean: alcance comprobado de la entrega
+# Lean: cinco proposiciones del manuscrito
 
-La carpeta preliminary/ contiene **26 declaraciones comprobadas**: 15 en BaselineAudit.lean, 4 en Transparency.lean y 7 en SignalCARA.lean. Entorno: Lean 4.30.0-rc2 y Mathlib de la misma versión. Los informes junto a los archivos imprimen el cierre de axiomas estándar propext, Classical.choice y Quot.sound. No se usan sorry, admit ni axiomas propios.
+Las cinco proposiciones tienen enunciados transparentes en [PaperInterface.lean](PaperInterface.lean) y pruebas del tipo exacto en [ProofInterface.lean](ProofInterface.lean). Los nombres completos llevan el prefijo `Olano26Transparencia.`.
 
-| Resultado del manuscrito | Declaraciones | Alcance real |
-|---|---|---|
-| Prop. 1: información pública y oculta | posterior_square, public_variance, hidden_variance, public_hidden_covariance, total_variance / SignalCARA.lean | Identidades de momentos y completar el cuadrado. Bayes, variables aleatorias, normalidad conjunta y esperanza condicional permanecen abiertos en Lean. |
-| Prop. 2: demanda CARA | cara_normal_exponent, gaussian_integral_square / SignalCARA.lean; demand_maximizes, demand_satisfies_FOC / BaselineAudit.lean | Identidades del exponente, CPO y máximo global del equivalente cierto. La integral gaussiana y equivalencia con utilidad esperada no están formalizadas probabilísticamente. |
-| Prop. 3: precio | market_clearing / BaselineAudit.lean | Vaciado algebraico. La esperanza del precio requiere el puente probabilístico. |
-| Prop. 4: monotonicidad | four_group_information_increases, full_information_endpoint / Transparency.lean | Probadas para el coeficiente algebraico de cuatro grupos y parámetros positivos explícitos. |
-| Prop. 5: sentimiento que responde a la transparencia | Sin declaración Lean todavía | Resultado con prueba escrita y comprobaciones racionales en code/verify.py. **Abierto en Lean:** falta implementar a(μ), n₄(μ), sus derivadas y las cuatro partes en el procedimiento integral del curso. |
-| Auditoría del paper | positive_transparency_counterexample, scaled_signal_reveals_theta / BaselineAudit.lean | Contraejemplo de las fórmulas impresas y señal determinista invertible. |
+| Resultado | Declaración / implementación | Estado | Alcance |
+|---|---|---|---|
+| 1: información | `informationDecomposition` / `Information.lean` | **Probado** | Leyes gaussianas, independencia, posterior, esperanza y varianza condicional sobre kappa; extremos sin señal y señal exacta. |
+| 2: demanda CARA | `optimalDemandResult` / `CARA.lean` | **Probado** | Integral real de utilidad CARA bajo creencia normal y máximo global único en (m−RP)/(gv). |
+| 3: precio | `priceSensitivity` / `Price.lean` | **Probado** | Precio único que vacía el mercado; integración del ruido público dado theta y extremo sin señal. |
+| 4: transparencia fija | `fixedSentimentMonotonicity` / `Sensitivity.lean` | **Probado** | Crecimiento estricto en [0,1], positividad, cota 1/R y extremo de información completa. |
+| 5: sentimiento variable | `endogenousSentiment` / `Endogenous.lean` | **Probado** | Derivada lateral, condiciones de signos, criterio equivalente, trayectoria logarítmica, umbral 101/36 y reversión exacta con c=5. |
 
-**Reproducir.** preliminary/verify.ps1 recibe -LeanExecutable y -PackagesDirectory. Este último debe contener Mathlib y sus dependencias compiladas. El script configura LEAN_PATH y comprueba los tres archivos; falla ante error o sorryAx y escribe sus informes. Con lake disponible, usar el lakefile y la versión fijada de preliminary/, y ejecutar lake env lean para cada archivo.
+No se incorporaron hipótesis económicas adicionales. Los supuestos del manuscrito se codifican en el modelo; las cinco clausuras de axiomas solo contienen `propext`, `Classical.choice` y `Quot.sound`, sin `sorryAx` ni axiomas propios.
 
-**Mapa de parámetros.** a=h₁+h₂, n₃=λ₃/γ, n₄=λ₄/g₄, e₃=e, e₄=e+τ²₂, t=s en Transparency.lean. La letra t de ese archivo es varianza fundamental, mientras t en SignalCARA.lean y el manuscrito es varianza del ruido público. Son nombres locales de archivos diferentes; no se intercambian.
+## Fuente y comprobaciones reales
 
-**Procedimiento integral pendiente.** Esta carpeta continúa siendo una auditoría preliminar, no la carpeta generada por una corrida final de AppliedModelingLib. Antes del paper final del 26 de noviembre: fijar el commit del manuscrito, ejecutar la habilidad y comprobación paper_contribution.py check del repositorio vigente, copiar la carpeta generada completa y registrar el commit y el informe. Cada fila debe declarar si está probada, usa hipótesis adicionales o permanece abierta. No se atribuyen pruebas de probabilidad a identidades algebraicas.
+- Manuscrito formalizado: commit [`55409d5`](https://github.com/davidolano03/ai-project/blob/55409d500deba8b66072bd75d042d1faa962cdad/paper/paper.pdf); los hashes completos están en [verification/provenance.json](verification/provenance.json).
+- Biblioteca base: AppliedModelingLib `194edcc95df74806a39b961d10dedddc6e730cce`; Lean `4.30.0-rc2`; Mathlib `5450b53e5ddc75d46418fabb605edbf36bd0beb6`.
+- Modelo usado en la formalización y revisión: `gpt-5.6-sol`, esfuerzo `xhigh`.
+- Comando del curso: `python3 scripts/paper_contribution.py check Olano26Transparencia --fast`: **código de salida 0**. [Salida completa](verification/course-check.txt) y [código](verification/course-check-exit.txt).
+- [Enunciados y axiomas emitidos por Lean](verification/direct-lean-displays.txt): código 0, cinco pruebas del tipo de sus respectivos Specs.
+- [Comparación independiente directa](verification/direct-source-review.md): **5 MATCH**, sin cambios matemáticos requeridos. Revisor sin contexto de autoría; comparó la fuente fijada, el modelo y los enunciados emitidos por Lean.
+
+El chequeo `--fast` comprueba compilación focalizada, aislamiento de importaciones y formato. La compilación de las cinco pruebas y la comparación de enunciados se registran por separado. Esta comparación directa se realizó por petición del estudiante para cerrar la entrega; **no equivale a un recibo de aceptación del protocolo integral v12 de AppliedModelingLib**. No se afirma que ese recibo haya sido emitido. Los JSON de `audit/` conservan el estado del procedimiento automatizado, que no llegó a emitirlo por el fallo de detección de fuentes del preflight en Windows. Esto es distinto de una proposición abierta o una prueba asumida.
+
+## Reproducir
+
+Seguir [support/README.md](support/README.md): copiar esta carpeta a `papers/Olano26Transparencia` en la biblioteca fijada, copiar el módulo raíz y añadir el target de Lake; aplicar el parche incluido de tres wrappers gaussianos. Después:
+
+```sh
+lake build +Olano26Transparencia
+python3 scripts/paper_contribution.py check Olano26Transparencia --fast
+```
+
+La reproducción requiere las dependencias indicadas por `lake-manifest.json` de esa revisión. En Windows, la ejecución registrada utilizó un adaptador de funciones POSIX para Python; no se alteraron los validadores semánticos. Se incluye en `support/windows-compat/`. Las rutas de fuente descargada permanecen excluidas por `.gitignore`; se recuperan desde el commit fijado, sin `git add -f`.
+
+La carpeta `preliminary/` conserva las 26 declaraciones algebraicas anteriores como historial. Las cinco pruebas actuales están en la raíz de `lean/`; las pruebas anteriores no se presentan como sustituto de los resultados probabilísticos actuales.
+
+El documento y las diapositivas solo cambian el estado de las pruebas y su explicación. Las cinco proposiciones matemáticas siguen siendo las del commit formalizado. Una modificación posterior de sus enunciados exige repetir la comprobación y revisión correspondientes.

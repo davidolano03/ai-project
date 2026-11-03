@@ -32,8 +32,9 @@ creciente bajo condiciones explícitas. Código y simulaciones reproducen los
 resultados. Si la divulgación también cambia el sentimiento, el resultado
 se mantiene cuando reduce el optimismo de los particulares y puede invertirse cuando los
 vuelve más optimistas con suficiente rapidez; caracterizo la condición exacta.
-Lean certifica componentes algebraicos, con un alcance probabilístico
-todavía parcial. La aplicación corresponde a acciones con
+Lean comprueba cinco proposiciones, incluidos los resultados probabilísticos
+y la extensión sentimental; el apéndice distingue las comprobaciones realizadas.
+La aplicación corresponde a acciones con
 información desigual entre inversionistas, divulgación exógena y sin
 inferencia adicional desde el precio.
 \end{abstract}
@@ -661,46 +662,56 @@ del coeficiente por una descomposición equivalente.
 
 \clearpage
 \section{Correspondencia con Lean y alcance}
-La carpeta preliminar conserva las pruebas anteriores y añade
-\texttt{SignalCARA.lean}. Sus informes permiten revisar las compilaciones.
-La auditoría es parcial: identidades sobre momentos no prueban por sí mismas
-Bayes, independencia gaussiana ni una integral de utilidad.
+La corrida en AppliedModelingLib formaliza las cinco proposiciones del
+manuscrito fijado en el commit \texttt{55409d5}. Cada enunciado transparente
+está en \texttt{lean/PaperInterface.lean}; su prueba del tipo exacto, en
+\texttt{lean/ProofInterface.lean}. El prefijo común es
+\texttt{Olano26Transparencia}.
 \begin{center}\small
-\begin{tabular}{>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{6.3cm}>{\raggedright\arraybackslash}p{5cm}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{6.0cm}>{\raggedright\arraybackslash}p{5.5cm}}
 \toprule
-Resultado & Declaración / archivo & Alcance\\
+Prop. & Declaración / implementación & Estado y alcance\\
 \midrule
 Prop.~\ref{prop:information}
-& \texttt{public\_variance}, \texttt{hidden\_variance},
-\texttt{public\_hidden\_covariance}, \texttt{posterior\_square}
-en \texttt{SignalCARA.lean}
-& Identidades algebraicas probadas. Bayes e independencia probabilística
-abiertos en Lean.\\
+& \texttt{informationDecomposition} / \texttt{Information.lean}
+& Probado: leyes gaussianas, independencia, posterior, momentos condicionales
+y extremos sin señal y señal exacta.\\[0.15cm]
 Prop.~\ref{prop:demand}
-& \texttt{cara\_normal\_exponent} en \texttt{SignalCARA.lean};
-\texttt{demand\_maximizes}, \texttt{demand\_satisfies\_FOC}
-en \texttt{BaselineAudit.lean}
-& Exponente, CPO y máximo probados; integral normal abierta en Lean.\\
+& \texttt{optimalDemandResult} / \texttt{CARA.lean}
+& Probado: integral de utilidad CARA y máximo global único en la demanda
+indicada, con varianza y aversión positivas.\\[0.15cm]
 Prop.~\ref{prop:price}
-& \texttt{market\_clearing} en \texttt{BaselineAudit.lean}
-& Vaciado algebraico probado; esperanza requiere puente probabilístico.\\
+& \texttt{priceSensitivity} / \texttt{Price.lean}
+& Probado: vaciado y unicidad del precio, esperanza del precio integrando el
+ruido y extremo sin señal.\\[0.15cm]
 Prop.~\ref{prop:main}
-& \texttt{four\_group\_information\_increases},
-\texttt{full\_information\_endpoint} en \texttt{Transparency.lean}
-& Monotonicidad y extremo probados para el coeficiente algebraico
-con parámetros positivos explícitos.\\
+& \texttt{fixedSentimentMonotonicity} / \texttt{Sensitivity.lean}
+& Probado: crecimiento estricto en $[0,1]$, cotas y extremo $1/R$.\\[0.15cm]
 Prop.~\ref{prop:endo}
-& ---
-& Abierto en Lean: pendiente de la corrida de AppliedModelingLib.
-Comprobado en aritmética exacta.\\
+& \texttt{endogenousSentiment} / \texttt{Endogenous.lean}
+& Probado: partes (i)--(iv), derivadas laterales, condición exacta,
+trayectoria logarítmica, umbral $101/36$ y reversión con $c=5$.\\
 \bottomrule
 \end{tabular}
 \end{center}
-No se presenta esta carpeta como una corrida integral de AppliedModelingLib
-sobre un commit fijado. Ese procedimiento y el control
-\texttt{paper\_contribution.py check ... --fast} quedan pendientes.
-El paper final del curso debe reportar el commit formalizado y el resultado
-de esa comprobación.
+No se añaden hipótesis económicas a las del manuscrito. Las clausuras de
+axiomas contienen solo \texttt{propext}, \texttt{Classical.choice} y
+\texttt{Quot.sound}; no contienen \texttt{sorryAx} ni axiomas propios.
+
+El comando \texttt{paper\_contribution.py check Olano26Transparencia --fast}
+terminó con código 0. Su salida completa se conserva en
+\texttt{lean/verification/course-check.txt}. Lean comprobó además los cinco
+endpoints y emitió sus enunciados. Una revisión independiente comparó la
+fuente fijada, las definiciones del modelo y esos enunciados: cinco
+correspondencias, sin correcciones matemáticas necesarias. Se conservan el
+informe y la procedencia de versiones en \texttt{lean/verification/}.
+
+Esta comparación directa no equivale a un recibo de aceptación del protocolo
+integral v12 de la biblioteca; no se afirma haberlo obtenido. El preflight
+automatizado falló al detectar los módulos fuente en Windows. El comando
+\texttt{--fast}, la compilación de pruebas y la comparación directa se
+reportan como comprobaciones distintas. Las pruebas actuales reemplazan el
+alcance limitado de las identidades históricas en \texttt{lean/preliminary/}.
 
 \clearpage
 \section{Auditoría de contribuciones de IA}
@@ -719,7 +730,7 @@ Media-varianza es numéricamente igual a utilidad esperada CARA.
 & Integral normal y monotonía de la transformación.\\
 La transparencia siempre mejora el precio.
 & Demasiado amplio: sensibilidad esperada con sentimiento fijo.
-& Prueba, barrido racional y Lean algebraico.\\
+& Prueba, barrido racional y monotonicidad formalizada en Lean.\\
 Información institucional implica filtración del emisor.
 & No se desprende del modelo.
 & Lectura de secciones 3 y 6.2 y delimitación propia.\\
